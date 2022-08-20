@@ -1,0 +1,16 @@
+body {
+    width: 1080;
+    margin-left: auto;
+    margin-right: auto;
+}
+hr {
+    width:9%;
+    height:10px;
+}
+.details minor{
+    text-align: left;
+    width:30%;
+}
+.details major{
+    text-align: right;
+}
