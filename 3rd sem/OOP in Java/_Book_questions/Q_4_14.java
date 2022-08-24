@@ -1,4 +1,7 @@
-//remove decimals 
+// remove decimal point from input 
+// Alternative to this method is take string input
+// Separate into 2 strings (integer part & fractional part ignoring decimal symbol)
+// print concatenation of the 2
 
 import java.util.Scanner;
 
@@ -12,14 +15,10 @@ public class Q_4_14 {
         
         // convert to string
         String s = ""+og;
-        boolean found_decimal=false;
         int i;
 
-        for (i=0; i<s.length()-1; i++) {
-            if (s.charAt(i) == '.') found_decimal=true;
-            if (found_decimal == true) {
-                og*=10;
-            }
+        for (i=s.length()-1; s.charAt(i)!='.'; i--) {
+            og*=10;
         }
         System.out.println("You have "+(int)og+" paisa.");
          
