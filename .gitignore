@@ -6,6 +6,7 @@ test.c
 tempCodeRunnnerFile.c
 
 ### Java ###
+test.java
 *.class
 *.log
 *.ctxt
