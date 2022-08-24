@@ -2,7 +2,7 @@
 
 import java.util.Scanner;
 
-public class Prac {
+public class Q_4_14 {
     public static void main(String args[]) {
         Scanner in = new Scanner(System.in);
         
