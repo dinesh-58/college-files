@@ -7,6 +7,7 @@ tempCodeRunnnerFile.c
 
 ### Java ###
 test.java
+3rd sem/OOP Java/test/
 *.class
 *.log
 *.ctxt
@@ -24,3 +25,4 @@ replay_pid*
 ### Lab Reports ###
 3rd sem/Web tech/Lab reports/*.pdf
 3rd sem/Web tech/Lab reports/*.html
+3rd sem/Web tech/Lab reports/*.css
