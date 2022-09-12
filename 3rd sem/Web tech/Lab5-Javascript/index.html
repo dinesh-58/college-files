@@ -7,19 +7,21 @@
     <title>Javascript</title>
 
     <script type="text/javascript">
-        function display() {
-            var ans;
-            ans = confirm("Confirm");
-            if (ans)
-                document.write("You confirmed");
-            else 
-                document.write("You cancelled");
+        function display(ans) {
+            alert("Your answer is" + ans);
         }
     </script> 
 </head>
 <body>
-    <form>
-        <input type="button" value="Confirm?" onclick="display();">
+    <form name="Myform">
+        <input type="toolbar" name="a">
+        <input type="toolbar" name="b">
+        <script>
+            var a = document.Myform.a.value;
+            var b = document.Myform.b.value;
+            var ans = a+b;
+        </script>    
+            <input type="button" value="add" onclick ="display(ans);"/>
     </form>
 </body>
 </html>
