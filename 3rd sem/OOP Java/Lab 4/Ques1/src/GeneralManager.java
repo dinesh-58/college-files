@@ -1,4 +1,4 @@
-public class HRManager extends Manager {
+public class GeneralManager extends Manager{
     public void setId (int id) {
         this.id = id;
     }
@@ -9,6 +9,7 @@ public class HRManager extends Manager {
     public void showDetails() {
         System.out.println("Id: "+id);
         System.out.println("Name: "+name);
-        System.out.println("Post: HR Manager");
+        System.out.println("Post: General Manager");
     }
 }
+

@@ -3,7 +3,7 @@
 public class Manager {
     protected int id;
     protected String name;
-    public static void disp() {
+    public void disp() {
         System.out.println("I am a Manager");
     }  
 }
