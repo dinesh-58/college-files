@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 void main() {
-    int n=5, stack[n], i, value, choice, top=-1;
+    int n=5, stack[n], i, value, choice, top=-1, temp;
     for (i=0; i<n; i++) {
         stack[i] = 0;
     }
@@ -28,6 +28,8 @@ void main() {
                 printf("Underflow");
                 exit(1);
             }
+            temp = stack[top];
+            printf("The popped value is %d", temp);
             stack[top] = 0;
             top--;
         }
