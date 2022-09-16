@@ -5,23 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Javascript</title>
-
-    <script type="text/javascript">
-        function display(ans) {
-            alert("Your answer is" + ans);
-        }
-    </script> 
 </head>
 <body>
     <form name="Myform">
-        <input type="toolbar" name="a">
-        <input type="toolbar" name="b">
-        <script>
-            var a = document.Myform.a.value;
-            var b = document.Myform.b.value;
-            var ans = a+b;
+        <input type="number" name="a">
+        <input type="number" name="b">
+        <script type="text/javascript">
+            function display() {
+
+                var a = document.getElementById(a);
+                var b = document.getElementById(b);
+                var ans = a+b;
+                document.write("Ans is "+ans);
+            }
         </script>    
-            <input type="button" value="add" onclick ="display(ans);"/>
+            <input type="button" value="add" onclick ="display();"/>
     </form>
 </body>
 </html>
