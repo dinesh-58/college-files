@@ -1,7 +1,7 @@
 public class Employee {
-    public String name;
-    public String address;
-    public int joinedYear;
+    private String name;
+    private String address;
+    private int joinedYear;
 
     public void setValues(String name, int joinedYear, String address) {
         this.name = name;

@@ -8,8 +8,8 @@ public class App {
         emp3.setValues("Jeevan", 2065, "Pokhara");
 
         System.out.println("Name Year of joining Address");
-        System.out.println(emp1.getName()+" "+emp1.joinedYear+" "+emp1.address);
-        System.out.println(emp2.getName()+" "+emp2.joinedYear+" "+emp2.address);
-        System.out.println(emp3.getName()+" "+emp3.joinedYear+" "+emp3.address);
+        System.out.println(emp1.getName()+" "+emp1.getJoinedYear()+" "+emp1.getAddress());
+        System.out.println(emp2.getName()+" "+emp2.getJoinedYear()+" "+emp2.getAddress());
+        System.out.println(emp3.getName()+" "+emp3.getJoinedYear()+" "+emp3.getAddress());
     }
 }
