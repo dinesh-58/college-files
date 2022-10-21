@@ -41,6 +41,7 @@ void main() {
     while(top!=-1) {
         pop();
     }
+    // TODO solve
 
 }
 
@@ -54,14 +55,12 @@ void push(char operator) {
 }
 
 void pop() {
-    if (top == -1) {
-        printf("\n Error: Underflow");
-        exit(1);
-    }
+    // if (top == -1) {
+    //     printf("\n Error: Underflow");
+    //     exit(1);
+    // }
     // no need for else because program exits if condition met 
-    if (stack[top]=='(') printf("");
-    else printf("%c", stack[top]);
-    top--;
+    if (stack[top] != '(') printf("%c", stack[top--]);
 }
 
 int precedence(char operator) {
