@@ -20,7 +20,8 @@ void main() {
     // ! printf("Enter infix expression ");
     // ! scanf("%[^\n]",infix);
 
-    for (i=0; infix[i]!=0; i++) {
+    for (i=0; infix[i]!=0; i++) {   // 0 means null character so this will loop 
+                                    // to the end of the input
         c = infix[i];
         if(isalnum(c)) {
             printf("%c",c);
@@ -33,11 +34,12 @@ void main() {
                 } while(stack[top] != '(');
                 top--;
             }
-            else if (precedence(stack[top]) >= precedence(c)) {
-                pop();
+            else{
+                while (precedence(stack[top]) >= precedence(c)) {
+                    pop();
+                }
                 push(c);
             }
-            else push(c);
         }
     }
     while(top!=-1) {
