@@ -2,17 +2,16 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-#define SIZE 12
+#define SIZE 20
 char stack[SIZE], top=-1;
 
 void push(char operator);
-void pop();
+char pop();
 int precedence(char operator);
 
 void main() {
     int i;
-    char c, infix[SIZE];
-    // ! New error when brackets are involved 
+    char c, infix[SIZE], temp;
     // TODO delete later
     FILE * fp =fopen("temp.txt","r");
     fscanf(fp, "%s", infix);
@@ -20,33 +19,29 @@ void main() {
     // ! printf("Enter infix expression ");
     // ! scanf("%[^\n]",infix);
 
-    for (i=0; infix[i]!=0; i++) {   // 0 means null character so this will loop 
-                                    // to the end of the input
+    for (i=0; infix[i]!='\0'; i++) {   
         c = infix[i];
         if(isalnum(c)) {
             printf("%c",c);
         }
         else { // character is an operator
-            if (top == -1) push(c);
+            if (top == -1 || c == '(') push(c);
             else if (c == ')') {
-                do {
-                    pop();
-                } while(stack[top] != '(');
-                top--;
+                while ((temp=pop()) != '(') {
+                    printf("%c", temp);
+                }
             }
             else{
                 while (precedence(stack[top]) >= precedence(c)) {
-                    pop();
+                    printf("%c", pop());
                 }
                 push(c);
             }
         }
     }
     while(top!=-1) {
-        pop();
+        printf("%c", pop());
     }
-    // TODO solve
-
 }
 
 void push(char operator) {
@@ -58,20 +53,25 @@ void push(char operator) {
     stack[++top] = operator;
 }
 
-void pop() {
-    // if (top == -1) {
-    //     printf("\n Error: Underflow");
-    //     exit(1);
-    // }
+char pop() {
+    if (top == -1) {
+        printf("\n Error: Underflow");
+        exit(1);
+    }
     // no need for else because program exits if condition met 
-    if (stack[top] != '(') printf("%c", stack[top--]);
+    return stack[top--];
 }
 
 int precedence(char operator) {
     switch(operator) {
         case '(':
-        case ')':
-            return 4;
+            return 0;
+            // Theoretically, parenthesis would have the highest precedence. 
+            // But when this function is called while comparing operators, '(' 
+            // will get popped since it has the highest value.
+            // And later when ')' is encountered, infinite loop will occur since 
+            // '(' is no longer in the stack. Thus, we set precedence 0 so that 
+            // '(' doesn't get popped unnecessarily.
 
         case '^':
             return 3;
@@ -83,6 +83,7 @@ int precedence(char operator) {
         case '+':
         case '-':
             return 1;
-
+        default:    
+            return 0;
     }
 } 
