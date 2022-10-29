@@ -12,7 +12,7 @@ int precedence(char operator);
 void main() {
     int i;
     char c, infix[SIZE];
-
+    // ! New error when brackets are involved 
     // TODO delete later
     FILE * fp =fopen("temp.txt","r");
     fscanf(fp, "%s", infix);
