@@ -13,11 +13,11 @@ void main() {
     int i;
     char c, infix[SIZE], temp;
     // TODO delete later
-    FILE * fp =fopen("temp.txt","r");
-    fscanf(fp, "%s", infix);
+   // FILE * fp =fopen("temp.txt","r");
+    // fscanf(fp, "%s", infix);
     // TODO uncommment these later
-    // ! printf("Enter infix expression ");
-    // ! scanf("%[^\n]",infix);
+      printf("Enter infix expression ");
+      scanf("%[^\n]",infix);
 
     for (i=0; infix[i]!='\0'; i++) {   
         c = infix[i];
