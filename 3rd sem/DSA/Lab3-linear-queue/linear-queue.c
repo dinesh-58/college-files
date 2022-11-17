@@ -21,7 +21,7 @@ void enqueue() {
     int new_item;
     if (front == -1) front++;
     if (rear == SIZE-1) {
-        printf("Overflow. Stack full\n");
+        printf("Overflow. Queue full\n");
         exit(1);
     }
     printf("Enter data to add to queue ");
@@ -31,7 +31,7 @@ void enqueue() {
 
 void dequeue() {
     if (front == -1 || front > rear) {
-        printf("Underflow. Stack empty\n");
+        printf("Underflow. Queue empty\n");
         exit(1);
     }
     queue[front++] = 0;
