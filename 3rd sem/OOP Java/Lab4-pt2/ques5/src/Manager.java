@@ -1,5 +1,5 @@
 public class Manager {
-    public Manager() {
-        System.out.println("I am a manager");
+    public String getPost() {
+        return "Manager";
     }
 }
