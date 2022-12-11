@@ -9,16 +9,17 @@ struct node {
 void create () {
     char ch;
     ptr = (struct node *) malloc(sizeof(struct node));
-    printf("enter 1st info");
+    printf("enter 1st info ");
     scanf("%d", &ptr->info);
     first = ptr;
     ptr->link = cpt;
     do {
         cpt = (struct node *) malloc(sizeof(struct node));
-        printf("Enter next info");
+        printf("Enter next info ");
         scanf("%d", &cpt->info);
         ptr->link = cpt;
-        printf("Enter y for entering more info");
+        ptr = cpt;
+        printf("Enter y for entering more info ");
         scanf(" %c", &ch);
     } while (ch == 'y');
     cpt->link = NULL;
@@ -40,7 +41,7 @@ void insert_beginning() {
         exit(1);
     }
 
-    printf("Enter data");
+    printf("Enter data ");
     scanf(" %d", &cpt->info);
     cpt->link = first;
     first = cpt;
@@ -53,27 +54,32 @@ void insert_end() {
         exit(1);
     }
 
-    printf("Enter data");
-    scanf("%d", &cpt->info);
-    do {
+    printf("Enter data ");
+    scanf(" %d", &cpt->info);
     ptr = first;
+    while (ptr->link != NULL) {
         ptr = ptr->link;
-    } while (ptr->link != NULL); 
+    }
     ptr->link = cpt;
     cpt->link = NULL;
+    
 }
 void main () {
     char ch;
     create();
     traverse();
 
-    printf("\n 1: Insert at beginning");
-    printf("\n 2: Insert at end");
-    printf("\n Enter choice");
-    scanf(" %c", &ch);
+    while(1) {
+        printf("\n Press");
+        printf("\n 1: Insert at beginning");
+        printf("\n 2: Insert at end");
+        printf("\n Anything else to quit"); 
+        printf("\n Enter choice ");
+        scanf(" %c", &ch);
 
-      ch == '1'? insert_beginning(), traverse()
-    : ch == '2'? insert_end(), traverse()   
-    : exit(0);
+          ch == '1'? insert_beginning(), traverse()
+        : ch == '2'? insert_end(), traverse()   
+        : exit(0);
+    }
 }
  

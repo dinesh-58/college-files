@@ -1,7 +1,10 @@
 import java.awt.GridLayout;
 import javax.swing.*;
-public class App {
-    public static void main(String[] args) throws Exception {
+import java.awt.event.*;
+
+public class App implements ActionListener {
+    JButton jb = new JButton("Submit");
+    public void test() {
         JFrame jf = new JFrame();
         JPanel jp = new JPanel();
         jf.setLayout(new GridLayout(10,1));
@@ -34,15 +37,25 @@ public class App {
         jp2.add(jr2);
         jp2.add(jr3);
 
+        JLabel jl4 = new JLabel("Select your interest");
         String[] interest = {"Select one", "Singing", "Dance", "Drawing"};
         JComboBox jcb = new JComboBox<>(interest);
         JPanel jp3 = new JPanel();
-        jp3.add(jl3);
+        jp3.add(jl4);
         jp3.add(jcb);
         jf.add(jp3);
 
-
+        jb.addActionListener(this);
+        JPanel jp4 = new JPanel();
+        jp4.add(jb);
+        jf.add(jp4);
         jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // string variables, joptionpane
     }
 
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == jb) {
+           JOptionPane. 
+        }
+    }
 }
