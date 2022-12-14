@@ -73,11 +73,13 @@ void ftraverse() {
 
 void insert_beg() {
     struct node *ptr;
+    // ! Could just be a function from here
     ptr = (struct node *) malloc(sizeof(struct node));
     if (ptr == NULL) {
         printf("OVERFLOW");
         return;
     }
+    // ! till here
     printf("\n Enter new node");
     scanf("%d", &ptr->info);
     ptr->rpt = first;
@@ -117,6 +119,7 @@ void insert_given_node() {
     }
     printf("\n Enter data in linked list after which you want to enter new data ");
     scanf("%d", &m);
+    // could just use one line for loop
     for(cpt = first; cpt->rpt != NULL; cpt = cpt->rpt) {
         if(m == cpt->info) break;
     }
