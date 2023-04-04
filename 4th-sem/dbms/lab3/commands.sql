@@ -28,3 +28,15 @@ select * from employee;
 select * from issue;
 select * from bookList;
 select * from Book;
+
+--
+select * from employee;
+SELECT * from employee where salary >=40000;
+
+---
+select * from Book where price>=400 AND price<=500;
+select * from Book where price BETWEEN 400 and 500;
+
+---
+select * from bookList
+    where publication like 'p%';

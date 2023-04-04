@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--<link href="css/style.css" rel="stylesheet">-->
+    </head>
+
+    <body>
+        <h1>Javascript in the browser</h1>
+        <div class="hello">
+            <div class="hello">Hello</div>
+            <div>World</div>
+        </div>
+    
+        <script>
+            console.warn('asd')
+            // document.body.textContent = "test";
+            // document.body.innerHTML = "<h1>test</h1>";
+            let bodyChildren = document.body.childNodes;
+            console.log(bodyChildren);
+
+            bodyChildren[1].textContent = "Testing"; // NodeList is similar to array so we use index 1 to select h1. 
+                // index 0 is empty text 
+
+            // document.querySelector('.hello').innerText = "Hi";
+            let helloElements = document.querySelectorAll('.hello');
+
+            // Styles w/ JS
+
+            helloElements[1].style.color = 'blue';
+            helloElements[1].style.textDecoration = 'underline';
+
+        </script>
+    </body>
+</html>

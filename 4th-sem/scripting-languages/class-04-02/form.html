@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+    <body>
+        <table id="table" border="2">
+            <tr>
+                <td>Your age: </td>
+                <td>
+                    <label><input type="radio" name="age" value="young" checked>Less than 18</label>
+                    <label><input type="radio" name="age" value="mature">From 18 to 50</label>
+                    <label><input type="radio" name="age" value="senior">More than 60</label>
+                </td>
+            </tr>
+        </table>
+
+        <div class="articles">
+            <div class="article"></div>
+            <div class="long article"></div>
+        </div>
+    
+        <script>
+            let table = document.querySelector('#table');
+            let inputs = table.querySelectorAll('input'); // to show that you can use querySelector for any object, not just document
+
+            for (let input of inputs) {
+                console.log(input.value, input.checked);
+            }
+
+            // let articles = document.getElementsByClassName('article');
+            let articles = document.querySelectorAll('.article');
+            console.log(articles.length);
+        </script>
+
+        <div class="article"></div>
+        <script>
+            // articles = document.getElementsByClassName('article');
+            articles = document.querySelectorAll('.article');
+            console.log(articles.length);
+            
+        </script>
+
+    </body>
+</html>
