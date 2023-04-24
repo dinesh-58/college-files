@@ -1,4 +1,4 @@
-% Created 2023-04-24 Mon 15:22
+% Created 2023-04-24 Mon 16:33
 % Intended LaTeX compiler: pdflatex
 \documentclass[a4paper]{article}
 \usepackage[utf8]{inputenc}
@@ -46,10 +46,10 @@
 \begin{document}
 
 \maketitle
-\tableofcontents \clearpage\pagenumbering{roman}
-
+\pagenumbering{roman}
+\clearpage \tableofcontents \clearpage
 \section{Introduction}
-\label{sec:orgd891d45}
+\label{sec:org0856f8a}
 CardsQL is a simple flashcard revision app. Flashcards are a memorization/revision technique where you write a question on one side of a card/ piece of paper \& the answer on the other side. You then read the question \& try your best to remember the answer, before flipping the card over \& see how well you did.
 
 Cognitive researchers have found that trying to recall such facts strengthens the relevant neural connections in our brain \& thus, allows us to remember it for longer periods of time. This process is specifically called \textbf{Active Recall\citeprocitem{1}{[1]}}.
@@ -62,9 +62,10 @@ Another technique used in tandem with Active Recall is \textbf{Spaced Repitition
 \end{figure}
 Thus, instead of studying entire topics repeatedly, we can just revise small key points \& be more effective.
 
+\clearpage 
 \section{Problem Statement}
-\label{sec:org55fe08f}
-\begin{enumerate}
+\label{sec:org66eb435}
+\begin{itemize}
 \item \textbf{inefficient traditional studying techniques}
 \item \textbf{inconvenient to manage physical flashcards}   
 \begin{itemize}
@@ -78,10 +79,10 @@ Thus, instead of studying entire topics repeatedly, we can just revise small key
 \item CardsQL automates all these processes. After reviewing a card, we can rate how well we remembered the answer. This rating is used to determine the next review date for that card. This date is set such that by the next review, we haven't completely forgotten the answer, nor is it too easy.
 \item When revising on a particular day, CardsQL will show you cards that are scheduled for that day or older. Thus, overdue cards are handled easily.
 \end{itemize}
-\end{enumerate}
+\end{itemize}
 
 \section{Objectives}
-\label{sec:org46f849d}
+\label{sec:org94b2bfd}
 \begin{itemize}
 \item provide as easy of an entry point to flashcard programs by keeping things simple
 \item provide intuitive interface so that user doesn't have to understand how the system works in order to utilize it
@@ -89,46 +90,45 @@ Thus, instead of studying entire topics repeatedly, we can just revise small key
 \item automate scheduling of next review
 \end{itemize}
 \section{Methodology}
-\label{sec:org6a0e05c}
+\label{sec:org37c62d9}
 \subsection{Requirement Identification}
-\label{sec:org6585c30}
+\label{sec:org958cc02}
 This project makes use of the \textbf{Waterfall development} approach in order to set concrete requirements \& build towards achieving them.
 \subsubsection{Study of existing system}
-\label{sec:orgbd33765}
+\label{sec:org4288d54}
 Two popular flashcard apps are:
 
 \begin{enumerate}
 \item Quizlet
-\label{sec:orgd2202c8}
+\label{sec:orgb8be1d4}
 \begin{enumerate}
 \item Pros
-\label{sec:org66a947e}
+\label{sec:org7c22df6}
 \begin{itemize}
 \item pre-made flashcards for subjects
 \item emphasis on mobile version UX which allows users to revise anytime, anywhere
 \item utilize machine learning from anonymous user-data to create custom study plans for users
 \end{itemize}
 \item Cons
-\label{sec:org5ba85bb}
+\label{sec:org6127c3e}
 \begin{itemize}
 \item free version has ads \& lacks advanced features
 \item can't be used offline on free version
 \end{itemize}
 \end{enumerate}
 
-
 \item Anki
-\label{sec:orgd3dae01}
+\label{sec:org1109fb6}
 \begin{enumerate}
 \item Pros
-\label{sec:orgb33289d}
+\label{sec:org43b4300}
 \begin{itemize}
 \item Free \& Open Source (FOSS)
 \item supports sync between multiple devices
 \item highly customizable with user-defined card types \& community-made plugins
 \end{itemize}
 \item Cons
-\label{sec:org4d5c805}
+\label{sec:orgd2385d9}
 \begin{itemize}
 \item complex from start
 \item CardsQL should act as gateway/ intro to flashcards. can use Anki later
@@ -137,15 +137,15 @@ Two popular flashcard apps are:
 \end{enumerate}
 \end{enumerate}
 \subsubsection{Requirement Collection}
-\label{sec:org3ad8693}
+\label{sec:org12f911c}
 \begin{enumerate}
 \item Functional requirements
-\label{sec:org95f3fd3}
+\label{sec:org1d3acda}
 
 Note: \emph{As CardsQL is meant for personal use, it only has one type of user instead of admin, multiple users etc.}
 \begin{enumerate}
 \item User
-\label{sec:orgb2c3541}
+\label{sec:org7ad8783}
 \begin{itemize}
 \item can add different types of cards
 \item can revise due cards
@@ -155,7 +155,7 @@ Note: \emph{As CardsQL is meant for personal use, it only has one type of user i
 \end{itemize}
 \end{enumerate}
 \item Non-Functional requirements
-\label{sec:orgb21c40b}
+\label{sec:orgd04ca03}
 \begin{itemize}
 \item offline access to all features 
 achieved by hosting sql server \& storing data on user's computer
@@ -165,19 +165,22 @@ achieved by hosting sql server \& storing data on user's computer
 \item regular data backups
 \end{itemize}
 \item Use Case diagram
-\label{sec:org7231a1c}
+\label{sec:org8b6d101}
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=240px]{diagrams/use-case-diagram.png}
+\includegraphics[width=400px]{diagrams/use-case-diagram.png}
 \caption{Use case diagram for CardsQL}
 \end{figure}
-\end{enumerate}
 
+\FloatBarrier
+
+\clearpage
+\end{enumerate}
 \subsection{Feasibility Study}
-\label{sec:orgd1e0024}
+\label{sec:org05c9a71}
 \subsubsection{Technical}
-\label{sec:org834b364}
+\label{sec:orgb493fdd}
 CardsQL is not too difficult to implement from a technical standpoint because it uses:
 
 \begin{itemize}
@@ -186,13 +189,13 @@ CardsQL is not too difficult to implement from a technical standpoint because it
 \item SQLite, a lightweight RDBMS, for the database. It uses a database file on the user's computer so it negates the need for maintaining a server for users to connect to.
 \end{itemize}
 \subsubsection{Operational}
-\label{sec:org2cda1ee}
+\label{sec:org7d7fea5}
 \begin{itemize}
 \item Because of the serverless architecture, the app will work at all times after downloading it. Thus, there is no need to designate manpower to ensure the app stays operational after launch.
-\item Users are sure to adopt the app as it is designed to be more convenient than paper flashcards. Anyone should be able to learn to use it, compared to other more advanced flashcard programs discussed in \hyperref[sec:orgbd33765]{Study of existing system}
+\item Users are sure to adopt the app as it is designed to be more convenient than paper flashcards. Anyone should be able to learn to use it, compared to other more advanced flashcard programs discussed in \hyperref[sec:org4288d54]{Study of existing system}
 \end{itemize}
 \subsubsection{Economic}
-\label{sec:org08739c0}
+\label{sec:org73c9fa3}
 CardsQl is viable from an economic standpoint as:
 
 \begin{itemize}
@@ -201,12 +204,13 @@ CardsQl is viable from an economic standpoint as:
 \item There were no development costs as the app was builton the developer's existing hardware \& using freely-licensed tools.
 \item The app is distributed freely to help users so there is no potential profit or loss.
 \end{itemize}
+\clearpage 
 \subsection{High level design of System}
-\label{sec:orgc19d3c8}
+\label{sec:orgcd09d02}
 As the following are high level representations of the system, they aim to provide a basic understanding of the system and thus, leave out intricate implementation details.
 
 \subsubsection{System Flow Chart}
-\label{sec:org7e2737e}
+\label{sec:orgade7e61}
 
 \begin{figure}[htbp]
 \centering
@@ -216,33 +220,22 @@ As the following are high level representations of the system, they aim to provi
 \FloatBarrier 
 
 \subsubsection{Methodology/ Working Mechanism}
-\label{sec:org93e830d}
+\label{sec:orga08d718}
 \emph{As stated previously, CardsQL does not have different types of users so all the following actions can be done by the user.}
 
 \begin{enumerate}
 \item Add Cards
-\label{sec:orgabf19a4}
-\begin{center}
-\includegraphics[width=.9\linewidth]{diagrams/add-cards-flow-chart.png}
-\end{center}
+\label{sec:orgcb6393d}
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=220px]{diagrams/add-cards-flow-chart.png}
+\includegraphics[width=200px]{diagrams/add-cards-flow-chart.png}
 \caption{Flow chart for adding cards}
 \end{figure}
 \FloatBarrier
 
-\item Revise Cards
-\label{sec:orgcd7ffe3}
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=260px]{diagrams/review-cards-flow-chart.png}
-\caption{Flow chart for revising cards}
-\end{figure}
-\FloatBarrier
-
 \item Edit Cards
-\label{sec:orgaf8c755}
+\label{sec:org2bfaf11}
+
 Card details can be edited or the entire card can be deleted
 \begin{figure}[htbp]
 \centering
@@ -250,9 +243,20 @@ Card details can be edited or the entire card can be deleted
 \caption{Flow chart for editing cards}
 \end{figure}
 \FloatBarrier
+\clearpage 
+\item Revise Cards
+\label{sec:orgb10f84a}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=260px]{diagrams/review-cards-flow-chart.png}
+\caption{Flow chart for revising cards}
+\end{figure}
+\FloatBarrier
+
+\clearpage
 \end{enumerate}
 \section{Gantt Chart}
-\label{sec:org48ac8fd}
+\label{sec:orgb6907ad}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{diagrams/gantt-chart.png}
@@ -260,14 +264,14 @@ Card details can be edited or the entire card can be deleted
 \end{figure}
 \FloatBarrier
 \section{Expected Outcome}
-\label{sec:org9b4b380}
+\label{sec:org0c22463}
 \begin{itemize}
 \item Provide a simple introduction to using flashcards,  active recall \& spaced repititon for learning
 \item Eliminate the need to constantly read or make notes on the same topics
 \item Help make studying a daily habit
 \end{itemize}
 \section{References}
-\label{sec:org458985b}
+\label{sec:orgbc35c43}
 \hypertarget{citeproc_bib_item_1}{[1] A. Abdaal, “How to study: Active recall.” https://aliabdaal.com/activerecallstudytechnique/.}
 
 \hypertarget{citeproc_bib_item_2}{[2] “The spacing effect: How to improve learning and maximize retention.” https://fs.blog/spacing-effect/; Farnam Street Media Inc.}\bigskip

@@ -1,4 +1,4 @@
-% Created 2023-04-24 Mon 15:23
+% Created 2023-04-24 Mon 19:30
 % Intended LaTeX compiler: pdflatex
 \documentclass[a4paper]{article}
 \usepackage[utf8]{inputenc}
@@ -28,12 +28,11 @@
 \captionsetup{format=myformat,justification=centering}
 \captionsetup[figure]{position=bottom}
 \captionsetup[table]{position=top}
-\author{Sujal Gurung}
-\date{April 2023}
-\title{Project Proposal on CardsQL}
+\date{\today}
+\title{}
 \hypersetup{
- pdfauthor={Sujal Gurung},
- pdftitle={Project Proposal on CardsQL},
+ pdfauthor={},
+ pdftitle={},
  pdfkeywords={},
  pdfsubject={},
  pdfcreator={Emacs 28.2 (Org mode 9.5.5)}, 
@@ -45,11 +44,10 @@
 \usepackage[notquote]{hanging}
 \begin{document}
 
-\maketitle
-\tableofcontents \clearpage\pagenumbering{roman}
-
+\pagenumbering{roman}
+\clearpage \tableofcontents \clearpage
 \section{Introduction}
-\label{sec:org3b2be11}
+\label{sec:org02a78f6}
 CardsQL is a simple flashcard revision app. Flashcards are a memorization/revision technique where you write a question on one side of a card/ piece of paper \& the answer on the other side. You then read the question \& try your best to remember the answer, before flipping the card over \& see how well you did.
 
 Cognitive researchers have found that trying to recall such facts strengthens the relevant neural connections in our brain \& thus, allows us to remember it for longer periods of time. This process is specifically called \textbf{Active Recall\citeprocitem{1}{[1]}}.
@@ -62,9 +60,10 @@ Another technique used in tandem with Active Recall is \textbf{Spaced Repitition
 \end{figure}
 Thus, instead of studying entire topics repeatedly, we can just revise small key points \& be more effective.
 
+\clearpage 
 \section{Problem Statement}
-\label{sec:orgb4980ef}
-\begin{enumerate}
+\label{sec:org46687a0}
+\begin{itemize}
 \item \textbf{inefficient traditional studying techniques}
 \item \textbf{inconvenient to manage physical flashcards}   
 \begin{itemize}
@@ -78,10 +77,10 @@ Thus, instead of studying entire topics repeatedly, we can just revise small key
 \item CardsQL automates all these processes. After reviewing a card, we can rate how well we remembered the answer. This rating is used to determine the next review date for that card. This date is set such that by the next review, we haven't completely forgotten the answer, nor is it too easy.
 \item When revising on a particular day, CardsQL will show you cards that are scheduled for that day or older. Thus, overdue cards are handled easily.
 \end{itemize}
-\end{enumerate}
+\end{itemize}
 
 \section{Objectives}
-\label{sec:orgf37d16d}
+\label{sec:org57a6103}
 \begin{itemize}
 \item provide as easy of an entry point to flashcard programs by keeping things simple
 \item provide intuitive interface so that user doesn't have to understand how the system works in order to utilize it
@@ -89,46 +88,45 @@ Thus, instead of studying entire topics repeatedly, we can just revise small key
 \item automate scheduling of next review
 \end{itemize}
 \section{Methodology}
-\label{sec:org118f877}
+\label{sec:orgfa91ac6}
 \subsection{Requirement Identification}
-\label{sec:org24db001}
+\label{sec:org2fca885}
 This project makes use of the \textbf{Waterfall development} approach in order to set concrete requirements \& build towards achieving them.
 \subsubsection{Study of existing system}
-\label{sec:org0ed27fb}
+\label{sec:orgeb062fa}
 Two popular flashcard apps are:
 
 \begin{enumerate}
 \item Quizlet
-\label{sec:orgb9ee3cf}
+\label{sec:org37ff442}
 \begin{enumerate}
 \item Pros
-\label{sec:orgfb3b042}
+\label{sec:org4353e9f}
 \begin{itemize}
 \item pre-made flashcards for subjects
 \item emphasis on mobile version UX which allows users to revise anytime, anywhere
 \item utilize machine learning from anonymous user-data to create custom study plans for users
 \end{itemize}
 \item Cons
-\label{sec:org4794d4f}
+\label{sec:orgdced57a}
 \begin{itemize}
 \item free version has ads \& lacks advanced features
 \item can't be used offline on free version
 \end{itemize}
 \end{enumerate}
 
-
 \item Anki
-\label{sec:org435e785}
+\label{sec:orgb2e91a6}
 \begin{enumerate}
 \item Pros
-\label{sec:org2df7776}
+\label{sec:org0b78bba}
 \begin{itemize}
 \item Free \& Open Source (FOSS)
 \item supports sync between multiple devices
 \item highly customizable with user-defined card types \& community-made plugins
 \end{itemize}
 \item Cons
-\label{sec:orgee0e82f}
+\label{sec:org03fa84f}
 \begin{itemize}
 \item complex from start
 \item CardsQL should act as gateway/ intro to flashcards. can use Anki later
@@ -137,15 +135,15 @@ Two popular flashcard apps are:
 \end{enumerate}
 \end{enumerate}
 \subsubsection{Requirement Collection}
-\label{sec:org131ac3e}
+\label{sec:orgcb0a550}
 \begin{enumerate}
 \item Functional requirements
-\label{sec:org7641953}
+\label{sec:orgf6e09d4}
 
 Note: \emph{As CardsQL is meant for personal use, it only has one type of user instead of admin, multiple users etc.}
 \begin{enumerate}
 \item User
-\label{sec:orge8758aa}
+\label{sec:org8e2252e}
 \begin{itemize}
 \item can add different types of cards
 \item can revise due cards
@@ -155,7 +153,7 @@ Note: \emph{As CardsQL is meant for personal use, it only has one type of user i
 \end{itemize}
 \end{enumerate}
 \item Non-Functional requirements
-\label{sec:org288cf94}
+\label{sec:org4db7217}
 \begin{itemize}
 \item offline access to all features 
 achieved by hosting sql server \& storing data on user's computer
@@ -165,19 +163,22 @@ achieved by hosting sql server \& storing data on user's computer
 \item regular data backups
 \end{itemize}
 \item Use Case diagram
-\label{sec:org9a75c1d}
+\label{sec:org90864bc}
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=240px]{diagrams/use-case-diagram.png}
+\includegraphics[width=400px]{diagrams/use-case-diagram.png}
 \caption{Use case diagram for CardsQL}
 \end{figure}
-\end{enumerate}
 
+\FloatBarrier
+
+\clearpage
+\end{enumerate}
 \subsection{Feasibility Study}
-\label{sec:orgff5cf65}
+\label{sec:orgfac5c11}
 \subsubsection{Technical}
-\label{sec:org14e30ca}
+\label{sec:org923e076}
 CardsQL is not too difficult to implement from a technical standpoint because it uses:
 
 \begin{itemize}
@@ -186,13 +187,13 @@ CardsQL is not too difficult to implement from a technical standpoint because it
 \item SQLite, a lightweight RDBMS, for the database. It uses a database file on the user's computer so it negates the need for maintaining a server for users to connect to.
 \end{itemize}
 \subsubsection{Operational}
-\label{sec:org59bf688}
+\label{sec:org958e0ee}
 \begin{itemize}
 \item Because of the serverless architecture, the app will work at all times after downloading it. Thus, there is no need to designate manpower to ensure the app stays operational after launch.
-\item Users are sure to adopt the app as it is designed to be more convenient than paper flashcards. Anyone should be able to learn to use it, compared to other more advanced flashcard programs discussed in \hyperref[sec:org0ed27fb]{Study of existing system}
+\item Users are sure to adopt the app as it is designed to be more convenient than paper flashcards. Anyone should be able to learn to use it, compared to other more advanced flashcard programs discussed in \hyperref[sec:orgeb062fa]{Study of existing system}
 \end{itemize}
 \subsubsection{Economic}
-\label{sec:orgfbfd3b2}
+\label{sec:org89412b2}
 CardsQl is viable from an economic standpoint as:
 
 \begin{itemize}
@@ -201,12 +202,13 @@ CardsQl is viable from an economic standpoint as:
 \item There were no development costs as the app was builton the developer's existing hardware \& using freely-licensed tools.
 \item The app is distributed freely to help users so there is no potential profit or loss.
 \end{itemize}
+\clearpage 
 \subsection{High level design of System}
-\label{sec:orge0d385b}
+\label{sec:org5f69f2b}
 As the following are high level representations of the system, they aim to provide a basic understanding of the system and thus, leave out intricate implementation details.
 
 \subsubsection{System Flow Chart}
-\label{sec:orgcfc5210}
+\label{sec:org5b3d271}
 
 \begin{figure}[htbp]
 \centering
@@ -216,33 +218,22 @@ As the following are high level representations of the system, they aim to provi
 \FloatBarrier 
 
 \subsubsection{Methodology/ Working Mechanism}
-\label{sec:org804d25e}
+\label{sec:orgd234090}
 \emph{As stated previously, CardsQL does not have different types of users so all the following actions can be done by the user.}
 
 \begin{enumerate}
 \item Add Cards
-\label{sec:org915b992}
-\begin{center}
-\includegraphics[width=.9\linewidth]{diagrams/add-cards-flow-chart.png}
-\end{center}
+\label{sec:org2861c17}
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=220px]{diagrams/add-cards-flow-chart.png}
+\includegraphics[width=200px]{diagrams/add-cards-flow-chart.png}
 \caption{Flow chart for adding cards}
 \end{figure}
 \FloatBarrier
 
-\item Revise Cards
-\label{sec:orgd071452}
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=260px]{diagrams/review-cards-flow-chart.png}
-\caption{Flow chart for revising cards}
-\end{figure}
-\FloatBarrier
-
 \item Edit Cards
-\label{sec:orgdeaa478}
+\label{sec:org82284b9}
+
 Card details can be edited or the entire card can be deleted
 \begin{figure}[htbp]
 \centering
@@ -250,9 +241,20 @@ Card details can be edited or the entire card can be deleted
 \caption{Flow chart for editing cards}
 \end{figure}
 \FloatBarrier
+\clearpage 
+\item Revise Cards
+\label{sec:org951689d}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=260px]{diagrams/review-cards-flow-chart.png}
+\caption{Flow chart for revising cards}
+\end{figure}
+\FloatBarrier
+
+\clearpage
 \end{enumerate}
 \section{Gantt Chart}
-\label{sec:orgeea2353}
+\label{sec:org9232f4d}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{diagrams/gantt-chart.png}
@@ -260,14 +262,14 @@ Card details can be edited or the entire card can be deleted
 \end{figure}
 \FloatBarrier
 \section{Expected Outcome}
-\label{sec:org179fe13}
+\label{sec:org8e9eb40}
 \begin{itemize}
 \item Provide a simple introduction to using flashcards,  active recall \& spaced repititon for learning
 \item Eliminate the need to constantly read or make notes on the same topics
 \item Help make studying a daily habit
 \end{itemize}
 \section{References}
-\label{sec:orgdbf4c19}
+\label{sec:orgf2d767a}
 \hypertarget{citeproc_bib_item_1}{[1] A. Abdaal, “How to study: Active recall.” https://aliabdaal.com/activerecallstudytechnique/.}
 
 \hypertarget{citeproc_bib_item_2}{[2] “The spacing effect: How to improve learning and maximize retention.” https://fs.blog/spacing-effect/; Farnam Street Media Inc.}\bigskip

@@ -1,4 +1,4 @@
-:project_todos:
+# TODO project todos
 # just search for TODO in this file
 # configure projector [[https://wiki.archlinux.org/title/multihead][support]]
 # export 2 pdfs.
@@ -17,15 +17,13 @@
      # show user to create a card, then revise it. different card types should be explained afterwards
   # sql has built-in backup command/ functionality
   # option to clean up old backup files
-:END:
 
-:REVEAL_PROPERTIES:
-#+REVEAL_ROOT: file:/home/sujal/downloads/reveal.js-master/js/reveal.js
-:END:
 
-:LATEX_SETTINGS:
+#+TITLE: Project Proposal on CardsQL
+#+AUTHOR: Sujal Gurung
+#+DATE: April 2023
+
 #+BIBLIOGRAPHY: bibliography.bib
-#+OPTIONS: toc:nil
 
 #+LATEX: \pagenumbering{roman}
 #+LATEX_HEADER: \usepackage[margin=1in, left=1.25in]{geometry}
@@ -47,11 +45,7 @@
 #+LaTeX_HEADER: \captionsetup{format=myformat,justification=centering}
 #+LaTeX_HEADER: \captionsetup[figure]{position=bottom}
 #+LaTeX_HEADER: \captionsetup[table]{position=top}
-:END:
 
-#+begin_export latex
-  \clearpage \tableofcontents \clearpage
-#+end_export
 * Introduction
 CardsQL is a simple flashcard revision app. Flashcards are a memorization/revision technique where you write a question on one side of a card/ piece of paper & the answer on the other side. You then read the question & try your best to remember the answer, before flipping the card over & see how well you did.
 
@@ -65,19 +59,16 @@ Another technique used in tandem with Active Recall is *Spaced Repitition[cite:@
 [[file:diagrams/forgetting-curve-spaced-repitition.png]]
 Thus, instead of studying entire topics repeatedly, we can just revise small key points & be more effective.
 
-#+begin_export latex
-  \clearpage 
-#+end_export
 * Problem Statement
-+ *inefficient traditional studying techniques*
-+ *inconvenient to manage physical flashcards*   
-  - Physical cards will eventually get damaged or wear out. It may also be impractical to store or carry around a large number of cards. 
-  - Storing cards digitally allows them to be physically secure & portable.
-+ *cumbersome to schedule, keep track of next repition for cards*   
-  - After reviewing/ recalling a card, we need to schedule its next Spaced Repitition. We not only need to keep track of its schedule, but also remember to review it on that day. If we forget, then keeping track of overdue cards adds another layer of unneeded complexity.
+1. *inefficient traditional studying techniques*
+2. *inconvenient to manage physical flashcards*   
+   - Physical cards will eventually get damaged or wear out. It may also be impractical to store or carry around a large number of cards. 
+   - Storing cards digitally allows them to be physically secure & portable.
+3. *cumbersome to schedule, keep track of next repition for cards*   
+   - After reviewing/ recalling a card, we need to schedule its next Spaced Repitition. We not only need to keep track of its schedule, but also remember to review it on that day. If we forget, then keeping track of overdue cards adds another layer of unneeded complexity.
 
-  - CardsQL automates all these processes. After reviewing a card, we can rate how well we remembered the answer. This rating is used to determine the next review date for that card. This date is set such that by the next review, we haven't completely forgotten the answer, nor is it too easy.
-  - When revising on a particular day, CardsQL will show you cards that are scheduled for that day or older. Thus, overdue cards are handled easily.
+   - CardsQL automates all these processes. After reviewing a card, we can rate how well we remembered the answer. This rating is used to determine the next review date for that card. This date is set such that by the next review, we haven't completely forgotten the answer, nor is it too easy.
+   - When revising on a particular day, CardsQL will show you cards that are scheduled for that day or older. Thus, overdue cards are handled easily.
 
 * Objectives
 - provide as easy of an entry point to flashcard programs by keeping things simple 
@@ -98,6 +89,7 @@ Two popular flashcard apps are:
 ***** Cons
 - free version has ads & lacks advanced features
 - can't be used offline on free version
+
 
 **** Anki
 ***** Pros
@@ -129,36 +121,11 @@ Note: /As CardsQL is meant for personal use, it only has one type of user instea
   # option to clean up old backup files
 **** Use Case diagram
 
-#+begin_src plantuml :file diagrams/use-case-diagram.png
-  @startumL
-  skinparam 300 dpi
-  skinparam packageStyle rectangle
-  actor user as u
-  rectangle System {
-          (Create Cards) as (CC)
-          (Revise Cards) as (RC)
-          (Edit Cards) as (EC)
-          (Delete Cards) as (DC)
-          u -up- (CC)
-          u -up- (RC)
-          u -up- (EC)
-          (RC) .left.> (CC) :<<includes>>
-          (DC) .left.> (EC) :<<extends>>
-  }
-  @enduml
-#+end_src
-
-#+RESULTS:
 #+CAPTION: Use case diagram for CardsQL
-#+attr_latex: :width 400px
-#+attr_org: :width 400pX
+#+attr_latex: :width 240px
+#+attr_org: :width 240px
 [[file:diagrams/use-case-diagram.png]]
 
-\FloatBarrier
-
-#+begin_export latex
-  \clearpage 
-#+end_export
 ** Feasibility Study
 *** Technical
 CardsQL is not too difficult to implement from a technical standpoint because it uses:
@@ -176,9 +143,6 @@ CardsQl is viable from an economic standpoint as:
 - There are no additional costs for web hosting, server maintenance etc.
 - There were no development costs as the app was builton the developer's existing hardware & using freely-licensed tools. 
 - The app is distributed freely to help users so there is no potential profit or loss.
-#+begin_export latex
-  \clearpage 
-#+end_export
 ** High level design of System
 As the following are high level representations of the system, they aim to provide a basic understanding of the system and thus, leave out intricate implementation details.
 
@@ -208,32 +172,10 @@ As the following are high level representations of the system, they aim to provi
 
 #+RESULTS:
 #+CAPTION: Flow chart for adding cards
-#+attr_latex: :width 200px
+#+attr_latex: :width 220px
 [[file:diagrams/add-cards-flow-chart.png]]
 \FloatBarrier
 
-**** Edit Cards  
-
-Card details can be edited or the entire card can be deleted
-#+begin_src plantuml :file diagrams/edit-cards-flw-chart.png
-  @startuml
-  scale 400 width
-  start
-  :select card from database;
-  :enter new data for card/
-  :update corresponding card\'s record in database;
-  stop
-  @enduml
-#+end_src
-
-#+RESULTS:
-#+CAPTION: Flow chart for editing cards
-#+attr_latex: :width 240px
-[[file:diagrams/edit-cards-flw-chart.png]]
-\FloatBarrier
-#+begin_export latex
-  \clearpage 
-#+end_export
 **** Revise Cards
 #+begin_src plantuml :file diagrams/review-cards-flow-chart.png
   @startuml
@@ -255,16 +197,30 @@ Card details can be edited or the entire card can be deleted
   @enduml
 #+end_src
 
-#+RESULTS:
 #+CAPTION: Flow chart for revising cards
 #+attr_latex: :width 260px
-#+attr_org: :width 20px
+#+RESULTS:
 [[file:diagrams/review-cards-flow-chart.png]]
 \FloatBarrier
 
-#+begin_export latex
-  \clearpage 
-#+end_export
+**** Edit Cards  
+Card details can be edited or the entire card can be deleted
+#+begin_src plantuml :file diagrams/edit-cards-flw-chart.png
+  @startuml
+  scale 400 width
+  start
+  :select card from database;
+  :enter new data for card/
+  :update corresponding card\'s record in database;
+  stop
+  @enduml
+#+end_src
+
+#+CAPTION: Flow chart for editing cards
+#+attr_latex: :width 240px
+#+RESULTS:
+[[file:diagrams/edit-cards-flw-chart.png]]
+\FloatBarrier
 * Gantt Chart
 #+begin_src plantuml :file diagrams/gantt-chart.png
   @startgantt

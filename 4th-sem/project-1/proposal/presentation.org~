@@ -1,4 +1,4 @@
-:project_todos:
+# TODO project todos
 # just search for TODO in this file
 # configure projector [[https://wiki.archlinux.org/title/multihead][support]]
 # export 2 pdfs.
@@ -17,13 +17,11 @@
      # show user to create a card, then revise it. different card types should be explained afterwards
   # sql has built-in backup command/ functionality
   # option to clean up old backup files
-:END:
+
 
 :REVEAL_PROPERTIES:
 #+REVEAL_ROOT: file:/home/sujal/downloads/reveal.js-master/js/reveal.js
 :END:
-
-:LATEX_SETTINGS:
 #+BIBLIOGRAPHY: bibliography.bib
 #+OPTIONS: toc:nil
 
@@ -47,7 +45,6 @@
 #+LaTeX_HEADER: \captionsetup{format=myformat,justification=centering}
 #+LaTeX_HEADER: \captionsetup[figure]{position=bottom}
 #+LaTeX_HEADER: \captionsetup[table]{position=top}
-:END:
 
 #+begin_export latex
   \clearpage \tableofcontents \clearpage

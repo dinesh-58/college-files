@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>A Project Proposal on CardsQL</title>
+<meta name="author" content="Sujal Gurung"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/serif.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">A Project Proposal on CardsQL</h1><p class="subtitle"></p>
+<h2 class="author">Sujal Gurung</h2>
+</section>
+
+<section>
+<section id="slide-org021d0a3">
+<h2 id="org021d0a3">Introduction</h2>
+<p>
+CardsQL is a simple flashcard revision app. Flashcards are a memorization/revision technique where you write a question on one side of a card/ piece of paper &amp; the answer on the other side. You then read the question &amp; try your best to remember the answer, before flipping the card over &amp; see how well you did.
+</p>
+</section>
+<section id="slide-org021d0a3-split">
+
+<p>
+Cognitive researchers have found that trying to recall such facts strengthens the relevant neural connections in our brain &amp; thus, allows us to remember it for longer periods of time. This process is specifically called <b>Active Recall<a href="#citeproc_bib_item_1">[1]</a></b>.
+</p>
+
+</section>
+<section id="slide-org021d0a3-split">
+<p>
+Another technique used in tandem with Active Recall is <b>Spaced Repitition<a href="#citeproc_bib_item_2">[2]</a></b>. It dictates that your ability to remember a fact deteriorates over time. By performing Active Recall at specific intervals, we can re-strengthen our memory retention.
+</p>
+</section>
+<section id="slide-org021d0a3-split">
+
+<p>
+<img src="diagrams/forgetting-curve-spaced-repitition.png" alt="forgetting-curve-spaced-repitition.png" />
+Thus, instead of studying entire topics repeatedly, we can just revise small key points &amp; be more effective.
+</p>
+</section>
+</section>
+<section>
+<section id="slide-orgfb75498">
+<h2 id="orgfb75498">Problem Statement</h2>
+<ul>
+<li><b>inefficient traditional studying techniques</b></li>
+<li><b>inconvenient to manage physical flashcards</b>   
+<ul>
+<li>Physical cards will eventually get damaged or wear out. It may also be impractical to store or carry around a large number of cards.</li>
+<li>Storing cards digitally allows them to be physically secure &amp; portable.</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-orgfb75498-split">
+<ul>
+<li><b>cumbersome to schedule, keep track of next repition for cards</b>   
+<ul>
+<li>After reviewing/ recalling a card, we need to schedule its next Spaced Repitition. We not only need to keep track of its schedule, but also remember to review it on that day. If we forget, then keeping track of overdue cards adds another layer of unneeded complexity.</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-orgfb75498-split">
+
+<ul>
+<li>CardsQL automates all these processes. After reviewing a card, we can rate how well we remembered the answer. This rating is used to determine the next review date for that card. This date is set such that by the next review, we haven't completely forgotten the answer, nor is it too easy.</li>
+<li>When revising on a particular day, CardsQL will show you cards that are scheduled for that day or older. Thus, overdue cards are handled easily.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org3961013">
+<h2 id="org3961013">Objectives</h2>
+<ul>
+<li>provide as easy of an entry point to flashcard programs by keeping things simple</li>
+<li>provide intuitive interface so that user doesn't have to understand how the system works in order to utilize it</li>
+<li>allow creating different types of flashcards &amp; categorizing them by subject/ tag</li>
+<li>automate scheduling of next review</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgfe16bb1">
+<h2 id="orgfe16bb1">Methodology</h2>
+<div class="outline-text-2" id="text-orgfe16bb1">
+</div>
+</section>
+<section id="slide-orgf9020d3">
+<h3 id="orgf9020d3">Requirement Identification</h3>
+<p>
+This project makes use of the <b>Waterfall development</b> approach in order to set concrete requirements &amp; build towards achieving them.
+</p>
+</section>
+<section id="slide-org2b685a5">
+<h4 id="org2b685a5">Study of existing system</h4>
+<p>
+Two popular flashcard apps are:
+</p>
+
+<ul class="org-ul">
+<li><a id="org8d23731"></a>Quizlet<br />
+<ul class="org-ul">
+<li><a id="orgf9d682f"></a>Pros<br />
+<ul>
+<li>pre-made flashcards for subjects</li>
+<li>emphasis on mobile version UX which allows users to revise anytime, anywhere</li>
+<li>utilize machine learning from anonymous user-data to create custom study plans for users</li>
+
+</ul>
+</section>
+<section id="slide-orgf9d682f-split">
+</li>
+<li><a id="org311f66a"></a>Cons<br />
+<ul>
+<li>free version has ads &amp; lacks advanced features</li>
+<li>can't be used offline on free version</li>
+
+</ul>
+
+</section>
+<section id="slide-org311f66a-split">
+</li>
+</ul>
+</li>
+<li><a id="orge6c6e6f"></a>Anki<br />
+<ul class="org-ul">
+<li><a id="org07e43ca"></a>Pros<br />
+<ul>
+<li>Free &amp; Open Source (FOSS)</li>
+<li>supports sync between multiple devices</li>
+<li>highly customizable with user-defined card types &amp; community-made plugins</li>
+
+</ul>
+</li>
+<li><a id="org4966217"></a>Cons<br />
+<ul>
+<li>complex from start</li>
+<li>CardsQL should act as gateway/ intro to flashcards. can use Anki later</li>
+<li>might have to spend a lot of time customizing the program, adding plugins, to get a great experience</li>
+
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="slide-org7929503">
+<h4 id="org7929503">Requirement Collection</h4>
+<div class="outline-text-4" id="text-org7929503">
+</div>
+<ul class="org-ul">
+<li><a id="orgbdb817f"></a>Functional requirements<br />
+<p>
+Note: <i>As CardsQL is meant for personal use, it only has one type of user instead of admin, multiple users etc.</i>
+</p>
+<ul class="org-ul">
+<li><a id="org5907038"></a>User<br />
+<ul>
+<li>can add different types of cards</li>
+<li>can revise due cards</li>
+<li>can revise cards regardless of due date (for pre-exam practice)</li>
+<li>can edit text, type  &amp; review date of existing cards</li>
+<li>can reset review date for all cards</li>
+
+</ul>
+</section>
+<section id="slide-org5907038-split">
+</li>
+</ul>
+</li>
+<li><a id="org0199e07"></a>Non-Functional requirements<br />
+<ul>
+<li>offline access to all features 
+achieved by hosting sql server &amp; storing data on user's computer</li>
+<li>simple to use;
+1st thing user sees is just card creation interface</li>
+<li>not have too many due cards (set maximum limit)</li>
+<li>regular data backups</li>
+
+</ul>
+</section>
+<section id="slide-org0199e07-split">
+</li>
+<li><a id="orgbe009e4"></a>Use Case diagram<br />
+<div id="org129fce5" class="figure">
+<p><img src="diagrams/use-case-diagram.png" alt="use-case-diagram.png" />
+</p>
+<p><span class="figure-number">Figure 1: </span>Use case diagram for CardsQL</p>
+</div>
+</li>
+</ul>
+
+
+
+</section>
+<section id="slide-orgc34ad0e">
+<h3 id="orgc34ad0e">Feasibility Study</h3>
+<div class="outline-text-3" id="text-orgc34ad0e">
+</div>
+</section>
+<section id="slide-orge01c73a">
+<h4 id="orge01c73a">Technical</h4>
+<p>
+CardsQL is not too difficult to implement from a technical standpoint because it uses:
+</p>
+
+<ul>
+<li>plain HTML, CSS for the front-end</li>
+<li>basic JS, PHP for the busienss logic</li>
+<li>SQLite, a lightweight RDBMS, for the database. It uses a database file on the user's computer so it negates the need for maintaining a server for users to connect to.</li>
+
+</ul>
+</section>
+<section id="slide-org5ff2d6f">
+<h4 id="org5ff2d6f">Operational</h4>
+<ul>
+<li>Because of the serverless architecture, the app will work at all times after downloading it. Thus, there is no need to designate manpower to ensure the app stays operational after launch.</li>
+<li>Users are sure to adopt the app as it is designed to be more convenient than paper flashcards. Anyone should be able to learn to use it, compared to other more advanced flashcard programs discussed in <a href="#/slide-org2b685a5">Study of existing system</a></li>
+
+</ul>
+</section>
+<section id="slide-org438d15f">
+<h4 id="org438d15f">Economic</h4>
+<p>
+CardsQl is viable from an economic standpoint as:
+</p>
+
+<ul>
+<li>The project was willingly built by the devloper for free.</li>
+<li>There are no additional costs for web hosting, server maintenance etc.</li>
+<li>There were no development costs as the app was builton the developer's existing hardware &amp; using freely-licensed tools.</li>
+<li>The app is distributed freely to help users so there is no potential profit or loss.</li>
+
+</ul>
+</section>
+<section id="slide-org88b9eff">
+<h3 id="org88b9eff">High level design of System</h3>
+<p>
+As the following are high level representations of the system, they aim to provide a basic understanding of the system and thus, leave out intricate implementation details.
+</p>
+
+</section>
+<section id="slide-org45f64f2">
+<h4 id="org45f64f2">System Flow Chart</h4>
+
+<div id="org96aff1c" class="figure">
+<p><img src="diagrams/system-flow-chart.png" alt="system-flow-chart.png" />
+</p>
+<p><span class="figure-number">Figure 2: </span>System flow chart</p>
+</div>
+
+</section>
+<section id="slide-orgc03f66f">
+<h4 id="orgc03f66f">Methodology/ Working Mechanism</h4>
+<p>
+<i>As stated previously, CardsQL does not have different types of users so all the following actions can be done by the user.</i>
+</p>
+
+</section>
+<section id="slide-orgc03f66f-split">
+<ul class="org-ul">
+<li><a id="orgbab475a"></a>Add Cards<br />
+<div id="org6797a07" class="figure">
+<p><img src="diagrams/add-cards-flow-chart.png" alt="add-cards-flow-chart.png" />
+</p>
+<p><span class="figure-number">Figure 3: </span>Flow chart for adding cards</p>
+</div>
+
+
+</section>
+<section id="slide-orgbab475a-split">
+</li>
+<li><a id="org54ef49a"></a>Edit Cards<br />
+<p>
+Card details can be edited or the entire card can be deleted
+</p>
+
+<div id="org9a1f52a" class="figure">
+<p><img src="diagrams/edit-cards-flw-chart.png" alt="edit-cards-flw-chart.png" />
+</p>
+<p><span class="figure-number">Figure 4: </span>Flow chart for editing cards</p>
+</div>
+
+</section>
+<section id="slide-org54ef49a-split">
+</li>
+<li><a id="org37bb6a4"></a>Revise Cards<br />
+<div id="org780a8da" class="figure">
+<p><img src="diagrams/review-cards-flow-chart.png" alt="review-cards-flow-chart.png" height="500px" />
+</p>
+<p><span class="figure-number">Figure 5: </span>Flow chart for revising cards</p>
+</div>
+</li>
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgd54dabb">
+<h2 id="orgd54dabb">Gantt Chart</h2>
+
+<div id="org2e547f6" class="figure">
+<p><img src="diagrams/gantt-chart.png" alt="gantt-chart.png" />
+</p>
+<p><span class="figure-number">Figure 6: </span>Gantt chart based on Waterfall model</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf0d46d7">
+<h2 id="orgf0d46d7">Expected Outcome</h2>
+<ul>
+<li>Provide a simple introduction to using flashcards,  active recall &amp; spaced repititon for learning</li>
+<li>Eliminate the need to constantly read or make notes on the same topics</li>
+<li>Help make studying a daily habit</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org5e1936b">
+<h2 id="org5e1936b">References</h2>
+<style>.csl-left-margin{float: left; padding-right: 0em;}
+ .csl-right-inline{margin: 0 0 0 1em;}</style><div class="csl-bib-body">
+  <div class="csl-entry"><a id="citeproc_bib_item_1"></a>
+    <div class="csl-left-margin">[1]</div><div class="csl-right-inline">A. Abdaal, “How to study: Active recall.” https://aliabdaal.com/activerecallstudytechnique/.</div>
+  </div>
+  <div class="csl-entry"><a id="citeproc_bib_item_2"></a>
+    <div class="csl-left-margin">[2]</div><div class="csl-right-inline">“The spacing effect: How to improve learning and maximize retention.” https://fs.blog/spacing-effect/; Farnam Street Media Inc.</div>
+  </div>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgb944fca">
+<h2 id="orgb944fca">Thank You</h2>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+
+});
+
+</script>
+</body>
+</html>
