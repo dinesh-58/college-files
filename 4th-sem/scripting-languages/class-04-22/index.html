@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <h1 style="position: absolute;">Event</h1>
+    
+        <script>
+            const event = document.body.querySelector('h1')
+            /*
+            event.addEventListener('mouseover', (e) => {
+                event.style.backgroundColor = "red";
+                console.log(e);
+            })
+            event.addEventListener('mouseout', () => {
+                event.style.backgroundColor = "";
+            })
+            */
+
+            document.addEventListener('click', (e) => {
+                console.log(e);
+                event.style.left = e.x+'px';
+                event.style.top = e.y+'px';
+            })
+        </script>
+    </body>
+</html>

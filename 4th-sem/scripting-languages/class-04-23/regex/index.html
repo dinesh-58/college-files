@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+    
+        <script>
+            /* Regex syntax: ========================
+            /{pattern}/{flag}
+            */
+
+            let str = 'Hello World';
+            let reg = /hello/i;
+            console.log(reg.exec(str));
+
+            let digits = 1234;
+            let regDigits = /\d{3}/;
+            console.log(regDigits.exec(digits));
+
+            let regWord = /\w/;
+            console.log(regWord.exec(str));
+
+            let email = 'name@email.com';
+            let regEmail = /\w+@\w+.\w{3}/;
+            console.log(regEmail.exec(email));
+
+            let dates = ['12-07-98', '12-07-1998'];
+            let regDate = /^\d{2}-\d{2}-\d{2}(\d{2})?$/;
+            console.log(regDate.test(dates[0]));
+            console.log(regDate.test(dates[1]));
+        </script>
+    </body>
+</html>

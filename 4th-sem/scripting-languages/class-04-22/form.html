@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <form>
+            <label>Email: <input class='email' type="text"></label>
+            <button>Submit</button>
+            <div class="errorMessage" style="color: red;"></div>
+        </form>
+        <div class="box">
+            <h1>Title</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam in rerum pariatur sunt tenetur a officiis quos ipsam, itaque placeat!
+            <button>Click me</button>
+            </p>
+        </div>
+    
+        <script>
+            const form = document.body.querySelector('form');
+            const submit = form.querySelector('button');
+            submit.addEventListener('click', (e)=> {
+                e.preventDefault();
+                const emailInput = form.querySelector('input.email');
+                const message = form.querySelector('.errorMessage');
+
+                if(emailInput.value == '') message.innerText = 'Please enter your email' ;
+                else form.submit();
+            })
+
+            const box = document.querySelector('.box');
+            const title = box.querySelector('h1');
+            const para = box.querySelector('p');
+            const boxButton = box.querySelector('button');
+
+            para.onclick = () => alert('Paragraph clicked');
+            boxButton.onclick = (e) => {
+                e.stopPropagation();
+                alert('Button clicked');
+            }
+        </script>
+    </body>
+</html>
