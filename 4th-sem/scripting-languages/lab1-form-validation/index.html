@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang=" en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="./style.css" rel="stylesheet">
+    </head>
+    <body>
+        <form action="./confirm.html">
+            <label>Name:
+                <!--TODO this should have at least 2 words. at least because people may have middle names as well. no numbers or symbols (except '-' ?)-->
+                <input type="text" required>
+                <!--Seems like required can be bypassed with empty whitespaces-->
+            </label>
+            <label>Address:
+                <!--TODO regex. try doing with pattern attribute for inputs-->
+                <input type="text" placeholder="City, State, ZIP Code" required>
+            </label>
+            <label>Phone Number:
+                <!--TODO must be 10 digits -->
+                <input type="tel" required>
+            </label>
+            <label>Email address: 
+                <!--TODO regex: name@domain.extension-->
+                <input type="email" required>
+            </label>
+            <label>Birth date:
+                <!--TODO must be valid date i.e. birthdate < today's date
+                pattern must be mm/dd/yyyy-->
+                <input type="date" required>
+            </label>
+            <label>Message:
+                <textarea rows="20" cols="10" spellcheck="true" required></textarea>
+            </label>
+            <button type="submit">Submit</button>
+        </form> 
+    </body>
+</html>
