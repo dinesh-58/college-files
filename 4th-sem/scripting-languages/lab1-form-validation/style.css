@@ -1,3 +1,126 @@
-/* display red border for invalid input elements using the :iinvalid pseudo selector*/
-/* select labels with required inputs using :has pseud-class, display red asterisk beside the name using content for :after?  */
-
+html {
+    /* make rem equivalent to 10px */
+    font-size: 62.5%;
+}
+body {
+    background-color: #40445a;
+    color: white; 
+    font-family: 'JetBrains Mono', 'Roboto', monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+body * {
+    box-sizing: border-box;
+}
+body>a {
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+}
+#mainForm,
+#confirmDialog{
+    width: 40vw;
+}
+#mainForm {
+    margin: auto;
+    font-size: 1.8rem;
+}
+#mainForm>fieldset {
+    display: flex;
+    flex-flow: column;
+    padding: 1em;
+}
+#mainForm label {
+    display: flex; 
+    justify-content: space-between;
+    margin-bottom: .5em; 
+    position: relative; /* done to be able to use absolute position for .invalidMessage */
+}
+#mainForm input,
+#mainForm textarea {
+    font-size: 1.5rem;
+    width: 60%;
+    border-radius: .5em;
+    padding-left: .5em;
+    font-family: monospace;
+}
+button,
+#confirmDialog a{
+    font-size: 2rem;
+    border-radius: .5em;
+    border: transparent solid 2px;
+    background-color: #FEE6DB;
+    color: #272938;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    font-family: monospace;
+}
+button:hover, 
+#confirmDialog a:hover{
+    cursor: pointer;
+    background-color: #444B55;
+    border-color: #FFB378;
+    color: #FFB378;
+}
+#confirmDialog {
+    font-size: 1.8rem;
+    border: white solid 2px;
+    display: flex;
+    flex-flow: column;
+    padding: 1rem;
+    position: relative;
+}
+#confirmDialog table {
+    margin: 1rem 0;
+}
+#confirmDialog th {
+    text-align: right;
+    padding: 5px;
+}
+#confirmDialog td {
+    overflow-wrap: anywhere;
+    padding: 5px;
+}
+#confirmDialog table{
+    border-color: #FEE6DB;
+}
+.hidden, 
+#confirmDialog.hidden {
+    display: none;
+}
+#close {
+    border-radius:50%;
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    padding: 0;
+    width: 3.5rem;
+    height: 3.5rem;
+}
+#close img {
+    width: 3rem;
+}
+.invalidMessage {
+    margin: 0;
+    position: absolute;
+    right: -67%;
+    width: 24vw;
+    font-size: 1.4rem;
+    background-color: #c3181a;
+    color: white;
+    border: 2px solid #FEE6DB;
+}
+@media screen and (max-width:1000px) {
+    #mainForm,
+    #confirmDialog{
+        width: 50vw;
+    }
+}
+@media screen and (max-width:760px) {
+    #mainForm,
+    #confirmDialog{
+        width: 70vw;
+    }
+}
