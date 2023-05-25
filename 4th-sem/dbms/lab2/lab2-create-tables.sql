@@ -1,4 +1,7 @@
 use HCOE2077;
+-- employee table includes teachers. 
+-- i.e. tid is foreign key referencing eid
+-- question is in lab sheet. just didn't do
 create table employee (
     eid varchar(5),
     ename varchar(25) not null, 

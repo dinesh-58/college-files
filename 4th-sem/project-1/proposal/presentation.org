@@ -12,7 +12,11 @@
 #+OPTIONS: toc:nil
 
 * Introduction
-CardsQL is a simple flashcard revision app. Flashcards are a memorization/revision technique where you write a question on one side of a card/ piece of paper & the answer on the other side. You then read the question & try your best to remember the answer, before flipping the card over & see how well you did.
+CardsQL is a simple flashcard revision web app.
+
+Flashcards are a memorization/revision technique where you write a question on one side of a card/ piece of paper & the answer on the other side.
+
+You then read the question & try your best to remember the answer, before flipping the card over & see how well you did.
 #+REVEAL: split
 
 # TODO this scientific concept should explained in depth in Background Study in Main Report?
@@ -32,6 +36,7 @@ Thus, instead of studying entire topics repeatedly, we can just revise small key
   \clearpage 
 #+end_export
 * Problem Statement
+#+ATTR_REVEAL: :frag (appear)
 + *inefficient traditional studying techniques*
 + *inconvenient to manage physical flashcards*   
   - Physical cards will eventually get damaged or wear out. It may also be impractical to store or carry around a large number of cards. 
@@ -45,6 +50,7 @@ Thus, instead of studying entire topics repeatedly, we can just revise small key
   - When revising on a particular day, CardsQL will show you cards that are scheduled for that day or older. Thus, overdue cards are handled easily.
 
 * Objectives
+#+ATTR_REVEAL: :frag (appear)
 - provide as easy of an entry point to flashcard programs by keeping things simple 
 - provide intuitive interface so that user doesn't have to understand how the system works in order to utilize it
 - allow creating different types of flashcards & categorizing them by subject/ tag
@@ -57,21 +63,25 @@ Two popular flashcard apps are:
 
 **** Quizlet
 ***** Pros
+#+ATTR_REVEAL: :frag (appear)
 - pre-made flashcards for subjects
 - emphasis on mobile version UX which allows users to revise anytime, anywhere
 - utilize machine learning from anonymous user-data to create custom study plans for users
 #+REVEAL: split
 ***** Cons
+#+ATTR_REVEAL: :frag (appear)
 - free version has ads & lacks advanced features
 - can't be used offline on free version
 
 #+REVEAL: split
 **** Anki
 ***** Pros
+#+ATTR_REVEAL: :frag (appear)
 - Free & Open Source (FOSS)
 - supports sync between multiple devices
 - highly customizable with user-defined card types & community-made plugins
 ***** Cons
+#+ATTR_REVEAL: :frag (appear)
 - complex from start
 - CardsQL should act as gateway/ intro to flashcards. can use Anki later
 - might have to spend a lot of time customizing the program, adding plugins, to get a great experience
@@ -80,6 +90,7 @@ Two popular flashcard apps are:
 
 Note: /As CardsQL is meant for personal use, it only has one type of user instead of admin, multiple users etc./
 ***** User
+#+ATTR_REVEAL: :frag (appear)
 - can add different types of cards
 - can revise due cards
 - can revise cards regardless of due date (for pre-exam practice)
@@ -87,9 +98,10 @@ Note: /As CardsQL is meant for personal use, it only has one type of user instea
 - can reset review date for all cards
 #+REVEAL: split
 **** Non-Functional requirements
+#+ATTR_REVEAL: :frag (appear)
 - offline access to all features 
-  achieved by hosting sql server & storing data on user's computer
-- simple to use;
+  achieved by hosting sql database & storing data on user's computer
+- simple to use;   
   1st thing user sees is just card creation interface
 - not have too many due cards (set maximum limit)
 - regular data backups
@@ -129,15 +141,18 @@ Note: /As CardsQL is meant for personal use, it only has one type of user instea
 *** Technical
 CardsQL is not too difficult to implement from a technical standpoint because it uses:
 
+#+ATTR_REVEAL: :frag (appear)
 - plain HTML, CSS for the front-end
 - basic JS, PHP for the busienss logic
 - SQLite, a lightweight RDBMS, for the database. It uses a database file on the user's computer so it negates the need for maintaining a server for users to connect to.
 *** Operational
+#+ATTR_REVEAL: :frag (appear)
 - Because of the serverless architecture, the app will work at all times after downloading it. Thus, there is no need to designate manpower to ensure the app stays operational after launch.
 - Users are sure to adopt the app as it is designed to be more convenient than paper flashcards. Anyone should be able to learn to use it, compared to other more advanced flashcard programs discussed in [[*Study of existing system][Study of existing system]]
 *** Economic
 CardsQl is viable from an economic standpoint as:
 
+#+ATTR_REVEAL: :frag (appear)
 - The project was willingly built by the devloper for free.
 - There are no additional costs for web hosting, server maintenance etc.
 - There were no development costs as the app was builton the developer's existing hardware & using freely-licensed tools. 
@@ -227,6 +242,7 @@ Card details can be edited or the entire card can be deleted
 
 * Gantt Chart
 #+begin_src plantuml :file diagrams/gantt-chart.png
+  skinparam 400 dpi
   @startgantt
   projectscale daily
   Project starts 2023-04-13
@@ -239,9 +255,11 @@ Card details can be edited or the entire card can be deleted
 
 #+CAPTION: Gantt chart based on Waterfall model
 #+RESULTS:
+#+attr_html: :height 300px
 [[file:diagrams/gantt-chart.png]]
 
 * Expected Outcome
+#+ATTR_REVEAL: :frag (appear)
 - Provide a simple introduction to using flashcards,  active recall & spaced repititon for learning
 - Eliminate the need to constantly read or make notes on the same topics
 - Help make studying a daily habit

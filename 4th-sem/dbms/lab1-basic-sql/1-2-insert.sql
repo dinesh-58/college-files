@@ -6,11 +6,12 @@ insert into student(id, name, rn, batch) values(1, 'Sujal', 1, 2077),
 (4, 'Chandra', 4, 2076), 
 (5, 'Adish', 5, 2076) 
 
+use HCOE2077
 insert into teacher(tid, name, faculty) values(1, 'Mukunda', 'BCA'),
-(1, 'Raj', 'BCA'),
-(1, 'Bipul', 'BIT'),
-(1, 'Nikesh', 'BIT'),
-(1, 'Rajesh', 'BSc. CSIT')
+(2, 'Raj', 'BCA'),
+(3, 'Bipul', 'BIT'),
+(4, 'Nikesh', 'BIT'),
+(5, 'Rajesh', 'BSc. CSIT')
 
 select * from student
 select * from teacher

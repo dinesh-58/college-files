@@ -9,3 +9,6 @@ alter table teacher add salary int
 -- 7:
 select id, name into info_student from student 
 select * from info_student
+
+delete from info_student
+select * from info_student

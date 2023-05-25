@@ -19,10 +19,6 @@
   # option to clean up old backup files
 :END:
 
-:REVEAL_PROPERTIES:
-#+REVEAL_ROOT: file:/home/sujal/downloads/reveal.js-master/js/reveal.js
-:END:
-
 :LATEX_SETTINGS:
 #+BIBLIOGRAPHY: bibliography.bib
 #+OPTIONS: toc:nil
@@ -53,9 +49,16 @@
   \clearpage \tableofcontents \clearpage
 #+end_export
 * Introduction
-CardsQL is a simple flashcard revision app. Flashcards are a memorization/revision technique where you write a question on one side of a card/ piece of paper & the answer on the other side. You then read the question & try your best to remember the answer, before flipping the card over & see how well you did.
+Flashcards are a simple way for students to revise topics. On a piece of paper, we write a question on one side and then the answer on the next. The following is an example of what a flashcard might look like:
+[[file:diagrams/flashcard-example.png]]
 
-# TODO this scientific concept should explained in depth in Background Study in Main Report?
+
+To utilize this card, we would read the question & try to remember the answer. Then, flip the card over & see how well we remembered it.
+CardsQL is a web app that digitises this technique.
+
+* Problem Statement
++ *inefficient traditional studying techniques*
+:Scientific_shit_sort_later:
 Cognitive researchers have found that trying to recall such facts strengthens the relevant neural connections in our brain & thus, allows us to remember it for longer periods of time. This process is specifically called *Active Recall[cite:@active_recall]*.
 Another technique used in tandem with Active Recall is *Spaced Repitition[cite:@spaced_repitition]*. It dictates that your ability to remember a fact deteriorates over time. By performing Active Recall at specific intervals, we can re-strengthen our memory retention.
 # image size is 1024x574
@@ -64,12 +67,11 @@ Another technique used in tandem with Active Recall is *Spaced Repitition[cite:@
 #+attr_org: :width 400px
 [[file:diagrams/forgetting-curve-spaced-repitition.png]]
 Thus, instead of studying entire topics repeatedly, we can just revise small key points & be more effective.
+:end:
 
 #+begin_export latex
   \clearpage 
 #+end_export
-* Problem Statement
-+ *inefficient traditional studying techniques*
 + *inconvenient to manage physical flashcards*   
   - Physical cards will eventually get damaged or wear out. It may also be impractical to store or carry around a large number of cards. 
   - Storing cards digitally allows them to be physically secure & portable.
