@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title></title>
+        <title>Basic calculator app</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="style.css" rel="stylesheet">
     </head>
     <body>
         <div id="calculator">
-            <span id="result">asd</span>
-            <input name="a" type="number">
-            <input type="number">
-            <button onclick="add()">Add</button>
-            <button onclick="subtract()">Subtract</button>
-            <button onclick="multiply()">Multiply</button>
-            <button onclick="divide()">Divide</button>
-            <button onclick="remainder()">Remainder</button>
+            <label for="">Result:</label>
+            <span id="result"></span>
+            <label class="input-group">1st Number:
+                <input type="number">
+            </label>
+            <label class="input-group">2nd Number:
+                <input type="number">
+            </label>
+            <button onclick="calculate('+')">Add</button>
+            <button onclick="calculate('-')">Subtract</button>
+            <button onclick="calculate('*')">Multiply</button>
+            <button onclick="calculate('/')">Divide</button>
+            <button onclick="calculate('%')">Remainder</button>
         </div>
 
         <script src="./script.js"></script>
