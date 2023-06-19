@@ -1,0 +1,116 @@
+#+OPTIONS: toc:nil
+#+LATEX_HEADER: \usepackage[margin=1in]{geometry}
+#+LaTeX_HEADER: \usepackage{minted}
+# -*- org-src-preserve-indentation: t; org-edit-src-content-indentation: 0; org-src-wrap-parameters: ((-1 . nil) (1 . nil)) -*-
+
+
+
+* Objectives
+Learn to use the features of HTML 5 and Javascript functions to create a basic functioning calculator.
+* Assignment
+You are going to create a two input field of type numbers to ask for the operands. Then, create five buttons for add, subtract, multiplication, division and remainder. When clicked on the button, perform the respective operations, and show the result in the html document(create an element and put the result in that element).
+It is up to you (the designer) how you present the information request.
+
+* Lab Work
+** index.html: 
+#+begin_src html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Basic calculator app</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="style.css" rel="stylesheet">
+    </head>
+    <body>
+        <div id="calculator">
+            <label for="">Result:</label>
+            <span id="result"></span>
+            <label class="input-group">1st Number:
+                <input type="number">
+            </label>
+            <label class="input-group">2nd Number:
+                <input type="number">
+            </label>
+            <button onclick="calculate('+')">Add</button>
+            <button onclick="calculate('-')">Subtract</button>
+            <button onclick="calculate('*')">Multiply</button>
+            <button onclick="calculate('/')">Divide</button>
+            <button onclick="calculate('%')">Remainder</button>
+        </div>
+
+        <script src="./script.js"></script>
+    
+    </body>
+</html>
+
+#+end_src
+** style.css:
+#+begin_src css
+ body * {
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    justify-content: center;
+}
+#calculator {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-content: space-around;
+    max-width: 70%;
+    background-color: #a15b56 ;
+    padding: 10px;
+    height: 200px;
+}
+
+#calculator button {
+    width: 30%;
+}
+
+#result {
+    width: 100%;
+    height: 30px;
+    padding: 5px;
+    background-color: white;
+    content: "";
+    border: 2px solid black;
+}
+
+.input-group {
+    width: 45%;
+}
+#calculator input {
+    width: 100%;
+}
+
+#+end_src
+** script.js
+#+begin_src js
+     function calculate(symbol) {
+         let values = [];
+         document.querySelectorAll('input').forEach(input =>
+             values.push(parseInt(input.value))
+         );
+         let result = 0;
+
+         result = (symbol === '+') ? values[0] + values[1]
+                : (symbol === '-') ? values[0] - values[1]
+                : (symbol === '*') ? values[0] * values[1]
+                : (symbol === '/') ? parseInt(values[0] / values[1])
+                : (symbol === '%') ? values[0] % values[1]
+                : 0;
+         document.querySelector('#result').innerText = `${values[0]} ${symbol} ${values[1]}
+  = ${result}`;
+     }
+#+end_src
+** Explanation
+Here, we use a general purpose ~calculate()~ function to take inputs & display the result. Each HTML button calls this function & passes its mathematical symbol as an arguement. We use nested =ternary operators= to perform the calcualtion according to the sumbol. The result is displayed using a =template literal=.
+
+* Output
+[[/home/sujal/downloads/lab2/empty.png]]
+[[/home/sujal/downloads/lab2/add.png]]
+
+* Conclusion
+Thus, we were able to create the calculator UI with html & css. We then added functionality to it using javascript.
