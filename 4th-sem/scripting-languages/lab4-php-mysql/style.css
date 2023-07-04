@@ -1,0 +1,28 @@
+dialog.submit-success{
+    background: rgba(0, 200, 0, 0.5);
+}
+dialog.submit-fail{
+    background: rgba(200, 0, 0, 0.5);
+}
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid black;
+    width: 25vw;
+    margin: 5rem auto;
+    padding: 1rem;
+}
+form label {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+form button {
+    width: 100%;
+    font-size: 20px;
+}
+body {
+    font-size: 20px;
+}
