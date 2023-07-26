@@ -60,7 +60,7 @@ CardsQL is a web app that digitises this technique.
 + *inefficient traditional studying techniques*
 :Scientific_shit_sort_later:
 Cognitive researchers have found that trying to recall such facts strengthens the relevant neural connections in our brain & thus, allows us to remember it for longer periods of time. This process is specifically called *Active Recall[cite:@active_recall]*.
-Another technique used in tandem with Active Recall is *Spaced Repitition[cite:@spaced_repitition]*. It dictates that your ability to remember a fact deteriorates over time. By performing Active Recall at specific intervals, we can re-strengthen our memory retention.
+Another technique used in tandem with Active Recall is *Spaced Repitition[[[cite:@spaced_repitition]]]*. It dictates that your ability to remember a fact deteriorates over time. By performing Active Recall at specific intervals, we can re-strengthen our memory retention.
 # image size is 1024x574
 #+CAPTION:Ebbinghaus' forgetting curve countered by Spaced Repition
 #+attr_latex: :width 400px
