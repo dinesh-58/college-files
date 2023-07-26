@@ -1,0 +1,75 @@
+\documentclass{article}
+\usepackage{graphicx}
+
+%%%%%%%%%%%%%%% variables. only edit this section
+\def\subjectNum{4}
+%% 1: DBMS
+%% 2: NM
+%% 3: OS
+%% 4: SCR
+%% 5: S.Eng
+
+\def\labNum{4}
+\def\labTitle{PHP \& MySQL}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%% custom commands. DO NOT EDIT
+\newcommand{\subject}[1]{%
+    \ifnum#1=1
+        Database Management System
+    \else\ifnum#1=2
+        Numerical Methods
+    \else\ifnum#1=3
+        Operating System
+    \else\ifnum#1=4
+        Scripting Language
+    \else
+        <Insert Subject no.>
+    \fi\fi\fi\fi
+}
+\newcommand{\teacher}[1]{%
+    \ifnum#1=1
+        Mr. Nawaraj Singh Thakuri
+    \else\ifnum#1=2
+        <Insert name>
+    \else\ifnum#1=3
+        Mr. Roshan Maharjan
+    \else\ifnum#1=4
+        Mr. Diwas K.C.
+    \else
+        <Insert name>
+    \fi\fi\fi\fi
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%% title
+\title{Lab report on: \\\subject{\subjectNum}Lab \labNum: \\\labTitle}
+\author{Sujal Gurung \\ Roll no: 34}
+\date{\today}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\begin{large}
+
+\makeatletter
+\begin{titlepage}
+\centering
+\textbf{\Large{Tribhuvan University \\Faculty of Humanities and Social Sciences\\}}
+\vfill
+
+\includegraphics[width=0.5\textwidth]{tu-logo-transparent} 
+\vfill
+
+\textbf{\@title}
+\vfill
+
+\textbf{Submitted to:} \\\teacher{\subjectNum}, \\Department of Computer Application, \\ Himalaya College of Engineering, \\Chyasal,Lalitpur
+\vfill
+
+\textbf{Submitted by:}\\\@author\\\@date\\
+\vfill
+
+\makeatother
+\end{titlepage}
+\end{large}
+\end{document}
