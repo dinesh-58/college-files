@@ -28,7 +28,7 @@ replay_pid*
 3rd sem/Web tech/Lab reports/*.css
 4th-sem/scripting-languages/**/*.org~
 4th-sem/scripting-languages/**/*.tex*
-4th-sem/scripting-languages/lab*/*.pdf
+4th-sem/scripting-languages/lab**/*.pdf
 
 ### org backup files ###
 **/*.org~
