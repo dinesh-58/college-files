@@ -1,0 +1,97 @@
+# for project documents, use addtional latex styles used in proposal file
+:edit-this:
+#+EXPORT_FILE_NAME: scr-lab5-report
+#+OPTIONS: toc:nil 
+# set toc below instead of here
+#+LATEX_HEADER: \graphicspath{{/home/sujal/programming/college-files/assets/images/}}
+
+# !!!!!!!!!!!!!          only edit this section       !!!!!!
+#+LATEX_HEADER: \def\subjectNum{4}
+# 1: DBMS
+# 2: NM
+# 3: OS
+# 4: SCR
+# 5: S.Eng
+
+#+LATEX_HEADER: \def\labNum{5}
+#+LATEX_HEADER: \def\labTitle{AJAX}
+#+LATEX_HEADER: \def\yearSem{II/IV}
+#+LATEX_HEADER: \newif \iftoc
+# !!!!!!!!!!!!           set toc here by uncommenting option
+# \toctrue    
+\tocfalse
+:end:
+
+#+INCLUDE: "/home/sujal/programming/college-files/assets/template.org" :lines "26-"
+* Objectives
+Learn to use ajax to fetch asynchronous requests in javascript.
+* Assignment 
+You are going to create a html file to display the “dad jokes”. Use AJAX request to fetch dad jokes from api
+“https://icanhazdadjoke.com”. Documentation for api usage are available in “https://icanhazdadjoke.com/api”.
+Use XMLHttpRequest class to send ajax request to the given api and in the response, it returns a dad joke in json format.
+Then parse that json and display the dad joke in your html page.
+* Introduction 
+Unitl now, a page reload is required whenever we have sent or received data to/from our =Apache/ XAMPP= web server.
+=AJAX (Asynchronous JavaScript & XML)= is a technique that allows us to communicate with web servers without page reloads.
+This enables dynamic actions inside a webpage, such as submitting forms or changing the site's contents.
+
+We can do so using the ~XMLHttpRequest~ web api for making HTTP requests & handling responses.
+We can also use the ~jQuery~ library which simplifies the boilerplate code required.
+* Lab Work
+*index.html*
+#+begin_src html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <h1 class="joke-container"></h1>    
+        <button id="refresh" type="button">Refresh</button>
+        <script src="./temp.js"></script>
+    </body>
+</html>
+#+end_src
+
+*script.js*
+#+begin_src js
+let request = new XMLHttpRequest();
+function getJoke() {
+    request.open("GET", "https://icanhazdadjoke.com");
+    request.setRequestHeader("Accept", "application/json");
+    request.send();
+
+    request.onreadystatechange = function() {
+        if(request.readyState ===4) { 
+            if(request.status === 200) {
+                console.log(request.responseText); 
+                let response = JSON.parse(request.responseText); 
+                document.querySelector('.joke-container').innerText = (response["joke"]);
+            }
+        }
+    }
+}
+
+getJoke(); // show joke on 1st load;
+document.querySelector('#refresh').onclick = getJoke;
+#+end_src
+** Explanation
+Here, we use the function ~getJoke()~ to wrap the logic for making a request & displaying the response in the webpage.
+This function is called when the page is first loaded, & later whenever the button is pressed.
+
+We perform all our request related actions with the ~reqeust~ object. We need to specify request type & request headers
+as specified in the API documentation before sending the request.
+
+~onreadystatechange~ takes a callback function for what to do when the server returns a response. Here, we check if the request was made correctly & then console log the response for debugging purposes. 
+
+As we specified =JSON= in the request header, it returns plain text which can be parsed into JSON(JavaScript Object Notation) format  & stored in the =response= object. We can access the joke with the ~joke~ key & place it into the page. 
+* Output
+[[file:/home/sujal/programming/college-files/4th-sem/scripting-languages/lab5-ajax/report/output.png]]
+Here, we see the server's response in the console. This is then parsed & only the required portion is placed in the DOM.
+* Conclusion
+Thus, we: 
+- learned to perform basic HTTP requests
+- use AJAX to change page content without refreshing
+- learned about JSON format & how to use it
