@@ -32,3 +32,4 @@ replay_pid*
 
 ### org backup files ###
 **/*.org~
+**/_minted-*/
