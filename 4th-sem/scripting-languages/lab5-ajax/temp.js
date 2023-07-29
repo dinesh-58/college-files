@@ -1,9 +1,21 @@
 let request = new XMLHttpRequest();
-request.open("GET", "http://icanhazdadjoke.com");
-request.send();
-request.setRequestHeader("Accept", "application/json");
+// Note: these files should be placed somewhere inside htdocs (basically, server directory) 
+function getJoke() {
+    request.open("GET", "https://icanhazdadjoke.com");
+    request.setRequestHeader("Accept", "application/json");
+    request.send();
 
-request.onreadystatechange = function() {
-    console.log({request}); }
+    request.onreadystatechange = function() {
+        if(request.readyState ===4) { 
+            if(request.status === 200) {
+                console.log({request}); 
+                let response = JSON.parse(request.responseText); 
+                document.querySelector('.joke-container').innerText = (response["joke"]);;
+            }
+        }
+    }
+}
 
-// !NOTE:  finished file is in htdocs. try doing with php local server & CORS extenstion
+getJoke(); // show joke on 1st load;
+document.querySelector('#refresh').onclick = getJoke;
+
