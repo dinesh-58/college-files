@@ -1,0 +1,159 @@
+# for project documents, use addtional latex styles used in proposal file
+:edit-this:
+#+EXPORT_FILE_NAME: scr-lab4-report
+#+OPTIONS: toc:nil 
+# set toc below instead of here
+#+LATEX_HEADER: \graphicspath{{/home/sujal/programming/college-files/assets/images/}}
+
+# !!!!!!!!!!!!!          only edit this section       
+#+LATEX_HEADER: \def\subjectNum{4}
+# 1: DBMS
+# 2: NM
+# 3: OS
+# 4: SCR
+# 5: S.Eng
+
+#+LATEX_HEADER: \def\labNum{4}
+#+LATEX_HEADER: \def\labTitle{PHP \& MySQL}
+#+LATEX_HEADER: \def\yearSem{II/IV}
+#+LATEX_HEADER: \newif \iftoc
+
+# set toc here by uncommenting option
+# \toctrue    
+\tocfalse
+:end:
+
+#+INCLUDE: "/home/sujal/programming/college-files/assets/template.org" :lines "26-"
+* Objectives
+- Learn to use the php language to coordinate with sql databases.
+
+* Assignment 
+Design the following form in HTML and write corresponding PHP and SQL code to store the user’s value after satisfying following validation rules:
+- Full Name: Required, max 40 char
+- Email: Required, email format
+- Username: required, must start with number
+- Password: min length 8 characters
+
+* Introduction
+Structured Query Language(SQL) is a lanugage used to interact with relational databases. The different ways to connect to a MySQL database in php are:
+
+** Procedural method
+Various existing functions are used such as:
+#+begin_src php
+  <?php
+  $conn = mysqli_connect('localhost', 'root', '', 'student_db');
+  mysqli_query($conn, 'INSERT into BCA(id, name) values(1, "Sujal")');
+  ?>
+#+end_src
+
+** OOP method
+Connection is represented by an object of =mysqli= class. This class has pre-defined properties & methods for interacting with database. Example: 
+#+begin_src php
+  <?php
+  $conn = new mysqli('localhost', 'root', '', 'student_db');
+  $conn->query('INSERT into BCA(id, name) values(2, "Ram")');
+  ?>
+#+end_src
+
+** PHP Database Object(PDO)
+This method can connect to databases of any type of relational database software. Connection is represented with an object of PDO class.
+All these methods use the same underlying concept that SQL commands can be prepared, executed & the results can be fetched.
+
+* Lab Work
+#+begin_src php
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <dialog id="submitDialog">
+            <p></p> 
+            <button>OK</button>
+        </dialog>
+
+        <form method="get">
+            <label>Full Name: <input type="text" name="fName" required></label>
+            <label>Email: <input type="text" name="email" required></label>
+            <label>Username: <input type="text" name="username" required placeholder="must start with number"></label>
+            <label>Password: <input type="password" name="password" required></label>
+            <button name="submit">Submit</button>
+        </form>
+
+        <script>
+            const submitDialog = document.querySelector('#submitDialog');
+            submitDialog.querySelector('button').onclick = () => submitDialog.close();
+            const submitMessage = submitDialog.querySelector('p');
+        </script>
+    </body>
+</html>
+
+<?php
+$isFormValid = true;
+$errorMsgCombined = '';
+
+function setError($errorMsg) {
+    global $errorMsgCombined, $isFormValid; // f'ns don't inherit gloabl variables by default
+    $isFormValid = false;
+    $errorMsgCombined .= "<li>$errorMsg</li>";
+}
+
+if(isset($_GET['submit'])) {
+    $fName = $_GET['fName'];
+    // filter_input will return input value if valid, else returns false 
+    $email = filter_input(INPUT_GET, 'email', FILTER_VALIDATE_EMAIL);
+    $username = filter_input(INPUT_GET, 'username', FILTER_VALIDATE_REGEXP, ['options'=>['regexp'=>'/^[0-9]/']]);
+    $password = $_GET['password'];
+    $password = filter_input(INPUT_GET, 'password', FILTER_VALIDATE_REGEXP, ['options'=>['regexp'=>'/^\S{8}/']]);
+
+    if(strlen($fName) > 40) setError('Name cannot exceed 40 characters');
+    if($email == false) setError('Email must be name@domain.extension with extension of 3 letters');
+    if($username == false) setError('username must start with a number');
+    if($password == false) setError('password must be at least 8 characters');
+
+    if($isFormValid) {
+        // store in DB`
+        // create connection
+        $conn = new mysqli('localhost', 'root', '', 'scr-lab4');
+        $sql = "insert into users(fullname, email, username, password) 
+            values('$fName', '$email', '$username', '$password')";
+        $result = $conn->query($sql);
+        if($result) {
+?>
+        <!-- if block hasn't been closed yet so the script will only run if result is true-->
+            <script type="text/javascript">
+                submitDialog.showModal();
+                submitMessage.innerText = 'Succesfully registered!';
+                submitDialog.classList.add('submit-success');
+            </script>
+<?php
+        }
+    } else {  // runs if form isn't valid
+        ?>
+            <script>
+                submitDialog.showModal();
+                submitMessage.innerHTML='<?= "Error(s): <ul>$errorMsgCombined</ul>" ?>';
+                submitDialog.classList.add('submit-fail');
+            </script>
+<?php
+    }
+}
+?>
+#+end_src
+** Explanation
+We first take user inputs from html form. For some of the complex validation requirements like checking valid email or using regex, we can use php's built-in ~filter_input()~. If the form specific form input is valid, it returns the input value, which is stored in a variable. Else, it returns false. Whenever an input is false, we call ~setError~ with a custom error message. ~setError()~ simply sets ~$isFormValid~ to false & combines passed messages. Messages are displayed at the end inside a ~<dialog>~ element if any input is invalid. Else if all inputs are valid, we store them in database.
+* Output
+** Invalid input
+[[file:/home/sujal/programming/college-files/4th-sem/scripting-languages/lab4-php-mysql/report/img/wrong-input.png]]
+[[file:/home/sujal/programming/college-files/4th-sem/scripting-languages/lab4-php-mysql/report/img/wrong-output.png]]
+** Valid input
+[[file:/home/sujal/programming/college-files/4th-sem/scripting-languages/lab4-php-mysql/report/img/right-input.png]]
+[[file:/home/sujal/programming/college-files/4th-sem/scripting-languages/lab4-php-mysql/report/img/right-output.png]]
+* Conclusion
+Thus, by completing this, we:
+- learned to connect to & insert data in MySQL databases in php
+- perform server-side form-validation
