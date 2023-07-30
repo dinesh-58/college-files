@@ -1,0 +1,182 @@
+# for project documents, use addtional latex styles used in proposal file
+:edit-this:
+#+EXPORT_FILE_NAME: dbms-lab1-report
+#+OPTIONS: toc:nil 
+# set toc below instead of here
+#+LATEX_HEADER: \graphicspath{{/home/sujal/programming/college-files/assets/images/}}
+
+# !!!!!!!!!!!!!          only edit this section       !!!!!!
+#+LATEX_HEADER: \def\subjectNum{1}
+# 1: DBMS
+# 2: NM
+# 3: OS
+# 4: SCR
+# 5: S.Eng
+
+#+LATEX_HEADER: \def\labNum{1}
+#+LATEX_HEADER: \def\labTitle{Introduction to SQL}
+#+LATEX_HEADER: \def\yearSem{II/IV}
+#+LATEX_HEADER: \newif \iftoc
+# !!!!!!!!!!!!           set toc here by uncommenting option
+# \toctrue    
+\tocfalse
+:end:
+
+#+INCLUDE: "/home/sujal/programming/college-files/assets/template.org" :lines "26-"
+* Objectives
+* Introduction 
+Structured Query Language(SQL) is a language that allows us to interact with relational databases. Relational databases store data in the form of multiple relations/ tables. Each record is stored as a row/ tuple & can have multiple attribute values in columns.
+
+Example table: 
+| id | name   | salary |
+|----+--------+--------|
+|  1 | Saugat |  25000 |
+|  2 | Arpan  |  30000 |
+
+There are different implementations of relational databases in the form of Relational Database Management Systems. The overall syntax for sql commands is similar across them. For the purpose of this lab, we use Microsoft's =mssql=, also known as =SQL Server=.
+
+SQL commands are mainly categorized into five categories: 
+
+1. DDL – Data Definition Language
+   /for creating, modifying database objects (databases, tables)/
+2. DQL – Data Query Language
+   /for retrieving data from database/
+3. DML – Data Manipulation Language
+   /for modifying existing data/
+4. DCL – Data Control Language
+   /handling users' access permissions/
+5. TCL – Transaction Control Language
+   /transaction & version control operations/
+* Lab Work
+** Create a database named ‘HCOE’ and create tables as following schema:
+=Student(SID,Name,RN,Batch)=
+=Teacher(TID,Name, Faculty)=
+#+begin_src sql :results raw :exports both :cache yes
+  create database HCOE
+  create table student(
+         sid int not null primary key identity(1,1),
+         name varchar(25) not null,
+         rn int not null,
+         batch varchar(15) not null
+  )
+-- identity(1,1) auto increments value for new records
+  create table teacher(
+         tid int not null primary key identity(1,1),
+         name varchar(25) not null,
+         faculty varchar(25) not null
+  )
+#+end_src
+
+** Insert any five records in each table
+#+begin_src sql
+    insert into student(name, rn, batch) values
+           ('Sujal', 34, 'BCA2077'),
+           ('Rajan', 20, 'BBA2077'),
+           ('Adesh', 14, 'BCA2076'),
+           ('Dipen',  9, 'BHM2078'),
+           ('Bibek', 30, 'BHM2077')
+
+  insert into teacher(name, faculty) values
+         ('Rajendra', 'Law'),
+         ('Himesh',   'Computer'),
+         ('Rabindra', 'Science'),
+         ('Aman',     'Computer'),
+         ('Ganesh',   'Humanities')
+#+end_src
+
+** Display all records.
+#+begin_src sql
+  select * from student;
+  select * from teacher;
+#+end_src
+
+#+RESULTS[6652ac7491eae4a9225ca119c5b362107a39c0f4]:
+| sid | name     | rn         | batch   |
+|-----+----------+------------+---------|
+|   1 | Sujal    | 34         | BCA2077 |
+|   2 | Rajan    | 20         | BBA2077 |
+|   3 | Adesh    | 14         | BCA2076 |
+|   4 | Dipen    | 9          | BHM2078 |
+|   5 | Bibek    | 30         | BHM2077 |
+| tid | name     | faculty    |         |
+|-----+----------+------------+---------|
+|   1 | Rajendra | Law        |         |
+|   2 | Himesh   | Computer   |         |
+|   3 | Rabindra | Science    |         |
+|   4 | Aman     | Computer   |         |
+|   5 | Ganesh   | Humanities |         |
+
+
+** Display only ID and Name from student table.
+#+begin_src sql :results raw :exports both :cache yes
+select sid, name from student
+#+end_src
+
+#+RESULTS[f14e3b7d7d9a80de23e49a89ae033aff3e51fc53]:
+| sid | name  |
+|-----+-------|
+|   1 | Sujal |
+|   2 | Rajan |
+|   3 | Adesh |
+|   4 | Dipen |
+|   5 | Bibek |
+
+** Display Name and faculty from Teacher table.
+#+begin_src sql :results raw :exports both :cache yes
+select name, faculty from teacher
+#+end_src
+
+#+RESULTS[d2381e23921ce3ec6a44927825ff2b2efc81f991]:
+| name     | faculty    |
+|----------+------------|
+| Rajendra | Law        |
+| Himesh   | Computer   |
+| Rabindra | Science    |
+| Aman     | Computer   |
+| Ganesh   | Humanities |
+
+** Remove ‘RN’ attribute from student relation.
+#+begin_src sql
+alter table student drop column rn
+#+end_src
+
+** Add ‘salary’ attribute to teacher relation.
+#+begin_src sql :results raw :exports both :cache yes
+alter table teacher add salary int 
+#+end_src
+
+** Copy sid and name attribute to new relation ‘info_student’.
+
+#+begin_src sql :results raw :exports both :cache yes
+select sid, name into info_student from student 
+select * from info_student
+#+end_src
+
+#+RESULTS[4ea8d75cbf4e0a7021b9ed9a2da928d655a2557b]:
+| sid | name  |
+|-----+-------|
+|   1 | Sujal |
+|   2 | Rajan |
+|   3 | Adesh |
+|   4 | Dipen |
+|   5 | Bibek |
+
+** Delete all contents from info_student relation
+#+begin_src sql :results raw :exports both :cache yes
+truncate table info_student;
+select * from info_student;
+#+end_src
+
+#+RESULTS[10f355ec9239600ae9b3b7d146caabb31c290456]:
+Executed
+| sid | name |
+|-----+------|
+
+* Conclusion
+Thus, we learned how to do the following operations with database:
+- creating databases & relations
+- specifying data types, primary keys & nullable types for columns
+- inserting records
+- retrieving records
+- altering existing table schema by adding/ removing attributes
+- deleting data but retaining table schema

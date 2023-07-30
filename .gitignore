@@ -29,6 +29,9 @@ replay_pid*
 4th-sem/scripting-languages/**/*.org~
 4th-sem/scripting-languages/**/*.tex*
 4th-sem/scripting-languages/lab**/*.pdf
+4th-sem/dbms/lab-reports/**/*.org~
+4th-sem/dbms/lab-reports/**/*.tex*
+4th-sem/dbms/lab-reports/**/*.pdf
 
 ### org backup files ###
 **/*.org~
