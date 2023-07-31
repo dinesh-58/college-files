@@ -1,7 +1,7 @@
 # for project documents, use addtional latex styles used in proposal file
 :edit-this:
 #+EXPORT_FILE_NAME: dbms-lab1-report
-#+OPTIONS: toc:nil 
+#+OPTIONS: toc:nil ^:{}
 # set toc below instead of here
 #+LATEX_HEADER: \graphicspath{{/home/sujal/programming/college-files/assets/images/}}
 
@@ -24,16 +24,16 @@
 
 #+INCLUDE: "/home/sujal/programming/college-files/assets/template.org" :lines "26-"
 * Objectives
+Learn sql commands for: 
+- creating databases & tables
+- inserting records
+- reading records from database
+- modifying tables
+  using SQL Server & T-SQL syntax
 * Introduction 
 Structured Query Language(SQL) is a language that allows us to interact with relational databases. Relational databases store data in the form of multiple relations/ tables. Each record is stored as a row/ tuple & can have multiple attribute values in columns.
 
-Example table: 
-| id | name   | salary |
-|----+--------+--------|
-|  1 | Saugat |  25000 |
-|  2 | Arpan  |  30000 |
-
-There are different implementations of relational databases in the form of Relational Database Management Systems. The overall syntax for sql commands is similar across them. For the purpose of this lab, we use Microsoft's =mssql=, also known as =SQL Server=.
+There are different implementations of relational databases in the form of Relational Database Management Systems. The overall syntax for sql commands is similar across them. For the purpose of this lab, we use Microsoft's =mssql=, also known as =SQL Server=, which uses the =T-SQL= syntax.
 
 SQL commands are mainly categorized into five categories: 
 
@@ -166,9 +166,7 @@ select * from info_student
 truncate table info_student;
 select * from info_student;
 #+end_src
-
 #+RESULTS[10f355ec9239600ae9b3b7d146caabb31c290456]:
-Executed
 | sid | name |
 |-----+------|
 
