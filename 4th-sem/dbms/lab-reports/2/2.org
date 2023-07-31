@@ -1,0 +1,214 @@
+# for project documents, use addtional latex styles used in proposal file
+:edit-this:
+#+EXPORT_FILE_NAME: dbms-lab2-report
+#+PROPERTY: header-args :eval no-export
+# don't prompt to evaluate code blocks while exporting
+#+OPTIONS: toc:nil 
+# set toc below instead of here
+#+LATEX_HEADER: \graphicspath{{/home/sujal/programming/college-files/assets/images/}}
+
+# !!!!!!!!!!!!!          only edit this section       !!!!!!
+#+LATEX_HEADER: \def\subjectNum{1}
+# 1: DBMS
+# 2: NM
+# 3: OS
+# 4: SCR
+# 5: S.Eng
+
+#+LATEX_HEADER: \def\labNum{2}
+#+LATEX_HEADER: \def\labTitle{Constraints, Integrity \& WHERE clause}
+#+LATEX_HEADER: \def\yearSem{II/IV}
+#+LATEX_HEADER: \newif \iftoc
+# !!!!!!!!!!!!           set toc here by uncommenting option
+# \toctrue    
+\tocfalse
+:end:
+
+#+INCLUDE: "/home/sujal/programming/college-files/assets/template.org" :lines "26-"
+* Objectives
+learn to: 
+- set table constraints such as keys, default values, check constraints
+- set columns as foreign keys using primary keys of another table
+- filter records retrieved from tables that meet certain conditions
+* Introduction
+Constraints are the rules enforced on data columns on table. These can be usde to ensure integrity (accuracy & consistency of data) across database. Some commonly-used constraints are:
+- NOT NULL: Ensures that a column cannot have NULL value.
+- DEFAULT: Provides a default value for a column when none is specified.
+- PRIMARY Key: Uniquely identified each rows/records in a database table.
+- FOREIGN Key: Uniquely identified a rows/records in one table using another table's primary key.
+- CHECK: The CHECK constraint ensures that all values in a column satisfy certain conditions.
+
+The =WHERE= clause allows us to specify conditions. It can be used in commands like =SELECT=, =DELETE= and can be combined with logical operators like =AND, OR, NOT= to create complex commands. A simple example would be:
+~SELECT * from student WHERE gpa > 3.4~
+This command filters out students that have gpa more than 3.4. 
+* Lab Work
+** Create the relations as below:
+Employee (eid, ename, dateofemploy, salary)
+Booklist (isbn, name, publication)
+Book (bid, bname, author, price)
+Issues (IID,name,dateofissue)
+
+#+begin_src sql 
+CREATE TABLE employee (
+     eid          INT PRIMARY KEY IDENTITY(1, 1),
+     ename        VARCHAR(25) NOT NULL,
+     dateofemploy DATE NOT NULL,
+     salary       INT NOT NULL
+  )
+CREATE TABLE booklist (
+     isbn        INT PRIMARY KEY, 
+     NAME        VARCHAR(50) NOT NULL,
+     publication VARCHAR(50)
+  )
+CREATE TABLE book (
+     bid    INT PRIMARY KEY,
+     bname  VARCHAR(50) NOT NULL,
+     author VARCHAR(25) NOT NULL,
+     price  INT NOT NULL
+  )
+CREATE TABLE issues (
+     iid         INT PRIMARY KEY,
+     NAME        VARCHAR(25) NOT NULL,
+     dateofissue DATE NOT NULL,
+  ) 
+#+end_src
+
+** Modify relation teacher and set =tid= as foreign key referencing employee table's =eid=
+#+begin_src sql
+TRUNCATE TABLE teacher
+
+-- we have already inserted values in teacher table. 
+-- to be foreign key, column value must be derived from reference column (eid), which is currently empty 
+-- so we delete data from teacher to avoid conflicts
+ALTER TABLE teacher
+  ADD FOREIGN KEY(tid) REFERENCES employee(eid) 
+#+end_src
+
+** Set default value of ‘dateofemploy’ attribute as jan 1, 2010.
+#+begin_src sql 
+alter table employee
+      add constraint DF_employee_dateofemploy default '2010-01-01' for dateofemploy
+#+end_src
+
+** Assign Bid and iid as foreign key.
+#+begin_src sql
+ alter table book
+       add foreign key(bid) references booklist(isbn)
+ alter table issues
+       add foreign key(iid) references employee(eid)
+#+end_src
+
+** All the price of books must be less than 5000.
+#+begin_src sql :results raw
+  alter table book
+      add constraint CHK_book_price check(price < 5000)
+#+end_src
+
+** Ename , bname, name attribute of each relation must contain some value.
+/Attributes were already declared as/ =not null=
+** Insert any 4 records in each relation.
+#+begin_src sql :results raw
+  insert into employee(ename, dateofemploy, salary) values
+         ('Ram Singh', default, 8000),
+         ('Shyam Singh', default, 9000),
+         ('Hari Bahadur', '2011-02-20', 10000),
+         ('Madan Krishna', '2013-05-01', 15000)
+  insert into booklist(isbn, name, publication) values
+         (1243, 'Death on the nile', 'Scholastic'),
+         (1145, 'Born a Crime', 'Penguin books'),
+         (1043, 'Letters from my father', 'Scholastic'),
+         (905,  'Supermarket', 'Scholastic')       
+  insert into book(bid, bname, author, price) values
+         (1243, 'Death on the nile', 'Agatha Christie', 800),
+         (1145, 'Born a Crime', 'Trevor Noah', 1200),
+         (1043, 'Letters from my father', 'Barack Obama', 2700),
+         (905, 'Supermarket', 'Bobby Hall', 3000)
+  insert into issues(iid, name, dateofissue) values
+         (1, 'Ram Singh', '2015-01-15'),
+         (2, 'Shyam Singh', '2015-01-15'),
+         (3, 'Hari Bahadur', '2012-02-20'),
+         (4, 'Madan Krishna', '2014-05-01')
+#+end_src
+
+** Display all record of book whose price ranges from 2500 to 5000.
+#+begin_src sql :results raw :exports both :cache yes
+select * from book where price >= 2500 and price <= 5000
+#+end_src
+
+#+RESULTS:
+|  bid | bname                  | author       | price |
+|------+------------------------+--------------+-------|
+|  905 | Supermarket            | Bobby Hall   |  3000 |
+| 1043 | Letters from my father | Barack Obama |  2700 |
+
+** Display all the records from booklist relation whose publication name starts from ‘P’ 
+#+begin_src sql :results raw :exports both :cache yes
+select * from booklist where publication like 'P%'
+#+end_src
+
+#+RESULTS:
+| isbn | name         | publication   |
+|------+--------------+---------------|
+| 1145 | Born a Crime | Penguin books |
+
+** Display all records from employee table whose name ends with ‘gh’ eg Hari Singh
+#+begin_src sql :results raw :exports both :cache yes
+select * from employee where ename like '%gh'
+#+end_src
+
+#+RESULTS:
+| eid | ename       | salary | dateofemploy |
+|-----+-------------+--------+--------------|
+|   1 | Ram Singh   |   8000 |   2010-01-01 |
+|   2 | Shyam Singh |   9000 |   2010-01-01 |
+
+** Display iid and name from issues table whose name exactly consist of 9 characters.
+#+begin_src sql :results raw :exports both :cache yes
+select iid, name from issues where name like '_________'
+#+end_src
+
+#+RESULTS:
+| iid | name      |
+|-----+-----------|
+|   1 | Ram Singh |
+
+** Display all records from employee table where name starts with ‘S’ and salary greater than 8000.
+#+begin_src sql :results raw :exports both :cache yes
+select * from employee where ename like 'S%' AND salary > 8000
+#+end_src
+
+#+RESULTS:
+| eid | ename       | salary | dateofemploy |
+|-----+-------------+--------+--------------|
+|   2 | Shyam Singh |   9000 |   2010-01-01 |
+
+** Display all records from book table where either bid lies in range 1001 to 2000 or price range in 1000 to 2500.
+#+begin_src sql :results raw :exports both :cache yes
+select * from book where (bid between 1000 AND 2500) OR (price between 1000 AND 2500)
+#+end_src
+
+#+RESULTS:
+|  bid | bname                  | author          | price |
+|------+------------------------+-----------------+-------|
+| 1043 | Letters from my father | Barack Obama    |  2700 |
+| 1145 | Born a Crime           | Trevor Noah     |  1200 |
+| 1243 | Death on the nile      | Agatha Christie |   800 |
+
+** Display isbn number and bookname where booklist must not contain isbn no. 1043
+#+begin_src sql :results raw :exports both :cache yes
+select isbn, name from booklist where isbn != 1043
+#+end_src
+
+#+RESULTS:
+| isbn | name              |
+|------+-------------------|
+|  905 | Supermarket       |
+| 1145 | Born a Crime      |
+| 1243 | Death on the nile |
+
+* Conclusion
+Thus, in this lab, we learned to: 
+
+- set table constraints such as keys, default values, check constraints
+- set columns as foreign keys using primary keys of another table
+- filter records using ~WHERE, LIKE~, logical & comparison operators 
