@@ -35,6 +35,10 @@ Structured Query Language(SQL) is a language that allows us to interact with rel
 
 There are different implementations of relational databases in the form of Relational Database Management Systems. The overall syntax for sql commands is similar across them. For the purpose of this lab, we use Microsoft's =mssql=, also known as =SQL Server=, which uses the =T-SQL= syntax.
 
+SQL commands can be of 2 types: 
+1. Queries - which return data from databse
+2. Statement - which perform some action (like inserting, manipulating data) 
+
 SQL commands are mainly categorized into five categories: 
 
 1. DDL – Data Definition Language
@@ -61,7 +65,7 @@ SQL commands are mainly categorized into five categories:
   )
 -- identity(1,1) auto increments value for new records
   create table teacher(
-         tid int not null primary key identity(1,1),
+         tid int not null primary key,
          name varchar(25) not null,
          faculty varchar(25) not null
   )

@@ -113,23 +113,32 @@ alter table employee
          ('Shyam Singh', default, 9000),
          ('Hari Bahadur', '2011-02-20', 10000),
          ('Madan Krishna', '2013-05-01', 15000)
+
   insert into booklist(isbn, name, publication) values
          (1243, 'Death on the nile', 'Scholastic'),
          (1145, 'Born a Crime', 'Penguin books'),
          (1043, 'Letters from my father', 'Scholastic'),
          (905,  'Supermarket', 'Scholastic')       
+
   insert into book(bid, bname, author, price) values
          (1243, 'Death on the nile', 'Agatha Christie', 800),
          (1145, 'Born a Crime', 'Trevor Noah', 1200),
          (1043, 'Letters from my father', 'Barack Obama', 2700),
          (905, 'Supermarket', 'Bobby Hall', 3000)
+
   insert into issues(iid, name, dateofissue) values
          (1, 'Ram Singh', '2015-01-15'),
          (2, 'Shyam Singh', '2015-01-15'),
          (3, 'Hari Bahadur', '2012-02-20'),
          (4, 'Madan Krishna', '2014-05-01')
 #+end_src
-
+Since we truncated table =teacher= before, we re-insert data in it that matches existing records in =employee= table
+#+begin_src sql
+  insert into teacher(tid, name, faculty) values
+         (1, 'Ram Singh', 'computer'),
+         (2, 'Shyam Singh', 'science'),
+         (4, 'Madan Krishna', 'computer')
+#+end_src
 ** Display all record of book whose price ranges from 2500 to 5000.
 #+begin_src sql :results raw :exports both :cache yes
 select * from book where price >= 2500 and price <= 5000
