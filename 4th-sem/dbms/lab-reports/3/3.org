@@ -1,0 +1,199 @@
+# for project documents, use addtional latex styles used in proposal file
+:edit-this:
+#+EXPORT_FILE_NAME: dbms-lab3-report
+#+PROPERTY: header-args :eval no-export
+# don't prompt to evaluate code blocks while exporting
+#+OPTIONS: toc:nil ^:{}
+# set toc below instead of here
+# 2nd option exports subscripts only when _{} is used
+#+LATEX_HEADER: \graphicspath{{/home/sujal/programming/college-files/assets/images/}}
+
+# !!!!!!!!!!!!!          only edit this section       !!!!!!
+#+LATEX_HEADER: \def\subjectNum{1}
+# 1: DBMS
+# 2: NM
+# 3: OS
+# 4: SCR
+# 5: S.Eng
+
+#+LATEX_HEADER: \def\labNum{3}
+#+LATEX_HEADER: \def\labTitle{Update query, Delete query \& sub-query}
+#+LATEX_HEADER: \def\yearSem{II/IV}
+#+LATEX_HEADER: \newif \iftoc
+# !!!!!!!!!!!!           set toc here by uncommenting option
+# \toctrue    
+\tocfalse
+:end:
+
+#+INCLUDE: "/home/sujal/programming/college-files/assets/template.org" :lines "26-"
+* Objectives
+- use DML statements =UPDATE, DELETE= for manipulating existing data
+- learn about sub-queries to use return values of one table's query inside another table's query
+* Introduction 
+** =UPDATE= Query
+It is used to modify existing records in a table. We can use =WHERE= clause with
+UPDATE query to specify rows to update selected rows, otherwise all the rows would be affected.
+
+Syntax:
+#+begin_src sql
+UPDATE table_name
+       SET column1 = value1, column2 = value2...., columnN = valueN
+           WHERE [condition];
+#+end_src
+Multiple conditions can be chained using =AND= & =OR= operators.
+** =DELETE= Query
+It is used to delete existing records from a table.We can use =WHERE= clause with
+DELETE query to specify rows to delete, otherwise all the records would be deleted.
+
+Syntax:
+#+begin_src sql
+DELETE FROM table_name
+       WHERE [condition];
+#+end_src
+Multiple conditions can be chained using =AND= & =OR= operators.
+** Sub-query
+It is basically a query within a query. The results from sub-query are used inside condition of the main query.
+This allows us to compare if values in one table are present in another & perform some action.
+
+Sub queries must:
+- be enclosed in parentheses
+- return same number of columns as the number of columns being compared in main query
+
+Example: 
+#+begin_src sql
+SELECT phone_number FROM student
+     WHERE sid in (
+           SELECT account_number FROM fee 
+                  WHERE amount_due > 0
+     )
+#+end_src
+Here, =student= & =fee= are separate tables where =sid= & =account_number= have common values. Thus, we can use these common values to get numbers of students who still have remaining fees.
+* Lab Work
+** Find all the bookname and author name where publication name is “Scholastic”.
+#+begin_src sql :results raw :exports both :cache yes
+  select bname, author from book
+         where bid in (
+               select isbn from booklist
+                      where publication = 'Scholastic'
+         )
+#+end_src
+
+#+RESULTS:
+| bname                  | author          |
+|------------------------+-----------------|
+| Supermarket            | Bobby Hall      |
+| Letters from my father | Barack Obama    |
+| Death on the nile      | Agatha Christie |
+
+** Find the teachers name and faculty who issued book on jan 1 ,2015.
+#+begin_src sql :results raw :exports both :cache yes
+  select name, faculty from teacher
+         where tid in (
+              select iid from issues
+                     where dateofissue = '2015-01-15'
+       )
+#+end_src
+
+#+RESULTS[4545722e2ab4325bdd291e74551647fd195e7850]:
+| name        | faculty  |
+|-------------+----------|
+| Ram Singh   | computer |
+| Shyam Singh | science  |
+
+** Find the employee name whose salary is greater then 10000 and faculty is “computer”.
+#+begin_src sql :results raw :exports both :cache yes
+  select ename from employee
+         where salary > 10000 
+         AND eid in (
+             select tid from teacher where faculty = 'computer'
+         )
+#+end_src
+
+#+RESULTS[acf0050194f3e27bf663047fdf72f45282fa7935]:
+| ename         |
+|---------------|
+| Madan Krishna |
+
+** Add attribute bid on Issues relation .
+#+begin_src sql :results raw :exports both :cache yes
+  alter table issues
+      add bid int foreign key references booklist(isbn)
+#+end_src
+
+** Insert the data in bid column.
+#+begin_src sql :results raw :exports both :cache yes
+update issues set bid = 1243 where iid = 1
+update issues set bid = 905  where iid = 2
+update issues set bid = 1243 where iid = 3
+update issues set bid = 1145 where iid = 4
+#+end_src
+
+** Find the Teacher’s name, and book name issued by the teacher whose name starts with “S”.
+
+#+begin_src sql :cache yes :results raw :exports both 
+  select issues.name as teacher_name, booklist.name as book_name
+         from issues join booklist
+              on issues.bid = booklist.isbn
+         where issues.name like 'S%'
+#+end_src
+
+#+RESULTS[965c1bb3f563e1c1a89f730477a9df1df4cd9194]:
+| teacher_name | book_name   |
+|--------------+-------------|
+| Shyam Singh  | Supermarket |
+
+** Update all salary by 10%.
+#+begin_src sql :results raw :exports both :cache yes
+update employee set salary = salary * 110/100
+select eid, salary from employee
+#+end_src
+
+#+RESULTS[d39b8f62c90ecfc34883e35e5ac43e7777741697]:
+=Records affected: 4=
+| eid | salary |
+|-----+--------|
+| 1   | 8800   |
+| 2   | 9900   |
+| 3   | 11000  |
+| 4   | 16500  |
+
+** Update the salary of all employee by 20% whose salary is less than 10000.
+#+begin_src sql :results raw :exports both :cache yes
+  update employee set salary = salary * (120/100)
+       where salary < 10000
+select eid, salary from employee
+#+end_src
+#+RESULTS[d26f5f34f8cd06557f9bb2513656361d3b1ec361]:
+=Records affected: 2=
+| eid | salary |
+|-----+--------|
+|   1 |   8800 |
+|   2 |   9900 |
+|   3 |  11000 |
+|   4 |  16500 |
+
+** Delete the records from employee table whose eid is 3.
+#+begin_src sql :results raw :exports both 
+delete from employee where eid = 3
+delete from issues where iid = 3
+delete from teacher where tid = 3
+#+end_src
+
+** Use sub query to find all teachers name and faculty whose date of employ is jan 1, 2010
+#+begin_src sql :results raw :exports both 
+select name, faculty from teacher
+       where tid in (
+             select eid from employee where dateofemploy = '2010-01-01'
+       )
+#+end_src
+
+#+RESULTS:
+| name        | faculty  |
+|-------------+----------|
+| Ram Singh   | computer |
+| Shyam Singh | science  |
+
+* Conclusion
+Thus, we learned to use
+- DML statements =UPDATE, DELETE= for manipulating existing data
+- sub-queries to use return values of one table's query inside another table's query
