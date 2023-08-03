@@ -56,20 +56,20 @@ CREATE TABLE employee (
      salary       INT NOT NULL
   )
 CREATE TABLE booklist (
-     isbn        INT PRIMARY KEY, 
-     NAME        VARCHAR(50) NOT NULL,
-     publication VARCHAR(50)
+     isbn         INT PRIMARY KEY, 
+     NAME         VARCHAR(50) NOT NULL,
+     publication  VARCHAR(50)
   )
 CREATE TABLE book (
-     bid    INT PRIMARY KEY,
-     bname  VARCHAR(50) NOT NULL,
-     author VARCHAR(25) NOT NULL,
-     price  INT NOT NULL
+     bid          INT PRIMARY KEY,
+     bname        VARCHAR(50) NOT NULL,
+     author       VARCHAR(25) NOT NULL,
+     price        INT NOT NULL
   )
 CREATE TABLE issues (
-     iid         INT PRIMARY KEY,
-     NAME        VARCHAR(25) NOT NULL,
-     dateofissue DATE NOT NULL,
+     iid          INT PRIMARY KEY,
+     NAME         VARCHAR(25) NOT NULL,
+     dateofissue  DATE NOT NULL,
   ) 
 #+end_src
 
@@ -124,7 +124,7 @@ alter table employee
          (1243, 'Death on the nile', 'Agatha Christie', 800),
          (1145, 'Born a Crime', 'Trevor Noah', 1200),
          (1043, 'Letters from my father', 'Barack Obama', 2700),
-         (905, 'Supermarket', 'Bobby Hall', 3000)
+         (905,  'Supermarket', 'Bobby Hall', 3000)
 
   insert into issues(iid, name, dateofissue) values
          (1, 'Ram Singh', '2015-01-15'),

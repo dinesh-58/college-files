@@ -158,25 +158,25 @@ select eid, salary from employee
 | 4   | 16500  |
 
 ** Update the salary of all employee by 20% whose salary is less than 10000.
-#+begin_src sql :results raw :exports both :cache yes
-  update employee set salary = salary * (120/100)
-       where salary < 10000
-select eid, salary from employee
+#+begin_src sql :results raw :exports both 
+  update employee set salary = salary * 120/100
+       where salary < 10000;
+select eid, salary from employee;
 #+end_src
-#+RESULTS[d26f5f34f8cd06557f9bb2513656361d3b1ec361]:
+#+RESULTS[02150af738e025d2245d9626a6e7de370524845c]:
 =Records affected: 2=
 | eid | salary |
 |-----+--------|
-|   1 |   8800 |
-|   2 |   9900 |
+|   1 |  10560 |
+|   2 |  11880 |
 |   3 |  11000 |
 |   4 |  16500 |
 
 ** Delete the records from employee table whose eid is 3.
 #+begin_src sql :results raw :exports both 
 delete from employee where eid = 3
-delete from issues where iid = 3
-delete from teacher where tid = 3
+delete from issues   where iid = 3
+delete from teacher  where tid = 3
 #+end_src
 
 ** Use sub query to find all teachers name and faculty whose date of employ is jan 1, 2010
