@@ -26,10 +26,12 @@
 :end:
 
 #+INCLUDE: "/home/sujal/programming/college-files/assets/template.org" :lines "26-"
+
 * Objectives
-- to sort tables based on one or more column
+- to sort tables based on one or more column's values
 - to use aggregate functions such as =SUM, COUNT, MAX= for summarizing data
 - to group common data & filter it using =HAVING= clause
+
 * Introduction 
 ** =TOP= clause
 syntax:   
@@ -43,7 +45,7 @@ example to sort in descending order:
 select * from student order by marks desc
 #+end_src
 ** =GROUP BY= clause
-Used in collaboration with the SELECT statement to arrange identical data into groups. The GROUP BY clause follows the WHERE clause in a SELECT statement and precedes the ORDER BY clause.
+Used alongside =SELECT= to arrange identical data into groups. The GROUP BY clause follows the WHERE clause in a SELECT statement and precedes the ORDER BY clause.
 ** =HAVING= clause
 This can be used to specify condition to filter out groups returned by =GROUP BY=
 ** Aggregate functions
@@ -53,6 +55,7 @@ Example to get average salary:
 select avg(salary) from employee
 #+end_src
 *NOTE:* These can only be used in =SELECT= or =HAVING=, not in =WHERE=
+\\clearpage
 * Lab Work
 ** Sort the employee records in descending order.
 #+begin_src sql :results raw :exports both

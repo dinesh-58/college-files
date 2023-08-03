@@ -26,60 +26,52 @@
 
 #+INCLUDE: "/home/sujal/programming/college-files/assets/template.org" :lines "26-"
 * Objectives
-learn to: 
 - set table constraints such as keys, default values, check constraints
 - set columns as foreign keys using primary keys of another table
 - filter records retrieved from tables that meet certain conditions
 * Introduction
-Constraints are the rules enforced on data columns on table. These can be usde to ensure integrity (accuracy & consistency of data) across database. Some commonly-used constraints are:
-- NOT NULL: Ensures that a column cannot have NULL value.
+Constraints are rules for column values. Some commonly-used constraints are:
+- NOT NULL: States that a column cannot have NULL value.
 - DEFAULT: Provides a default value for a column when none is specified.
-- PRIMARY Key: Uniquely identified each rows/records in a database table.
-- FOREIGN Key: Uniquely identified a rows/records in one table using another table's primary key.
-- CHECK: The CHECK constraint ensures that all values in a column satisfy certain conditions.
+- PRIMARY Key: Uniquely identifies rows/records in a database table.
+- FOREIGN Key: Uniquely identifies rows in one table using another table's primary key.
+- CHECK: ensures that all values in a column satisfy specified conditions.
 
-The =WHERE= clause allows us to specify conditions. It can be used in commands like =SELECT=, =DELETE= and can be combined with logical operators like =AND, OR, NOT= to create complex commands. A simple example would be:
+The =WHERE= clause allows us to specify conditions for commands like =SELECT=, =DELETE=. It can be combined with logical operators like =AND, OR, NOT= to create complex commands. A simple example would be:
 ~SELECT * from student WHERE gpa > 3.4~
-This command filters out students that have gpa more than 3.4. 
+
 * Lab Work
 ** Create the relations as below:
-Employee (eid, ename, dateofemploy, salary)
-Booklist (isbn, name, publication)
-Book (bid, bname, author, price)
-Issues (IID,name,dateofissue)
+=Employee (eid, ename, dateofemploy, salary)= \\
+=Booklist (isbn, name, publication)=  \\
+=Book (bid, bname, author, price)=  \\
+=Issues (IID,name,dateofissue)=
 
 #+begin_src sql 
 CREATE TABLE employee (
      eid          INT PRIMARY KEY IDENTITY(1, 1),
      ename        VARCHAR(25) NOT NULL,
      dateofemploy DATE NOT NULL,
-     salary       INT NOT NULL
-  )
+     salary       INT NOT NULL)
 CREATE TABLE booklist (
      isbn         INT PRIMARY KEY, 
      NAME         VARCHAR(50) NOT NULL,
-     publication  VARCHAR(50)
-  )
+     publication  VARCHAR(50))
 CREATE TABLE book (
      bid          INT PRIMARY KEY,
      bname        VARCHAR(50) NOT NULL,
      author       VARCHAR(25) NOT NULL,
-     price        INT NOT NULL
-  )
+     price        INT NOT NULL)
 CREATE TABLE issues (
      iid          INT PRIMARY KEY,
      NAME         VARCHAR(25) NOT NULL,
-     dateofissue  DATE NOT NULL,
-  ) 
+     dateofissue  DATE NOT NULL,) 
 #+end_src
 
 ** Modify relation teacher and set =tid= as foreign key referencing employee table's =eid=
+=teacher= already has existing records. Foreign key column's values must exist in reference column (=eid=), which is currently empty. So, we delete data from =teacher= to avoid conflicts.
 #+begin_src sql
-TRUNCATE TABLE teacher
-
--- we have already inserted values in teacher table. 
--- to be foreign key, column value must be derived from reference column (eid), which is currently empty 
--- so we delete data from teacher to avoid conflicts
+TRUNCATE TABLE teacher;
 ALTER TABLE teacher
   ADD FOREIGN KEY(tid) REFERENCES employee(eid) 
 #+end_src

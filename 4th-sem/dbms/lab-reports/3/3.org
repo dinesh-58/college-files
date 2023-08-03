@@ -31,26 +31,23 @@
 - learn about sub-queries to use return values of one table's query inside another table's query
 * Introduction 
 ** =UPDATE= Query
-It is used to modify existing records in a table. We can use =WHERE= clause with
-UPDATE query to specify rows to update selected rows, otherwise all the rows would be affected.
+Modifies existing records in a table. Syntax:
 
-Syntax:
 #+begin_src sql
 UPDATE table_name
-       SET column1 = value1, column2 = value2...., columnN = valueN
+       SET column1 = value1, column2 = value2, ... 
            WHERE [condition];
 #+end_src
-Multiple conditions can be chained using =AND= & =OR= operators.
-** =DELETE= Query
-It is used to delete existing records from a table.We can use =WHERE= clause with
-DELETE query to specify rows to delete, otherwise all the records would be deleted.
 
-Syntax:
+** =DELETE= Query
+Deletes existing records from a table. Syntax:
+
 #+begin_src sql
 DELETE FROM table_name
        WHERE [condition];
 #+end_src
-Multiple conditions can be chained using =AND= & =OR= operators.
+We can use =WHERE= to specify rows to either update or delete. Else, all the rows would be affected. Multiple conditions for =WHERE= can be chained using =AND= & =OR= operators.
+
 ** Sub-query
 It is basically a query within a query. The results from sub-query are used inside condition of the main query.
 This allows us to compare if values in one table are present in another & perform some action.
@@ -68,6 +65,7 @@ SELECT phone_number FROM student
      )
 #+end_src
 Here, =student= & =fee= are separate tables where =sid= & =account_number= have common values. Thus, we can use these common values to get numbers of students who still have remaining fees.
+
 * Lab Work
 ** Find all the bookname and author name where publication name is “Scholastic”.
 #+begin_src sql :results raw :exports both :cache yes
@@ -178,7 +176,7 @@ delete from employee where eid = 3
 delete from issues   where iid = 3
 delete from teacher  where tid = 3
 #+end_src
-
+We have to delete employee records from =issues= & =teacher= as well as they reference the now-deleted record in =employee=. This extra work can be avoided using an =ON DELETE CASCADE= for foreign keys which specifies what to do when a reference row is deleted.
 ** Use sub query to find all teachers name and faculty whose date of employ is jan 1, 2010
 #+begin_src sql :results raw :exports both 
 select name, faculty from teacher

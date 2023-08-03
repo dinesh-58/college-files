@@ -1,6 +1,8 @@
 # for project documents, use addtional latex styles used in proposal file
 :edit-this:
 #+EXPORT_FILE_NAME: dbms-lab1-report
+#+PROPERTY: header-args :eval no-export
+# don't prompt to evaluate code blocks while exporting
 #+OPTIONS: toc:nil ^:{}
 # set toc below instead of here
 #+LATEX_HEADER: \graphicspath{{/home/sujal/programming/college-files/assets/images/}}
@@ -28,8 +30,7 @@ Learn sql commands for:
 - creating databases & tables
 - inserting records
 - reading records from database
-- modifying tables
-  using SQL Server & T-SQL syntax
+- modifying tables using SQL Server-specific syntax
 * Introduction 
 Structured Query Language(SQL) is a language that allows us to interact with relational databases. Relational databases store data in the form of multiple relations/ tables. Each record is stored as a row/ tuple & can have multiple attribute values in columns.
 
@@ -53,7 +54,7 @@ SQL commands are mainly categorized into five categories:
    /transaction & version control operations/
 * Lab Work
 ** Create a database named ‘HCOE’ and create tables as following schema:
-=Student(SID,Name,RN,Batch)=
+=Student(SID,Name,RN,Batch)= \\
 =Teacher(TID,Name, Faculty)=
 #+begin_src sql :results raw :exports both :cache yes
   create database HCOE
@@ -73,12 +74,12 @@ SQL commands are mainly categorized into five categories:
 
 ** Insert any five records in each table
 #+begin_src sql
-    insert into student(name, rn, batch) values
-           ('Sujal', 34, 'BCA2077'),
-           ('Rajan', 20, 'BBA2077'),
-           ('Adesh', 14, 'BCA2076'),
-           ('Dipen',  9, 'BHM2078'),
-           ('Bibek', 30, 'BHM2077')
+  insert into student(name, rn, batch) values
+         ('Sujal', 34, 'BCA2077'),
+         ('Rajan', 20, 'BBA2077'),
+         ('Adesh', 14, 'BCA2076'),
+         ('Dipen',  9, 'BHM2078'),
+         ('Bibek', 30, 'BHM2077')
 
   insert into teacher(name, faculty) values
          ('Rajendra', 'Law'),
@@ -89,7 +90,7 @@ SQL commands are mainly categorized into five categories:
 #+end_src
 
 ** Display all records.
-#+begin_src sql
+#+begin_src sql :exports both
   select * from student;
   select * from teacher;
 #+end_src
@@ -102,13 +103,14 @@ SQL commands are mainly categorized into five categories:
 |   3 | Adesh    | 14         | BCA2076 |
 |   4 | Dipen    | 9          | BHM2078 |
 |   5 | Bibek    | 30         | BHM2077 |
-| tid | name     | faculty    |         |
-|-----+----------+------------+---------|
-|   1 | Rajendra | Law        |         |
-|   2 | Himesh   | Computer   |         |
-|   3 | Rabindra | Science    |         |
-|   4 | Aman     | Computer   |         |
-|   5 | Ganesh   | Humanities |         |
+
+| tid | name     | faculty    |
+|-----+----------+------------|
+|   1 | Rajendra | Law        |
+|   2 | Himesh   | Computer   |
+|   3 | Rabindra | Science    |
+|   4 | Aman     | Computer   |
+|   5 | Ganesh   | Humanities |
 
 
 ** Display only ID and Name from student table.
@@ -152,8 +154,8 @@ alter table teacher add salary int
 ** Copy sid and name attribute to new relation ‘info_student’.
 
 #+begin_src sql :results raw :exports both :cache yes
-select sid, name into info_student from student 
-select * from info_student
+select sid, name into info_student from student; 
+select * from info_student;
 #+end_src
 
 #+RESULTS[4ea8d75cbf4e0a7021b9ed9a2da928d655a2557b]:
