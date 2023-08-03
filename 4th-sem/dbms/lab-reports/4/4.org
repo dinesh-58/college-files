@@ -112,6 +112,15 @@ select min(salary) as min_salary from employee
 |      10560 |
 
 ** Display the average price of book written by same author.
+
+Currently, all authors in the database have only written 1 book. So, we insert new book for existing author.
+#+begin_src sql :results silent
+insert into booklist(isbn, name, publication) values
+(800, 'Murder on the Orient Express', 'Scholastic');
+insert into book(bid, bname, author, price) values
+(800, 'Murder on the Orient Express', 'Agatha Christie', 750)
+#+end_src
+
 #+begin_src sql :results raw :exports both
 select author, avg(price) as avg_price from book group by author
 #+end_src
@@ -119,7 +128,7 @@ select author, avg(price) as avg_price from book group by author
 #+RESULTS:
 | author          | avg_price |
 |-----------------+-----------|
-| Agatha Christie |       800 |
+| Agatha Christie |       775 |
 | Barack Obama    |      2700 |
 | Bobby Hall      |      3000 |
 | Trevor Noah     |      1200 |
@@ -180,13 +189,6 @@ select  bid, bname, author from book
 
 
 ** Find the authors name who have written more than one book.
-Currently, all authors in the database have only written 1 book. So, we insert new book for existing author.
-#+begin_src sql :results silent
-insert into booklist(isbn, name, publication) values
-(800, 'Murder on the Orient Express', 'Scholastic');
-insert into book(bid, bname, author, price) values
-(800, 'Murder on the Orient Express', 'Agatha Christie', 750)
-#+end_src
 
 #+begin_src sql :results raw :exports both
 select author, count(bname) as books_written from book
