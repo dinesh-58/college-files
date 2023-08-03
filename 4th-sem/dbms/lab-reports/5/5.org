@@ -1,0 +1,173 @@
+# for project documents, use addtional latex styles used in proposal file
+:edit-this:
+#+EXPORT_FILE_NAME: dbms-lab5-report
+#+PROPERTY: header-args :eval no-export
+# don't prompt to evaluate code blocks while exporting
+#+OPTIONS: toc:nil ^:{}
+# set toc below instead of here
+# 2nd option exports subscripts only when _{} is used
+#+LATEX_HEADER: \graphicspath{{/home/sujal/programming/college-files/assets/images/}}
+
+# !!!!!!!!!!!!!          only edit this section       !!!!!!
+#+LATEX_HEADER: \def\subjectNum{1}
+# 1: DBMS
+# 2: NM
+# 3: OS
+# 4: SCR
+# 5: S.Eng
+
+#+LATEX_HEADER: \def\labNum{5}
+#+LATEX_HEADER: \def\labTitle{Introduction to Joins \& Creating Views}
+#+LATEX_HEADER: \def\yearSem{II/IV}
+#+LATEX_HEADER: \newif \iftoc
+# !!!!!!!!!!!!           set toc here by uncommenting option
+# \toctrue    
+\tocfalse
+:end:
+
+#+INCLUDE: "/home/sujal/programming/college-files/assets/template.org" :lines "26-"
+* Objectives
+- learn to join 2 table's records in different ways
+- create a specific view of a table & see how they are linked
+
+* Introduction 
+** =JOIN=
+Join clauses combine records of 2 tables based on their common values. Their types are:
+
+*** Inner join
+Returns those records from both tables which satisfy condition. This is different from sub-query, which checks condition but only returns records of 1 table.
+Example:
+#+begin_src sql
+  select t1.name, t2.name 
+       from t1 join t2
+            on t1.id = t1.id 
+#+end_src
+
+
+*** Outer join
+Left join returns records from left table even if they don't satisfy condition. Right join does the opposite while full join returns all records from both tables.
+
+** =UNION, INTERSECT, EXCEPT= clauses
+These keywords can be placed between 2 =SELECT= queries to filter out their results.
+
+** VIEW
+These are virtual tables that stores the tabular results of a query. They are virtual as they are linked to the actual table, such that changes to views are reflected in the table. These are used to view tables in a specific way, like showing only some columns/ records.
+
+* Lab Work
+** Perform join operation on teacher and employee table and display the Ename, Faculty and salary.
+#+begin_src sql :results raw :exports both
+select ename, faculty, salary from employee join teacher
+    on employee.eid = teacher.tid
+#+end_src
+
+#+RESULTS:
+| ename         | faculty  | salary |
+|---------------+----------+--------|
+| Ram Singh     | computer |  10560 |
+| Shyam Singh   | science  |  11880 |
+| Madan Krishna | computer |  16500 |
+
+** Perform left join on table booklist and book table.
+#+begin_src sql :results raw :exports both
+select isbn, bname, publication, author, price
+   from booklist left join book on booklist.isbn = book.bid
+#+end_src
+
+#+RESULTS:
+| isbn | bname                        | publication   | author          | price |
+|------+------------------------------+---------------+-----------------+-------|
+|  800 | Murder on the Orient Express | Scholastic    | Agatha Christie |   750 |
+|  905 | Supermarket                  | Scholastic    | Bobby Hall      |  3000 |
+| 1043 | Letters from my father       | Scholastic    | Barack Obama    |  2700 |
+| 1145 | Born a Crime                 | Penguin books | Trevor Noah     |  1200 |
+| 1243 | Death on the nile            | Scholastic    | Agatha Christie |   800 |
+
+** Perform Full join on employee and issues table.
+#+begin_src sql :results raw :exports both
+select * from employee full join issues
+       on employee.eid = issues.iid
+#+end_src
+
+#+RESULTS:
+| eid | ename         | salary | dateofemploy | iid | name          | dateofissue |  bid |
+|-----+---------------+--------+--------------+-----+---------------+-------------+------|
+|   1 | Ram Singh     |  10560 |   2010-01-01 |   1 | Ram Singh     |  2015-01-15 | 1243 |
+|   2 | Shyam Singh   |  11880 |   2010-01-01 |   2 | Shyam Singh   |  2015-01-15 |  905 |
+|   4 | Madan Krishna |  16500 |   2013-05-01 |   4 | Madan Krishna |  2014-05-01 | 1145 |
+
+** Display those employees name and salary whose name starts with ‘S’ as well as employees whose name consist ‘ni’ as sub string.
+Let us add 2 employees whos name consists of 'ya' as sub-string 
+#+begin_src sql :results silent
+  insert into employee (ename, dateofemploy, salary) values
+       ('Sunil', default, 12000),
+       ('Nimesh', '2012-10-5', 15000)
+#+end_src
+
+#+begin_src sql :results raw :exports both
+  select ename, salary from employee where ename like 'S%'
+       union
+  select ename, salary from employee where ename like '%ni%'
+#+end_src
+
+#+RESULTS:
+| ename       | salary |
+|-------------+--------|
+| Nimesh      |  15000 |
+| Shyam Singh |  11880 |
+| Sunil       |  12000 |
+
+** Display name of the employee who is also a teacher.
+#+begin_src sql :results raw :exports both
+  select ename from employee
+       intersect
+  select name from teacher
+#+end_src
+
+#+RESULTS:
+| ename         |
+|---------------|
+| Madan Krishna |
+| Ram Singh     |
+| Shyam Singh   |
+
+** Display all employees name except those who are teachers.
+#+begin_src sql :results raw :exports both
+  select ename from employee
+       except
+  select name from teacher
+#+end_src
+
+#+RESULTS:
+| ename  |
+|--------|
+| Nimesh |
+| Sunil  |
+
+** Create a view Employee_view which consist of eid, ename , salary as attributes.
+#+begin_src sql :results raw :exports both
+  create view employee_view as 
+         select eid, ename, salary from employee
+#+end_src
+
+** Insert a new record in recently created view. And also display the contents of primary table.
+#+begin_src sql :results raw :exports both
+  insert into employee_view(ename, salary) values('Mukunda Tiwari', 20000);
+  select * from employee;
+#+end_src
+
+#+RESULTS:
+Records affected: 1
+| eid | ename          | salary | dateofemploy |
+|-----+----------------+--------+--------------|
+| 1   | Ram Singh      | 10560  | 2010-01-01   |
+| 2   | Shyam Singh    | 11880  | 2010-01-01   |
+| 4   | Madan Krishna  | 16500  | 2013-05-01   |
+| 5   | Sunil          | 12000  | 2010-01-01   |
+| 6   | Nimesh         | 15000  | 2012-10-05   |
+| 7   | Mukunda Tiwari | 20000  | 2010-01-01   |
+
+Here, we can see that inserting data into the view also inserts into the table with which it is linked. 
+* Conclusion
+Thus, we:
+- learned to join 2 table's records using =JOIN= as well as other unique clauses.
+- created view of a table & understood how they are linked
