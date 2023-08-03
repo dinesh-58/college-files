@@ -1,0 +1,205 @@
+# for project documents, use addtional latex styles used in proposal file
+:edit-this:
+#+EXPORT_FILE_NAME: dbms-lab4-report
+#+PROPERTY: header-args :eval no-export
+# don't prompt to evaluate code blocks while exporting
+#+OPTIONS: toc:nil ^:{}
+# set toc below instead of here
+# 2nd option exports subscripts only when _{} is used
+#+LATEX_HEADER: \graphicspath{{/home/sujal/programming/college-files/assets/images/}}
+
+# !!!!!!!!!!!!!          only edit this section       !!!!!!
+#+LATEX_HEADER: \def\subjectNum{1}
+# 1: DBMS
+# 2: NM
+# 3: OS
+# 4: SCR
+# 5: S.Eng
+
+#+LATEX_HEADER: \def\labNum{4}
+#+LATEX_HEADER: \def\labTitle{Built in Functions in SQL, Group by clause, Having clause}
+#+LATEX_HEADER: \def\yearSem{II/IV}
+#+LATEX_HEADER: \newif \iftoc
+# !!!!!!!!!!!!           set toc here by uncommenting option
+# \toctrue    
+\tocfalse
+:end:
+
+#+INCLUDE: "/home/sujal/programming/college-files/assets/template.org" :lines "26-"
+* Objectives
+- to sort tables based on one or more column
+- to use aggregate functions such as =SUM, COUNT, MAX= for summarizing data
+- to group common data & filter it using =HAVING= clause
+* Introduction 
+** =TOP= clause
+syntax:   
+~select top =n= =col1, col2, ...= from =table=~
+
+If n is 5, it returns 1st 5 records that SELECT finds. 
+** =ORDER BY= clause
+This allows us to sort a table based on a specifiec column in either ascending or descending order.
+example to sort in descending order:
+#+begin_src sql
+select * from student order by marks desc
+#+end_src
+** =GROUP BY= clause
+Used in collaboration with the SELECT statement to arrange identical data into groups. The GROUP BY clause follows the WHERE clause in a SELECT statement and precedes the ORDER BY clause.
+** =HAVING= clause
+This can be used to specify condition to filter out groups returned by =GROUP BY=
+** Aggregate functions
+We can pass column names into them to get a calculated result. Their purpose can be easily understood from their names. Some commonly used functions are: =AVG, MAX, MIN, COUNT, SUM=
+Example to get average salary:
+#+begin_src sql
+select avg(salary) from employee
+#+end_src
+*NOTE:* These can only be used in =SELECT= or =HAVING=, not in =WHERE=
+* Lab Work
+** Sort the employee records in descending order.
+#+begin_src sql :results raw :exports both
+select * from employee order by eid desc
+#+end_src
+
+#+RESULTS:
+| eid | ename         | salary | dateofemploy |
+|-----+---------------+--------+--------------|
+|   4 | Madan Krishna |  16500 |   2013-05-01 |
+|   2 | Shyam Singh   |  11880 |   2010-01-01 |
+|   1 | Ram Singh     |  10560 |   2010-01-01 |
+
+** Sort name and publication name in ascending order.
+#+begin_src sql :results raw :exports both
+select * from booklist order by name desc, publication desc
+#+end_src
+
+#+RESULTS:
+| isbn | name                   | publication   |
+|------+------------------------+---------------|
+|  905 | Supermarket            | Scholastic    |
+| 1043 | Letters from my father | Scholastic    |
+| 1243 | Death on the nile      | Scholastic    |
+| 1145 | Born a Crime           | Penguin books |
+
+** Display top three records from teachers relation.
+#+begin_src sql :results raw :exports both
+select top 3 * from teacher
+#+end_src
+
+#+RESULTS:
+| tid | name          | faculty  |
+|-----+---------------+----------|
+|   1 | Ram Singh     | computer |
+|   2 | Shyam Singh   | science  |
+|   4 | Madan Krishna | computer |
+
+** Display the sum of salaries of all employees.
+#+begin_src sql :results raw :exports both
+select sum(salary) as sum_salary from employee
+#+end_src
+
+#+RESULTS:
+| sum_salary |
+|------------|
+|      38940 |
+
+** Display the minimum salary of employee.
+#+begin_src sql :results raw :exports both
+select min(salary) as min_salary from employee
+#+end_src
+
+#+RESULTS:
+| min_salary |
+|------------|
+|      10560 |
+
+** Display the average price of book written by same author.
+#+begin_src sql :results raw :exports both
+select author, avg(price) as avg_price from book group by author
+#+end_src
+
+#+RESULTS:
+| author          | avg_price |
+|-----------------+-----------|
+| Agatha Christie |       800 |
+| Barack Obama    |      2700 |
+| Bobby Hall      |      3000 |
+| Trevor Noah     |      1200 |
+
+** Display publication name and number of books published by it from book list relation publication wise.
+#+begin_src sql :results raw :exports both
+  select publication, count(publication) as books_published
+         from booklist group by publication
+#+end_src
+
+#+RESULTS:
+| publication   | books_published |
+|---------------+-----------------|
+| Penguin books |               1 |
+| Scholastic    |               3 |
+
+** Display the bid and bname of books whose price is greater than average prices of book.
+ 
+#+begin_src sql :results raw :exports both
+  select bid, bname, price from book where price > (
+         select avg(price) from book
+  )
+#+end_src
+
+#+RESULTS:
+|  bid | bname                  | price |
+|------+------------------------+-------|
+|  905 | Supermarket            |  3000 |
+| 1043 | Letters from my father |  2700 |
+
+** Find the bid , bname and author in ascending order where author name is started by 'B'.
+#+begin_src sql :results raw :exports both
+select  bid, bname, author from book
+        where author like 'B%'
+        order by author 
+#+end_src
+
+#+RESULTS:
+|  bid | bname                  | author       |
+|------+------------------------+--------------|
+| 1043 | Letters from my father | Barack Obama |
+|  905 | Supermarket            | Bobby Hall   |
+
+** Find the teachers name and book taken by him. The teacher’s salary who takes the book should be the maximum salary.
+#+begin_src sql :results raw :exports both
+  select issues.name as teacher, book.bname
+         from issues join book on issues.bid = book.bid where issues.iid = (
+              select eid from employee where salary = (
+                     select max(salary) from employee
+              )
+         )
+#+end_src
+
+#+RESULTS:
+| teacher       | bname        |
+|---------------+--------------|
+| Madan Krishna | Born a Crime |
+
+
+** Find the authors name who have written more than one book.
+Currently, all authors in the database have only written 1 book. So, we insert new book for existing author.
+#+begin_src sql :results silent
+insert into booklist(isbn, name, publication) values
+(800, 'Murder on the Orient Express', 'Scholastic');
+insert into book(bid, bname, author, price) values
+(800, 'Murder on the Orient Express', 'Agatha Christie', 750)
+#+end_src
+
+#+begin_src sql :results raw :exports both
+select author, count(bname) as books_written from book
+       group by author having count(bname) > 1
+#+end_src
+
+#+RESULTS:
+| author          |   |
+|-----------------+---|
+| Agatha Christie | 2 |
+
+* Conclusion
+Thus, we successfully: 
+- sorted tables based on one column values
+- used aggregate functions such as =SUM, COUNT, MAX= for summarizing data
+- grouped common data & filtered it using =HAVING= clause
