@@ -45,7 +45,7 @@
 #+LATEX_HEADER:     \ifnum#1=1
 #+LATEX_HEADER:         Mr. Nawaraj Singh Thakuri
 #+LATEX_HEADER:     \else\ifnum#1=2
-#+LATEX_HEADER:         <Insert name>
+#+LATEX_HEADER:         Mr. Narayan Adhikari
 #+LATEX_HEADER:     \else\ifnum#1=3
 #+LATEX_HEADER:         Mr. Roshan Maharjan
 #+LATEX_HEADER:     \else\ifnum#1=4
