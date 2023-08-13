@@ -1,0 +1,384 @@
+# for project documents, use addtional latex styles used in proposal file
+:edit-this:
+#+EXPORT_FILE_NAME: nm-lab-report
+#+PROPERTY: header-args :eval no-export
+# don't prompt to evaluate code blocks while exporting
+#+OPTIONS: toc:nil ^:{}
+# set toc below instead of here
+# 2nd option exports subscripts only when _{} is used
+#+LATEX_HEADER: \graphicspath{{/home/sujal/programming/college-files/assets/images/}}
+
+# !!!!!!!!!!!!!          only edit this section       !!!!!!
+#+LATEX_HEADER: \def\subjectNum{2}
+# 1: DBMS
+# 2: NM
+# 3: OS
+# 4: SCR
+# 5: S.Eng
+
+#+LATEX_HEADER: \def\labNum{}
+#+LATEX_HEADER: \def\labTitle{Numerical methods in C}
+#+LATEX_HEADER: \def\yearSem{II/IV}
+#+LATEX_HEADER: \newif \iftoc
+# !!!!!!!!!!!!           set toc here by uncommenting option
+# \toctrue    
+\tocfalse
+:end:
+
+#+INCLUDE: "/home/sujal/programming/college-files/assets/template.org" :lines "26-"
+* TODO set teacher name for nm in template
+* TODO combine similar into same headline & have types/ parts?
+* Template
+** Introduction 
+** Lab Work
+** Output
+* Solving Non-Linear equations
+** Bracketing methods
+Root lies between two points/ limits. We guess these points & find root through constant calculation.
+
+We solve $\sin(x) - \frac{1}{x} = 0$ to compare the 2 bracketing methods.
+*** Bisection method
+As the name suggests, we constantly find midpoint of the two limits till it approaches a value with acceptable error.
+**** Algorithm  
+
+convert given equations to =f(x)=0= format to find =f(x)= formula
+
+- define acceptable error E
+  # e.g: for 3 decimal places, E=0.0001
+- do
+  - calculate midpoint x3
+  - if f(x3) == 0, root found, exit loop
+  - else if f(x1) * f(x3) < 0
+    root lies in [x1, x3] so, x2 = x3
+  - else root lies in [x3, x2] so, x1 = x3
+- while( |x2 - x1| > E)
+- display root
+
+**** Lab Work
+#+begin_src c
+  #include <stdio.h>
+  #include <math.h>
+  #define f(x) sin(x) - (1/x)   // same as function definition
+  #define E 0.00001  // error
+
+  int main() {
+    float x[3], f[3];
+    do {
+      printf("\n Enter initial values x1 & x2");
+      scanf("%f %f", &x[0], &x[1]);
+      f[0] = f(x[0]);
+      f[1] = f(x[1]);
+    } while(f[0] * f[1] > 0); 
+
+    printf("x1 \t x2 \t x3 \t f(x3) \n");
+    do {
+      x[2] = ((x[0] + x[1]) / 2);   // bisection
+      f[2] = f(x[2]);   
+      printf("%f \t %f \t %f \t %f \n", x[0], x[1], x[2], f[2]);
+      if (f[0] * f[2] < 0 )  x[1] = x[2] ;
+      else x[0] = x[2];
+    } while (fabsf(x[1] - x[0]) > E);
+    printf("\n Root is: %f", x[1]);
+    return 0;
+  }
+#+end_src
+**** Output  
+
+=Enter initial values x1 & x2:= 1 2
+
+|       x1 |       x2 |       x3 |     f(x3) |
+|----------+----------+----------+-----------|
+| 1.000000 | 2.000000 | 1.500000 |  0.330828 |
+| 1.000000 | 1.500000 | 1.250000 |  0.148985 |
+| 1.000000 | 1.250000 | 1.125000 |  0.013379 |
+| 1.000000 | 1.125000 | 1.062500 | -0.067602 |
+| 1.062500 | 1.125000 | 1.093750 | -0.025931 |
+| 1.093750 | 1.125000 | 1.109375 | -0.005988 |
+| 1.109375 | 1.125000 | 1.117188 |  0.003767 |
+| 1.109375 | 1.117188 | 1.113281 | -0.001093 |
+| 1.113281 | 1.117188 | 1.115234 |  0.001341 |
+| 1.113281 | 1.115234 | 1.114258 |  0.000125 |
+| 1.113281 | 1.114258 | 1.113770 | -0.000483 |
+| 1.113770 | 1.114258 | 1.114014 | -0.000179 |
+| 1.114014 | 1.114258 | 1.114136 | -0.000027 |
+| 1.114136 | 1.114258 | 1.114197 |  0.000049 |
+| 1.114136 | 1.114197 | 1.114166 |  0.000011 |
+| 1.114136 | 1.114166 | 1.114151 | -0.000008 |
+| 1.114151 | 1.114166 | 1.114159 |  0.000002 |
+
+ =Root is: 1.114159=
+*** Regular-falsi method
+This is almost entirely the same as bisection but we use the following formula to calculate =x2= instead of midpoint:
+$x_2 = \frac{x_1 \cdot f(x_1) - x_1\cdot f(x_0)}{f(x_1) - f(x_0)}$
+**** Lab Work
+#+begin_src c
+  #include <stdio.h>
+  #include <math.h>
+  #define f(x) sin(x) - (1/x) 
+  #define E 0.00001  // error
+
+  int main() {
+      float x[3], f[3];
+      do {
+          printf("\n Enter initial values x1 & x2");
+          scanf("%f %f", &x[0], &x[1]);
+          f[0] = f(x[0]);
+          f[1] = f(x[1]);
+      } while(f[0] * f[1] > 0); 
+
+      printf("x1 \t x2 \t x3 \t f(x3) \n");
+      do {
+          f[0] = f(x[0]);
+          f[1] = f(x[1]);
+          x[2] = (x[0] * f[1] - x[1] * f[0]) / (f[1] - f[0]);
+          f[2] = f(x[2]);   
+          printf("%f \t %f \t %f \t %f \n", x[0], x[1], x[2], f[2]);
+          if (f[0] * f[2] < 0 )  x[1] = x[2] ;
+          else x[0] = x[2];
+      } while (fabsf(x[1] - x[0]) > E);
+      printf("\n Root is: %f", x[1]);
+      return 0;
+  }
+#+end_src
+**** Output
+
+=Enter initial values x1 & x2:= 1 2
+|       x1 |       x2 |       x3 |     f(x3) |
+|----------+----------+----------+-----------|
+| 1.000000 | 2.000000 | 1.279186 |  0.176035 |
+| 1.000000 | 1.279186 | 1.132289 |  0.022219 |
+| 1.000000 | 1.132289 | 1.116027 |  0.002326 |
+| 1.000000 | 1.116027 | 1.114349 |  0.000239 |
+| 1.000000 | 1.114349 | 1.114177 |  0.000024 |
+| 1.000000 | 1.114177 | 1.114159 |  0.000002 |
+| 1.000000 | 1.114159 | 1.114157 |  0.000000 |
+| 1.000000 | 1.114157 | 1.114157 |  0.000000 |
+| 1.000000 | 1.114157 | 1.114157 | -0.000000 |
+ =Root is: 1.114157=
+
+ Thus, we can see that Regular Falsi needs less iterations to get result.
+** Non-bracketing methods
+Here, we only take one initial guess. We solve $\sin(x) - \frac{1}{x} = 0$ to compare the 2 non-bracketing methods.
+*** Newton-Raphson method
+Here too, we convert equation to =f(x)=0= format. We then take initial guess x1 & keep calculating $x_1 = x_0 - \frac{f(x_0)}{f'(x_0)}$
+**** Lab Work
+#+begin_src c
+  #include <stdio.h>
+  #include <math.h>
+
+  #define f(x) pow(x,3) + x*x - 1 
+  #define g(x) 3*x*x + 2*x   // derivative of f(x)
+  #define e 0.000001
+
+  int main() {
+      float x0, x1, f0, g0, error;
+      printf("enter one initial guess x0: ");
+      scanf("%f", &x0);
+      printf("\nx0 \t\t f(x0) \t\t f'(x0) \t x1");
+      do {
+          f0 = f(x0);
+          g0 = g(x0);
+          x1 = x0 - (f0 / g0);
+          printf("\n%f \t %f \t %f \t %f", x0, f0, g0, x1); 
+          error = x1 - x0;
+          x0 = x1;
+      } while (fabsf(error) > e);
+      printf("\n The root is %f", x1);
+      return 0;
+  }
+
+#+end_src
+**** Output
+=enter one initial guess x0:= 1
+
+|       x0 |    f(x0) |   f'(x0) |       x1 |
+|----------+----------+----------+----------|
+| 1.000000 | 1.000000 | 5.000000 | 0.800000 |
+| 0.800000 | 0.152000 | 3.520000 | 0.756818 |
+| 0.756818 | 0.006259 | 3.231957 | 0.754882 |
+| 0.754882 | 0.000012 | 3.219301 | 0.754878 |
+| 0.754878 | 0.000000 | 3.219276 | 0.754878 |
+=The root is 0.754878=
+*** Fixed point method
+It is almost entirely same as newton-raphson method. Here, we convert given =f(x)= into $x = g(x)$ form & use $x_1 = g(x_0)$. Out of possible formulae for =g(x)=, we must use the one where =g(x)= value keeps converging.
+**** Lab Work
+#+begin_src c
+  #include <stdio.h>
+  #include <math.h>
+  // f(x) = x^3 + x^2 - 1 = 0
+  // using f(x), generate x such that x = g(x)
+  #define g(x) 1/sqrt(x+1)
+  #define e 0.0000001
+
+  int main() {
+      float x[2], error;
+      printf("Enter initial guess x0: ");
+      scanf("%f", &x[0]);
+      printf("\n x0 \t\t x1");
+      do {
+          x[1] = g(x[0]);
+          printf("\n %f \t %f", x[0], x[1]);
+          error = x[1] - x[0]; 
+          x[0] = x[1];
+      } while(fabsf(error) > e);
+      printf("\n Root is %f", x[1]);
+      return 0;
+  } 
+#+end_src
+**** Output
+=Enter initial guess x0:= 1
+
+|       x0 |       x1 |
+|----------+----------|
+| 1.000000 | 0.707107 |
+| 0.707107 | 0.765367 |
+| 0.765367 | 0.752632 |
+| 0.752632 | 0.755361 |
+| 0.755361 | 0.754774 |
+| 0.754774 | 0.754900 |
+| 0.754900 | 0.754873 |
+| 0.754873 | 0.754879 |
+| 0.754879 | 0.754877 |
+| 0.754877 | 0.754878 |
+| 0.754878 | 0.754878 |
+=Root is 0.754878=
+
+Here, we can see that Fixed Point method takes more iterations as it has a simpler algorithm.
+* Solving Numerical Integration
+We can solve integrals with these 3 methods if they are in the following format: $\int_{a}^{b}f(x)dx$
+
+When we are given step-size($h$), we can calculate no. of iterations($n$) & vice-versa using the formula:
+$h\cdot n= b-a$
+
+We solve $\int_{0}^{1} \frac{\cos(x)}{1 + x^2} dx$, taking $n=5$ to compare the 3 methods.
+** Trapezoidal rule
+$\displaystyle \int _{a}^{b}f(x)\,dx\approx {\frac {h}{2}}\left(f(x_{0})+2f(x_{1})+2f(x_{2})+\cdots +2f(x_{n-1})+f(x_{n})\right)$
+*** Lab Work
+#+begin_src c
+  #include <stdio.h>
+  #include <math.h>
+
+  float f(float x) {
+      return cos(x) / (1 + x*x);
+  } 
+
+  int main() {
+      float a,b,h, x, result=0;
+      int n, i;
+      printf("enter lower limit(a) & upper limit(b) of integral ");
+      scanf("%f %f", &a, &b);
+      printf("\n enter number of sub-intervals (n) ");
+      scanf("%d", &n);
+      h = (b-a) / n;
+
+      for(x=a; x<=b; x+=h) {
+          // if wrong answer, assign f(x) to a variable
+          result += (x==a || x==b) ? f(x) : 2*f(x); 
+      }
+      result *= h/2;
+      printf("\n Result is %f", result);
+      return 0;
+  }
+#+end_src
+
+*** Output
+\begin{verbatim}
+enter lower limit(a) & upper limit(b) of integral: 0 1
+enter number of sub-intervals (n): 5
+Result is 0.680630
+\end{verbatim}
+
+** Simpson's 1/3 rule
+$\displaystyle \int _{a}^{b}f(x)\,dx\approx {\frac {1}{3}}h{\big [}f(x_{0})+4f(x_{1})+2f(x_{2})+4f(x_{3})+2f(x_{4})+\dots +2f(x_{n-2})+4f(x_{n-1})+f(x_{n}){\big ]}$
+*** Lab Work
+#+begin_src c
+  #include <stdio.h>
+  #include <math.h>
+
+  float f(float x) {
+      return cos(x) / (1 + x*x);
+  } 
+
+  int main() {
+      float a,b,h, x, y, result=0;
+      int n, i;
+      printf("enter lower limit(a) & upper limit(b) of integral ");
+      scanf("%f %f", &a, &b);
+      printf("\n enter number of sub-intervals (n) ");
+      scanf("%d", &n);
+      h = (b-a) / n;
+
+      for (i=0; i<=n; i++) {
+          // if wrong answer, assign f(x) to a variable
+          x = a + i*h;
+          y = f(x);
+          result += (i==0 || i==n) ? y 
+              : (i%2 == 0) ? 2*y 
+              : 4*y; 
+      }
+      result *= h/3;
+      printf("\n Result is %f", result);
+      return 0;
+  }
+#+end_src
+*** Output
+\begin{verbatim}
+enter lower limit(a) & upper limit(b) of integral: 0 1
+enter number of sub-intervals(n): 5
+Result is 0.660318
+\end{verbatim}
+
+** Simpson's 3/8 rule
+$\displaystyle \int _{a}^{b}f(x)\,dx\approx {\frac {3}{8}}h{\big [}f(x_{0})+3f(x_{1})+3f(x_{2})+2f(x_{3})+3f(x_{4})+3f(x_{5})+2f(x_{6})+\dots +2f(x_{n-3})+3f(x_{n-2})+3f(x_{n-1})+f(x_{n}){\big ]}$
+*** Lab Work
+#+begin_src c
+  #include <stdio.h>
+  #include <math.h>
+
+  float f(float x) {
+      return cos(x) / (1 + x*x);
+  } 
+
+  int main() {
+      float a,b,h, x, y, result=0;
+      int n, i;
+      printf("enter lower limit(a) & upper limit(b) of integral ");
+      scanf("%f %f", &a, &b);
+      printf("\n enter number of sub-intervals (n) ");
+      scanf("%d", &n);
+      h = (b-a) / n;
+
+      for (i=0; i<=n; i++) {
+          x = a + i*h;
+          y = f(x);
+          result += (i==0 || i==n) ? y 
+              : (i%3 == 0) ? 2*y 
+              : 3*y; 
+      }
+      result *= 3*h/8;
+      printf("\n Result is %f", result);
+      return 0;
+  }
+#+end_src
+*** Output
+\begin{verbatim}
+enter lower limit(a) & upper limit(b) of integral: 0 1
+enter number of sub-intervals (n): 5
+Result is 0.672563
+\end{verbatim}
+
+We can see that these 3 methods produce slightly different results due to their varying levels of accuracy.
+* Solving ordinary differential equations
+# add one more method here?
+** Euler's rule
+*** Lab Work
+*** Output
+* Solving linear algebraic equations
+
+** Gauss-elimination & Gauss-Jordan
+*** Introduction 
+*** Lab Work
+*** Output
+** Curve fitting
+*** Lab Work
+*** Output

@@ -26,12 +26,12 @@ replay_pid*
 3rd sem/Web tech/Lab reports/*.pdf
 3rd sem/Web tech/Lab reports/*.html
 3rd sem/Web tech/Lab reports/*.css
-4th-sem/scripting-languages/**/*.org~
 4th-sem/scripting-languages/**/*.tex*
 4th-sem/scripting-languages/lab**/*.pdf
-4th-sem/dbms/lab-reports/**/*.org~
 4th-sem/dbms/lab-reports/**/*.tex*
 4th-sem/dbms/lab-reports/**/*.pdf
+4th-sem/numerical-methods/lab/report/**/*.pdf
+**/ltximg/
 
 ### org backup files ###
 **/*.org~
