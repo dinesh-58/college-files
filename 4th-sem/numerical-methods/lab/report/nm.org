@@ -26,9 +26,8 @@
 :end:
 
 #+INCLUDE: "/home/sujal/programming/college-files/assets/template.org" :lines "26-"
-* TODO set teacher name for nm in template
 * TODO combine similar into same headline & have types/ parts?
-* Template
+* Template (delete later)
 ** Introduction 
 ** Lab Work
 ** Output
