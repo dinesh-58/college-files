@@ -29,7 +29,7 @@
 * Objectives
 - To be familiar with basic commands used in GNU/Linux operating systems
 - To be familiar with =vi= editor
-- To re-use previous lab's knowledge on using & navigating in the terminal instead of the GUI
+- To reuse previous lab's knowledge on using & navigating in the terminal 
 * Introduction 
 ** GNU/Linux
 GNU/Linux (commonly referred to as only Linux) is a free and open source Operating System using the Linux kernel.
@@ -123,5 +123,5 @@ In normal mode, type =:wq= to write & quit.
   Simple interest will be: 10.000000
 #+end_src
 * Conclusion
-Thus, we learned about the GNu/Linux family of operating systems. Similarly to the 1st lab with =DOS=, here, we learned
+Thus, we learned about the GNU/Linux family of operating systems. Similarly to the 1st lab with =DOS=, here, we learned
 to use GNU utilities for performing different actions. We also learned to use the =vim= text editor & its different features.
