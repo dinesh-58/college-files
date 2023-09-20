@@ -1,0 +1,104 @@
+# for project documents, use addtional latex styles used in proposal file
+:edit-this:
+#+EXPORT_FILE_NAME: os-lab1-report
+#+PROPERTY: header-args :eval no-export
+# don't prompt to evaluate code blocks while exporting
+#+OPTIONS: toc:nil ^:{}
+# set toc below instead of here
+# 2nd option exports subscripts only when _{} is used
+#+LATEX_HEADER: \graphicspath{{/home/sujal/programming/college-files/assets/images/}}
+
+# !!!!!!!!!!!!!          only edit this section       !!!!!!
+#+LATEX_HEADER: \def\subjectNum{3}
+# 1: DBMS
+# 2: NM
+# 3: OS
+# 4: SCR
+# 5: S.Eng
+
+#+LATEX_HEADER: \def\labNum{1}
+#+LATEX_HEADER: \def\labTitle{MS-DOS commands related to System and Batch processing}
+#+LATEX_HEADER: \def\yearSem{II/IV}
+#+LATEX_HEADER: \newif \iftoc
+# !!!!!!!!!!!!           set toc here by uncommenting option
+# \toctrue    
+\tocfalse
+:end:
+
+#+INCLUDE: "/home/sujal/programming/college-files/assets/template.org" :lines "26-"
+* Objectives
+- be familiar with basic DOS commands & CLI
+- learn to execute custom scripts with batch files 
+* Introduction 
+Microsoft Disk Operating System (MS-DOS) was a popular Command Line Interface(CLI) based operating system in 1980s.
+Built in commands can be used to create custom scripts & can be saved as =.bat= batch files.
+These commands are still available in modern versions of Windows & can be run in applications that provide command line interface, like Command Prompt & Powershell.
+
+** Some basic commands
+# from here on, only add commands that are used in programs below
+- =cd=
+src_bat[:exports code]{cd directory_name}\\
+Change directory if specified, else display current directory. 
+- =cls=
+  Clear screen i.e. remove all text except for shell prompt.
+- =dir=
+  Display list of contents of current directory.
+- =help=
+  src_bat[:exports code]{help command_name}\\
+  Display list of commands or help about a command.
+- =copy=
+  src_bat[:exports code]{copy [option] source [option] destination}\\
+  Copies specified file(s) to another location.
+- =xcopy=
+  src_bat[:exports code]{xcopy source destination}\\
+  Copies files and directories, including subdirectories.
+- =del=
+  src_bat[:exports code]{del file_name}\\
+  Deletes specified file(s)
+- =echo=
+  Prints given text to standard out. Useful for printing info from our scripts or writing data to files.
+  By default, all commands used in a batch script are echoed to standard out.
+  src_bat[:exports code]{@echo off} can be placed at the start of scripts so that it only echoes when we use the =echo= command.
+- =set=
+  src_bat[:exports code]{set var_name = value}\\
+  Sets variable value. Variables can be printed by wrapping them in =%=.\\
+  src_bat[:exports code]{echo %var_name%}
+
+* Lab Work
+** Create a batch file which include different commands and execute it.
+#+begin_src bat
+@echo off
+set /a sum=1+1    
+echo %sum%     
+set /a mul=7*9   
+echo %mul%
+#+end_src
+
+** Create a batch file which may display 
+- your name, address, 
+- your ip address, 
+- your routing information 
+- and reboot your system by giving message , “your system is down”
+
+#+begin_src bat
+@echo off
+echo name: sujal      
+echo address: kathmandu      
+echo ip address:
+ipconfig | findstr /i "IPv4"
+echo your routing info:
+route print
+shutdown /r /t 60 /c "your system is down" /f /d p:4:1
+#+end_src
+
+** create a batch file that repeatedly ask for command and execute it.
+#+begin_src bat
+@echo off
+:cmd
+set /p "cmd=C:\Enter Command: "
+call %cmd%
+goto cmd
+#+end_src
+* Conclusion
+Thus, we learned how terminal commands were used to interact with computers back in the day, and how they are still useful. We became familiar with navigating through the file system in the command line. We also created some basic scripts using built-in commands.
+
