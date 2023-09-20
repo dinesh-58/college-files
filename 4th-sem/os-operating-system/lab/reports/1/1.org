@@ -36,31 +36,25 @@ These commands are still available in modern versions of Windows & can be run in
 
 ** Some basic commands
 # from here on, only add commands that are used in programs below
-- =cd=
-src_bat[:exports code]{cd directory_name}\\
-Change directory if specified, else display current directory. 
+- src_bat[:exports code]{cd directory_name}\\
+  Change directory if specified, else display current directory. 
 - =cls=
   Clear screen i.e. remove all text except for shell prompt.
 - =dir=
   Display list of contents of current directory.
-- =help=
-  src_bat[:exports code]{help command_name}\\
+- src_bat[:exports code]{help command_name}\\
   Display list of commands or help about a command.
-- =copy=
-  src_bat[:exports code]{copy [option] source [option] destination}\\
+- src_bat[:exports code]{copy [option] source [option] destination}\\
   Copies specified file(s) to another location.
-- =xcopy=
-  src_bat[:exports code]{xcopy source destination}\\
+- src_bat[:exports code]{xcopy source destination}\\
   Copies files and directories, including subdirectories.
-- =del=
-  src_bat[:exports code]{del file_name}\\
+- src_bat[:exports code]{del file_name}\\
   Deletes specified file(s)
 - =echo=
   Prints given text to standard out. Useful for printing info from our scripts or writing data to files.
   By default, all commands used in a batch script are echoed to standard out.
   src_bat[:exports code]{@echo off} can be placed at the start of scripts so that it only echoes when we use the =echo= command.
-- =set=
-  src_bat[:exports code]{set var_name = value}\\
+- src_bat[:exports code]{set var_name = value}\\
   Sets variable value. Variables can be printed by wrapping them in =%=.\\
   src_bat[:exports code]{echo %var_name%}
 
