@@ -47,7 +47,8 @@
 #+LATEX_HEADER:     \else\ifnum#1=2
 #+LATEX_HEADER:         Mr. Narayan Adhikari
 #+LATEX_HEADER:     \else\ifnum#1=3
-#+LATEX_HEADER:         Mr. Roshan Maharjan
+#+LATEX_HEADER:         Mr. Roshan Maharjan,\\
+#+LATEX_HEADER:         Er. Himal Chand Thapa
 #+LATEX_HEADER:     \else\ifnum#1=4
 #+LATEX_HEADER:         Mr. Diwas K.C.
 #+LATEX_HEADER:     \else
