@@ -1,0 +1,127 @@
+# for project documents, use addtional latex styles used in proposal file
+:edit-this:
+#+EXPORT_FILE_NAME: os-lab2-report
+#+PROPERTY: header-args :eval no-export
+# don't prompt to evaluate code blocks while exporting
+#+OPTIONS: toc:nil ^:{}
+# set toc below instead of here
+# 2nd option exports subscripts only when _{} is used
+#+LATEX_HEADER: \graphicspath{{/home/sujal/programming/college-files/assets/images/}}
+
+# !!!!!!!!!!!!!          only edit this section       !!!!!!
+#+LATEX_HEADER: \def\subjectNum{3}
+# 1: DBMS
+# 2: NM
+# 3: OS
+# 4: SCR
+# 5: S.Eng
+
+#+LATEX_HEADER: \def\labNum{2}
+#+LATEX_HEADER: \def\labTitle{GNU/Linux}
+#+LATEX_HEADER: \def\yearSem{II/IV}
+#+LATEX_HEADER: \newif \iftoc
+# !!!!!!!!!!!!           set toc here by uncommenting option
+# \toctrue    
+\tocfalse
+:end:
+
+#+INCLUDE: "/home/sujal/programming/college-files/assets/template.org" :lines "26-"
+* Objectives
+- To be familiar with basic commands used in GNU/Linux operating systems
+- To be familiar with =vi= editor
+- To re-use previous lab's knowledge on using & navigating in the terminal instead of the GUI
+* Introduction 
+** GNU/Linux
+GNU/Linux (commonly referred to as only Linux) is a free and open source Operating System using the Linux kernel.
+It is inspired by & shares similarities with the old UNIX OS.
+It includes the =shell=, an interpreter that provides a command line interface for interacting with the OS.
+The terminal allows running executable script files or compiled binaries by passing them as text commands to the shell.
+There are many useful built-in commands known as GNU utilities.
+Users can also write their own scripts using the shell's scripting language.
+Thus, the terminal can be more powerful at doing many tasks than the GUI.
+There are many variations of GNU/Linux, called distributions.
+Some popular ones are: Ubuntu, Arch & Debian. The following commands should work on almost any distribution.
+
+- =ls=\\
+  prints contents of current or specified directory.
+- =cd=\\
+  change directory to specified one. If none specified, goes to home directory.
+- src_sh[:exports code]{cp source-file destination}\\
+  creates copy of file
+- src_sh[:exports code]{mv source-file destination}\\
+  moves file. If filename is specified instead of path, file is renamed.
+- src_sh[:exports code]{touch file-name}\\
+  creates new file
+- src_sh[:exports code]{rm file-name}\\
+  permanently deltes file
+- *executing binary or executable text file*\\
+  Just enter path (absolute or relative to current directory). For example, if there is an =a.out= file in the current directory, the relative path to execute it would be ~./a.out~. Here, =.= refers to the current directory.
+  =..= would mean one folder above/outside the current one.
+- =gcc=\\
+  GNU C Compiler. The basic command to compile a =C= file is ~gcc file-name.c~. By default, it names the compiled binary
+  file as =a.out=, though we can specify a filename using the =-a= flag.
+** =Vi= editor
+=Vi= is a text editor that was created for use in UNIX & can run directly in the terminal.
+It, along with modern derivatives like =Vim= & =NeoVim=, are popular among programmers for their fast performance, features
+& customizability. Text editors like Notepad & VSCode will always enter text when keys are pressed.
+Vi is a modal editor i.e. it has different modes for interacting with the text & keys behave differently depending on the mode. Thus, Vi can be used fully without a mouse, increasing efficiency. The modes are:
+
+- *Normal mode*
+  for navigating through the text file. Can be entered by pressing =Esc=. =h,j,k,l= move the cursor left, down, up and right
+  respectively. Some other movement keys include =w,b= for moving across words, =0,$= for moving to start & end of line.
+  There are many more shortcuts that make navigation effortless.
+
+- *Insert mode*
+  for inserting text. While in Normal mode, =i= enters insert mode to the left of cursor, while =a= moves to the right.
+  Keys behave normally.
+
+- *Visual mode*
+  for selecting text to manipulate. While in Normal mode, =v= starts selecting from cursor, while =V= selects entire line.
+  Some manipulation shortcuts are =d= to delete, =y= to yank(copy), =p= to paste. 
+
+- *Command mode*  
+  for running Vi commands. Can be entered by pressing =:= while in Normal mode. Some commands include =:w= to write(save)
+  file, =:q= to quit, =:sp= to split the window & allow having multiple files on the screen.
+
+One of Vi's powerful features is the ability to chain shortcuts together. For example, =yy= yanks the entire line, while
+=5p= pastes yanked text 5 times.
+
+* Lab Work
+*NOTE:* /In code snippets, =$= at the start of a line represents the shell prompt & is not part of the entered commands./
+*** Write c source file for execute “hello world“ and save it as file xyz.c using vim.
+src_sh[:exports code]{$ vim}\\
+Inside vim, we write the following program: 
+#+begin_src c
+  #include <stdio.h>
+  void main() {
+    printf("Hello World");
+  }
+#+end_src
+Press =Esc= to enter normal mode, then type =:w xyz.c= & press =Enter=. This will write the contents to file =xyz.c=
+*** Using terminal commands & vim, create file calc.c. Write =C= code for calculating interest in it, compile and execute it.
+#+begin_src sh
+  $ touch calc.c  # creates calc.c file
+  $ vim calc.c    # opens file with vim
+#+end_src
+Inside vim we write the following program:
+#+begin_src c 
+  #include <stdio.h>
+  void main() {
+    float p, t, r;
+    printf("Enter principal, time(in years), & interest rate: ");
+    scanf("%f %f %f", &p, &t, &r);
+    printf("Simple interest will be: %f", p*t*r / 100);
+  }
+#+end_src
+In normal mode, type =:wq= to write & quit.
+#+begin_src sh
+  $ gcc calc.c -o calc  # compiles calc.c to calc binary file
+  $ ./calc  # run binary
+  Enter principal, time(in years), & interest rate: 100
+  2
+  5
+  Simple interest will be: 10.000000
+#+end_src
+* Conclusion
+Thus, we learned about the GNu/Linux family of operating systems. Similarly to the 1st lab with =DOS=, here, we learned
+to use GNU utilities for performing different actions. We also learned to use the =vim= text editor & its different features.
