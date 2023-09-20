@@ -142,6 +142,7 @@ A partition can only hold one process so remaining area of parition isn't utliiz
   Safe sequence is: 1 3 4 0 2
 #+end_src
 ** Write a program to demonstrate basic fixed size partitioning using 1st fit algorithm
+Here, we divide available memory into equal sized partitions.
 #+begin_src c
   #include<stdio.h>
   void main() {
@@ -200,4 +201,4 @@ A partition can only hold one process so remaining area of parition isn't utliiz
 #+end_src
 * Conclusion
 Thus, we learned how deadlock might be detected in a system & how it can be avoided by choosing the right sequence of
-processes to run. We also understood fixed paritioning in memory by implementing a basic program
+processes to run. We also understood a basic version of fixed paritioning in memory by implementing its program.
