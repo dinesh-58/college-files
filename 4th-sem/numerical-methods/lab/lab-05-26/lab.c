@@ -1,3 +1,5 @@
+// Gauss Seidel
+
 /* Arrange system of linear equations in 
 diagonally dominant form and convert the 
 1st equation in tems of 1st variable (f1), 2nd 
