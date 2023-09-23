@@ -26,11 +26,6 @@
 :end:
 
 #+INCLUDE: "/home/sujal/programming/college-files/assets/template.org" :lines "26-"
-* TODO combine similar into same headline & have types/ parts?
-* Template (delete later)
-** Introduction 
-** Lab Work
-** Output
 * Solving Non-Linear equations
 ** Bracketing methods
 Root lies between two points/ limits. We guess these points & find root through constant calculation.
@@ -39,9 +34,7 @@ We solve $\sin(x) - \frac{1}{x} = 0$ to compare the 2 bracketing methods.
 *** Bisection method
 As the name suggests, we constantly find midpoint of the two limits till it approaches a value with acceptable error.
 **** Algorithm  
-
-convert given equations to =f(x)=0= format to find =f(x)= formula
-
+- convert given equations to =f(x)=0= format to find =f(x)= formula
 - define acceptable error E
   # e.g: for 3 decimal places, E=0.0001
 - do
@@ -51,7 +44,7 @@ convert given equations to =f(x)=0= format to find =f(x)= formula
     root lies in [x1, x3] so, x2 = x3
   - else root lies in [x3, x2] so, x1 = x3
 - while( |x2 - x1| > E)
-- display root
+- display root x2
 
 **** Lab Work
 #+begin_src c
@@ -60,7 +53,7 @@ convert given equations to =f(x)=0= format to find =f(x)= formula
   #define f(x) sin(x) - (1/x)   // same as function definition
   #define E 0.00001  // error
 
-  int main() {
+  void main() {
     float x[3], f[3];
     do {
       printf("\n Enter initial values x1 & x2");
@@ -68,7 +61,6 @@ convert given equations to =f(x)=0= format to find =f(x)= formula
       f[0] = f(x[0]);
       f[1] = f(x[1]);
     } while(f[0] * f[1] > 0); 
-
     printf("x1 \t x2 \t x3 \t f(x3) \n");
     do {
       x[2] = ((x[0] + x[1]) / 2);   // bisection
@@ -78,9 +70,9 @@ convert given equations to =f(x)=0= format to find =f(x)= formula
       else x[0] = x[2];
     } while (fabsf(x[1] - x[0]) > E);
     printf("\n Root is: %f", x[1]);
-    return 0;
   }
 #+end_src
+
 **** Output  
 
 =Enter initial values x1 & x2:= 1 2
@@ -367,17 +359,143 @@ Result is 0.672563
 \end{verbatim}
 
 We can see that these 3 methods produce slightly different results due to their varying levels of accuracy.
-* Solving ordinary differential equations
-# add one more method here?
-** Euler's rule
-*** Lab Work
-*** Output
 * Solving linear algebraic equations
+Linear equations are equations having variables with power 1.
+=ax+b = 0= is an example with one variable where =x= is variable, and =a= and =b= are real numbers. Gauss elimination & Gauss Jordan method can find values for =n= number of variables when given =n= number of different equations.
 
-** Gauss-elimination & Gauss-Jordan
-*** Introduction 
+We represent the equations in =A\cdot X = B= matrix form, & find augmented matrix =[A/B']=. The remaining steps differ a little between the 2 methods.
+** Gauss-elimination 
+*** Elimination phase
+- turn Augmented matrix into either upper or lower triangular matrix
+  - e.g: for upper triangular [U/B'], elements below diagonal should be 0
+- use elementary row operation (performing addition/ subtraction between rows)
+  to turn required elements to 0 
+
+*** Substitution phase
+- multiply coefficients in triangular with (x,y,z)
+- convert to ~[U][X] = [B]~ & solve
+
 *** Lab Work
+#+begin_src c
+  #include <stdio.h> 
+  int main() { 
+    int i,j,k,n; 
+    float A[20][20],r,x[10],sum=0.0; 
+    printf("\nEnter the order of matrix: ");
+
+    scanf("%d",&n); 
+    printf("\nEnter the elements of augmented matrix row-wise:\n\n"); 
+    for(i=1; i<=n; i++) { 
+      for(j=1; j<=n+1; j++) { 
+        printf("A[%d][%d] : ",i, j); 
+        scanf("%f",&A[i][j]); 
+      } 
+    } 
+    /*Generation of upper triangular matrix*/ 
+    for(j=1; j<=n; j++) { 
+      for(i=1; i<=n; i++) { 
+        if(i>j) { 
+          r=A[i][j]/A[j][j]; 
+          for(k=1; k<=n+1; k++) { 
+            A[i][k]=A[i][k]-r*A[j][k]; 
+          } 
+        } 
+      } 
+    } 
+    x[n]=A[n][n+1]/A[n][n]; 
+    /*backward substitution*/ 
+    for(i=n-1; i>=1; i--) { 
+      sum=0; 
+      for(j=i+1; j<=n; j++) 
+        { 
+          sum=sum+A[i][j]*x[j]; 
+        } 
+      x[i]=(A[i][n+1]-sum)/A[i][i]; 
+    } 
+    printf("\nThe solution is: \n"); 
+    for(i=1; i<=n; i++) { 
+      printf("\nx%d=%f\t",i,x[i]);  
+    } 
+    return 0; 
+  } 
+#+end_src
 *** Output
-** Curve fitting
+#+begin_src 
+  Enter the order of matrix: (for 3x3 matrix, only enter 3 once)3
+
+  Enter the elements of augmented matrix row-wise:
+  A[1][1] : 1  A[1][2] : -1  A[1][3] : 1  A[1][4] : 8
+  A[2][1] : 2  A[2][2] : 3   A[2][3] : -1  A[2][4] : -2
+  A[3][1] : 3  A[3][2] : -2  A[3][3] : -9  A[3][4] : 9
+
+  The solution is:
+  x1=4.000000
+  x2=-3.000000
+  x3=1.000000
+#+end_src
+
+** Gauss-Jordan
+- turn augmented matrix [A/B'] into unit/Identity matrix
+  + i.e. all diagonals = 1,
+          non-diagonals = 0
+
+    $\begin{bmatrix}
+        1 & 0 & 0 & : & b_1\\
+        0 & 1 & 0 & : & b_2\\
+        0 & 0 & 1 & : & b_3\\
+   \end{bmatrix}$
+
+- ~x,y,z~ variables are directly equal to =b= values
 *** Lab Work
+#+begin_src c
+  #include<stdio.h> 
+  int main() { 
+    int i,j,k,n; 
+    float A[20][20],r,x[10]; 
+    printf("\nEnter the size of matrix: "); 
+    scanf("%d",&n); 
+    printf("\nEnter the elements of augmented matrix row-wise:\n"); 
+    for(i=1; i<=n; i++) { 
+      for(j=1; j<=n+1; j++) { 
+        printf(" A[%d][%d]:", i,j); 
+        scanf("%f",&A[i][j]); 
+      } 
+    } 
+    /* finding diagonal matrix */ 
+    for(j=1; j<=n; j++) { 
+      for(i=1; i<=n; i++) { 
+        if(i!=j) { 
+          r=A[i][j]/A[j][j]; 
+          for(k=1; k<=n+1; k++) { 
+            A[i][k]=A[i][k]-r*A[j][k]; 
+          } 
+        } 
+      } 
+    } 
+    printf("\nThe solution is:\n"); 
+    for(i=1; i<=n; i++) { 
+      x[i]=A[i][n+1]/A[i][i]; 
+      printf("\n x%d=%f\n",i,x[i]); 
+    } 
+    return 0; 
+  }
+
+#+end_src
 *** Output
+#+begin_src 
+Enter the size of matrix: 3
+
+Enter the elements of augmented matrix row-wise:
+ A[1][1]:1  A[1][2]:-1  A[1][3]:1   A[1][4]:9
+ A[2][1]:2  A[2][2]:3   A[2][3]:-1  A[2][4]:-2
+ A[3][1]:3  A[3][2]:-2  A[3][3]:-9  A[3][4]:9
+
+The solution is:
+
+ x1=4.508772
+ x2=-3.263158
+ x3=1.228070
+#+end_src
+* Conclusion
+Thus, we learned how to implement some of the many methods numerical methods we studied in this semester.
+By doing so,we gained a better understanding of them.
