@@ -28,11 +28,11 @@ int main()
     meanx=sumx/n; 
     meany=sumy/n; 
     denom=n*sumxx-sumx*sumx; 
-    if(fabs(denom)>error) 
+    if(fabsf(denom)>error) 
     { 
         b=(n*sumxy-sumx*sumy)/denom; 
         a=meany-b*meanx; 
-        printf("y=%2fx+%2f",b,a); 
+        printf("y=%0.2fx+%0.2f",b,a); 
     } 
     else 
     { 
