@@ -62,7 +62,8 @@ Under the Supervision of
 \end{large}
 \clearpage
 :end:
-
+* COMMENT TODOS
+- [ ] bibliography using =./bibliography.bib= file
 * COMMENT Certificate Page
 # this has specific format. write in libreOffice & print separately?
 # or maybe there's a way to include pdfs while exporting
@@ -144,4 +145,6 @@ Under the Supervision of
 * Apendix
 # screenshots
 # supervisor visit log sheets (lmaooooo)
-* COMMENT References and Bibliography here
+* References and Bibliography
+#+cite_export: csl ~/.emacs.d/packages/ieee.csl
+#+PRINT_BIBLIOGRAPHY:
