@@ -1,6 +1,7 @@
 # try wrapping latex code in export blocks or #+LATEX: if export to odt fails?
 :LATEX_SETTINGS:
 #+EXPORT_FILE_NAME: bca-sujal-gurung-34-project1-report
+#+BIBLIOGRAPHY: bibliography.bib
 #+LATEX_HEADER: \pagenumbering{roman}
 #+LATEX_HEADER: \graphicspath{{/home/sujal/programming/college-files/assets/images/}}
 
@@ -12,6 +13,7 @@
 #+LATEX_HEADER: \usepackage[margin=1in, left=1.25in]{geometry}
 #+LATEX_HEADER: \usepackage{placeins}
 #+LATEX_HEADER: \usepackage{setspace}
+#+LATEX_HEADER: \usepackage{svg}
 
 #+LaTeX_CLASS: article
 #+LATEX_HEADER: \AddToHook{cmd/section/before}{\clearpage}
@@ -25,7 +27,7 @@
 #+LaTeX_HEADER: \titleformat{\section}{\bfseries\fontsize{14}{16}\selectfont}{\thesection}{1em}{}
 #+LaTeX_HEADER: \titleformat{\subsection}{\bfseries\fontsize{12}{14}\selectfont}{\thesubsection}{1em}{}
 #+LaTeX_HEADER: \usepackage{caption}
-#+LaTeX_HEADER: \DeclareCaptionFormat{myformat}{\fontsize{12}{14}\selectfont\bfseries#1#2#3}
+#+LaTeX_HEADER: \DeclareCaptionFormat{myformat}{\fontsize{12}{12}\selectfont\bfseries#1#2#3}
 #+LaTeX_HEADER: \captionsetup{format=myformat,justification=centering}
 #+LaTeX_HEADER: \captionsetup[figure]{position=bottom}
 #+LaTeX_HEADER: \captionsetup[table]{position=top}
@@ -63,7 +65,12 @@ Under the Supervision of
 \clearpage
 :end:
 * COMMENT TODOS
-- [ ] bibliography using =./bibliography.bib= file
+- [ ] use svg outputs
+- [ ] when creating or making changes to plantuml blocks, execute it to generate output file
+  - [ ] don't execute blocks when exporting entire file though
+- [X] bibliography using =./bibliography.bib= file
+- [X] fix padding for references after 1st reference
+- [ ] ask Himal sir about differences between Abstract & intro
 * COMMENT Certificate Page
 # this has specific format. write in libreOffice & print separately?
 # or maybe there's a way to include pdfs while exporting
@@ -76,6 +83,17 @@ Under the Supervision of
 :PROPERTIES:
 :UNNUMBERED: t
 :END:
+Traditional study techniques of just reading through books, course materials are *passive* and don't engage our minds
+too much. Students may not be able to retain studied information for long periods of time, due to the way our brains work.
+
+*Flashcards* are an alternative solution for retaining information by remembering facts or answers to questions. 
+The reasoning being that retreiving previously learned information from our memory engages our brains,
+strengthens the neural connections to that info and thus, we can remember it easier the next time.
+
+This reflects real world scenarios like exams and tests how much of our learning we actually remember.
+Practicing flashcards from time to time can be a simple but effective form of revision.
+CardsQL implements this in an easy-to-use web interface with some additional quality of life features.
+
 * Acknowledgement
 :PROPERTIES:
 :UNNUMBERED: t
@@ -85,41 +103,233 @@ Under the Supervision of
 \singlespacing
   \clearpage \tableofcontents \clearpage
 \onehalfspacing
-#+end_export
-* List of figures
-:PROPERTIES:
-:UNNUMBERED: t
-:END:
-
-#+LATEX: \listoffigures
-* List of tables
-:PROPERTIES:
-:UNNUMBERED: t
-:END:
-
-#+BEGIN_EXPORT latex
+\listoffigures
 \listoftables
 \pagenumbering{arabic}
 #+END_EXPORT
 * Introduction
 ** Introduction
+Flashcards are a simple way for students to revise topics. On a piece of paper, we write a question on one side
+and then the answer on the next. The following is an example of what a flashcard might look like:
+
+#+CAPTION:Example Flashcard
+[[file:../proposal/diagrams/flashcard-example.png]]
+
+
+To utilize this flashcard, we would read the question & try to remember the answer.
+Then, flip the card over & see how well we remembered it.
+CardsQL is a web app that digitises this technique. The name is derived from a combination of Flashcards & SQL.
 ** Problem Statement
++ *inefficient traditional studying techniques*
+
++ *inconvenient to manage physical flashcards*   
+  - Physical flashcards will eventually get damaged or wear out.
+    It may also be impractical to store or carry around a large number of cards. 
+  - Storing cards digitally allows them to be physically secure & portable.
+
++ *cumbersome to schedule, keep track of next repition for cards*   
+  - After reviewing/ recalling a card, we need to schedule when to practice it again.
+    We not only need to keep track of its schedule, but also remember to review it on that day.
+    If we forget, then keeping track of overdue cards adds another layer of unneeded complexity.
+
+
 ** Objectives
+- provide as easy of an entry point to flashcard programs by keeping things simple 
+- provide intuitive interface so that user doesn't have to understand how the system works in order to utilize it
+- automate scheduling of next review. Users just have to use it & practice flashcards regularly.
+- allow editing creadted cards' contents & review date
+# - allow creating different types of flashcards & categorizing them by subject/ tag
 ** Scope and Limitaiton
 ** Report Organization
 * Background Study and Literature Review
 ** Background Study
 # description of fundamental theories, general concepts, terminologies related to the project
+*** Active Recall
+Cognitive researchers have found that trying to recall facts strengthens the relevant neural connections in our brain
+& thus, allows us to remember it for longer periods of time. This process is specifically called *Active Recall* & is proven to be more effective than passive studying[cite:@active_recall]. 
+
+*** Spaced Repitition
+Hermann Ebbinghaus, a German psychologist, concluded after extensive research
+that as time passes, our ability to rememeber a piece of information slowly decreases[cite:@spaced_repitition].
+He called this the forgetting curve.
+
+#+CAPTION:Ebbinghaus' forgetting curve 
+#+attr_latex: :height 200px
+#+attr_org: :height 200px
+[[file:diagrams/forgetting-curve.png]]
+
+Ebbinghaus discovered that performing Active Recall at increasing time intervals would increase memory retention & thus,
+counter the forgetting curve. This is termed as *Spaced Repitition*.
+#+CAPTION:Ebbinghaus' forgetting curve countered by Spaced Repition
+#+attr_latex: :height 200px
+#+attr_org: :height 200px
+[[file:../proposal/diagrams/forgetting-curve-spaced-repitition.png]]
+\FloatBarrier
+# use latex \graphics instead of file?
+
+*** SM-2 algorithm[cite:@sm_2]
+SuperMemo is a learning software that implements the afore-mentioned methods. It uses an underlying algorithm for
+calculating when the next repitition/ revision date for a flashcard should be. The algorithm differs across versions
+but the SM-2 algorithm is popular among other flashcard software. A slightly modified version of SM-2 (used in CardsQL)
+is described below. 
+
+While practicing flashcards, users can rate how well they were able to remember the answer.
+The rating/ quality of a review is represented by =Q=.
+
+#+CAPTION: Meanings of flashcard rating values
+|---+-----------+------------------------------|
+|   | rating(Q) | meaning                      |
+|---+-----------+------------------------------|
+| / |         < | <>                           |
+|   |         0 | Forgot                       |
+|   |         1 | Partially remembered         |
+|   |         2 | Remembered after some effort |
+|   |         3 | Remembered easily            |
+|---+-----------+------------------------------|
+
+SM-2 also tracks three properties for all cards: 
+
+- The repetition number =N=, which is the consecutive number of times the card has been successfully recalled
+  (meaning Q \ge 2).  Rating a card below 2 will thus reset =N= to 0.
+- The interval =I=, which is the number of days after which the card should be reviewed again (to negate the forgetting
+  curve). CardsQL sets next review date = previous review date(today) + =I=.
+- The easiness factor =EF=, which loosely indicates how "easy" the card is (More precisely, it determines how quickly the
+  interval grows). The initial value of =EF= for all cards is 2.5.
+
+  Due to the formula used, =EF= value should be ~>=1.3~ so that a card's review isn't scheduled too frequently and isn't too easy.
+  Similarly, it should be ~<=2.5~ so that it isn't scheduled so far into the future that we've forgotten the answer completely by then. 
+
+The main algorithm is as follows:
+#+BEGIN_SRC ruby
+  input:  user rating(Q)
+          repetition number(N)
+          easiness factor(EF)
+          interval(I)
+  output: updated values of N, EF, I
+
+  if Q >= 2 (i.e. correct response) then
+      if N = 0 then
+          I = 1
+      else if N = 1 then
+          I = 6
+      else
+          I = round(I × EF)
+      end if
+      increment n
+  else (incorrect response)
+      N = 0
+      I = 1
+  end if
+
+  EF = EF + (0.1 - (4 - Q) × (0.09 + (4 - Q) × 0.03))
+  if EF < 1.3 then
+      EF = 1.3
+  else if EF > 2.5 then
+      EF = 2.5
+  end if
+
+    return (N, EF, I)
+#+END_SRC
+
+When revising cards on a particular day, CardsQL will show you cards that are scheduled for that day or older(for overdue cards).
 ** Literature Review
 # review of similar projects 
+*** Study of existing system
+Two popular flashcard apps are:
+
+**** Quizlet
+***** Pros
+- pre-made flashcards for subjects
+- emphasis on mobile version UX which allows users to revise anytime, anywhere
+- utilize machine learning from anonymous user-data to create custom study plans for users
+***** Cons
+- free version has ads & lacks advanced features
+- can't be used offline on free version
+
+**** Anki
+***** Pros
+- Free & Open Source (FOSS)
+- supports sync between multiple devices
+- highly customizable with user-defined card types & community-made plugins
+***** Cons
+- complex from start
+- CardsQL should act as gateway/ intro to flashcards. can use Anki later
+- might have to spend a lot of time customizing the program, adding plugins, to get a great experience
 * System Analysis and Design
 ** System Analysis
 *** Requirement Analysis
-**** Functional requirements
-# illustrated using use-case diagram
-**** Non-functional requirements
+**** Functional requirements    
+
+Note: /As CardsQL is meant for personal use, it only has one type of user instead of admin, multiple users etc./
+***** User
+- can add different types of cards
+- can revise due cards
+- can revise cards regardless of due date (for pre-exam practice)
+- can edit text, type  & review date of existing cards
+- can reset review date for all cards
+**** Use Case diagram
+
+#+begin_src plantuml :file diagrams/use-case-diagram.svg
+  @startumL
+  skinparam 300 dpi
+  skinparam packageStyle rectangle
+  actor user as u
+  rectangle System {
+          (Create Cards) as (CC)
+          (Revise Cards) as (RC)
+          (Edit Cards) as (EC)
+          (Delete Cards) as (DC)
+          u -up- (CC)
+          u -up- (RC)
+          u -up- (EC)
+          (RC) .left.> (CC) :<<includes>>
+          (DC) .left.> (EC) :<<extends>>
+  }
+  @enduml
+#+end_src
+
+#+RESULTS:
+#+CAPTION: Use case diagram for CardsQL
+#+attr_latex: :width 400px
+#+attr_org: :width 400pX
+[[file:diagrams/use-case-diagram.svg]]
+
+\FloatBarrier
+
+#+begin_export latex
+  \clearpage 
+#+end_export
+**** Non-Functional requirements
+- offline access to all features 
+  achieved by hosting sql server & storing data on user's computer
+- simple to use;
+  1st thing user sees is just card creation interface
+- not have too many due cards (set maximum limit)
+- regular data backups
+  # sql has built-in backup command/ functionality
+  # option to clean up old backup files
 *** Feasibiliity Analysis
 # categorized into techincal, operational, economic, schedule
+# edit these
+**** Technical
+CardsQL is not too difficult to implement from a technical standpoint because it uses:
+
+- plain HTML, CSS for the front-end
+- basic JS, PHP for the busienss logic
+- SQLite, a lightweight RDBMS, for the database. It uses a database file on the user's computer so it negates the need for maintaining a server for users to connect to.
+**** Operational
+- Because of the serverless architecture, the app will work at all times after downloading it. Thus, there is no need to designate manpower to ensure the app stays operational after launch.
+- Users are sure to adopt the app as it is designed to be more convenient than paper flashcards. Anyone should be able to learn to use it, compared to other more advanced flashcard programs discussed in [[*Study of existing system][Study of existing system]]
+**** Economic
+CardsQl is viable from an economic standpoint as:
+
+- The project was willingly built by the devloper for free.
+- There are no additional costs for web hosting, server maintenance etc.
+- There were no development costs as the app was builton the developer's existing hardware & using freely-licensed tools. 
+- The app is distributed freely to help users so there is no potential profit or loss.
+#+begin_export latex
+  \clearpage 
+#+end_export
 *** Data Modeling
 # (E-R diagram)
 *** Proces Modeling(DFD)
@@ -147,4 +357,5 @@ Under the Supervision of
 # supervisor visit log sheets (lmaooooo)
 * References and Bibliography
 #+cite_export: csl ~/.emacs.d/packages/ieee.csl
+#+LATEX: \setlength{\parindent}{0cm}
 #+PRINT_BIBLIOGRAPHY:
