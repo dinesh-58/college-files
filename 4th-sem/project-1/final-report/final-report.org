@@ -180,10 +180,10 @@ counter the forgetting curve. This is termed as *Spaced Repitition*.
 [[file:../proposal/diagrams/forgetting-curve-spaced-repitition.png]]
 #+LATEX:\FloatBarrier
 
-*** SM-2 algorithm[cite:@sm_2]
+*** SM-2 algorithm
 SuperMemo is a learning software that implements the afore-mentioned methods. It uses an underlying algorithm for
 calculating when the next repitition/ revision date for a flashcard should be. The algorithm differs across versions
-but the SM-2 algorithm is popular among other flashcard software. A slightly modified version of SM-2 (used in CardsQL)
+but the SM-2 algorithm[cite:@sm_2] is popular among other flashcard software. A slightly modified version of SM-2 (used in CardsQL)
 is described below. 
 
 While practicing flashcards, users can rate how well they were able to remember the answer.
@@ -299,20 +299,21 @@ Two popular flashcard apps are:
 #+attr_org: :width 400pX
 [[file:diagrams/use-case-diagram.svg]]
 
-#+LATEX: \FloatBarrier
+#+LATEX:\FloatBarrier
 **** Non-Functional requirements
-- *offline access to all features*\\
+- *offline access to all features*
+  #+LATEX:\\
   /Achieved by hosting php server & storing data on user's computer/
-- *simple to use*\\
+- *simple to use*
+  #+LATEX:\\
   /First thing user sees is just card creation interface/
-- *User shouldn't have to review too many cards in a day*\\
+- *User shouldn't have to review too many cards in a day*
+  #+LATEX:\\
   /User can set daily card goal\/limit/
 # - regular data backups
   # sql has built-in backup command/ functionality
   # option to clean up old backup files
 *** Feasibiliity Analysis
-# categorized into techincal, operational, economic, schedule
-# edit these
 **** *Technical*
 \\
 CardsQL is not too difficult to implement from a technical standpoint because it uses:
@@ -323,11 +324,9 @@ CardsQL is not too difficult to implement from a technical standpoint because it
   so it negates the need for maintaining a server for users to connect to.
 #+LATEX: \clearpage
 **** *Operational*
-\\
 - Because of the self-hosted architecture, the app will work offline without needing to connect to a central server.
   Thus, there is no need to designate manpower to ensure the app stays operational after launch.
-- Users are sure to adopt the app as it is designed to be more convenient than paper flashcards.
-  Anyone should be able to learn to use it, compared to other more advanced flashcard programs discussed in
+- Users are sure to adopt the app as it is more convenient than paper flashcards, while still being easier to pick up and learn than the advanced programs discussed in
   *[[*Study of existing system][Study of existing system]]*
 **** *Economic*
 \\
@@ -343,10 +342,15 @@ CardsQl is viable from an economic standpoint as:
 # (E-R diagram)
 
 #+CAPTION: Entity-Relationship diagram for CardsQL
-#+attr_latex: :height 170px
-#+attr_org: :height 170px
+#+attr_latex: :height 150px
+#+attr_org: :height 150px
 [[file:diagrams/cardsql-er-diagram.svg]]
 *** Proces Modeling(DFD)
+#+CAPTION: Data Flow Diagram diagram for CardsQL
+#+attr_latex: :height 150px
+#+attr_org: :height 150px
+[[file:diagrams/cardsql-dfd.svg]]
+#+LATEX:\FloatBarrier
 ** System Design
 *** Architectural Design
 *** Database Schema Design 
