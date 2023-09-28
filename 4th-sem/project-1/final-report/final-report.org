@@ -13,6 +13,8 @@
 #+LATEX_HEADER: \usepackage{placeins}
 #+LATEX_HEADER: \usepackage{setspace}
 #+LATEX_HEADER: \usepackage{svg}
+#+LATEX_HEADER: \usepackage[acronym]{glossaries}
+#+LATEX_HEADER: \makeglossaries
 
 #+LaTeX_CLASS: article
 #+LATEX_HEADER: \AddToHook{cmd/section/before}{\clearpage}
@@ -44,7 +46,7 @@
 \textbf{\Large{Tribhuvan University \\Faculty of Humanities and Social Sciences\\}}
 \vfill
 
-\textbf{\Large{A Project report on: \\CardsQL \\- a flashcard revision/quiz app }}
+\textbf{\Large{A Project report on: \\CardsQL \\- A flashcard revision/quiz app }}
 \vfill
 
 \textbf{Submitted to: \\Department of Computer Application, \\ Himalaya College of Engineering, \\Chyasal,Lalitpur}
@@ -63,6 +65,25 @@ Under the Supervision of
 \end{large}
 \clearpage
 :end:
+:acronyms:
+#+BEGIN_EXPORT latex
+%% \newacronym{label}{abbreviation}{full form} 
+\newacronym{html}{HTML}{Hyper Text Markup Language}
+\newacronym{css}{CSS}{Cascading Style Sheets}
+\newacronym{crud}{CRUD}{Create, Read, Update, Delete}
+\newacronym{rdbms}{RDBMS}{Relational Database Management System}
+\newacronym{case}{CASE}{Computer Aided Software Engineering}
+\newacronym{sql}{SQL}{Structured Query Language}
+\newacronym{http}{HTTP}{Hyper Text Transfer Protocol}
+
+
+%% list of acronyms is created right before introduction
+%%%% usage options:
+% \acrlong{label}    
+% \acrshort{label}
+% \acrfull{label}   => prints both short & long form
+#+END_EXPORT
+:end:
 * COMMENT TODOS
 - [ ] use svg outputs
 - [ ] when creating or making changes to plantuml blocks, execute it to generate output file
@@ -70,6 +91,7 @@ Under the Supervision of
 - [X] bibliography using =./bibliography.bib= file
 - [X] fix padding for references after 1st reference
 - [ ] ask Himal sir about differences between Abstract & intro
+- [ ] search for "TODO" or "COMMENT" in this doc
 * COMMENT Certificate Page
 # this has specific format. write in libreOffice & print separately?
 # or maybe there's a way to include pdfs while exporting
@@ -104,9 +126,13 @@ CardsQL implements this in an easy-to-use web interface with some additional qua
 \onehalfspacing
 \listoffigures
 \listoftables
-\pagenumbering{arabic}
+\printglossaries
+\printglossary[type=\acronymtype,title=Acronyms]
+
+% \printglossaries[type=\acronymtype]
 #+END_EXPORT
 * Introduction
+#+LATEX:\pagenumbering{arabic}
 ** Introduction
 Flashcards are a simple way for students to revise topics. On a piece of paper, we write a question on one side
 and then the answer on the next. The following is an example of what a flashcard might look like:
@@ -303,13 +329,13 @@ Two popular flashcard apps are:
 **** Non-Functional requirements
 - *offline access to all features*
   #+LATEX:\\
-  /Achieved by hosting php server & storing data on user's computer/
+  /Achieved by hosting php server & storing data both on user's computer/
 - *simple to use*
   #+LATEX:\\
   /First thing user sees is just card creation interface/
 - *User shouldn't have to review too many cards in a day*
   #+LATEX:\\
-  /User can set daily card goal\/limit/
+  /User can set daily card goal/limit/
 # - regular data backups
   # sql has built-in backup command/ functionality
   # option to clean up old backup files
@@ -323,6 +349,7 @@ CardsQL is not too difficult to implement from a technical standpoint because it
 - SQLite, a lightweight RDBMS, for the database. It uses a single database file on the user's computer
   so it negates the need for maintaining a server for users to connect to.
 #+LATEX: \clearpage
+***** COMMENT similar stuff is written in Tools USed. differentiate here?
 **** *Operational*
 - Because of the self-hosted architecture, the app will work offline without needing to connect to a central server.
   Thus, there is no need to designate manpower to ensure the app stays operational after launch.
@@ -353,16 +380,91 @@ CardsQl is viable from an economic standpoint as:
 #+LATEX:\FloatBarrier
 ** System Design
 *** Architectural Design
+#+CAPTION: Architectural design for CardsQL
+#+attr_latex: :height 200px
+#+attr_org: :height 200px
+[[file:diagrams/cardsql-architecture-design.svg]]
+
 *** Database Schema Design 
+*Note*: /In SQLite, =text= and =varchar= data type are the same and allocate space according to value's lenght. =real= data tpye refers to floating-point numbers/
+#+begin_src plantuml :file diagrams/database-schema.svg 
+@startuml
+entity "cards" {
+  {static} *id : int <<primary>>
+  *front : text
+  *back : text
+  *direction : int
+  *successfulRevisions: int 
+  *easeFactor: real  
+  *interval: int
+  *scheduledDate: text 
+}
+@enduml
+#+end_src
+
+#+RESULTS:
+#+CAPTION: Database schema for CardsQL
+#+attr_latex: :height 200px
+#+attr_org: :height 200px
+[[file:diagrams/database-schema.svg]]
+#+LATEX: \FloatBarrier
+
 *** Interface Design
 # (UI Interface/ Interface Structure Diagrams)
+Due to the app's simple nature, User Interface(UI) designs were not made beforehand. Styling was decided on during
+development, and applied after implementing correct business logic.
 *** Physical DFD
+The following Data Flow Diagram goes more in-depth than the previous diagram, and reflects how some processes are
+performed/implemented technically.
+#+CAPTION: Physical DFD for CardsQL
+#+attr_latex: :height 210px
+#+attr_org: :height 210px
+[[file:diagrams/cardsql-physical-dfd.svg]]
+#+LATEX:\FloatBarrier
 * Implementation and Testing
 ** Implementation
 *** Tools Used
 # (CASE tools, Programming languages, Database )
+The following Computer Aided Software Engineering(CASE) tools were used during the project's development:
+**** Presentation layer
+- HTML was used for structuring the webpage and its contents.
+- Plain CSS, i.e. without any frameworks, was used for appplying styling and decorations.
+**** Logic layer
+- JavaScript is used for client-side interactivity & DOM manipulation such as showing card answer only when button is
+  clicked, populating edit dialog's values according to selected card etc.
+- PHP is used for server-side scripting, i.e., mainly for performing \acrfull{crud} operations on the database.   
+  Installing the language also allows us to use its basic, local web server, which is suitable for running CardsQL. 
+  This was used during development instead of dedicated server software like Apache.
+**** Data layer:
+- SQLite is a lightweight \acrfull{rdbms}  used for our database purposes.
+  It uses a single database file on the user's computer so it negates the need for maintaining an SQL server.
+**** Miscellaneous:
+- Git was used for version control, while Github served as a remote backup for the code.
 *** Implementation Details of Modules
+The different possible actions and how they are implemented are as follows:
 # (Description of procedures/ functions)
+**** *Add flashcards*
+\\
+The homepage allows a user to add a new flashcard by specifying the text contents of its front and back side in an html
+form. Upon submitting the form, the contents are sent to the web server using an \acrfull{http} request.
+PHP code intercepts it and inserts a new row in the database table. Each row in the table represents a flashcard.
+Metadata values for newly created card such as the =Interval, EaseFactor= are set using default constraints defined
+in the table schema.
+
+**** *Review flashcards*
+\\
+In the review page, php code retrieves flashcards that have a due date of today or older, one at a time. Only the
+question(content of front side) is shown first and the user is prompted to recall the answer. They can press a button
+to show the correct answer and rate how well they remembered it on a scale of 0 to 3. The rating is sent to the web
+server and php code uses it to update the card's metadata using the =SM-2= algorithm discussed previously. This process
+continues until no due cards are left.
+
+**** *Edit flashcards*
+\\
+The edit page initially shows a table of all the cards in the database. Clicking on a row will bring up a modal dialog 
+for editing the selected card. The dialog has a form whose values are populated with the selected card using javascript.
+Confirming edits will submit the form and php code will execute =UPDATE= SQL statement on the database accordingly.
+The dialog also has a delete button which will tell php to execute a =DELETE= SQL statement instead.
 ** Testing
 *** Test cases for Unit Testing
 *** Test cases for System Testing
