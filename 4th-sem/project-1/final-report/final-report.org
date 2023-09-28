@@ -466,8 +466,23 @@ for editing the selected card. The dialog has a form whose values are populated 
 Confirming edits will submit the form and php code will execute =UPDATE= SQL statement on the database accordingly.
 The dialog also has a delete button which will tell php to execute a =DELETE= SQL statement instead.
 ** Testing
-*** Test cases for Unit Testing
-*** Test cases for System Testing
+*** Test cases for Unit(Manual) Testing
+The test cases and how they were implemented programatically are as follows:
+
+- User shouldn't leave either side of card empty while creating. Implemented with =required= attribute in HTML form and
+  =NOT NULL= constraint in dtabase schema.
+
+- While reviewing a cards, rating value should be between 0 and 3. Implemented by having form inputs with only this
+  set of values. In case its value is somehow outside that range, the follwing php code is put in place to keep it inside
+  the 0-3 range.
+  #+begin_src php
+    $rating = $rating < 0 ? 0 : ($rating > 3 ? 3 : $rating);
+  #+end_src
+  If rating is below, it's set to 0 and if it is above 3 it's set to 3.
+
+- =EaseFactor= should similarly stay between 1.3 and 2.5 for most effectivenes, according to the algorithm. Code similar
+  to above is used to keep this value in check.
+  
 * Conclusion and Future Recommendation
 ** Lesson learnt/ Outcome
 ** Conclusion
