@@ -1,4 +1,3 @@
-# try wrapping latex code in export blocks or #+LATEX: if export to odt fails?
 :LATEX_SETTINGS:
 #+EXPORT_FILE_NAME: bca-sujal-gurung-34-project1-report
 #+BIBLIOGRAPHY: bibliography.bib
@@ -155,6 +154,7 @@ CardsQL would be appropriate for the following types of users:
 - Currently, all flashcards are stored in a single table in the database. This may become unorganized after a large number
   of cards are added.
 ** TODO Report Organization
+# summary of each following chapter and its contents
 * Background Study and Literature Review
 ** Background Study
 # description of fundamental theories, general concepts, terminologies related to the project
@@ -178,8 +178,7 @@ counter the forgetting curve. This is termed as *Spaced Repitition*.
 #+attr_latex: :height 200px
 #+attr_org: :height 200px
 [[file:../proposal/diagrams/forgetting-curve-spaced-repitition.png]]
-\FloatBarrier
-# use latex \graphics instead of file?
+#+LATEX:\FloatBarrier
 
 *** SM-2 algorithm[cite:@sm_2]
 SuperMemo is a learning software that implements the afore-mentioned methods. It uses an underlying algorithm for
@@ -314,20 +313,24 @@ Two popular flashcard apps are:
 *** Feasibiliity Analysis
 # categorized into techincal, operational, economic, schedule
 # edit these
-**** Technical
+**** *Technical*
+\\
 CardsQL is not too difficult to implement from a technical standpoint because it uses:
 
 - plain HTML, CSS for the front-end
-- basic JS, PHP for the busienss logic
+- basic JavaScript and PHP for the busienss logic
 - SQLite, a lightweight RDBMS, for the database. It uses a single database file on the user's computer
   so it negates the need for maintaining a server for users to connect to.
-**** Operational
-- Because of the self-hosted architecture, the app will work at all times after downloading it.
+#+LATEX: \clearpage
+**** *Operational*
+\\
+- Because of the self-hosted architecture, the app will work offline without needing to connect to a central server.
   Thus, there is no need to designate manpower to ensure the app stays operational after launch.
 - Users are sure to adopt the app as it is designed to be more convenient than paper flashcards.
   Anyone should be able to learn to use it, compared to other more advanced flashcard programs discussed in
-  [[*Study of existing system][Study of existing system]]
-**** Economic
+  *[[*Study of existing system][Study of existing system]]*
+**** *Economic*
+\\
 CardsQl is viable from an economic standpoint as:
 
 - There are no additional costs for web hosting, server maintenance etc.
@@ -335,7 +338,14 @@ CardsQl is viable from an economic standpoint as:
 - The app is distributed freely to help users & doesn't have any profit incentives.
 
 *** Data Modeling
+*Note:* /The database is only used for storing cards along with their metadata. As it is meant to be used by a single-user
+, there is no need to implement or store login credentials./
 # (E-R diagram)
+
+#+CAPTION: Entity-Relationship diagram for CardsQL
+#+attr_latex: :height 170px
+#+attr_org: :height 170px
+[[file:diagrams/cardsql-er-diagram.svg]]
 *** Proces Modeling(DFD)
 ** System Design
 *** Architectural Design
