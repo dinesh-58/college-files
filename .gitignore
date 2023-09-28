@@ -32,8 +32,9 @@ replay_pid*
 4th-sem/dbms/lab-reports/**/*.pdf
 4th-sem/numerical-methods/lab/report/**/*.pdf
 4th-sem/4th-sem-internal-exams-plan.ods
-**/ltximg/
 
-### org backup files ###
+### org backup & exported files ###
 **/*.org~
+**/ltximg/
 **/_minted-*/
+**/svg-inkscape
