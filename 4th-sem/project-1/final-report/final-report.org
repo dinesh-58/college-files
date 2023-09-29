@@ -15,6 +15,8 @@
 #+LATEX_HEADER: \usepackage{svg}
 #+LATEX_HEADER: \usepackage[acronym]{glossaries}
 #+LATEX_HEADER: \makeglossaries
+#+LaTeX_HEADER: \usepackage{pdfpages}
+
 
 #+LaTeX_CLASS: article
 #+LATEX_HEADER: \AddToHook{cmd/section/before}{\clearpage}
@@ -46,7 +48,7 @@
 \textbf{\Large{Tribhuvan University \\Faculty of Humanities and Social Sciences\\}}
 \vfill
 
-\textbf{\Large{A Project report on: \\CardsQL \\- A flashcard revision/quiz app }}
+\textbf{\Large{A Project report on: \\CardsQL \\- A flashcard revision/quiz web-app }}
 \vfill
 
 \textbf{Submitted to: \\Department of Computer Application, \\ Himalaya College of Engineering, \\Chyasal,Lalitpur}
@@ -58,7 +60,7 @@
 \vfill
 
 Under the Supervision of
-\textbf{<Supervisor name>}
+\textbf{\\Er. Himal Chand Thapa}
 
 \makeatother
 \end{titlepage}
@@ -75,6 +77,8 @@ Under the Supervision of
 \newacronym{case}{CASE}{Computer Aided Software Engineering}
 \newacronym{sql}{SQL}{Structured Query Language}
 \newacronym{http}{HTTP}{Hyper Text Transfer Protocol}
+\newacronym{sdlc}{SDLC}{Software Development Life Cycle}
+\newacronym{mvp}{MVP}{Minimum Viable Product}
 
 
 %% list of acronyms is created right before introduction
@@ -84,22 +88,13 @@ Under the Supervision of
 % \acrfull{label}   => prints both short & long form
 #+END_EXPORT
 :end:
-* COMMENT TODOS
-- [ ] use svg outputs
-- [ ] when creating or making changes to plantuml blocks, execute it to generate output file
-  - [ ] don't execute blocks when exporting entire file though
-- [X] bibliography using =./bibliography.bib= file
-- [X] fix padding for references after 1st reference
-- [ ] ask Himal sir about differences between Abstract & intro
-- [ ] search for "TODO" or "COMMENT" in this doc
-* COMMENT Certificate Page
-# this has specific format. write in libreOffice & print separately?
-# or maybe there's a way to include pdfs while exporting
-# use this [[https://old.reddit.com/r/orgmode/comments/meuqtb/attaching_pdfs_in_a_org_mode_document/gsk3z1y/][link]]
-** Supervisor recommendation
-\clearpage
-** Internal and External Examiners' Approval Letter
-\clearpage
+
+:todos:
+# - [ ] ask Himal sir about differences between Abstract & intro
+# - [ ] search for "TODO" or "COMMENT" in this doc
+:end:
+
+#+LATEX: \includepdf[pages=-,pagecommand={}]{project-sign-certificates.pdf}
 * Abstract
 :PROPERTIES:
 :UNNUMBERED: t
@@ -119,6 +114,11 @@ CardsQL implements this in an easy-to-use web interface with some additional qua
 :PROPERTIES:
 :UNNUMBERED: t
 :END:
+
+I am grateful to the Department of Computer Application at Himalaya College and Tribhuvan University for giving me the
+opportunity to work on this project as a partial fulfillment of my Bachelors studies. Special thanks go to some of my friends
+and seniors for assisting me in my times of need. Lastly, I would like to extend my gratitude towards our project Supervisor,
+Coordinator and Examiners for taking the time to go through my work, evaluating it and providing feedback.
 
 #+begin_export latex
 \singlespacing
@@ -179,10 +179,27 @@ CardsQL would be appropriate for the following types of users:
 - Databse backups haven't been implemented due to time constraints.
 - Currently, all flashcards are stored in a single table in the database. This may become unorganized after a large number
   of cards are added.
-** TODO Report Organization
+** Report Organization
 # summary of each following chapter and its contents
+The project is explained across 5 major chapters in this report (excluding the *Appendix* and *References* at the end).
+This section is part of [[*Introduction][_Chapter 1_]], which serves as an introduction to the project.
+
+[[*Background Study and Literature Review][_Chapter 2_]] describes
+some theories, scientific concepts, and an algorithm related to the project. It also includes an analysis of two similar
+existing products. 
+
+[[*System Analysis and Design][_Chapter 3_]] goes through the results of the initial planning and design phase of the project, such as identifying
+requirements and figuring out various designs for making CardsQL work.
+
+[[*Implementation and Testing][_Chapter 4_]] similarly describes how the plans were implemented and briefly goes through the inner workings of the project.
+It also lists some test measures put in place to ensure that the application works smoothly and users don't face any
+hindrances.
+
+[[*Conclusion and Future Recommendation][_Chapter 5_]] concludes this report, talking about the objectives it meets and future improvements that can be made.
+
 * Background Study and Literature Review
 ** Background Study
+# - [ ] describe flashcards here instead of intro?
 # description of fundamental theories, general concepts, terminologies related to the project
 *** Active Recall
 Cognitive researchers have found that trying to recall facts strengthens the relevant neural connections in our brain
@@ -333,9 +350,12 @@ Two popular flashcard apps are:
 - *simple to use*
   #+LATEX:\\
   /First thing user sees is just card creation interface/
-- *User shouldn't have to review too many cards in a day*
+- *Abstraction: User shouldn't have to understand how the algorithm works, or how cards are stored*
   #+LATEX:\\
-  /User can set daily card goal/limit/
+  /Achieved by providing simple, intuitive GUI for all actions user should be able to do/
+# - *User shouldn't have to review too many cards in a day*
+  # #+LATEX:\\
+  # /User can set daily card goal/limit/
 # - regular data backups
   # sql has built-in backup command/ functionality
   # option to clean up old backup files
@@ -485,12 +505,38 @@ The test cases and how they were implemented programatically are as follows:
   
 * Conclusion and Future Recommendation
 ** Lesson learnt/ Outcome
+From completing this project, I deepened my knowledge of HTML, CSS, Javascript and PHP languages. Some of the language
+features I learned were native =<dialog>= elements in HTML, using =PDO= for connecting with any type of database in PHP, etc.
+This knowledge will no doubt be useful for a long time in my career. Mainly, I experienced the process of turning a project
+idea into a \acrlong{mvp} and all the associated \acrfull{sdlc} phases. This gave me a small taste of how real-world
+projects are worked upon and will surely help me in my career.
 ** Conclusion
+Thus, I believe CardsQl has met the following goals it set out to achieve:
+
+- Provide a simple introduction to using flashcards, active recall & spaced repititon for learning
+- Eliminate the need to constantly read or make notes on the same topics
+- Help make studying an effortless, daily habit
+
+I hope that students and other learners can study effectively through CardsQL and be able to retain what they learn for longer periods of time.
 ** Future recommendation
-* Apendix
+Some improvements that can be made to CardsQL are:
+
+- Add different types of cards like fill in the blanks(cloze) and list with multiple answers
+- Setting direction in which to show a card:\\
+  By default, the question is asked first and then the answer is shown. Some flashcard software allow setting different
+  directions like backwards direction, where, for example: a term's definition may be shown and the user has to remember the
+  term. This provides a new way to test our knowledge.
+
+  Currently, users can specify direction while creating cards, but it hasn't been implemented in the review page.
+- Allow grouping cards by subject or topic
+- Create tutorial or documentation for users to understand how to use it.
+- Allow setting daily target/limit so that users are motivated to at least meet the target as well as not be overwhelmed
+  with too many cards in a day.
+   
+* COMMENT Apendix
 # screenshots
 # supervisor visit log sheets (lmaooooo)
-* References and Bibliography
+* References 
 #+cite_export: csl ~/.emacs.d/packages/ieee.csl
 #+LATEX: \setlength{\parindent}{0cm}
 #+PRINT_BIBLIOGRAPHY:
