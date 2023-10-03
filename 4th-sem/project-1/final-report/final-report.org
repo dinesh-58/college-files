@@ -5,7 +5,7 @@
 #+LATEX_HEADER: \graphicspath{{/home/sujal/programming/college-files/assets/images/}}
 
 #+BIBLIOGRAPHY: bibliography.bib
-#+OPTIONS: toc:nil
+#+OPTIONS: toc:nil tasks:nil
 #+LATEX_HEADER: \author{Sujal Gurung 6-2-378-82-2020}
 #+LATEX_HEADER: \date{\today}
 
@@ -89,11 +89,6 @@ Under the Supervision of
 #+END_EXPORT
 :end:
 
-:todos:
-# - [ ] ask Himal sir about differences between Abstract & intro
-# - [ ] search for "TODO" or "COMMENT" in this doc
-:end:
-
 #+LATEX: \includepdf[pages=-,pagecommand={}]{project-sign-certificates.pdf}
 * Abstract
 :PROPERTIES:
@@ -135,15 +130,28 @@ Coordinator and Examiners for taking the time to go through my work, evaluating 
 #+LATEX:\pagenumbering{arabic}
 ** Introduction
 Flashcards are a simple way for students to revise topics. On a piece of paper, we write a question on one side
-and then the answer on the next. The following is an example of what a flashcard might look like:
+and then the answer on the next side. The following is an example of what a flashcard might look like:
 
 #+CAPTION:Example Flashcard
 [[file:../proposal/diagrams/flashcard-example.png]]
 
-
 To utilize this flashcard, we would read the question & try to remember the answer.
-Then, flip the card over & see how well we remembered it.
+Then, we flip the card over & see how well we remembered it.
 CardsQL is a web app that digitises this technique. The name is derived from a combination of Flashcards & SQL.
+It allows you to create cards by entering the text on the front side (usually, the question) and the text on the back(the
+answer). Each card is stored in a database along with some metadata. Users can then practice/review created cards, where
+CardsQL will show only the question at first and prompt the user to remember the answer. After attempting to remember it,
+users can press a button to reveal the answer.
+
+Users can then rate how well they remembered it, and this rating is sent to an algorithm to decide when the card should
+be reviewed again. This algorithm, along with a few scientific theories related to making such a revision technique
+effective, is discussed in [[*Background Study and Literature Review][_Chapter 2_]]. Thus, instead of re-reading the same study materials, users can just create 
+cards once and study them regularly, while retaining that knowledge for much longer. The proof for flashcarcds allowing
+for longer memory retention is also discussed in that chapter.
+
+CardsQL maintains review dates for cards so there is no need to study every card everyday. It sets revie date such that
+when we revise a card on that day, it isn't too hard nor is it too easy. As such, users olny need to use CardsQL a little
+bit every day to revise effectively.
 
 ** Problem Statement
 + *inefficient traditional studying techniques*
@@ -159,11 +167,11 @@ CardsQL is a web app that digitises this technique. The name is derived from a c
     If we forget to do so, then keeping track of overdue cards adds another layer of unneeded complexity.
 
 ** Objectives
-- provide as easy of an entry point to flashcard programs by keeping things simple 
-- provide intuitive interface so that user doesn't have to understand how the system works in order to utilize it
-- automate scheduling of next review. Users just have to use it & practice flashcards regularly.
-- allow editing creadted cards' contents & review date
-# - allow creating different types of flashcards & categorizing them by subject/ tag
+- *Provide a simple entry point to flashcard programs.* This can be done by implementing an intuitive interface
+  so that user doesn't have to understand how the system works in order to utilize it.
+- *Promote regular study habit among students by making it effortless and quick to do.*
+- *Improve rate of retaining studied knowledge among users*
+
 ** Scope and Limitaiton
 *** Scope
 CardsQL would be appropriate for the following types of users:
@@ -181,20 +189,20 @@ CardsQL would be appropriate for the following types of users:
   of cards are added.
 ** Report Organization
 # summary of each following chapter and its contents
-The project is explained across 5 major chapters in this report (excluding the *Appendix* and *References* at the end).
-This section is part of [[*Introduction][_Chapter 1_]], which serves as an introduction to the project.
-
-[[*Background Study and Literature Review][_Chapter 2_]] describes
-some theories, scientific concepts, and an algorithm related to the project. It also includes an analysis of two similar
-existing products. 
+The project is explained across 5 major chapters in this report.
+This section is part of [[*Introduction][_Chapter 1_]], which serves as an introduction to the project. It explains what CardsQl basically
+does and the probelsm it sets out to achieve. The chapter also talks about suitable users for CardsQL and some of its
+current limitations to get a better understanding of the project.
+[[*Background Study and Literature Review][_Chapter 2_]] describes some theories, scientific concepts, and an algorithm related to the project. These provide a
+scientific basis for the effectiveness of CardsQL in enhancing learning. It also includes an analysis of two similar
+existing products, and lists out their advantages and disadvantages that differ it from this project. 
 
 [[*System Analysis and Design][_Chapter 3_]] goes through the results of the initial planning and design phase of the project, such as identifying
-requirements and figuring out various designs for making CardsQL work.
-
+requirements and figuring out various designs for making CardsQL work. These phases were carried out before starting
+development on the project so that development would go smoothly later.
 [[*Implementation and Testing][_Chapter 4_]] similarly describes how the plans were implemented and briefly goes through the inner workings of the project.
 It also lists some test measures put in place to ensure that the application works smoothly and users don't face any
 hindrances.
-
 [[*Conclusion and Future Recommendation][_Chapter 5_]] concludes this report, talking about the objectives it meets and future improvements that can be made.
 
 * Background Study and Literature Review
@@ -208,7 +216,7 @@ Cognitive researchers have found that trying to recall facts strengthens the rel
 *** Spaced Repitition
 Hermann Ebbinghaus, a German psychologist, concluded after extensive research
 that as time passes, our ability to rememeber a piece of information slowly decreases[cite:@spaced_repitition].
-He called this the forgetting curve.
+He called this the forgetting curve[cite:@spaced_repitition].
 
 #+CAPTION:Ebbinghaus' forgetting curve 
 #+attr_latex: :height 200px
@@ -216,7 +224,7 @@ He called this the forgetting curve.
 [[file:diagrams/forgetting-curve.png]]
 
 Ebbinghaus discovered that performing Active Recall at increasing time intervals would increase memory retention & thus,
-counter the forgetting curve. This is termed as *Spaced Repitition*.
+counter the forgetting curve. This is termed as *Spaced Repitition*[cite:@spaced_repitition].
 #+CAPTION:Ebbinghaus' forgetting curve countered by Spaced Repition
 #+attr_latex: :height 200px
 #+attr_org: :height 200px
@@ -279,9 +287,28 @@ The main algorithm is as follows:
   return (N, EF, I)
 #+END_SRC
 
-When revising cards on a particular day, CardsQL will show you cards that are scheduled for that day or older(for overdue cards).
+These properties of a card are considered as that card's *metadata* and are stored alongside the card's contents in the
+database. When revising cards on a particular day, CardsQL will show you cards that are scheduled for that day or
+older(for overdue cards).
 ** Literature Review
 # review of similar projects 
+In a study from 2011[cite:@study_2011], researchers divided students into four distinct groups, each responsible for
+studying the same study materials and subsequently undergoing assessments to test their understanding.
+The study instructed each group to study in different ways as follows:
+
+1. The first group was tasked with a single reading of the material.
+2. The second group was required to read the material *four* times.
+3. The third group was instructed to read the material and then create a mind map.
+4. The fourth group was directed to read the material *once* and then recall as much information as possible.
+
+Both in the verbatim test (/where participants were asked to recall facts/), and the inference test
+(/designed to test understanding of concepts/), the active recall group exhibited notably superior
+performance compared to the other groups.
+
+The results show that just testing ourselves once on what we learned yields better results than studying something
+four times, while also taking far less time to do so. This also proves the previously discussed scientific concepts.
+Thus, testing ourselves using flashcards is a far more effective way to study.
+
 *** Study of existing system
 Two popular flashcard apps are:
 
@@ -322,7 +349,7 @@ Two popular flashcard apps are:
   skinparam 300 dpi
   skinparam packageStyle rectangle
   actor user as u
-  rectangle System {
+  rectangle CardsQL {
           (Create Cards) as (CC)
           (Revise Cards) as (RC)
           (Edit Cards) as (EC)
@@ -359,6 +386,7 @@ Two popular flashcard apps are:
 # - regular data backups
   # sql has built-in backup command/ functionality
   # option to clean up old backup files
+***** TODO explain a bit more for each of these? JPT lekhdeu. Buda harulai paragraph chaiyo re
 *** Feasibiliity Analysis
 **** *Technical*
 \\
@@ -366,15 +394,18 @@ CardsQL is not too difficult to implement from a technical standpoint because it
 
 - plain HTML, CSS for the front-end
 - basic JavaScript and PHP for the busienss logic
-- SQLite, a lightweight RDBMS, for the database. It uses a single database file on the user's computer
-  so it negates the need for maintaining a server for users to connect to.
+
+As there aren't any heavy web frameworks used, the application can easily run in the browser on even weak computers.
+A lightweight way for hosting a local web server is using php's built in =-S= command line flag. SQLite, the RDBMS
+used by CardsQL, also only requires a single a single database file on the user's computer so it negates the need
+for maintaining a server for users to connect to. 
+
 #+LATEX: \clearpage
-***** COMMENT similar stuff is written in Tools USed. differentiate here?
 **** *Operational*
 - Because of the self-hosted architecture, the app will work offline without needing to connect to a central server.
   Thus, there is no need to designate manpower to ensure the app stays operational after launch.
 - Users are sure to adopt the app as it is more convenient than paper flashcards, while still being easier to pick up and learn than the advanced programs discussed in
-  *[[*Study of existing system][Study of existing system]]*
+  *[[*Study of existing system][_Study of existing system_]]*
 **** *Economic*
 \\
 CardsQl is viable from an economic standpoint as:
@@ -389,15 +420,27 @@ CardsQl is viable from an economic standpoint as:
 # (E-R diagram)
 
 #+CAPTION: Entity-Relationship diagram for CardsQL
-#+attr_latex: :height 150px
-#+attr_org: :height 150px
+#+attr_latex: :height 130px
+#+attr_org: :height 130px
 [[file:diagrams/cardsql-er-diagram.svg]]
 *** Proces Modeling(DFD)
-#+CAPTION: Data Flow Diagram diagram for CardsQL
+The following Level 0 Data Flow Diagram/ Context Level Diagram shows a very abstract, simplified overview of CardsQL.
+There is only one external actor/ type of user. They can send data to the system by adding new cards or editing
+existing ones. Card data can be retrieved from the system and shown to the user when editing or practicing cards.
+#+CAPTION: Context Level diagram for CardsQL
+#+attr_latex: :height 110px
+#+attr_org: :height 110px
+[[file:diagrams/cardsql-context-dfd.svg]]
+#+LATEX:\FloatBarrier
+
+The Level 1 DFD below expands on the previous diagram by breaking down the system into a series of processes and data
+stores. It also shows how data flows between processes, data stores and users.
+#+CAPTION: Level 1 Data Flow Diagram for CardsQL
 #+attr_latex: :height 150px
 #+attr_org: :height 150px
 [[file:diagrams/cardsql-dfd.svg]]
 #+LATEX:\FloatBarrier
+
 ** System Design
 *** Architectural Design
 #+CAPTION: Architectural design for CardsQL
@@ -406,7 +449,7 @@ CardsQl is viable from an economic standpoint as:
 [[file:diagrams/cardsql-architecture-design.svg]]
 
 *** Database Schema Design 
-*Note*: /In SQLite, =text= and =varchar= data type are the same and allocate space according to value's lenght. =real= data tpye refers to floating-point numbers/
+*Note*: /In SQLite, =text= and =varchar= data type are the same and allocate space according to value's length. =real= data tpye refers to floating-point numbers/
 #+begin_src plantuml :file diagrams/database-schema.svg 
 @startuml
 entity "cards" {
@@ -435,12 +478,17 @@ Due to the app's simple nature, User Interface(UI) designs were not made beforeh
 development, and applied after implementing correct business logic.
 *** Physical DFD
 The following Data Flow Diagram goes more in-depth than the previous diagram, and reflects how some processes are
-performed/implemented technically.
+performed/implemented technically. The user will only see simple, easy to use forms and tables for submitting data.
+This data is sent to the local web server through HTTP requests and parsed by PHP code to perform operations accordingly.
+These operations may include inserting new cards, updating a card's text contents or metadata. All of these involve
+executing SQL queries on the database using submitted data. This is also done with PHP code that runs on the server.
+
 #+CAPTION: Physical DFD for CardsQL
 #+attr_latex: :height 210px
 #+attr_org: :height 210px
 [[file:diagrams/cardsql-physical-dfd.svg]]
 #+LATEX:\FloatBarrier
+
 * Implementation and Testing
 ** Implementation
 *** Tools Used
@@ -487,22 +535,27 @@ Confirming edits will submit the form and php code will execute =UPDATE= SQL sta
 The dialog also has a delete button which will tell php to execute a =DELETE= SQL statement instead.
 ** Testing
 *** Test cases for Unit(Manual) Testing
-The test cases and how they were implemented programatically are as follows:
 
-- User shouldn't leave either side of card empty while creating. Implemented with =required= attribute in HTML form and
-  =NOT NULL= constraint in dtabase schema.
+#+CAPTION: Unit test cases for CardsQL
+|---+------+----------------------------------------------------------------------------+--------|
+|   | S.N. | Test case                                                                  | Result |
+|---+------+----------------------------------------------------------------------------+--------|
+| / |    < | <>                                                                         | <>     |
+|   |    1 | Text fields shouldn't be empty while creating cards                        | Pass   |
+|   |    2 | While practicing cards, 0 \le =rating value= \le 3                             | Pass   |
+|   |    3 | 1.3 \leq =EaseFactor= \leq 2.5 for most effectivenes, according to the algorithm | Pass   |
+|---+------+----------------------------------------------------------------------------+--------|
 
-- While reviewing a cards, rating value should be between 0 and 3. Implemented by having form inputs with only this
-  set of values. In case its value is somehow outside that range, the follwing php code is put in place to keep it inside
-  the 0-3 range.
+The test cases are successfull because of the following measures put in place during development: 
+
+- Test 1 is successfull because of =required= attribute in HTML form and =NOT NULL= constraint in dtabase schema.
+- For Test 2, form for submitting rating only has inputs with specified set of values(0-3). In case its value is
+  somehow outside that range, the follwing php code is put in place to keep it inside the 0-3 range:
   #+begin_src php
     $rating = $rating < 0 ? 0 : ($rating > 3 ? 3 : $rating);
   #+end_src
   If rating is below, it's set to 0 and if it is above 3 it's set to 3.
-
-- =EaseFactor= should similarly stay between 1.3 and 2.5 for most effectivenes, according to the algorithm. Code similar
-  to above is used to keep this value in check.
-  
+- For Test 3, code similar to above is used to keep =EaseFactor= value in check.
 * Conclusion and Future Recommendation
 ** Lesson learnt/ Outcome
 From completing this project, I deepened my knowledge of HTML, CSS, Javascript and PHP languages. Some of the language
@@ -518,6 +571,7 @@ Thus, I believe CardsQl has met the following goals it set out to achieve:
 - Help make studying an effortless, daily habit
 
 I hope that students and other learners can study effectively through CardsQL and be able to retain what they learn for longer periods of time.
+*** TODO make this into paragraph, alik guff hana
 ** Future recommendation
 Some improvements that can be made to CardsQL are:
 
@@ -532,10 +586,25 @@ Some improvements that can be made to CardsQL are:
 - Create tutorial or documentation for users to understand how to use it.
 - Allow setting daily target/limit so that users are motivated to at least meet the target as well as not be overwhelmed
   with too many cards in a day.
-   
-* COMMENT Apendix
-# screenshots
-# supervisor visit log sheets (lmaooooo)
+* Apendix
+** Screenshots
+#+CAPTION: Interface for adding new cards
+[[file:screenshots/add.png]]
+# +attr_latex: :height 210px
+# +attr_org: :height 210px
+# +LATEX:\FloatBarrier
+
+#+CAPTION: Initial interface while practicing cards
+[[file:screenshots/review-before.png]]
+
+#+CAPTION: Interface for rating how well you remembered a card's answer
+[[file:screenshots/review-after.png]]
+
+#+CAPTION: Initial interface for selecting a card to edit 
+[[file:screenshots/edit-before.png]]
+
+#+CAPTION: Interface for editing a card 
+[[file:screenshots/edit-after.png]]
 * References 
 #+cite_export: csl ~/.emacs.d/packages/ieee.csl
 #+LATEX: \setlength{\parindent}{0cm}
