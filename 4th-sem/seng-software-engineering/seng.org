@@ -1,0 +1,175 @@
+* seng1: Intro
+** define
+program + documentation & operating procedure
+* seng2: Software Development Process model
+representation of phases/activities in SDLC
+** types
+*** waterfall
+- all requirements are clearly specified & then only development starts
+- difficult to adapt/ make changes
+*** agile
+multiple sprints 
+each sprint focused on a feature/ specific thing
+each includes:
+- planning
+- design
+- development
+- review
+*** extreme programming
+- type of agile model i.e. build & iterate in cycles
+- traditional techniques taken to extreme
+  - e.g: code reviews are beneficial so now we use pair programming
+  - frequent communication w/ client
+    
+*** Rapid Application Development (RAD)
+- little planning, just build shit
+- suitable for tihngs that take short amount of time to build
+*** prototyping
+- useful when requirements aren't clear
+- create prototype for feature
+- demo basic, unpolished prototype to user
+- refine based on feedback
+*** spiral 
+phases for each quadrant?
+* seng3: Software Requirement Analysis & Specification
+** types
+*** functional requirements
+what system should do
+*** non-functional requirements
+how?
+specify/ limit(?) further of how functional reqs. should be implemented
+should be absolutely measurable
+quality of system
+removing them should not remove the feature of system
+*** domain requirements
+- relating to area/ sector the software is targeting
+  e.g: mobile banking, hospitals
+- requirements that are expected/ needed in this area's software
+*** user requirements
+duh
+** techniques for finding requirements
+*** interview
+w/ clients, users
+*** focus group
+- people who are examples of target user demographic
+- get feedback from them
+/remember that ep. from Silicon Valley where Richard explains his compression algo to a group/
+*** brainstorming session
+*** prototype
+build small prototype & get feedback for what else it requires
+** Use Case Diagram
+- show what actions actors can perform
+  + actors can be users, admins etc.
+
+- =actions/ use-cases= are *ellipses*
+- these are contained inside =rectangular System=
+- draw line from actors to actions
+*** << inherits >>
+- one action requires another action
+- arrow pointing from B to A means
+  B requires A
+- e.g: Liking a post requires login
+*** << extends >>
+- extra functionality
+- arrow pointing from B to A means
+  B provides extra functionality
+- e.g: Payment can be extended through cash, online etc.
+
+** Feasibility
+* seng4: Software design
+** define
+planning phase for how requirements/ objectives should be implemented
+** software design levels
+*** architectural level
+simplified representation of software as collection of components/ modules interacting with each other
+*** high level 
+breaks down architectural level further into sub-systems & technical components
+*** detailed level
+further breaks down by specifying logical implementation
+** software design concept
+*** 4 modularity
+software is divided into components that perform specific tasks independently
+*** 6 functional independence
+** coupling 
+interdependence between modules
+lower = better
+*** data coupling
+data shared between modules
+*** control coupling
+one module controls how other functions
+** cohesion
+all parts of a module should work towards the same objective
+higher = better
+** Architectural patterns
+*** MVC
+controller acts as interface between Model & View,
+doesn't deal with business logic?
+*** Layered model
+breaks down system into multiple abstract layers that each deal w/ a specific area
+e.g: data layer -> logic layer -> UI layer
+* seng6: Software Testing & Quality Assurance
+** shitty differences between
+#
+**** Verification
+- checking documentation, code to see if it performs a specific function
+- finds bugs in early stage
+**** Validation
+- testing final product to see if it matches customer requirement
+- finds bugs that verification can't
+- done after verification
+** Testing
+**** Black box
+- tester thinks of system as an abstract black box
+  i.e. doesn't know about its inner workings
+- only concerned w/ correctness of generated outputs
+**** White box
+- tester knows inner workings/ implementation
+- tests corrrectness & things like:
+  + algorithm complexity (space, time)
+  + memory leaks
+**** Alpha
+done internally (inside development company) to find bugs
+**** Beta
+pre-release version is given to some users 
+can test for bugs, user experience/ reception
+** Software Inspection
+basically peer reviews
+helps to:
+- enforce consistent style guide
+- identify bugs
+- suggest better ways to do something
+- experienced devs can teach juniors
+** QA (Quality Assurance)
+techniques to ensure final product is of good quality
+example metrics for measuring quality:
+- functionality
+- reliability
+- ease of use
+** Standards
+*** ISO (International Standards Organization)
+- group of countries to decide common standards of production
+*** CMM (Capability Maturity Module)
+process for improving an organization's SDLC process
+**** levels
+***** Initial
+  hectic, unmanaged way of development
+***** Repeated
+***** Defined
+  clearly defined
+***** Managed
+***** Optimized
+  constant improvement
+* seng7: Software Maintenance
+** Re-engineering
+refactoring, improving existing software 
+*** example reasons for doing
+- adding new features
+- optimizing code, reducing vulnerabilities
+- making code maintainable (EZ to read, modify)
+*** types
+**** reverse engineering
+breaking down product to understand its working
+can be used to understand competitor's software
+**** source code translation
+- automatically translate?
+- can also be done for updating code to newer version of language

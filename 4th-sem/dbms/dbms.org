@@ -1,0 +1,1196 @@
+* DONE dbms1: intro
+** database                     :drill:
+SCHEDULED: <2023-10-06 Fri>
+:PROPERTIES:
+:ID:       3fc255d7-8b46-478b-b394-a03b2cf0fcf5
+:DRILL_LAST_INTERVAL: 64.6224
+:DRILL_REPEATS_SINCE_FAIL: 5
+:DRILL_TOTAL_REPEATS: 4
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.46
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-08-02 Wed 16:%]
+:END:
+# 
+*** define
+collection of related data in an organized, efficient way
+
+** DBMS                         :drill:
+SCHEDULED: <2023-10-07 Sat>
+:PROPERTIES:
+:ID:       3c1230fc-8a3a-4951-bba6-91912b33394c
+:DRILL_LAST_INTERVAL: 66.9774
+:DRILL_REPEATS_SINCE_FAIL: 5
+:DRILL_TOTAL_REPEATS: 4
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.25
+:DRILL_EASE: 2.6
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-08-01 Tue 19:%]
+:END:
+#
+*** define
+software that allows users to create, modify & access data in database
+
+** objectives/ importance/ merits of DBMS :drill:
+SCHEDULED: <2023-09-23 Sat>
+:PROPERTIES:
+:ID:       f4fd8c0b-7825-4109-b410-577653f8af8a
+:DRILL_LAST_INTERVAL: 6.7048
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 9
+:DRILL_FAILURE_COUNT: 2
+:DRILL_AVERAGE_QUALITY: 2.889
+:DRILL_EASE: 1.66
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-16 Sat 15:%]
+:END:
+#
+*** answer (5 points)
+- provide easy interface for accessing & modifying data regardless of database size
+- only allow authorized users to access data
+- provide data backups, rollbacks
+- eliminate redundancy(duplicate data)
+- advance API/ easier to integrate with programs compared to files
+
+** demerits of DBMS             :drill:
+SCHEDULED: <2023-10-17 Tue>
+:PROPERTIES:
+:ID:       34012b9e-4666-4774-88be-22f94339ebba
+:DRILL_LAST_INTERVAL: 71.7616
+:DRILL_REPEATS_SINCE_FAIL: 5
+:DRILL_TOTAL_REPEATS: 4
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.25
+:DRILL_EASE: 2.6
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-08-06 Sun 09:%]
+:END:
+#
+*** answer (4 points)
+- high implementation & maintenace cost
+- proper understanding is required to use
+- may not be suited for every usecase (ex: storing only little bit of information)
+- features like backups, permissions need to be setup properly or else, may cause harm
+** application                               
+# no need to make this a card. guffai ta ho
+- accounting/ ledgers
+- any site/ app with users
+- businesses/ institutions for storing info about people, employees
+* dbms2: Database design, architecture & model
+** Database design
+*** Logical design
+- not concerned with implementation 
+- only describes what type of data should be stored, relation
+*** Physical design
+- describe every implementation detail (type of table, attributes, relations)
+** Structure of DBMS
+# sodhyo bhane incomplete figure banaidine 
+# draw 1st 2 as rectangles,
+# 3rd as cylinder/ how you normally draw database
+*** Query Processor
+*** Storage manager
+*** Database
+** Database architecture        :drill:
+SCHEDULED: <2023-09-20 Wed>
+:PROPERTIES:
+:ID:       afb776c0-30d3-4636-b8bc-73b6f9b6355e
+:DRILL_LAST_INTERVAL: 3.995
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 4
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 3.5
+:DRILL_EASE: 2.46
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-16 Sat 15:%]
+:END:
+tier/ layer/ schema
+*** 2 tier
+- Client  (UI)
+- Server  (data)
+
+ /business logic can be in any tier/
+*** 3 tier
+- View (UI)
+- Logic
+- Physical (data)
+** Data models                  :drill:
+SCHEDULED: <2023-10-11 Wed>
+:PROPERTIES:
+:ID:       9ce961c5-8826-4a00-abc4-bc58dbc1957d
+:DRILL_LAST_INTERVAL: 25.0
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-16 Sat 15:%]
+:END:
+define: [representation of how data, database objects are organized]
+*** Hierarchical
+parent-child data
+e.g: College -> Faculty -> Teacher
+*** Network
+- group of similar records form a node
+- nodes are linked to show relation
+*** Relational
+tables
+*** E-R
+real world entities with attributes, relations
+*** Object based
+basically OOP
+classes/objects have attributes, method & can inherit from others
+** ER diagrams
+*** Basic shapes               :drill:
+SCHEDULED: <2023-10-10 Tue>
+:PROPERTIES:
+:ID:       9db7a094-361d-4bdb-959e-fa2b19e46f3a
+:DRILL_LAST_INTERVAL: 24.12
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.667
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-16 Sat 15:%]
+:END:
+how to represent these in E-R diagram?
+**** Entity
+w/ rectangle
+***** weak entity              :drill:
+SCHEDULED: <2023-10-05 Thu>
+:PROPERTIES:
+:ID:       dd4434de-c0f8-4765-99a4-8de970296efb
+:DRILL_LAST_INTERVAL: 19.2482
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 4
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 2.75
+:DRILL_EASE: 2.08
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-16 Sat 15:%]
+:END:
+define: [depends on strong entity to uniquely identify a row]
+represent w/ [double outline rectangle]
+
+****** identifying relation
+define: [relation that connects weak & strong entity]
+represent w/ [double outline diamond]
+
+****** extra info: [partial] key 
+- has this instead of primary,
+- can only identify some attributes in a record
+- represent w/ dashed underline under attribute name
+**** Attribute
+w/ oval
+double-outlined if multi-valued attribute
+***** Key (E-R diagram)      :drill:
+SCHEDULED: <2023-10-08 Sun>
+:PROPERTIES:
+:ID:       44392c0d-edb8-4da0-9242-12062fe721c8
+:DRILL_LAST_INTERVAL: 21.6744
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.333
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-16 Sat 15:%]
+:END:
+- define: [attributes that can uniquely identify an entity/ record in an entity set]
+- represent by [underlining attribute name]
+
+****** not necessary to memorize these 3's definitions
+****** super key
+attribute or combination of attributes that can uniquely identify all records
+
+****** candidate key 
+- super key with least columns/ required columns only
+- made up of one or more attributes which are called *prime* keys
+- removing one prime key would remove the candidate's ability to identify records
+
+****** primary key
+- chosen from available candidate keys as main ientifier
+- 1 relation can only have one primary
+**** Relation
+- diamond connecting 2 entities
+- write 1 or M on connecting lines to show cardinality
+***** Participation           :drill:
+SCHEDULED: <2023-10-11 Wed>
+:PROPERTIES:
+:ID:       13892d1b-7c57-4d40-8164-d217e3be46f3
+:DRILL_LAST_INTERVAL: 25.0
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-16 Sat 15:%]
+:END:
+recall definition & how to represent these 2 in E-R diagram
+****** total
+- all entities in entity set *must* participate in relation
+- represent w/ 2 lines to connect entity to relation
+****** partial
+- not necessary for entities in entity set to participate in relation
+- represent w/ 1 line to connect entity to relation
+****** extra info
+if total participation,
+- all rows/primary keys in 1 table must be used as foreign keys in another
+
+** Converting ER diagrams to tables
+*** Entity
+each entity will become its own table w/ its attributes as columns/ fields
+*** Attributes
+**** multivalued
+2 separate tables
+  - 1 with key & other attributes
+  - 1 with key & multivalued attribute column
+    + multiple values will get multiple, separate records
+**** composite
+turn into separate columns/ fields
+*** Relation
+table whose columns are
+- keys of the 2 participating entities
+- relation's attributes(if any)
+* dbms3: Relational database model
+** Database schema
+design/structure of db, its objects & relations
+** Relational algebra expression
+- query language for interacting w/ relational DB
+- high level code (sql) is translated to Relational algebra expression
+
+- take relation(table) as input, evaluate expression & return relation
+*** Selection (\sigma)
+- return rows from relation(table) that meet condition
+  - returned row will have all attributes
+
+\sigma <condition> (relation)
+\sigma gpa > 3.0 (student)
+- multiple conditions can be chained with AND, OR, NOT
+
+*** Projection (\Pi)
+- return only specified attributes 
+\Pi <column(s)> (relation)
+
+- can be combined with selection to get more specific result
+\Pi s_name (\sigma gpa > 3.0 (student))
+*** unimportant?
+**** Cartesian Product (X)
+combines every record of 2 tables
+A(a1, a2) \times B(b1, b2)
+where table A has rows a1, a2
+will give: 
+
+| a1 | b1 |
+| a1 | b2 |
+| a2 | b1 |
+| a2 | b2 |
+ 
+**** Union (\cup)
+instead of above, union will give
+
+| a1 |
+| a2 |
+| b1 |
+| b2 |
+
+**** Intersection (\cap)
+entire row must be same to be considered intersection
+**** Set difference (-)
+A - B will give rows that are only in A
+*** Join 
+unlike cartesian product that combines one record with every record of other table,
+join only combines records that meet condition into 1 record
+**** Inner
+***** Theta (\theta)
+\theta represents condition
+$A \Join \theta B$ 
+A ⨝ A.e_Id = B.t_Id B
+
+here, A & B row with same Id value will be combined into 1
+***** Natural
+- no condition, both relations must have common attribute
+- match based on that attrib's values
+**** Outer
+- includes records that don't meet condition
+left (⟕):  non-matched of left table
+right(⟖)
+full (⟗):  of both
+* dbms4: Normalization
+** functional dependency
+relationship between 2 attributes in DB
+/generally between primary & non-primary attribute/
+
+A -> B
+is read as A(determinant) determines B(dependant)
+i.e. B can be identified w/ unique value of A
+** Closure of functional dependency
+set of all possible attributes that can be determined by certain attribute from given f'n dependency 
+/includes transitive/indirect dependency/
+
+if A is an attribute, A^+ represents its closure
+** DMBS anomalies
+/problems that may arise when DB isn't normalized/
+*** insertion anomaly
+*** update anomaly
+same info is stored across multiple relations
+has to be updated across all of them or else, anomaly occurs
+*** deletion anomaly
+** Normailzation
+method of organizing data in DB so as to eliminate redundancy, anomalies
+
+# a relation(table) in one form is also in previous forms.
+# e.g: 3NF relation is also in 2NF & 1NF
+*** 1NF
+- all columns must be single-valued & have unique column names
+- increases data redundancy(repitition) as multi-valued records will have multiple rows for each value
+*** 2NF
+- must be in 1NF
+- all non-prime keys should be fully functionally dependent on some candidate key
+- (?) some other article says primary key must be single-column 
+*** 3NF 
+- must be in 2NF
+- must not have any transitive(indirect) f'n dependency
+*** Boyce-Codd (BCNF)
+# remember as Boys-Cut lolol
+*** 4NF
+- must be in BCNF
+- there mustn't be any multi-valued dependency
+  results in one relation having only 2 columns (primary key & dependant)
+* dbms5: Creating & Altering Database & Tables(SQL)
+=Statements= : Perform some action (~INSERT, DELETE~)
+=Queries=    : Return some value (~SELECT~)
+
+** meanings for quotes, backticks
+- single quotes for 'strings'
+- backticks & double-quotes specify identifiers (like column_names) 
+** DDL (definition)
+commands related to database objects
+*** columns
+**** adding columns
+~alter table student add column_name data_type~
+/keep in mind column keyword isn't used after add/
+**** deleting column/ attributes
+~alter table student
+drop column roll~
+
+column keyword has to be specified because drop can be used to delete anything (table, column, keys)
+**** modifying column
+/example: setting not null to previously nullabel column/
+~alter table table1
+    alter column column1 int not null~
+*** duplicate table
+~select * into table2 from table1~
+- specific columns can be specified instead of *
+- =WHERE= can be used to fiter out
+*** DROP vs TRUNCATE TABLE
+drop deletes entire table
+truncate only deletes data but retains table schema
+*** auto increment in SQL SERVER
+- specify ~identity(1,1)~ for attribute
+- starts at 1, increments by 1
+*** keys
+**** specifying while creating table
+just use =primary key= or =foreign key= while defining column
+**** specifying later
+***** primary
+***** foreign
+~alter table table_1
+   add foreign key(column_1) references table_2(column_2)~
+* dbms6: Manipulating & Querying Data
+** DML (manipulation)
+commands for manipulating data in database
+*** INSERT-INTO
+*** UPDATE-SET
+*** DELETE-FROM
+** DQL
+query is command to retrieve data (=SELECT=)
+*** LIKE
+search for partial string (like starts with letter 'a')
+**** % wildcard
+like =*=, matches for 0, 1 or multiple of any chars
+**** _ wildcard (underscore)
+matches for 1 occuerence of any char
+
+~select * from teacher where tid like 't_'~ matches =teacher1=, but not =t12=
+*** range
+~where column1 between 100 AND 200~
+*** IN
+search if one value is in group of values/ records
+*** sub-query
+query within query
+- enclosed in (parentheses)
+- sub-query should generally return only one column (unless main query handles multiple columns)
+
+  #+begin_src sql
+    select ename, salary from employees 
+       where eid in (
+             select tid from teachers
+                    where faculty = 'computer'
+       )
+  #+end_src
+- sub-query results can be compared w/ different operators like =, >, IN, BETWEEN
+*** GROUP BY
+- must be used before order
+**** tricky to use because columns can't be multi-valued
+for example:
+#+begin_table
+| a | b   |
+|---+-----|
+| 1 | abc |
+| 1 | def |
+| 2 | pqr |
+#+end_table
+
+- & you use ~select * from table group by a~
+- throws error as =1= is repeated & it doesn't know which value to use for column =b=
+- can be fixed by selectting one value from multiple like =AVG, MAX=
+*** HAVING
+/works in weird way. use sub-query if this doesn't work/
+apply condition/ filter on GROUP BY.
+must be used after =GROUP= & before =ORDER=
+*** sort
+=ORDER-BY=
+/group by isn't necessary for order by/ 
+if sorting multiple columns, specify ordering for each like so:
+#+begin_src sql
+select * from student order by name asc, marks desc
+#+end_src
+*** Aggregate functions
+- these must be used in =HAVING= instead of =WHERE=
+- AVG, MAX, MIN, COUNT, SUM
+- these are functions sor columns are passed as arguements like ~AVG(price)~
+*** TOP 
+~select top =n= =colname(s)= from =table=~
+/returns 1st =n= records that SELECT finds. don't confuse with MAX/
+** JOINs
+use join when needing to display combined data of multiple tables
+use sub-query when needing to display only one table's values based on another table's condition/ returned values
+*** inner join
+- join records of 2 tables into 1 records using condition 
+- only returns joined records (ones that meet condition)
+#+begin_src sql
+  select t1.name, t2.name 
+       from t1 join t2
+            on t1.id = t1.id 
+
+  -- t1 join t2 is just combined table 
+#+end_src
+*** outer join
+return records even if no match
+**** left
+return all from left (even if no match)
+**** right
+**** full
+return all from both
+**** self
+join table1 with table1
+** UNION, INTERSECT, EXCEPT
+/place these keywords between 2 SELECT queries/
+** Views
+- virtual table that stores the tabular results of a query
+- virtual because it is linked to actual table such that changes to view are reflected in the table
+- one usecase is to restrict what columns can be seen by a user
+*** creating
+~create view view_name as <select query>~
+*** WITH CHECK
+#+begin_src sql
+  create view view_name as
+         <select query with WHERE>
+         with check
+#+end_src
+ensures that future inserts, updates satisfy conidtion in SELECT
+* dbms7: Developing stored procedures, DML triggers & Indexing
+** Stored procedure             :drill:
+SCHEDULED: <2023-10-11 Wed>
+:PROPERTIES:
+:ID:       e492f529-dff7-468e-92ac-d7d96e1a3adf
+:DRILL_LAST_INTERVAL: 25.0
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-16 Sat 15:%]
+:END:
+can be thought of as [functions in procedural programming languages]
+*** define
+group of re-usable commands that can be accessed using their identifier
+*** create syntax
+#+begin_src sql
+  create procedure proc_name @param1 <data_type> = <default_value>
+         -- param is optional
+         as 
+         begin
+         -- code
+         end
+         -- begin-end are like {}, can be omitted if procedure has only one statement
+#+end_src
+
+*** Execute syntax
+#+begin_src sql
+  exec proc_name @param1 = <value>
+#+end_src
+
+*** extra info (unimportant syntax)
+- params are always accessed with =@=,
+even in procedure body
+
+- *alter*:
+  for changing code inside procedure, just use
+  #+begin_src sql
+    alter procedure proc_name
+          as
+    -- new code
+  #+end_src
+
+- *drop*
+  ~drop procedure proc_name~
+
+*** returning data from stored procedure :drill:
+SCHEDULED: <2023-10-03 Tue>
+:PROPERTIES:
+:ID:       25ea8ece-fe8d-4542-87dc-bd1b110c71e1
+:DRILL_LAST_INTERVAL: 25.0
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-08 Fri 13:%]
+:END:
+[using =select= inside procedure will return the result set]
+**** extra info 
+=return= keyword is mostly used to just stop execution like
+if (condition) return 
+
+
+** Triggers                     :drill:
+SCHEDULED: <2023-09-25 Mon>
+:PROPERTIES:
+:ID:       b73b0be5-a629-4023-8ad1-b92c39104274
+:DRILL_LAST_INTERVAL: 9.3103
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 7
+:DRILL_FAILURE_COUNT: 2
+:DRILL_AVERAGE_QUALITY: 3.286
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-16 Sat 15:%]
+:END:
+basically [eventListener]
+*** define
+[[*Stored procedure][stored procedures]] that can be automatically run before or after
+DML statement (insert, update, delete) is run in a certain table
+*** create syntax
+#+begin_src sql
+  create trigger tr_name
+       [before | after] [insert | update | delete]
+       on table_name
+       for each row
+       as 
+       begin
+       -- code 
+       end
+#+end_src
+*** extra info (differences w/ stored procedure)
+- it is a stored procedure but runs automatically
+  instead of needing to be called
+- can't take params (but can access table columns)
+
+  one usecase is to give warning/ info when manipulating data
+*** disable syntax (no need to remember)
+#+begin_src sql
+disable trigger tr_name on table_name
+#+end_src
+
+** Indexing (DBMS)              :drill:
+SCHEDULED: <2023-10-08 Sun>
+:PROPERTIES:
+:ID:       ecd6779e-59bf-4592-a1d6-833256fedc1f
+:DRILL_LAST_INTERVAL: 21.6744
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 4
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-16 Sat 15:%]
+:END:
+#
+*** working mechanism
+- mechanism to speed up reading data from database
+- index table contains primary/ candidate key values & that row's corresponding memory address 
+
+*** create syntax 
+#+begin_src sql
+  create index idx_name
+       on table1(column1)
+       -- column1 is used as index key
+       -- multiple columns can be specified
+#+end_src
+
+*** extra info
+- it is faster to search in index table than in entire database
+- indexes can be sorted to be more efficient
+
+*** 2 imp. index types (dbms)   :drill:
+SCHEDULED: <2023-09-28 Thu>
+:PROPERTIES:
+:ID:       7f8275c9-4a93-408a-bf7a-cd1e069600ff
+:DRILL_LAST_INTERVAL: 21.6744
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.333
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-06 Wed 14:%]
+:END:
+both use primary key as index key
+**** [dense] index
+- record is created in index table for every search key in database
+- faster searching, takes more storage
+**** [sparse] index
+- record is created in index table for only some search keys
+e.g: 1 index record for every 5 search keys/ records 
+
+- slower searching, uses less storage
+* dbms8: Query processing & security
+** Query Processing             :drill:
+SCHEDULED: <2023-09-21 Thu>
+:PROPERTIES:
+:ID:       53360cab-7390-4493-805e-0e9a7459091b
+:DRILL_LAST_INTERVAL: 4.0
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-17 Sun 12:%]
+:END:
+define: [turning DB queries/statements from high level language (sql) to low level
+        & running them efficiently]
+3 steps: 
+*** [Parsing & Translation]
+*parse*    : check code for errors
+*translate*: turn into relational algebra expression
+
+*** [Evaluation]
+run expression & return results
+
+**** Pipelined
+needs more memory 
+
+**** Materialized
+save each operation's output relation in temporary file
+slower
+
+*** [Optimization]
+- expression can be simplified, run in different ways
+- find best way that minimizes query cost
+*** measuring query cost (DBMS) :drill:
+SCHEDULED: <2023-09-21 Thu>
+:PROPERTIES:
+:ID:       023af737-f052-4160-838d-4615f1a047c9
+:DRILL_LAST_INTERVAL: 4.0
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-17 Sun 12:%]
+:END:
+- measured in terms of [time taken to answer query (run & return result)]
+**** formula:
+ no. of block transfers(b) * avg. transfer time (t_{T}) +
+      no. of disk seeks(S) * avg. seek time (t_{S})
+
+- block transfer means loading data from disk to main memory
+** DBA (admin)                  :drill:
+SCHEDULED: <2023-09-21 Thu>
+:PROPERTIES:
+:ID:       b151c19d-942d-48ec-bd24-bd9a2211088c
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-17 Sun 12:%]
+:END:
+define: [person in charge of DB & keeping it functional]
+*** roles
+- planning, design
+- install, configuration (access permissions, security)
+- maintenance (bug fixes, rollback to backups)
+- updating, optimizing
+
+* dbms9: Transaction & Concurrency Control
+** Transaction                  :drill:
+SCHEDULED: <2023-09-30 Sat>
+:PROPERTIES:
+:ID:       f7092ba1-c815-4874-acbb-082af23a45e8
+:DRILL_LAST_INTERVAL: 25.0
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-05 Tue 14:%]
+:END:
+#
+*** define
+group of code that accesses & (maybe) modifies data
+
+*** ACID properties/ requirements :drill:
+SCHEDULED: <2023-09-30 Sat>
+:PROPERTIES:
+:ID:       fcbd45a6-409d-4015-9998-a262b9780441
+:DRILL_LAST_INTERVAL: 25.0
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 4
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 3.5
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-05 Tue 14:%]
+:END:
+# meeting these ensures data integrity
+# AtoConIsoDur
+**** Only recall names, no need for definitions
+***** Atomic property        :drill:
+SCHEDULED: <2023-09-29 Fri>
+:PROPERTIES:
+:ID:       7781aab5-ad17-466b-8e0a-a08b3edd3dd5
+:DRILL_LAST_INTERVAL: 23.271
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.667
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-06 Wed 14:%]
+:END:
+[transaction is considered a single unit.
+changes are committed only if all its steps are executed fully]
+
+***** Consistent property    :drill:
+SCHEDULED: <2023-10-01 Sun>
+:PROPERTIES:
+:ID:       9ce84e30-d798-460c-b9f8-4fc6c85a56e8
+:DRILL_LAST_INTERVAL: 25.0
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-06 Wed 14:%]
+:END:
+[ integrity constraints must still be satisfied after running transaction
+e.g: =check marks < 40= ]
+
+***** Isolation property     :drill:
+SCHEDULED: <2023-09-29 Fri>
+:PROPERTIES:
+:ID:       b5fc0b8c-9c38-4e2d-ae9b-dc3debae5e95
+:DRILL_LAST_INTERVAL: 23.271
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.667
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-06 Wed 14:%]
+:END:
+[one transaction must not see another concurrent
+transaction's changes until it is finished/ committed]
+# must be as if they were run serially, not parallely
+
+***** Durable property       :drill:
+SCHEDULED: <2023-10-03 Tue>
+:PROPERTIES:
+:ID:       b3c4c96a-23e0-42f0-bf2c-e98f10633476
+:DRILL_LAST_INTERVAL: 26.791
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.333
+:DRILL_EASE: 2.6
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-06 Wed 14:%]
+:END:
+[changes must be committed to DB (on disk or remotely) so that they persist]
+
+*** operations in transaction   :drill:
+SCHEDULED: <2023-09-30 Sat>
+:PROPERTIES:
+:ID:       9c5a8929-b02f-4520-a7af-a77581df897b
+:DRILL_LAST_INTERVAL: 25.0
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-05 Tue 14:%]
+:END:
+#
+**** 4 
+- read
+- write: save changes *temporarily* in transaction log file 
+- commit: save changes *permanently* to database
+- rollback
+
+**** extra info about write operation
+changes are saved in DB as well but aren't visible unitl committed
+
+*** 6 states                    :drill:
+SCHEDULED: <2023-10-10 Tue>
+:PROPERTIES:
+:ID:       ce0007ee-36b9-4f4b-ab15-7bab7064aba5
+:DRILL_LAST_INTERVAL: 16.5955
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 6
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 1.94
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-22 Fri 14:%]
+:END:
+#
+**** that a database transaction can be in
+- active
+- partially committed (transaction complete)
+- committed
+- failed  (check constraints fail || transaction cancelled)
+- aborted (go here to rollback if needed)
+- terminated
+
+  
+** Schedule (dbms)              :drill:
+SCHEDULED: <2023-09-27 Wed>
+:PROPERTIES:
+:ID:       d1b255fb-9425-4400-b212-1c7dbc6add84
+:DRILL_LAST_INTERVAL: 19.2482
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 5
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.08
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-08 Fri 13:%]
+:END:
+#
+*** define
+order/ sequence in which instructions of concurrent transactions are run
+*** types (only 3 imp.)
+- *serial*
+  2nd transaction runs only after 1st finishes
+
+- *non-serial*
+  inter-leaving occurs (alternating between concurrent transactions' tasks)
+  e.g: run T1 instructions, then T2s, then T1s etc.
+
+- *serializable*
+  + part of non-serial
+  + inter-leaving doesn't cause conflicts,
+     result is same as if it was serial
+
+** Concurrency control          :drill:
+SCHEDULED: <2023-09-24 Sun>
+:PROPERTIES:
+:ID:       1ea52cc6-9502-4305-94d2-5d2284837489
+:DRILL_LAST_INTERVAL: 8.2695
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 7
+:DRILL_FAILURE_COUNT: 2
+:DRILL_AVERAGE_QUALITY: 3.143
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-16 Sat 15:%]
+:END:
+define: [methods to ensure =Isolation= property between concurrent transactions
+& prevent conflict] 
+# try remembering [[*\[Isolation\]][definition]] for =Isolation=
+
+*** problems                    :drill:
+SCHEDULED: <2023-10-01 Sun>
+:PROPERTIES:
+:ID:       900ed177-c327-4c64-9dd1-a9ae981984d5
+:DRILL_LAST_INTERVAL: 25.0
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-06 Wed 14:%]
+:END:
+that arise in concurrent transactions
+& are solved thru concurrency
+
+**** 4 (just remember names, not definitions)
+***** dirty read                :drill:
+SCHEDULED: <2023-10-08 Sun>
+:PROPERTIES:
+:ID:       7155994e-602e-44e2-a203-7e8ed31749f7
+:DRILL_LAST_INTERVAL: 27.7286
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.333
+:DRILL_EASE: 2.6
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-10 Sun 14:%]
+:END:
+- [transaction reads uncommitted changes from concurrent transaction]
+- [if change is rolled back, transaction will have
+  read non-existent change & cause inconsistency] 
+***** unrepeatable read         :drill:
+SCHEDULED: <2023-10-01 Sun>
+:PROPERTIES:
+:ID:       fe65b8f8-fb46-438b-b994-8523d126a879
+:DRILL_LAST_INTERVAL: 25.0
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-06 Wed 14:%]
+:END:
+# aka read/ write conflict
+[read operations in same transaction produce different values
+due to write operation in concurrent transaction]
+
+***** phantom read              :drill:
+:PROPERTIES:
+:ID:       7bd3ba17-921d-428b-97e7-9447da12a8b3
+:END:
+****** define
+read operations in same transaction produce different =rows=
+cause rows were deleted in concurrent transaction
+
+****** extra info
+e.g: select * produces 1 less row the 2nd time
+2nd read may also fail sometimes if it looks for deleted row only
+
+***** lost update               :drill:
+SCHEDULED: <2023-10-01 Sun>
+:PROPERTIES:
+:ID:       62973eb3-8ef7-4897-af3e-6b18030f19f5
+:DRILL_LAST_INTERVAL: 25.0
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-06 Wed 14:%]
+:END:
+[changes of 1 transaction aren't reflected in DB
+cause of concurrent transaction overwriting it]
+
+****** example
+T1 increments A by 10
+but, T2 then directly sets A value to something
+then, both are committed.
+
+*** why concurrency control is needed :drill:
+SCHEDULED: <2023-10-10 Tue>
+:PROPERTIES:
+:ID:       e3176a4a-516a-415a-8e17-806ebca3db16
+:DRILL_LAST_INTERVAL: 17.7133
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 6
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 3.167
+:DRILL_EASE: 2.08
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-22 Fri 14:%]
+:END:
+#
+**** 4 points 
+- prevent read-write conflicts
+- faster performance as concurrent transactions can run smoothly
+- ensure data consistency & isolation property
+- smooth usage of DB (without needing manual fixing, rollbacks)
+
+*** protocols                   :drill:
+SCHEDULED: <2023-09-26 Tue>
+:PROPERTIES:
+:ID:       f8597efa-47f3-4cf8-8473-75529aafdee1
+:DRILL_LAST_INTERVAL: 17.7133
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 6
+:DRILL_FAILURE_COUNT: 2
+:DRILL_AVERAGE_QUALITY: 2.833
+:DRILL_EASE: 2.08
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-08 Fri 13:%]
+:END:
+for ensuring concurrency
+**** remember names of 3 in syllabus
+
+***** lock-based protocol       :drill:
+SCHEDULED: <2023-10-01 Sun>
+:PROPERTIES:
+:ID:       69cb94d3-0210-41c1-b27f-4e1763a88b3f
+:DRILL_LAST_INTERVAL: 25.0
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-06 Wed 14:%]
+:END:
+#
+****** define
+- transactions can lock a variable that it uses
+- these need to be unlocked later
+****** [shared] lock
+variable can only be read
+but it can be read by any transaction
+
+/multiple transactions can implement shared lock/
+****** [exclusive] lock
+variable can be read & written
+but only by locking transaction
+
+/until this is unlocked, other transactions can't access the variable/
+
+
+***** timestamp ordering protocol :drill:
+SCHEDULED: <2023-09-28 Thu>
+:PROPERTIES:
+:ID:       a5d22f10-6b40-410a-9c29-4b694e7e5f6a
+:DRILL_LAST_INTERVAL: 22.4605
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.333
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-06 Wed 14:%]
+:END:
+# aka time-based
+****** explain 
+
+transactions are exectued from oldest timestamp to newly created ones
+timestamps are assigned for:
+- transaction's creation
+- when a variable was last read and written
+
+when there is conflict, compare timestamps
+don't execute transaction if another operation performed at newer timestamp
+
+restart(rollback) instead, which will give it new timestamp
+
+****** extra info (just skim before exams, no need to memorize)
+reasons for not executing transaction:
+for read:
+- if TS_W(a) > TS(T1)
+  value changed by newer transaction 
+
+for write:
+- if TS_W(a) > TS(T1)
+  value will be overwritten 
+
+- if TS_R(a) > TS(T1)
+  value is being read so don't write
+
+***** multi-granularity protocol :drill:
+SCHEDULED: <2023-10-08 Sun>
+:PROPERTIES:
+:ID:       d80afcaf-2bab-4c18-aa1c-a71c136777b6
+:DRILL_LAST_INTERVAL: 22.4605
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.333
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-16 Sat 15:%]
+:END:
+#
+****** define
+data items are organized into items in a tree/ hierarchical structure 
+
+shared & exclusive lock can be applied to nodes like in [[*lock-based protocol][lock-based]]
+
+****** extra info
+- example structure: DB -> table -> record
+- locking a node locks its children too
+
+** Deadlock (dbms)              :drill:
+SCHEDULED: <2023-09-24 Sun>
+:PROPERTIES:
+:ID:       6ca943f6-ce2c-418c-88e9-eac212b72868
+:DRILL_LAST_INTERVAL: 8.1214
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 8
+:DRILL_FAILURE_COUNT: 3
+:DRILL_AVERAGE_QUALITY: 2.875
+:DRILL_EASE: 2.04
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-16 Sat 15:%]
+:END:
+#
+*** define
+condition where 2 or more transactions are endlessly stuck
+waiting on the other to release their variable lock
+*** 2 ways to handle (only recall names) 
+**** wait-for graph             :drill:
+SCHEDULED: <2023-10-01 Sun>
+:PROPERTIES:
+:ID:       edb1ec5f-c489-4a6b-b57e-ca509b50f148
+:DRILL_LAST_INTERVAL: 23.271
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.667
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-08 Fri 13:%]
+:END:
+# suited for smaller databases
+***** working mechanism
+- DBMS makes graph where nodes represent transactions that request locked variable
+- edge/ arrow from T1 to T2 represents that T1 is requesting a variable that T2 has locked 
+- deadlock when graph resembles a closed circle([[https://static.javatpoint.com/dbms/images/deadlock-in-dbms-wait-for-graph.png][example]])
+**** deadlock prevention        :drill:
+SCHEDULED: <2023-09-28 Thu>
+:PROPERTIES:
+:ID:       d6c01c72-85d3-4bcc-98a3-dadc8cdcfe3e
+:DRILL_LAST_INTERVAL: 22.4564
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.667
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-06 Wed 14:%]
+:END:
+# suited for larger databases
+- if transaction will cause deadlock, don't run it now
+- 2 implementations are:
+***** [wait-die]
+- wait: Old transactions wait on new ones to release variable lock
+- die:  New ones constantly die(restart) till old releases
+***** [wound-wait]
+- wound: Old can wound (forcefully stop) new transaction to make it relase
+- wait:  New wait till old release
+  

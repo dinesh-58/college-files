@@ -1,0 +1,916 @@
+* num1: Solution of Non-Linear equations
+** Intro
+** types of equations
+** errors
+*** error types                :drill:
+SCHEDULED: <2023-09-10 Sun>
+:PROPERTIES:
+:ID:       b847123b-53bc-4d43-aea6-38bb369dab52
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-06 Wed 14:%]
+:END:
+#
+**** inherent [input] error
+- wrong data entered
+- wrong calculation
+**** numerical [exact value not used]
+- rounding off (creates less error)
+- truncation (excluding extra digits w/o rounding)
+*** absolute error (E_a)        :drill:
+SCHEDULED: <2023-11-09 Thu>
+:PROPERTIES:
+:ID:       46df7395-5adc-45c9-9358-d7e28c1fd396
+:DRILL_LAST_INTERVAL: 89.1297
+:DRILL_REPEATS_SINCE_FAIL: 5
+:DRILL_TOTAL_REPEATS: 4
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 5.0
+:DRILL_EASE: 2.9
+:DRILL_LAST_QUALITY: 5
+:DRILL_LAST_REVIEWED: [Y-08-12 Sat 10:%]
+:END:
+#
+**** formula
+true value(X_t) - absolute value(X_a)
+
+**** extra info
+where, true is actual answer
+absolute is our caclulated value
+both will be usually given in question
+*** relative error (E_r)        :drill:
+SCHEDULED: <2023-10-10 Tue>
+:PROPERTIES:
+:ID:       de835ccd-296c-4177-9e0e-20ce1eb49e24
+:DRILL_LAST_INTERVAL: 64.5447
+:DRILL_REPEATS_SINCE_FAIL: 5
+:DRILL_TOTAL_REPEATS: 4
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.46
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-08-06 Sun 09:%]
+:END:
+# absolute error relative to the true value  
+
+**** formula 
+(X_t - X_a) / X_t
+
+**** extra info 
+percentage error(E_p) is just this multiplied by 100
+*** round-off upto
+**** decimal places
+counts digits after decimal point
+**** significant figures 
+counting non-zero digits
+2 sf = 1.5, 0.025
+** ways to solve non-linear eqns :drill:
+SCHEDULED: <2023-09-11 Mon>
+:PROPERTIES:
+:ID:       df23ac14-df43-4abe-b82f-cdf116db2bf0
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 2.5
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-07 Thu 08:%]
+:END:
+just remember method names
+*** bracketing methods (2)
+/ans lies between 2 initial guesses/
+**** bisection/ half-interval :drill:
+SCHEDULED: <2023-09-10 Sun>
+:PROPERTIES:
+:ID:       476572f7-58c2-4453-9bd6-a60121fc08e3
+:DRILL_LAST_INTERVAL: 4.0
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-06 Wed 14:%]
+:END:
+given: f(x) = 0
+  --or-- convert given eqn to this form
+find : root (x value where y = 0)
+topic: non-linear eqn [bracketing]
+
+*tldr: [keep calculating midpoint]*
+***** algorithm
+
+- take 2 initial guessess such that f(x_{1})<0 & f(x_{2}) > 0
+  + EZ way is to solve f(x = 1) in calculator
+    (to find positive root).
+  + then take integers nearest to ans. as x_{1}, x_{2}
+  + e.g: if ans = 1, take x_{1}=0, x_{2}=2 
+
+- loop
+  + calculate midpoint x3
+  + if f(x_{3}) == 0,
+    root found, exit loop
+    
+  + else if f(x_{1}) * f(x_{3}) < 0
+    x_{1} = x_{3}   \because root ~ [x_{3}, x_{2}]
+  + else
+    x_{2} = x_{3}   \because root ~ [x_{1}, x_{3}]
+  # basically just use values whose y-values are opposite in sign
+- while 2 iterations of x_{3} aren't accurate enough
+
+***** extra info (for making calculation easier)
+- easier to understand if you draw that graph
+- in calculator, separate midpoint & f(x) formulae with =:=
+- while making table for x_{1}, x_{2}, x_{3} & f(x_{3}) values,
+  write with pencil which column has f(x) < 0
+  + then, just place x_{3} there when f(x_{3}) < 0
+
+**** regular-falsi            :drill:
+SCHEDULED: <2023-09-10 Sun>
+:PROPERTIES:
+:ID:       271f6f5e-d7e7-4c59-a0de-c659f1f4bd3d
+:DRILL_LAST_INTERVAL: 4.0
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-06 Wed 14:%]
+:END:
+given: f(x) = 0
+  --or-- convert given eqn to this form
+find : root (x value where y = 0)
+topic: non-linear eqn [bracketing]
+***** steps
+- similar to bisection but,
+  use this formula for =x_{3}= instead of midpoint:
+
+  $x_3 = \displaystyle \frac{x_1 \cdot f(x_2) - x_2\cdot f(x_1)}{f(x_2) - f(x_1)}$
+- replace x_{3} using same technique as in bisection
+- repeat unitl f(x_{3})=0 or 2 iterations are same upto acceptable error
+*** non-bracketing methods (2)
+/only 1 initial guess/
+**** newton-raphson           :drill:
+SCHEDULED: <2023-09-10 Sun>
+:PROPERTIES:
+:ID:       a0a93b42-4adc-4a2d-8fdf-45b6d1f023ea
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-06 Wed 14:%]
+:END:
+given: f(x) = 0
+  --or-- convert given eqn to this form
+find : root (x value where y = 0)
+topic: non-linear eqn [non-bracketing]
+***** steps
+- find derivation formual f'(x) 1st
+- keep calculating $x_2 = \displaystyle x_1 - \frac{f(x_1)}{f'(x_1)}$
+- until 2 iterations are accurate upto specified decimal points
+**** fixed point interval/ iteration(FPI) :drill:
+SCHEDULED: <2023-09-10 Sun>
+:PROPERTIES:
+:ID:       8d16e6f7-f125-4e3f-870f-ef384c919ff3
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-06 Wed 14:%]
+:END:
+given: f(x) = 0
+find : root (x value where y = 0)
+topic: non-linear eqn [non-bracketing]
+
+***** steps
+- convert given f(x) into ~x = g(x)~ form
+  such that g(x) converges
+  + multiple g(x) formulae can be made
+  + test convergence for each by taking initial x=0 
+    & then using result in g(x)
+    if 3-4 iterations approach some value,
+    * use this formula
+- in calculator, put X = g(X) & keep calculating
+  until 2 iterations are accurate to acceptable degree
+** while working with trigonometric functions, :drill:
+SCHEDULED: <2023-10-12 Thu>
+:PROPERTIES:
+:ID:       7d177bb5-dfbf-4d9b-bdc3-28bf49fdae4e
+:DRILL_LAST_INTERVAL: 66.9774
+:DRILL_REPEATS_SINCE_FAIL: 5
+:DRILL_TOTAL_REPEATS: 4
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.25
+:DRILL_EASE: 2.6
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-08-06 Sun 09:%]
+:END:
+calculator should be in [radian] mode
+# access using ~Shift+Mode 4~
+* num2: Interpolation & Approximation
+** Interpolation                :drill:
+SCHEDULED: <2023-09-08 Fri>
+:PROPERTIES:
+:ID:       4fd5a10c-cbd0-41bc-aafa-c82dac5b4c90
+:DRILL_LAST_INTERVAL: 9.3103
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.5
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-08-30 Wed 13:%]
+:END:
+given [range of values of x & y],
+finding [y for specific value of x
+inside range]
+*** no need to recall below headings for now. haven't organized
+*** w/ equal interval
+equal interval as in:
+
+| x | 0 | 1 | 2 | interval = 1 |
+| y | 0 | 3 | 6 | interval = 3 |
+**** Newton's *forward* difference formula :drill:
+SCHEDULED: <2023-09-14 Thu>
+:PROPERTIES:
+:ID:       026ef9bf-bfd4-474d-aeb7-80d232f85211
+:DRILL_LAST_INTERVAL: 8.9861
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-05 Tue 14:%]
+:END:
+given: 
+| x | x_{0} | x_{1} | x_{2} | x_{3} |
+| y | y_{0} | y_{1} | y_{2} | y_{3} |
+
+find y value at certain value of x
+use this formula when [x value lies toward *upper* half of table/ range]
+***** steps (recall in copy)
+- create vertical table with 1 empty line between each row (filled later)
+- keep adding difference columns & calculating difference of previous col.
+  until col. has only one value (here, col will be Δ^{3}y)
+- difference is difference of previous column's values
+  that surround current row
+  i.e. \Delta y_{0} = y_{1} - y_{0}
+
+- calculate $\displaystyle p = \frac{x_{p} - x_{0}}{h}$
+  where, x_{p} is given value for which we need to find y_{p}
+  h is interval between x values
+- final formula:  $y_{p} = \displaystyle{ \frac{1}{0!}\cdot y_0 \medspace + \frac{p}{1!}\cdot \Delta y_0 \medspace + \frac{p(p-1)}{2!}\cdot \Delta^2 y_0 \medspace + \frac{p(p-1)(p-2)}{3!}\cdot \Delta^3 y_0 }$
+***** extra info
+- remember that this formula is only when 4 values (of x & y) are given
+  do similarly for more or less values
+- try to remember patterns:
+  - 1 fraction for every y related column 
+  - (start denominator =i= from 0!)
+  - for a fraction's numerator, subtract from p upto 1 less than =i=
+- for ease, put last fraction in calculator & then change slightly for previous fractions
+**** Newton's *backward* difference formula :drill:
+SCHEDULED: <2023-09-15 Fri>
+:PROPERTIES:
+:ID:       4bfb392b-8548-42e8-89db-e5d13b8518eb
+:DRILL_LAST_INTERVAL: 9.648
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.5
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-05 Tue 14:%]
+:END:
+given: 
+| x | x_{0} | x_{1} | x_{2} | x_{3} |
+| y | y_{0} | y_{1} | y_{2} | y_{3} |
+
+find y value at certain value of x
+use this formula when [x value lies toward *upper* half of table/ range]
+***** steps (recall in copy)
+- keep adding difference columns & calculating difference of previous col.
+  until col. has only one value (here, last col will be \nabla^{3}y
+- calculate $\displaystyle p = \frac{x_{p} - x_n}{h}$
+  where, x_{p} is given value for which we need to find y_{p}
+  x_{n} is last value of x
+  h is interval between x values
+- final formula:  $y_{p} = \displaystyle{ \frac{1}{0!}\cdot y_n \medspace + \frac{p}{1!}\cdot \nabla y_n \medspace + \frac{p(p+1)}{2!}\cdot \nabla^2 y_n \medspace + \frac{p(p+1)(p+2)}{3!}\cdot \nabla^3 y_n }$
+***** differences from forward formula
+- difference symbol is \nabla instead of \Delta
+- nth value insted of 0th value
+  - p uses x_{n} instead of x_{0}
+  - final formula uses y_{n} instead of y_{0}
+- in final formula, p is *added* with 1,2 etc.
+  instead of subtracting
+- table values are actually same as forward
+*** w/ unequal interval
+**** Lagrange's interpolation polynomial :drill:
+SCHEDULED: <2023-09-10 Sun>
+:PROPERTIES:
+:ID:       a200539d-95f6-4d69-8cdc-d82fcd5e831e
+:DRILL_LAST_INTERVAL: 8.2695
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 4
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-02 Sat 13:%]
+:END:
+- topic: interpolation
+- given: range/ table of values for X & Y
+- find :  Y at specific value of X, i.e.  f(X): 
+
+***** rough steps
+- make 1 fraction for each iteration/ value of x
+  - =i= goes from 0 to =n=
+- f(X) = sum of all fractions
+- for each fraction,
+  + exclude X_{i} from numerator
+  + subtract from excluded X_{i} in denominator
+  + multiply by Y_{i}
+
+***** Calculator formula for [1 fraction]
+(X-A)(X-B)(X-C)            (X-X_{1})(X-X_{2})(X-X_{3})
+--------------- * Y_{i}   =>  -------------------  * Y_{0}
+(E-A)(E-B)(E-C)            (X_{0}-X_{1})(X_{0}-X_{2})(X_{0}-X_{3})
+
+where,
+- X is specific value given in question
+- A, B, C represent non-excluded X values
+- E is exculded X value (X_{0} at first)
+***** TODO just try to write full formula in copy
+solved example @ rough1, pg.56
+**** Newton's *divided* difference formula :drill:
+SCHEDULED: <2023-09-14 Thu>
+:PROPERTIES:
+:ID:       5c9c87c0-d0aa-48bb-a9e5-744a7f78f8d9
+:DRILL_LAST_INTERVAL: 8.9861
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 2.667
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-05 Tue 14:%]
+:END:
+given: 
+| x | x_{0} | x_{1} | x_{2} | x_{3} |
+| y | y_{0} | y_{1} | y_{2} | y_{3} |
+
+find y value at certain value of x
+***** steps (recall in copy)
+- keep adding difference columns & calculating difference of previous col.
+  until col. has only one value (here, last col will be \Delta^{3}y)
+- final formula:  $y = \displaystyle{ y_0 \medspace + (x-x_0)\cdot \Delta y_0 \medspace + (x-x_0)(x-x_1)\cdot \Delta^2 y_0 \medspace + (x-x_0)(x-x_1)(x-x_2)\cdot \Delta^3 y_0 }$
+***** extra info 
+- divided difference is y difference / x difference
+  - y values are from previous column
+  - x values are from starting x column
+    - values that are placed like boundary for current row (just look at table)
+      e.g $\displaystyle \Delta ^2 y_0 = \frac{\Delta y_1 - \Delta y_0}{x_2 - x_0}$
+- final formula is similar to forward but
+  + no denominator
+  + & instead of p we use (x - x_{0}) & subtract similarly
+*** Cubic Spline 
+/wtf is this formula bruh. exam agadi herera jamla/
+*** Least Square method (curve fitting) :drill:
+SCHEDULED: <2023-09-08 Fri>
+:PROPERTIES:
+:ID:       f67a2988-7607-42e9-a70e-e9a1874f89d0
+:DRILL_LAST_INTERVAL: 9.3103
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.5
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-08-30 Wed 13:%]
+:END:
+# asked only once tbh. seems unimportant
+
+- topic: interpolation
+- given: table of x & y values
+- asked: to fit straight line
+- i.e. just need to [find equation]
+**** steps
+solved [[https://atozmath.com/example/CONM/LeastSquare.aspx?q=1&q1=E1][example]]
+- use normal equations:
+
+     ∑y = a*n + b∑x
+  ∑(xy) = a∑x + b∑x^{2}
+
+
+- from table, calculate required values, sums for above eqns
+- substitute values in normal eqns & solve to find =a, b= values
+- substitute in straight line eqn
+  ~y = a + bx~ to get answer
+**** extra info (EZ ways to remember)
+- 1st normal eqn is variation of straight line eqn
+- 2nd normal eqn can be rememberd as
+  just multiplying everything in 1st by x,
+  except for =a=, swapping n with ∑x
+* num3: Numerical Differentiation & Integration 
+** Intro to Numerical Differentiation
+** Newton's Differentiation Formulae
+** Numerical Integration        :drill:
+SCHEDULED: <2023-09-11 Mon>
+:PROPERTIES:
+:ID:       3026785d-7e6c-4fbc-98c7-8f420e259d37
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-07 Thu 08:%]
+:END:
+given: integral $\int_{a}^{b}f(x) dx$
+*** common steps for all 3
+- create table for x & y values
+- use ~h\cdot n = b - a~ if needed for finding x values
+- where,
+  h is step size i.e. x_{i+1} - x_{i}
+  n is no. of sub-intervals
+EZ way to find values is to use =TABLE= in calculator (=Shift 7=)
+then, use specific rule's formula
+
+*** Trapezoidal Rule           :drill:
+SCHEDULED: <2023-09-11 Mon>
+:PROPERTIES:
+:ID:       75c89c0e-ccb5-4be6-945d-eba34cb04ecd
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-07 Thu 07:%]
+:END:
+- pattern: [1 , 2 , 2, ... 1]
+- formula: [$\displaystyle \frac{h}{2}\{y_0 + y_n + 2(remaining\ y\ values)\}$]
+
+*** Simpson's 1/3 rule         :drill:
+SCHEDULED: <2023-09-11 Mon>
+:PROPERTIES:
+:ID:       cbea9ab1-909c-4571-bd14-f616cdf54aca
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-07 Thu 08:%]
+:END:
+- pattern: [1 , 4 , 2 , 4 ,... 1
+  4 for odd =i=
+  2 for even =i= ]
+  # remember that i starts at 0
+  # i.e. a = x_{0}
+- formula: [$\displaystyle \frac{h}{3}\{y_0 + y_n + 4(y_{odd}) + 2(y_{even})\}$]
+
+*** Simpson's 3/8 rule         :drill:
+SCHEDULED: <2023-09-11 Mon>
+:PROPERTIES:
+:ID:       335b66ac-bbfd-41bb-98f5-468679e61c4d
+:DRILL_LAST_INTERVAL: 4.0
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-07 Thu 08:%]
+:END:
+- pattern: [1, 3, 3, 2, 3, ...1
+  2 for multiples of 3
+  3 for remaining]
+- formula: [$\displaystyle \frac{3h}{8}\{y_0 + y_n + 3(y_{multiple\ of\ 3}) + 2(y_{remaining})\}$]
+** Romberg Integration 
+** Numerical Double Integration
+* num4: Solution of Linear Algebraic Equation
+** Review of existence of solutions and properties of matrices
+** Consistency of Linear System of Equations
+** Elimination method
+*** Gauss elimination          :drill:
+SCHEDULED: <2023-09-09 Sat>
+:PROPERTIES:
+:ID:       fed854cc-3ac3-493c-a6ff-43a9bf8b989d
+:DRILL_LAST_INTERVAL: 10.0
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-08-30 Wed 13:%]
+:END:
+topic: linear eqn
+given: 3 equations using ~x,y,z~ or similar variables
+       that can be written in ~[AX = B]~ matrix form
+find : ~x,y,z~ values
+**** Elimination phase
+- create Augmented matrix [A/B'] by simply placing B's values
+  into another column in matrix A & placing colon(:) before the values 
+
+- turn Augmented matrix into upper or lower triangular matrix
+  - e.g: for upper triangular [U/B'], elements below diagonal should be 0
+    so non-0 values form a triangle in the upper side
+- use elementary row operation (performing addition/ subtraction between rows)
+  to turn required elements to 0 
+
+/Note: elements from matrix B don't need to be 0.
+However, their values will change as well when performing row operations/
+
+**** Substitution phase
+- multiply coefficients(numbers) in [U] with (x,y,z)
+- convert to ~[U][X] = [B]~ & solve
+
+*** Gauss elimination w/ pivoting :drill:
+SCHEDULED: <2023-09-09 Sat>
+:PROPERTIES:
+:ID:       32fbf510-711e-4f61-a812-8ee1c866a77a
+:DRILL_LAST_INTERVAL: 10.0
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-08-30 Wed 14:%]
+:END:
+topic: linear eqn
+given: 3 equations using ~x,y,z~ or similar variables
+       that can be written in ~[AX = B]~ matrix form
+find : ~x,y,z~ values
+**** this is for partial pivot
+/swap rows only/
+
+complete pivot swaps both rows & columns
+but seems out of syllabus
+
+**** elimination phase
+- create augmented matrix [A/B]
+- pivot element is diagonal element
+- in a column, find largest element below pivot
+- move it to pivot position by swapping rows
+- make elements below pivot/ diagonal 0
+  using row operations
+  /basically Upper triangular matrix [U/B']/
+- repeat for other columnns
+
+Note: for C2, pivot is a_{22} so a_{21} is ignored
+when looking for largest element
+
+**** substitution phase
+same as w/o pivot
+just multiply coefficients by variables
+- turn into ~[A][X] = [B]~ form and solve
+
+*** Gauss-Jordan method        :drill:
+SCHEDULED: <2023-09-09 Sat>
+:PROPERTIES:
+:ID:       a2242415-74c9-46a1-932b-ffdfdf5592a6
+:DRILL_LAST_INTERVAL: 10.0
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-08-30 Wed 13:%]
+:END:
+topic: linear eqn
+given: 3 equations using ~x,y,z~ or similar variables
+       that can be written in ~[A][X] = [B]~ matrix form
+find : ~x,y,z~ values
+
+**** steps (similar to Gauss Elim. but shorter)
+- no substitution phase
+- in elimination phase, turn augmented matrix [A/B'] into unit/Identity matrix
+- i.e. all diagonals 1,
+       non-diagonals 0
+
+  | 1  0  0  : b_{1} |
+  | 0  1  0  : b_{2} |
+  | 0  0  1  : b_{3} |
+
+- b values will change as we perform row operations
+- ~x,y,z~ are directly equal to b values
+
+*** Inverse of matrix using Gauss elimination
+doesn't seem important. skim [[https://www.intmath.com/matrices-determinants/inverse-matrix-gauss-jordan-elimination.php][this]] before exam ig?
+*** LU factorization method    :drill:
+SCHEDULED: <2023-09-13 Wed>
+:PROPERTIES:
+:ID:       18261b91-1852-4d62-a1fc-86ffe2ff0ea0
+:DRILL_LAST_INTERVAL: 9.3103
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 4
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 3.25
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-04 Mon 18:%]
+:END:
+# doesn't seem important? hasn't been asked yet
+topic: linear eqn
+given: 3 equations using ~x,y,z~ or similar variables
+       that can be written in ~[AX = B]~ matrix form
+find : ~x,y,z~ values
+**** decomposition phase
+- take L & U triangular matrices
+- for non-0 elements, put variables like L_{1}, L_{2}
+- turn all diagonals for one of the matrices to 1
+- use ~[A] = [L][U]~ & solve to find triangular matrix values
+
+**** substitution phase
+- [A] can be substituted to get ~[L][U][X] = [B]~
+- take ~[U][X] = [Z]~ where [Z] =
+      | z_{1} |
+      | z_{2} |
+      | z_{3} |
+- Solve ~[L][Z] = [B]~ to find [Z] values
+  &, ~[Z] = [U][X]~ to find required [X] values 
+*** Cholesky factorization     :drill:
+SCHEDULED: <2023-09-09 Sat>
+:PROPERTIES:
+:ID:       9141d01d-5cb6-4a09-b406-cffb948ec0b5
+:DRILL_LAST_INTERVAL: 10.0
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-08-30 Wed 13:%]
+:END:
+similar to LU
+
+topic: linear eqn
+given: 3x3 matrix A
+find : Cholesky decomposition of given matrix [L matrix]
+       no need to find variable values as they aren't given
+**** decomposition phase
+- take lower triangular matrix L (with elements above diagonal being 0)
+- for non-0 elements, put variables like L_{1}, L_{2} 
+- take L^{T} (transpose of L)
+  - just flip/ swap rows with columns
+- use A = L*L^{T} & solve to find L, L^{T} values
+*** Extra info
+
+**** Elementary row operations :drill:
+SCHEDULED: <2023-09-09 Sat>
+:PROPERTIES:
+:ID:       8bd46288-ecc6-47dc-abf4-a3d69ba92968
+:DRILL_LAST_INTERVAL: 10.0
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-08-30 Wed 13:%]
+:END:
+used for linear equations/ matrices
+***** 3 types
+- swap rows
+- multiply/divide all elements of a row by a number
+- add/subtract a row (multiplied by a number) to another row
+**** Calculator tip to solve multiple equations :drill:
+SCHEDULED: <2023-09-09 Sat>
+:PROPERTIES:
+:ID:       062996bd-b117-4666-a3db-5036739e40a4
+:DRILL_LAST_INTERVAL: 10.0
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-08-30 Wed 13:%]
+:END:
+[Mode 5(EQN), then choose eqn type based on no. of variables]
+
+***** extra info
+- mode 5 nai bhanera ghoknu pardaina. just keep in mind to solve faster
+- method dekhaunu ta paryo
+- but use this when methods produce equations like in elimination methods
+** Iterative method             :drill:
+SCHEDULED: <2023-09-08 Fri>
+:PROPERTIES:
+:ID:       b58a53f4-6acf-47bc-93b5-50649ee8fd35
+:DRILL_LAST_INTERVAL: 8.9861
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-08-30 Wed 14:%]
+:END:
+topic: linear eqn
+given: 3 equations using ~x,y,z~ or similar variables
+       that can be written in ~[A][X] = [B]~ matrix form
+find : ~x,y,z~ values
+
+*** common steps for both Seidel & Jacobi 
+- derive eqns/ formulae for each variable
+- from 1st eqn, derive for x_{1}
+  from 2nd, derive x_{2} etc. 
+- put formulae in calculator
+  separated by colon(:)
+- write each iteration's values in table
+- take initial values 0
+*** Gauss-Seidel
+- simpler calculator formula
+- use latest/ current iteration values
+- in calculator, just put the 3 derived formulae & solve
+*** Gauss-Jacobi
+- use previous iteration values
+- in calculator, if required variables are =x,y,z=
+  - use placeholder variables =a,b,c= in the formulae
+  - like ~x = f(a,b)~
+  - set =a,b,c= equal to =x,y,z= after the formulae
+  - this allows placeholders to use previous iteration values
+
+** Power method (eigen)         :drill:
+SCHEDULED: <2023-09-10 Sun>
+:PROPERTIES:
+:ID:       cb3a7a74-c343-4aaf-93d4-86e61004f22d
+:DRILL_LAST_INTERVAL: 4.0
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-06 Wed 14:%]
+:END:
+topic: linear eqn
+given: matrix A
+find:  eigen vector/ matrix(X) & eigen value(\lambda)
+
+*** steps
+- main formula: $A\cdot X_i = \lambda_{i+1}\cdot X_{i+1}$
+- take initial guess X_{0} having same no. of rows as A,
+  & one column
+- for X values, 
+  + if any value of row 1 in A  is 0,
+    1st row value of X is 0
+  + else, if all non-zero,
+    X is 1
+  + repeat for other rows
+- multiply A & X_{0}
+- from the product, take largest value common
+  so that it turns into above formula form
+- loop until \lambda & X of 2 iterations are accurate upto specified decimal places
+
+*** extra info (calculator steps)
+- use matrix mode (Mode 6)
+- define A as MatA
+  & X_{0} as MatB
+  using =Shift 4= (it says Matrix above it)
+- do =MatA * MatB= only once
+  product stored in =MatAns=
+- loop
+  + =MatAns / largest matrix value (eigen)=
+    MatAns is now eigen vector
+  + =MatA * MatAns=
+- until \lambda & X of 2 iterations are almost accurate
+  (difference of last decimal place is 1)
+
+*for quicker results, write only 3 decimals
+(i.e. accurate upto 2 decimals)*
+* num5: Solution of Ordinary Differential Equations
+** Taylor series method         :drill:
+SCHEDULED: <2023-09-11 Mon>
+:PROPERTIES:
+:ID:       83e378df-c0a8-4dfd-a670-70a0e55c733c
+:DRILL_LAST_INTERVAL: 4.0
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-07 Thu 07:%]
+:END:
+- given: differential eqn ~y' = f(x)~ 
+           i.e. 1st order derivative
+         y_{0} value
+- find : y at specified x value
+- hint : formula kinda similar to [[[*Newton's *divided* difference formula][Newton's *forward* difference formula]]]
+*** steps
+- find formulae for 2nd & 3rd order derivative as well
+- formula:  $\displaystyle{ \frac{1}{0!}\cdot y_0 \medspace + \frac{x-x_0}{1!}\cdot y'_0 \medspace + \frac{(x-x_0)^2}{2!}\cdot y''_0 \medspace + \frac{(x-x_0)^3}{3!}\cdot y'''_0 }$
+  + here, y_{0}''' = f'''(x_{0})
+- similar pattern to newton's forward but:
+
+  + derivative instead of difference
+  + we increase power of (x - x_{0})
+    instead of subtracting with others
+  + formula *always* goes upto i=3 i.e. 3rd order derivative?
+** Picard's method
+** Euler's method
+** Heun's method
+** Runge-Kutta methods
+* num6: Solution of Partial Differential Equations
+** Introduction 
+** Deriving difference equations
+** Laplacian Equation           :drill:
+SCHEDULED: <2023-09-11 Mon>
+:PROPERTIES:
+:ID:       f9c93c98-a1e1-445a-8771-df4db926433b
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-07 Thu 08:%]
+:END:
+- given: eqn w/ weird looking LHS 
+- find : solve eqn i.e. [find 4 or 9 unknown values in the middle of domain]
+- use laplace when [RHS = 0] or if this method is specified
+  
+*** steps
+- draw square mesh/ graph w/ given values & points we need to find
+- use this to find formula for each unknown point
+  $\displaystyle U_{ij} = \frac{\sum(4\ nearby\ points ) }{4}$
+
+- make table & repeatedly calculate point values
+  till 2 iterations are correct upto given decimal places
+  + use 3 decimal places if not specified 
+  + take initial values 0
+
+*** Gauss Seidel method
+for nearby points,
+values from latest iteration are used
+
+use this cuz easier calc. formula unless jacobi is specified
+i.e. just put 4 formulae & calculate
+*** extra info
+if opposite boundary values are equal,
+mesh is symmetric 
+thus, opposite points will be equal & we only need to calculate non-equal ones
+** Poisson Equation             :drill:
+SCHEDULED: <2023-09-11 Mon>
+:PROPERTIES:
+:ID:       2a34f34d-539c-4df4-8946-2c5255a0a74b
+:DRILL_LAST_INTERVAL: 4.0
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-07 Thu 08:%]
+:END:
+- given: eqn w/ weird looking LHS 
+         extra x,y range & sub-interval(h) (compared to laplace)
+- find : solve eqn i.e. [find 4 or 9 unknown values in the middle of domain]
+- use *poisson* when [RHS is an equation f(x) instead of 0]
+  or if this method is specified
+  
+*** steps
+- draw square mesh/graph w/ given values & points we need to find
+  + x & y value increase by h (& k if specified)
+- use this to find formula for each unknown point:
+  $\displaystyle U_{ij} = \frac{\sum(4\ nearby\ points ) - h^2\cdot f(x,y)}{4}$
+  here, i = x, j = y
+- make table & repeatedly calculate point values
+  till 2 iterations are correct upto given decimal places
+  + use 3 decimal places if not specified 
+  + take initial values 0
+
+*** Gauss Seidel method
+for nearby points,
+values from latest iteration are used
+
+use this cuz easier calc. formula unless jacobi is specified
+i.e. just put 4 formulae & calculate
+*** extra info
+if opposite boundary values are equal,
+mesh is symmetric 
+thus, opposite points will be equal & we only need to calculate non-equal ones
+* numLab
+

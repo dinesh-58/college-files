@@ -1,0 +1,489 @@
+* scr1: Client-side Scripting
+** Javascript use-cases
+- add interactivity to websites
+- server-side
+- mobile apps w/ React Native
+- desktop apps w/ Electron
+** DOM [Document Object Model]
+- web API for manipulating HTML & XML documents
+- represents document in hierarchical, tree-like structure
+  e.g: Viewport -> Document -> html -> head
+                                  | -> body
+
+can be used in many languages but mostly done with JS
+*** extra info
+**** properties
+~childNodes, firstChild~
+**** methods
+~appendChild(), setAttribute()~
+** =sort()=
+- by default, does string comparison so ascending order might be: =1, 100, 2=
+- for *ascending*, use ~arr.sort((a, b) => a-b)~
+** dialog box
+# refers to the javascript one, not the new <dialog> element
+=alert()=
+=confirm()= returns boolean
+=prompt()=  returns input
+** Immediately Invoked Functions
+- f'ns that run as soon as they are declared
+
+#+begin_src js
+  function () {
+      let a;
+      let b;
+  } () 
+  // arrow f'ns can be used too
+#+end_src
+- no f'n name
+- parentheses at end so that f'n is executed
+- used for temporarily declaring variables so they don't pollute global namespace
+** function w/ any no. of params
+using ~arguments~ pre-defined array inside a *non-arrow* function 
+/NOTE: arguments spelled without e after u/
+** differences                  :drill:
+~setTimeout(callbackFn, timeInMs)~ runs callback [once, after time passes]
+~setInterval(callbackFn, timeInMs)~ runs callback [endlessly, after time passes]
+
+# remember that 1sec = thousand milliseconds
+*** JS program to display & constantly update time in HH:MM:SS format :drill:
+#
+**** code
+#+begin_src js
+  setInterval(() => {
+      let time = new Date();
+      document.querySelector('div').innerText =
+          `${time.getHours() % 12} :
+           ${time.getMinutes()} :
+           ${time.getSeconds()}`; 
+  } , 1000);
+#+end_src
+*** JS program to change background color every second :drill:
+#
+**** code
+#+begin_src js
+  let toggle = true;
+  setInterval(() => {
+      toggle = !toggle;
+      document.body.style.background =
+          toggle ? 'silver' : 'gray';
+  }, 1000);
+
+#+end_src
+** NaN (Not a Number)
+data type for value that is not a valid/representable number
+- result of math operations on non-numeric data, or invalid operations (divide by 0)
+** things to remember
+- empty array variables should be declared as array
+  ~let arr = []~
+  else, causes error when appending values
+
+- if specifying f'n name as callback f'n, don't put parentheses
+  doing so will immediately call the f'n
+  if you need to pass args, put it in anonymous f'n
+  ~btn.onclick = () => myFunc(arg)~ 
+
+  + however, =onlcick= attrib in html can pass arg w/o needing anon f'n
+
+- if you need to get number from html form input is a number, remember to put it in =parseInt(string)=
+  =Math.trunc()= should be used for getting integer part from decimal number
+  
+- =.map()= can only be used for arrays
+  + use spread operator =...= to deconstruct array-like objects into arrays
+  ~[...nodeList].map()~
+
+- buttons inside forms will submit (& reset page) by default. use input or button element w/ ~type="button"~  
+
+** CSS grid
+#+begin_src css
+  #parent {
+      display: grid;
+      grid-template-rows: repeat(3, 1fr); /*3 equal size rows */
+      grid-template-columns: repeat(3, 1fr); /*3 equal size cols */
+  }
+  #wide-row {
+      grid-col: span 3; /*takes up 3 cols*/
+  }
+#+end_src
+
+*** remember that
+wide row must span =n= cols
+tall col must span =n= rows
+
+** RegEx (js)
+pattern matching expressions
+*** create regex object syntax
+wrap pattern in forward slashes //
+~let pattern = /\d{9}/~
+
+*** =String= methods
+**** match(RegExp)
+without =/g= :  returns 1st match & captures
+with    =/g= :  returns all matches, but no captures
+**** matchAll(RegExp)
+returns all matches & captures
+=/g= is necessary
+*** =RegExp= methods
+**** test(String)
+returns bool
+**** exec(String)   *use this cuz returns cleaner array*
+*** cheatsheet
+/ignore = signs around symbols/
+=?=  match prev pattern 0 or 1 time
+=*=  0-unlimited times
+=+=  1-unlimited times (compulsory)
+={n}= match n no. of times
+
+=^ $= start & end
+=[abc]= match any one of these things: a,b, or c
+=[^abc]= exclude these
+=[-]= range
+=\w= word characters same as =/[A-Za-z0-9_]/=
+=\d= 0-9
+=()=  capture i.e. returns overall matched pattern & pattern inside parentheses 
+
+**** flag/modifiers
+placed after closing /
+
+=/g= global flag. return all matches, not just 1st
+=/i= case-insensitive
+
+* scr2: Server-side Scripting w/ database connectivity
+** PHP
+*** echo
+- remember that echo is a language construct, not a f'n
+  so no need for parens
+  ~echo 'hello', $name~
+  /note the comma/
+
+- can't print arrays, use =print_r()=
+*** some built-in f'ns
+- =streln($str)=
+- =count($arr)=
+  array length
+- =array_sum($arr)=
+- =array_search($key, $arr)=
+  if found, returns index, else false
+- =in_array($key, $arr)=
+  similar, but always returns boolean
+*** chessboard
+8x8
+1st square is white
+just set color based on =(i + j) % 2= 
+*** accessing properties (members & methods) for a class
+**** non-static
+~$object->prop~ (arrow operator)
+name of object can be used
+**** static
+~Class::prop~ (double colons)
+we need to specifically use class name
+*** resetting HTTP requests
+**** GET
+deleting querystring part from URL
+**** PHP
+reloading by clicking on URL & pressing Enter
+*** complex syntax (curly)
+complex expressions can be wrapped in =${}= to be properly parsed in double quotes
+basically like in javascript
+can be used for objects' members, nested arrays etc
+*** when to use double quotes for strings (in php)? :drill:
+SCHEDULED: <2023-10-05 Thu>
+:PROPERTIES:
+:ID:       deb08bce-b17f-43de-8f50-2332107d387a
+:DRILL_LAST_INTERVAL: 71.7731
+:DRILL_REPEATS_SINCE_FAIL: 5
+:DRILL_TOTAL_REPEATS: 4
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.5
+:DRILL_EASE: 2.7
+:DRILL_LAST_QUALITY: 5
+:DRILL_LAST_REVIEWED: [2023-07-25 Tue 19:36]
+:END:
+# 
+**** answer 
+only when we need to parse variables/ expressions inside strings
+**** extra info
+if string only has text, better to use single quotes
+cuz interpreter will scan double-quoted string which may take some extra time
+*** functions don't inherit global variables by default
+#+begin_src php
+  <?php
+  $a = 5;
+
+  function inc() {
+      global $a; // global keyword imports $a & allows using
+      $a++;
+  }
+  ?>
+#+end_src
+*** operator for accessing object properties & methods in: :drill:
+SCHEDULED: <2023-10-28 Sat>
+:PROPERTIES:
+:ID:       f913dedb-738e-4510-b347-b49e281ccd1e
+:DRILL_LAST_INTERVAL: 76.9036
+:DRILL_REPEATS_SINCE_FAIL: 5
+:DRILL_TOTAL_REPEATS: 4
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.75
+:DRILL_EASE: 2.8
+:DRILL_LAST_QUALITY: 5
+:DRILL_LAST_REVIEWED: [Y-08-12 Sat 10:%]
+:END:
+js : [ . (dot operator)] 
+php: [ -> (arrow operator)] 
+*** While inspecting php file in the browser, we only see html/ =echo= output. Why?
+php is executed on server & sends html result to browser
+**** extra info
+this output can be used in AJAX with =responseText=
+*** execute html conditionally
+#+begin_src php
+  <?php
+  if ($condition == true) {
+      ?>
+      <p>The value is true</p>
+                 <script> /* can also exceute javascript*/ </script>
+  <?php
+                 } // if block is finally closed here
+  ?>
+#+end_src
+*** =foreach()= (php)
+~foreach($arr as $value) {}~
+~foreach($arr as $key => $value) {}~
+- here, for numbered/indexed arrays, =$key= is just the index
+
+- if modifying $value inside loop, specify address in parens ~as &$value~
+*** function return value meanings
+return 1 means success
+return 0 means fail
+/opposite of C/
+*** storing data temporarily
+=session_start()= & =setcookie()= must be used before any other php output
+i.e. must be at start of php file
+**** Cookies
+- plain text, small size limit
+- stored on user computer
+- deleted based on expiration date
+#+begin_src php
+  setcookie($key, $val)
+  $_COOKIE['key']   // only for reading value
+#+end_src
+
+**** Sessions
+- encrypted, larger size limit
+- stored on server
+- deleted when user logs out or closes browser
+#+begin_src php
+  session_start();
+  $_SESSION['key'] = <value>;
+#+end_src
+** different ways to connect to a database (in php) :drill:
+SCHEDULED: <2024-02-20 Tue>
+:PROPERTIES:
+:ID:       ad312276-3936-474d-a99f-6fe9f1e06956
+:DRILL_LAST_INTERVAL: 167.4436
+:DRILL_REPEATS_SINCE_FAIL: 6
+:DRILL_TOTAL_REPEATS: 5
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.2
+:DRILL_EASE: 2.6
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-06 Wed 14:%]
+:END:
+# PDO is out of syllabus. was learned for project
+*** answer 
+**** =mysqli= (procedural interface) :drill:
+SCHEDULED: <2024-02-20 Tue>
+:PROPERTIES:
+:ID:       1c1f82db-6626-4f70-82d9-7aa70ffd29a4
+:DRILL_LAST_INTERVAL: 167.4436
+:DRILL_REPEATS_SINCE_FAIL: 6
+:DRILL_TOTAL_REPEATS: 5
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.2
+:DRILL_EASE: 2.6
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-06 Wed 14:%]
+:END:
+just describe how it is procedural 
+***** answer 
+bunch of built-in functions for different actions like ~mysqli_connect()~, ~mysqli_query()~
+**** =mysqli= (OOP interface)   :drill:
+SCHEDULED: <2024-01-25 Thu>
+:PROPERTIES:
+:ID:       3dc974ec-a666-4f84-970a-1f2a03f21b82
+:DRILL_LAST_INTERVAL: 151.4629
+:DRILL_REPEATS_SINCE_FAIL: 6
+:DRILL_TOTAL_REPEATS: 5
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.2
+:DRILL_EASE: 2.56
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-08-27 Sun 09:%]
+:END:
+object oriented how? 
+***** answer 
+we establish connection with DB by representing it as an object of the =mysqli= class 
+***** extra info
+the class has useful pre-defined properties & methods (~$errorno~, ~query()~, ~prepare()~)
+**** =PDO= (PHP database objects) :drill:
+SCHEDULED: <2024-03-16 Sat>
+:PROPERTIES:
+:ID:       9a7b1dcd-bf66-4484-aeb3-80fe74846634
+:DRILL_LAST_INTERVAL: 185.7418
+:DRILL_REPEATS_SINCE_FAIL: 6
+:DRILL_TOTAL_REPEATS: 5
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.4
+:DRILL_EASE: 2.7
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-12 Tue 15:%]
+:END:
+how does it differ from the mysqli class? 
+***** answer 
+=mysqli= is only for MySQL databses.
+
+=PDO= provides a consistent interface by using the same class to work w/ a variety of RDBMS software
+***** extra info
+mysqli uses ~snake_case~,
+PDO uses ~camelCase~
+*** extra info
+- underlying concept of connecting to DB, executing commands, & fetching results (for SQL queries) is same across the 3
+- SQLite3 class is also available specifically for SQLite
+
+** MySQL
+*** connect to db
+#+begin_src php
+  $conn = new mysqli('localhost', 'root', '', 'companyDB');
+  // params are path, username, password, database
+#+end_src
+*** execute statement
+#+begin_src php
+  $sql = "insert into users...";
+  $conn->query($sql); 
+#+end_src
+
+*** display results of query(select)
+- using =fetch_array()= or =fetch_assoc()= on resultSet
+- fetches one row that pointer points to
+#+begin_src php
+  $sql = "select * from users";
+  $result = $conn->query($sql);
+  while($row = $result->fetch_assoc()) {
+      echo $row['name'];
+  }
+#+end_src
+
+** PDO
+# PDO is out of syllabus. was learned for project
+*** syntax to connect
+#+begin_src php
+  <?php
+ $pdo = new PDO($driver:$dbName);
+ // for SQLite, it would be PDO('sqlite:example.db') 
+  
+#+end_src
+*** PDOObject
+returned from PDO::query
+**** fetch
+**** fetchAll
+may take up large amount of memory if reading from large table
+thus, better to use fetch w/ loop
+**** fetch mode
+can be specified for both fetch & fetchAll
+***** important ones
+- =PDO::FETCH_NUM=
+- =PDO::FETCH_ASSOC=
+- default is =PDO::FETCH_BOTH= which fetches both numeric and associative array
+*** query
+** RegEx (php)
+pattern is just a string,
+not a special object like in JS
+~$pattern = '/^\w+$/'~
+*** ~preg_match($pattern, $str, $match)~
+- returns 1 if there is any match
+- $match is optional array that will store matched values
+*** filter_input
+- can be used to directly get form input & validate it, all in 1 f'n
+- returns unmodified input value if valid,
+  else false
+#+begin_src  php
+  <?php
+  $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+  $firstName = filter_input(INPUT_POST, 'fname', FILTER_VALIDATE_REGEXP, ['options'=>['regexp'=>'/^\w+$/']]);
+  ?>
+#+end_src
+keep in mind that capitalized things are constants, bnot strings
+* scr3: Advanced server-side scripting
+** OOP w/ php
+*** 4 principles
+**** Inheritance
+childClass =extends= Parent
+=$this->propName= must be used when accessing current object's properties in methods, child classes
+**** Polymorphism
+***** method overriding
+- define: same method works differently depending on class (whose object it is called from)
+
+  simply just create function with same name & params in childClass
+
+  ~parent::func()~ can be used to call overridden method if needed 
+***** method overloading (in php)
+define: method works differently depending on no. of arguements
+php doesn't support redeclaring functions so use:
+- ~func_num_args()~, ~func_get_args()~ & ~func_get_arg()~ inside the function
+
+- or, define ~function __call($funcName, $arguementsArr)~ & inside it,
+  perform operation based on $funcName & no. of args (use =count()=)
+  [[https://www.freecodecamp.org/news/method-overloading-in-php/][example]]
+
+  =__call()= is used by php when it doesn't find a f'n
+  so, no need to separately define our f'n
+**** Abstraction
+**** Encapsulation
+public (anywhere)
+protected (only in parent & child class)
+private (only in that class)
+
+***** extra info
+no =default=
+visibility will be =public= if not specified
+*** constructor
+~function __construct(){ }~ inside a class
+*** =final= keyword
+prevents child classes from overriding
+** jQuery
+** AJAX   
+Asynchronous Javascript & XML
+- method for communicating with server without reloading page 
+- synchronous requests cause page reloads
+- asynchrnous happens parallely
+*** ~XMLHttpRequest~ class
+**** ~readyState~
+must be 4 (response is received?)
+
+**** ~status~
+must be 200 (request is complete?)
+**** ~onreadystatechange~
+- event listener 
+- takes callback f'n for what to do when =readyState= changes
+**** ~responseText~
+if json format is returned, parse it with ~JSON.parse()~
+*** example code snippet
+#+begin_src js
+let request = new XMLHttpRequest();
+function getResponse() {
+    request.open("GET", "http://localhost");
+    request.send();
+
+    request.onreadystatechange = function() {
+        if(request.readyState ===4) { 
+            if(request.status === 200) {
+                console.log(request.responseText); 
+            }
+        }
+    }
+}
+
+getResponse(); // run on 1st load;
+document.querySelector('button#refresh').onclick = getResponse;   // run whenever button clicked
+#+end_src
+
+For response, you can just echo something in ~index.php~

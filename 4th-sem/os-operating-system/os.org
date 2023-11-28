@@ -1,0 +1,927 @@
+* DONE OS1: Intro
+** define OS                    :drill:
+SCHEDULED: <2023-11-24 Fri>
+:PROPERTIES:
+:ID:       3c7d55df-ee6b-48f0-a26d-e2514faadfbb
+:DRILL_LAST_INTERVAL: 89.1297
+:DRILL_REPEATS_SINCE_FAIL: 5
+:DRILL_TOTAL_REPEATS: 4
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 5.0
+:DRILL_EASE: 2.9
+:DRILL_LAST_QUALITY: 5
+:DRILL_LAST_REVIEWED: [Y-08-27 Sun 09:%]
+:END:
+#
+*** answer
+group of software/ programs that allows us to use a computer. 
+*** extra info
+acts as intermediary between users & computeer
+** functions of OS              :drill:
+SCHEDULED: <2023-10-13 Fri>
+:PROPERTIES:
+:ID:       155fc918-e2ee-4b29-b840-8de9fcd1b59d
+:DRILL_LAST_INTERVAL: 54.9212
+:DRILL_REPEATS_SINCE_FAIL: 5
+:DRILL_TOTAL_REPEATS: 4
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.5
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-08-19 Sat 08:%]
+:END:
+#
+*** 4 functions
+- allow using I/O devices
+-  allows users/ programs to utilize hardware;
+  without OS, would be difficult to do so
+- manages running processes so they don't interfere
+- extended machine: simplified abstraction layer so that users don't have to fully understand how a computer works to use it
+
+*** extra info regarding extended machine
+computer combines multiple machines to become one whole machine that takes input & gives output
+* OS2: OS structure
+** kernel
+core of OS. manages hardware
+OS comprises of kernel + shell, utilities required to make a computer usable
+*** types
+**** monolithic 
+icludes all services of OS
+entire OS runs as one kernel process
+easy to design
+hard to extend, debug
+**** micro
+includes only essential
+user & kernel services are kept in separate address sapce
+hard to design
+easy to extend, debug
+** shell                        :drill:
+SCHEDULED: <2023-10-16 Mon>
+:PROPERTIES:
+:ID:       6335efed-df61-43a5-899e-7178526382cd
+:DRILL_LAST_INTERVAL: 67.5294
+:DRILL_REPEATS_SINCE_FAIL: 5
+:DRILL_TOTAL_REPEATS: 4
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.25
+:DRILL_EASE: 2.56
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-08-08 Tue 06:%]
+:END:
+#
+*** define
+command-line based interpreter that provides an interface to the OS
+* OS3: Process management
+** process                      :drill:
+SCHEDULED: <2023-10-19 Thu>
+:PROPERTIES:
+:ID:       1664b823-274a-4408-b67c-2dd79db6db14
+:DRILL_LAST_INTERVAL: 74.2967
+:DRILL_REPEATS_SINCE_FAIL: 5
+:DRILL_TOTAL_REPEATS: 4
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.5
+:DRILL_EASE: 2.7
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-08-06 Sun 09:%]
+:END:
+#
+*** define
+currently running instance of a program
+*** extra info
+one program can have multiple running  processes at a time
+*** process model/ structure    :drill:
+SCHEDULED: <2023-09-19 Tue>
+:PROPERTIES:
+:ID:       46fdbdf1-9ad2-4ead-9ec9-ec1b780384e7
+:DRILL_LAST_INTERVAL: 48.1104
+:DRILL_REPEATS_SINCE_FAIL: 5
+:DRILL_TOTAL_REPEATS: 4
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.25
+:DRILL_EASE: 2.08
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-08-02 Wed 16:%]
+:END:
+/what is a process made up of/
+# similar to pcb. look up if these are same or one can be deleted
+**** answer
+- instructions
+- data
+- stack for variables, function calls
+- heap (for objects?)
+**** extra info 
+this is stored in the process's assigned memory space 
+one process cannot affect another's memory space
+*** process states              :drill:
+SCHEDULED: <2023-09-05 Tue>
+:PROPERTIES:
+:ID:       7380ff4f-c580-4eb8-af5c-8637145f1825
+:DRILL_LAST_INTERVAL: 9.9755
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 10
+:DRILL_FAILURE_COUNT: 3
+:DRILL_AVERAGE_QUALITY: 3.4
+:DRILL_EASE: 2.46
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-08-26 Sat 08:%]
+:END:
+#
+**** 5
+- new (being created)
+- ready (waiting to be assigned to processor)
+- running 
+- blocked (waiting for some event so it can continue running)
+- terminated (finish running)
+**** transition (no need to remember)
+each process has events for transitioning to/from it
+e.g: creation, running, blocking, unblocking etc.
+*** process control block (PCB) :drill:
+SCHEDULED: <2023-09-25 Mon>
+:PROPERTIES:
+:ID:       7c5eebc7-b6b4-471e-a567-ae16d6eeb2e8
+:DRILL_LAST_INTERVAL: 25.1907
+:DRILL_REPEATS_SINCE_FAIL: 5
+:DRILL_TOTAL_REPEATS: 12
+:DRILL_FAILURE_COUNT: 5
+:DRILL_AVERAGE_QUALITY: 2.666
+:DRILL_EASE: 1.66
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-08-31 Thu 13:%]
+:END:
+# similar to process model. look up if these are same or one can be deleted
+**** define
+data structure assigned to each process by OS
+**** includes
+info about process: 
+
+- unique pID
+- process's state
+- Program Counter (next instruction's address)
+- current values of CPU registers (ACC, HL, ...)
+- memory info (related to process)
+- i/o info  (related to process)
+*** process operations
+*** cooperating processes
+** System calls                 :drill:
+SCHEDULED: <2023-09-16 Sat>
+:PROPERTIES:
+:ID:       3a24d8e2-6511-4a5a-b6ff-c12bb665785f
+:DRILL_LAST_INTERVAL: 46.4266
+:DRILL_REPEATS_SINCE_FAIL: 5
+:DRILL_TOTAL_REPEATS: 5
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.08
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-08-01 Tue 19:%]
+:END:
+# 
+*** define 
+feature thru which programs can request services from OS
+*** types
+- process management calls
+- file management calls
+- hardware management
+- inter-process communication
+** thread
+small unit/ process within a process
+inherits useful data from process
+has its own control block
+*** types of thread
+- user-level
+- kernel-level
+*** types of thread process
+- single-threaded process
+- multi-threaded process
+*** multithreading
+threads of 1 process can run parallely in same memory space
+** Inter-process communication
+sharing info, resources, coordinating tasks
+*** Synchronization            :drill:
+in terms of OS processes
+**** define
+organizing multiple processes/ threads that access same reousrces/ critical region such that they don't affect one another
+*** Race condition
+/undesirable condition that may cause problem if not handled properly/
+**** in multi-threading (use this in exam?)
+multiple threads use the same resource or run same instruction
+**** in multi-processing
+multiple processes that should be run in a *specific sequence* are instead
+attempted to run *simultaneosly*
+**** in critical region
+when multiple threads access a critical region,
+different results may occur depending on sequence of executing threads
+*** we drillin                  :drill:
+#
+**** Critical region
+parts of code that uses resources/variables shared by multiple processes/ thread
+**** Mutual Exclusion (mutex)
+property which states that critical section should only be accessed by 1 process/thread at a time 
+
+**** mutex achieved using
+***** Semaphore (S)             :drill:
+remember only algorithm, not program for functions
+****** explain
+- integer variable that represents if critical region is in use & implements =MutEx=
+
+While trying to run a process:
+- if S <= 0, critical section is being used by a process
+   & thus, process is blocked 
+- if S > 0, allowed to run 
+
+wait() -> enter critical section -> signal()
+****** [wait]() function
+locks critical section 
+#+begin_src c
+  void wait(S) {
+    while(S <= 0);  // note the semi-colon which causes inifinite loop,
+    // i.e. force process to wait
+    S--;
+  }
+#+end_src
+
+****** [signal]() function
+frees critical section 
+#+begin_src c
+  void signal(S) {
+    S++;
+  }
+#+end_src
+*** Dining philosophers' problem :drill:
+represents synchronization problem
+**** problem
+- 5 philosopers are at a table w/ 5 chopsticks
+- philosohpers either think or eat
+- to eat, they need to hold the 2 chopsticks next to them
+- if 1 chopstick is being used & another philosopher wants to use it, causes race condition
+- how do we handle this?
+
+**** solution & algorithm
+represent each chopstick as a semaphore
+#+begin_src c
+  int stick[5], i = 0;
+  void Philosopher {
+    wait( pick( stick[i]));
+    wait( pick( stick[(i+1) % 5]));
+    // (i + 1) % 5 increments i or sets i = 0 if ending index reached (cause round table represented as circular queue)
+    eat();
+    signal( release( stick[i]));
+    signal( release( stick[i+1%5]));
+  }
+#+end_src
+**** extra info (new problem)
+deadlock may occur if all philosophers pick up 1 chopstick
+& are waiting on other one to be free, which never becomes free
+
+- can be solved by making philosopher release held chopstick if other isn't free
+** Process scheduling 
+- method for selecting which process from wait queue should be run
+- CPU can only run one process at a time?
+*** Criteria
+**** CPU utilization
+% of time cpu is being used (not idle)?
+**** Throughput
+no. of processes run in a span of time
+**** Times
+***** recall definition only :drill:
+#
+****** Arrival time(stamp)
+timestamp @ which process arrives in memory
+****** Burst time
+time taken to run process
+
+****** Completion time(stamp)
+timestamp @ which process completes
+
+***** recall definition & formula :drill:
+#
+****** Turn-around time
+time taken from process arrival till completion
+- because process may have to wait to start running
+formula = Completion timestamp - Arrival time
+
+****** Wait time 
+time spent waiting to be assigned to CPU
+formula = Turn-around - Burst time
+*** Algos
+**** pre-emptive process scheduling :drill:
+#
+***** describe
+- running process can be interrupted to run another one instead
+- interruption happens when new process arrives
+***** Priority
+***** Shortest remaining time next
+***** Round robin
+- process is only allowed to run for specified =quantum time=
+  - if not finished, move it to back of ready queue
+  - run process @ front of queue
+- give equal opportunity to all processes
+- if process finishes before quantum time finishes,
+  other processes can be run instead of CPU being idle
+**** non pre-emptive process scheduling :drill:
+#
+***** describe
+- can't be interrupted
+- running process finishes & lets go of CPU
+  then only other processes run
+***** First Come First Serve
+***** Shortest job  
+from ready queue, run process w/ shortest burst
+**** multi level queue scheduling :drill:
+#
+***** describe
+- instead of 1 ready queue,
+  we can have multiple queues
+  w/ different priorities & scheduling algos
+
+- higher priority queue is pre-emptive/ can interrupt process of lower queue
+* OS4: Deadlocks
+** Deadlock
+condition where processes are blocked because
+process A is wating on pocess B to free up resources
+while A itself is holding some resources
+*** conditions                 :drill:
+when these are all met, deadlock occurs
+
+**** [mutual exclusion]
+at least 1 resource can't be shared
+**** [no pre-emption]
+process can't be interrupted
+**** [hold & wait]
+from defintion: process holds a resources & is waiting on another
+**** [circular wait]
+resource allocation graph shows circular chain
+
+*** Deadlock detection
+**** directed graph
+- resources are represented as squares
+- processes are represented as circles
+ 
+- arrow from:
+  + resource to process => resource is used by process 
+  + process to resource => process is requesting resource 
+
+- if circular graph appears anywhere, deadlock occurs
+- /wait-for graph is a simplified directed graph/
+
+*** Deadlock handling techniques
+**** deadlock prevention
+- designing system such that deadlock doesn't occur
+- e.g:
+  + system pre-empts/ forcefully terminates process
+  + prevent hold & wait by making process request all resource at once & only run if all requests granted
+**** deadlock avoidance
+- when request is made, check if it would lead to deadlock
+**** Ostrich algorith (deadlock ignorance)
+- if deadlock, just reboot system & act like deadlock never happened
+* OS5: Memory management
+** Basic memory management
+*** intro
+- Memory is just hardware device that stores data
+*** hierarchy
+remember old diagram with inverse relation between price & storage capacity
+*** Memory address             :drill:
+SCHEDULED: <2023-09-09 Sat>
+:PROPERTIES:
+:ID:       9892cbf2-682b-4500-bdee-c73ade5e8ecd
+:DRILL_LAST_INTERVAL: 9.3103
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.5
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-08-31 Thu 13:%]
+:END:
+#
+**** Logical address
+- virtual address generated by CPU,
+  used in program code
+- virtual: doesn't physically exist but is mapped to a physical address
+- e.g: pointers in C
+**** Physical address
+- actual location in memory
+**** address space (try remembering definition, but not necessary)
+- area/ set of all memory allocated to process
+- of type logical & physical
+
+*** Requirements of memory management system :drill:
+SCHEDULED: <2023-09-09 Sat>
+:PROPERTIES:
+:ID:       64b5861c-f6c3-46c8-8ece-af80185fdceb
+:DRILL_LAST_INTERVAL: 9.3103
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.5
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-08-31 Thu 13:%]
+:END:
+remember names & defintion
+**** [relocating]
+- when swapping process back into main memory,
+address it previously occupied may not be available
+- System needs to move it to new address space & ensure that logical addresses are mapped correctly 
+
+**** [protection]
+prevent a process from writing/ interfering in another's address space
+
+**** [sharing memory]
+- allow sharing memory locations when needed
+- e.g: if 2 processes open the same file,
+  more efficient to load file into main memory once & share
+  than loading twice
+
+**** [physical memory organization]
+- allow distinguishing memory into main & secondary
+- using faster, volatile for running processes
+- non-volatile for long term storage 
+
+*** Memory management w/ swapping :drill:
+SCHEDULED: <2023-09-09 Sat>
+:PROPERTIES:
+:ID:       e7631a6d-0e4e-4e6c-87a2-0af3eddc1153
+:DRILL_LAST_INTERVAL: 9.3103
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.5
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-08-31 Thu 13:%]
+:END:
+[moving process to disk & then later bringing back to main memory when needed]
+**** bitmap
+- memory is divided into blocks (ex: 100kb, 1mb)
+- each block has associated bit 
+- 0 if empty, 1 if occupied
+- slow searching (to see if there is enough adjacent empty units to fit process)
+  , updating (when memory for process is allocated/ deallocated)
+
+**** linked list
+- each list item represents a sequence/ continuous amount of memory that is either free or occupied
+- each list item stores info about starting address, length, free status, pointer to next
+- faster searching, update
+
+*** Memory Management w/o swapping
+*** Contiguous memory allocation :drill:
+SCHEDULED: <2023-09-09 Sat>
+:PROPERTIES:
+:ID:       852db790-15c4-45e2-8458-6cc78c04eb49
+:DRILL_LAST_INTERVAL: 9.3103
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.5
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-08-31 Thu 13:%]
+:END:
+define: [consecutive locations are allocated for entire process/file] 
+
+types:
+**** [fixed partitioning]
+- memory divided into non-resizable partitions
+- each can only hold one process
+- prone to internal fragmentation
+***** queue (unimportant?)
+program is placed in waiting queue if large enough partition isn't free
+****** multi input
+each partition has its own queue
+****** single input
+- all partitions share queue
+- program allocated to whicher becomes free & can fit it
+**** [dynamic partition]
+- partition created by allocating only required amount to process
+- prone to external fragmentation
+
+**** Fragmentation            :drill:
+SCHEDULED: <2023-09-09 Sat>
+:PROPERTIES:
+:ID:       cc6d14ae-9da2-4678-bf66-eaf7fd4f58db
+:DRILL_LAST_INTERVAL: 9.3103
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.5
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-08-31 Thu 13:%]
+:END:
+define: [small fragments of unusable memory]
+types:
+
+***** [internal]
+- happens in fixed partition when process is placed in partition larger than it
+- free space is unusable as partition can only have one process
+- can be solved thru dynamic partitioning
+
+***** [external]
+- happens in dynamic partition, 1st fit where there is enough free space to fit another process
+- but it is distributed among different non-contiguous holes
+- under contiguous allocation, that space can't be used 
+
+*** Memory allocation algorithms :drill:
+SCHEDULED: <2023-09-09 Sat>
+:PROPERTIES:
+:ID:       085f46e2-c2c5-4eaa-9f4b-0250bafc15bc
+:DRILL_LAST_INTERVAL: 9.3103
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.5
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-08-31 Thu 13:%]
+:END:
+# dunno if important
+**** 1st fit
+- allocate to 1st hole(free memory space) that it finds
+- empty space of that hole can be allocated to another process 
+**** next fit
+- like 1st, but keeps track of where it last allocated
+- searches from there on to be fast
+**** best fit
+search through entire memory & allocate to smallest that still fits
+**** worst fit
+duh
+*** Non-contiguous memory allocation :drill:
+SCHEDULED: <2023-09-10 Sun>
+:PROPERTIES:
+:ID:       3a0364a3-fbd9-46f1-9655-11889be15444
+:DRILL_LAST_INTERVAL: 9.3103
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.5
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-01 Fri 18:%]
+:END:
+describe: [allocating multiple non-adjacent blocks of memory to process]
+
+**** types:
+***** Paging                 :drill:
+SCHEDULED: <2023-09-12 Tue>
+:PROPERTIES:
+:ID:       8604e77d-3d0b-423b-8f1d-b109e92ba88c
+:DRILL_LAST_INTERVAL: 10.0
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-02 Sat 13:%]
+:END:
+#
+****** define
+- process is divided into equal-sized parts(pages) stored in secondary memory
+- main memory divided into frames where frame size = page size 
+- when process run, pages are loaded/mapped to frames
+****** extra info
+- page table keeps track of mapping
+- makes non-contiguous allocation faster
+***** Segmentation (os)      :drill:
+SCHEDULED: <2023-09-12 Tue>
+:PROPERTIES:
+:ID:       208bad0b-b6f4-4927-b521-a27a3c4d1140
+:DRILL_LAST_INTERVAL: 10.0
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-02 Sat 13:%]
+:END:
+define: [process is divided into unequal segments that are loaded into memory]
+  
+**** extra info
+- more efficient use of holes, fragments
+- might take more time to divide process, allocate
+*** Relocation & Protection
+covered [[*Requirements of memory management system][here]]
+*** Managing holes (OS: memory management) :drill:
+SCHEDULED: <2023-09-09 Sat>
+:PROPERTIES:
+:ID:       2aa99a50-f8cb-40cd-9b60-79913c7c90a7
+:DRILL_LAST_INTERVAL: 8.9861
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-08-31 Thu 13:%]
+:END:
+#
+**** Coalescing
+combining adjacent holes to create one large hole of free memory
+**** Compaction
+- when holes are non-contigious 
+- moving processes to different addresses so that all holes are contiguous & combined
+- requires processes to be paused while moving occurs
+** Virtual Memory
+*** Page fault                 :drill:
+SCHEDULED: <2023-09-12 Tue>
+:PROPERTIES:
+:ID:       28ecc9fc-4c03-4fb8-8b3d-d9e1b1dd07ce
+:DRILL_LAST_INTERVAL: 10.0
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-02 Sat 13:%]
+:END:
+define: [error that occurs when a program requests page that isn't currently loaded in physical memory/ isn't mapped to frame]
+
+*** Page replacement algorithms :drill:
+SCHEDULED: <2023-09-12 Tue>
+:PROPERTIES:
+:ID:       fea6977a-e434-4523-ae51-20c7cfab7284
+:DRILL_LAST_INTERVAL: 9.648
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.5
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-02 Sat 13:%]
+:END:
+- used to handle page faults when all frames are filled
+- first [fill all frames] then start replacing
+**** remember names only here
+***** FIFO page replacement  :drill:
+SCHEDULED: <2023-09-12 Tue>
+:PROPERTIES:
+:ID:       4f8332ef-6a91-40e9-801b-6764a94af1c1
+:DRILL_LAST_INTERVAL: 10.0
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-02 Sat 13:%]
+:END:
+#
+****** define
+- replace oldest page 
+- pointer keeps track of it
+****** extra info
+- ez way to remember is: pointer moves by 1 every time replacement occurs
+- e.g: replacing order: A, B, C, then A
+***** LRU page replacement  :drill:
+SCHEDULED: <2023-09-12 Tue>
+:PROPERTIES:
+:ID:       e1b8ab51-7157-4013-bfb1-437432d212fd
+:DRILL_LAST_INTERVAL: 10.0
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-02 Sat 13:%]
+:END:
+#
+****** define
+- maintain order of used pages/ frames, from most recent to least
+- replace last one
+****** extra info
+remember to move frame to most recent position
+when already loaded page is accessed
+(doesn't cause fault)
+***** Optimal page replacement :drill:
+SCHEDULED: <2023-09-12 Tue>
+:PROPERTIES:
+:ID:       65d25882-0bd8-4666-b7c5-2d43e04f6283
+:DRILL_LAST_INTERVAL: 10.0
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-02 Sat 13:%]
+:END:
+- [replace page that won't be accessed for the longest time in the future]
+- impractical because [no way to predict the future]
+***** 2nd chance page replacement :drill:
+SCHEDULED: <2023-09-11 Mon>
+:PROPERTIES:
+:ID:       89a9f5d1-c06f-47a7-b793-177d1cb93a29
+:DRILL_LAST_INTERVAL: 9.3103
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.5
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-02 Sat 13:%]
+:END:
+#
+****** describe
+- modified FIFO where loaded pages have extra reference bit
+- this provides 2nd chance for recently referenced pages to stay in memory
+- start scanning from pointer 
+- page is replaced if bit is 0
+- while scanning for page to replace, if scanned page's bit is set (1)
+  reset it (0) instead of replacing it 
+- scan next page until one with bit 0 is found
+
+****** extra info 
+- pointer should always represent oldest
+  instead of strictly moving 1 by 1 like in FIFO
+- bit can't exceed 1 so multiple references won't cause change 
+
+****** extra info (2 implementations for when to [set reference bit])
+1. when page is 1st loaded, bit is 0
+   + set only when it is again referenced
+2. bit is set both when 1st loaded & when referenced
+*** Belady's anomaly           :drill:
+SCHEDULED: <2023-09-12 Tue>
+:PROPERTIES:
+:ID:       b4ce29fa-4be2-4d05-91bd-ca61b6fc58e8
+:DRILL_LAST_INTERVAL: 9.648
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.5
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-02 Sat 13:%]
+:END:
+define: [abnormal condition where increasing no. of page frames increases no. of page faults instead of decreasing it as expected]
+
+occurs in: [FIFO] & [2nd chance] algorithms
+
+**** extra info
+- abnormal, as it happens only sometimes depending on the page reference string
+- never occurs in LRU & optimal algos
+
+*** Thrashing                  :drill:
+SCHEDULED: <2023-09-06 Wed>
+:PROPERTIES:
+:ID:       1d6ef10b-dec7-4d20-a504-4070e8ee0036
+:DRILL_LAST_INTERVAL: 4.0
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 3.333
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-02 Sat 13:%]
+:END:
+# 
+**** define
+condition where same pages are constantly swapped in & out of physical memory due to low memory
+
+**** extra info (ways to solve)
+- closing programs to free up memory
+- increasing swap file size
+
+* OS6: I/O device management
+** Memory mapped I/O
+- memory locations are assigned to I/O devices
+- CPU communicates with I/O using these memory locations
+** Disk
+*** define                     :drill:
+- seek time: [time taken to move read/write head to required track in disk]
+- rotational delay: [time taken to move read/write head to required sector]
+*** Disk scheduling algos      :drill:
+for choosing which disk request to serve from pending requests
+**** First Come First Serve (FCFS)
+**** Shortest Seek Time First (SSTF)
+- for ease, sort requests in ascending order
+  & check from current position
+**** extra info(SSTF )
+- if equal seek times in both directions,
+  serve request that is in same direction as prev. request
+  - may reduce seek time compared to other dir.
+**** SCAN
+- move from current position till edge,
+  completing requests along the way
+- when edge hit, move to other edge while completing requests
+**** extra info(SCAN)
+- remember that for disk with 100 drums, right edge is 99, not 100
+- after last request, no need to move to edge
+  stop there
+**** C-SCAN (Circular)
+- like SCAN, but when moving from edge to edge,
+  no requests are served
+**** LOOK
+- like SCAN but stops at farthest request
+  instead of needlessly moving to edge
+- reduces seek time
+* OS7: File System Interface Management
+** directory
+folder that contains other files or folders
+
+* OS8: Security Management
+* OS9: Distributed OS
+** define                       :drill:
+SCHEDULED: <2023-09-06 Wed>
+:PROPERTIES:
+:ID:       486a7f33-7e6b-462c-b517-ce90bfb54c1b
+:DRILL_LAST_INTERVAL: 4.0
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-02 Sat 13:%]
+:END:
+#
+*** distributed os
+allows using multiple computers as one unified system
+*** centralized os
+- client-server architecture
+- multi-user
+*** extra info(why distributed > centralized)
+in terms of raw processing power:
+
+- parallel processing across multiple devices makes it faster, more powerful
+- provides more scalability than centralized by:
+  - upgrading devices or adding more
+- all devices have equal hierarchy/ roles
+  - unlike centralized where if server goes down, entire system goes down
+** Clock Synchronization
+- syncing clocks/ time across devices in distributed OS
+- clock is used for managing tasks across multiple machines
+*** algos
+**** logical clock            :drill:
+SCHEDULED: <2023-09-06 Wed>
+:PROPERTIES:
+:ID:       7f2ce9bd-5b1e-486d-b8ec-0c0585e21b49
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-02 Sat 13:%]
+:END:
+- not concerned w/ real world time
+- machines just need to agree on order of executing tasks
+
+***** Lamport's algorithm 
+- check for =happens-before= relation (represented by ->)
+  + if: 2 tasks/events A & B in same process,
+    & A runs before B,
+    A -> B 
+
+  + if: A in one process, communicates w/ B in another process,
+    A -> B
+
+  + else if A & B are events in separate process & don't interact,
+    no need to synchronize them
+
+- each process has its own logical clock 
+  e.g: L_{1} is current timestamp for process P_{1}
+       L_{1}(A) is timestamp when event A is run in P_{1}
+- timestamp is incremented by 1 before running events
+- if event A communicates(sends message) w/ event B in process P_{2},
+  it sends timestamp at which message was sent L_{1}(M) as well
+- P_{2} receives message & updates its time using:
+  $L_2 = max(L_2,\thinspace L_1(M)) + 1$
+
+***** explanation
+- if P_{1} sends message to P_{2}, then 
+  current timestamp of P_{2} should be > P_{1}
+- if it is not, then we adjust by making it 1 greater than P_{1} timestamp
+**** physical clock           :drill:
+SCHEDULED: <2023-09-06 Wed>
+:PROPERTIES:
+:ID:       df8cbac1-0875-4a30-88af-1bd52474a658
+:DRILL_LAST_INTERVAL: 4.0
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-02 Sat 13:%]
+:END:
+clocks need to be synced with real world time
+***** Christian
+- machine requests time server for current time
+- there is dealy in sending request & receiving response
+- machine adjusts its time while accounting for delay using:
+  $T = T_{server} + \displaystlye{ \frac{T_{1} - T_{0}}{2}}$
+- where,
+  * T_{server} is time sent by server
+  * T_{0} is time of sending request
+  * T_{1} is time of receving request
+***** Berkeley 
+time server gets time of all machines, 
+& tells them to set time to average time
+* OS10: Case Study 
+
