@@ -105,6 +105,10 @@ This reflects real world scenarios like exams and tests how much of our learning
 Practicing flashcards from time to time can be a simple but effective form of revision.
 CardsQL implements this in an easy-to-use web interface with some additional quality of life features.
 
+** Keywords
+studying, flashcards, spaced repitition, memory, efficient learning, self improvement, php, sqlite, self-hosted, web app,
+CRUD, database
+
 * Acknowledgement
 :PROPERTIES:
 :UNNUMBERED: t
@@ -346,6 +350,7 @@ Two popular flashcard apps are:
 
 #+begin_src plantuml :file diagrams/use-case-diagram.svg
   @startumL
+  left to right direction
   skinparam 300 dpi
   skinparam packageStyle rectangle
   actor user as u
@@ -354,9 +359,9 @@ Two popular flashcard apps are:
           (Revise Cards) as (RC)
           (Edit Cards) as (EC)
           (Delete Cards) as (DC)
-          u -up- (CC)
-          u -up- (RC)
-          u -up- (EC)
+          u --> (CC)
+          u --> (RC)
+          u --> (EC)
           (RC) .left.> (CC) :<<includes>>
           (DC) .left.> (EC) :<<extends>>
   }
@@ -365,8 +370,8 @@ Two popular flashcard apps are:
 
 #+RESULTS:
 #+CAPTION: Use case diagram for CardsQL
-#+attr_latex: :width 400px
-#+attr_org: :width 400pX
+#+attr_latex: :height 180px
+#+attr_org:   :height 180px
 [[file:diagrams/use-case-diagram.svg]]
 
 #+LATEX:\FloatBarrier
