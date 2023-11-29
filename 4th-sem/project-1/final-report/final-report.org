@@ -551,14 +551,15 @@ The dialog also has a delete button which will tell php to execute a =DELETE= SQ
 *** Test cases for Unit(Manual) Testing
 
 #+CAPTION: Unit test cases for CardsQL
-|---+------+----------------------------------------------------------------------------+--------|
-|   | S.N. | Test case                                                                  | Result |
-|---+------+----------------------------------------------------------------------------+--------|
-| / |    < | <>                                                                         | <>     |
-|   |    1 | Text fields shouldn't be empty while creating cards                        | Pass   |
-|   |    2 | While practicing cards, 0 \le =rating value= \le 3                             | Pass   |
-|   |    3 | 1.3 \leq =EaseFactor= \leq 2.5 for most effectivenes, according to the algorithm | Pass   |
-|---+------+----------------------------------------------------------------------------+--------|
+|---+------+---------------------------------------------------------------+-----------------------+--------------+---------------------|
+|   | S.N. | Test case                                                     | Input                 | Result       | Behave as expected? |
+|---+------+---------------------------------------------------------------+-----------------------+--------------+---------------------|
+| / |    < | <>                                                            | <>                    | <>           | <>                  |
+|   |    1 | Text fields should be filled while creating or editing cards  | Empty                 | Can't submit | True                |
+|   |    2 | While practicing cards, 0 \le =rating value= \le 3                | -                     | -            | True                |
+|   |    3 | 1.3 \leq =EaseFactor= \leq 2.5 for algorithm effectivenes           | -                     | -            | True                |
+|   |    4 | Card should be shown even if =scheduledDate= has already passed | set card to past date | still shown  | True                |
+|---+------+---------------------------------------------------------------+-----------------------+--------------+---------------------|
 
 The test cases are successfull because of the following measures put in place during development: 
 
@@ -570,6 +571,9 @@ The test cases are successfull because of the following measures put in place du
   #+end_src
   If rating is below, it's set to 0 and if it is above 3 it's set to 3.
 - For Test 3, code similar to above is used to keep =EaseFactor= value in check.
+- Test case 4 is possible due to src_sql{where scheduledDate <= CURRENT_DATE} condition while querying the database.
+  This behavior comes in handy if a user misses reviewing a card on its scheduled date. They can just review/ practice it
+  on a later day, and the algorithm schedules it to =x= number of days from that day.
 * Conclusion and Future Recommendation
 ** Lesson learnt/ Outcome
 From completing this project, I deepened my knowledge of HTML, CSS, Javascript and PHP languages. Some of the language
@@ -584,8 +588,11 @@ Thus, I believe CardsQl has met the following goals it set out to achieve:
 - Eliminate the need to constantly read or make notes on the same topics
 - Help make studying an effortless, daily habit
 
-I hope that students and other learners can study effectively through CardsQL and be able to retain what they learn for longer periods of time.
-*** TODO make this into paragraph, alik guff hana
+I hope that students and other learners can study effectively through CardsQL and be able to retain what they learn for
+longer periods of time. Students and programmers might also take inspiration to build their own flashcard app, either
+simple or complex. Building projects like this is a great way to learn new things as well as solidify previously learned
+programming concepts. As such, I am grateful to have completed this project as part of my coursework.
+
 ** Future recommendation
 Some improvements that can be made to CardsQL are:
 
