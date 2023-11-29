@@ -16,6 +16,8 @@
 #+LATEX_HEADER: \usepackage[acronym]{glossaries}
 #+LATEX_HEADER: \makeglossaries
 #+LaTeX_HEADER: \usepackage{pdfpages}
+#+LaTeX_HEADER: \usepackage{chngcntr}
+#+LATEX_HEADER: \counterwithin{figure}{subsection}
 
 
 #+LaTeX_CLASS: article
@@ -339,8 +341,7 @@ Two popular flashcard apps are:
 *** Requirement Analysis
 **** Functional requirements    
 
-*Note:* /As CardsQL is meant for personal use, it only has one type of user instead of admin, multiple users etc./
-***** User
+*Note:* /As CardsQL is meant for personal use, it doesn't have admin, multiple users etc./
 - can add cards
 - can revise due cards
 - can edit text & review date of existing cards
@@ -370,28 +371,36 @@ Two popular flashcard apps are:
 
 #+RESULTS:
 #+CAPTION: Use case diagram for CardsQL
-#+attr_latex: :height 180px
-#+attr_org:   :height 180px
+#+attr_latex: :height 150px
+#+attr_org:   :height 150px
 [[file:diagrams/use-case-diagram.svg]]
 
 #+LATEX:\FloatBarrier
 **** Non-Functional requirements
 - *offline access to all features*
   #+LATEX:\\
-  /Achieved by hosting php server & storing data both on user's computer/
+  This is achieved by both hosting php server & storing data on user's computer. Users don't need an internet connection
+  after downloading the app files and setting up php and sqlite dependencies.
+
 - *simple to use*
   #+LATEX:\\
-  /First thing user sees is just card creation interface/
-- *Abstraction: User shouldn't have to understand how the algorithm works, or how cards are stored*
+  The first thing a user sees is the card creation interface. Interface for reviewing and editing cards is also 
+  straightforward with suitable form labels and button text that instruct user what to do.
+
+- *Abstraction: User doesn't need to understand the algorithm, or how cards are stored*
   #+LATEX:\\
-  /Achieved by providing simple, intuitive GUI for all actions user should be able to do/
+  Achieved by providing simple, intuitive GUI for all user actions. All the complex factors and variables used in the
+  =SM-2= algorithm are hidden and only the next scheduled date is shown, which can also be modified to their liking.
+  SQL queries for CRUD operations have been setup so that they only need to press the appropriate buttons to make
+  changes. 
+
 # - *User shouldn't have to review too many cards in a day*
   # #+LATEX:\\
   # /User can set daily card goal/limit/
 # - regular data backups
+  # #+LATEX:\\
   # sql has built-in backup command/ functionality
   # option to clean up old backup files
-***** TODO explain a bit more for each of these? JPT lekhdeu. Buda harulai paragraph chaiyo re
 *** Feasibiliity Analysis
 **** *Technical*
 \\
@@ -405,10 +414,9 @@ A lightweight way for hosting a local web server is using php's built in =-S= co
 used by CardsQL, also only requires a single a single database file on the user's computer so it negates the need
 for maintaining a server for users to connect to. 
 
-#+LATEX: \clearpage
 **** *Operational*
 - Because of the self-hosted architecture, the app will work offline without needing to connect to a central server.
-  Thus, there is no need to designate manpower to ensure the app stays operational after launch.
+  Thus, there is no need to designate manpower to keep it operational post-launch.
 - Users are sure to adopt the app as it is more convenient than paper flashcards, while still being easier to pick up and learn than the advanced programs discussed in
   *[[*Study of existing system][_Study of existing system_]]*
 **** *Economic*
@@ -416,7 +424,7 @@ for maintaining a server for users to connect to.
 CardsQl is viable from an economic standpoint as:
 
 - There are no additional costs for web hosting, server maintenance etc.
-- There were no development costs as the app was built using existing hardware & freely-licensed tools. 
+- There were no development costs as I only used existing hardware & freely-licensed tools. 
 - The app is distributed freely to help users & doesn't have any profit incentives.
 
 *** Data Modeling
@@ -425,16 +433,16 @@ CardsQl is viable from an economic standpoint as:
 # (E-R diagram)
 
 #+CAPTION: Entity-Relationship diagram for CardsQL
-#+attr_latex: :height 130px
-#+attr_org: :height 130px
+#+attr_latex: :height 140px
+#+attr_org:   :height 140px
 [[file:diagrams/cardsql-er-diagram.svg]]
 *** Proces Modeling(DFD)
 The following Level 0 Data Flow Diagram/ Context Level Diagram shows a very abstract, simplified overview of CardsQL.
-There is only one external actor/ type of user. They can send data to the system by adding new cards or editing
-existing ones. Card data can be retrieved from the system and shown to the user when editing or practicing cards.
+There is only one external actor(user), who sends data to the system by adding or editing cards.
+Card data can be retrieved from the system and shown to the user when editing or practicing cards.
 #+CAPTION: Context Level diagram for CardsQL
-#+attr_latex: :height 110px
-#+attr_org: :height 110px
+#+attr_latex: :height 80px
+#+attr_org:   :height 80px
 [[file:diagrams/cardsql-context-dfd.svg]]
 #+LATEX:\FloatBarrier
 
@@ -452,6 +460,7 @@ stores. It also shows how data flows between processes, data stores and users.
 #+attr_latex: :height 200px
 #+attr_org: :height 200px
 [[file:diagrams/cardsql-architecture-design.svg]]
+#+LATEX:\FloatBarrier
 
 *** Database Schema Design 
 *Note*: /In SQLite, =text= and =varchar= data type are the same and allocate space according to value's length. =real= data tpye refers to floating-point numbers/
