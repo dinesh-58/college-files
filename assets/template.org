@@ -1,5 +1,6 @@
 # !!!!!!   if you configure this, edit org-capture template too
 # make sure that :lines value for #+INCLUDE matches line number for :dont-edit:.    currently 26
+# only editable settings are in capture template so that non-editable can be #+Included and keep loc low
 # for college project documents, use addtional latex styles used in 4th sem proposal file
 :edit-this:
 #+EXPORT_FILE_NAME: test
@@ -8,16 +9,16 @@
 #+LATEX_HEADER: \graphicspath{{/home/sujal/programming/college-files/assets/images/}}
 
 # !!!!!!!!!!!!!          only edit this section       !!!!!!
-#+LATEX_HEADER: \def\subjectNum{4}
-# 1: DBMS
-# 2: NM
-# 3: OS
-# 4: SCR
-# 5: S.Eng
+#+LATEX_HEADER: \def\subjectNum{2}
+# 1: CGA (should be handwritten)
+# 2: CN
+# 3: DN
+# 4: MIS
+# 5: none
 
-#+LATEX_HEADER: \def\labNum{4}
-#+LATEX_HEADER: \def\labTitle{PHP \& MySQL}
-#+LATEX_HEADER: \def\yearSem{II/IV}
+#+LATEX_HEADER: \def\labNum{2}
+#+LATEX_HEADER: \def\labTitle{Escape ampersand \&}
+#+LATEX_HEADER: \def\yearSem{III/V}
 #+LATEX_HEADER: \newif \iftoc
 # !!!!!!!!!!!!           set toc here by uncommenting option
 # \toctrue    
@@ -30,27 +31,26 @@
 #+LaTeX_HEADER: \AtBeginDocument{\fontsize{12}{15}\selectfont}
 #+LATEX_HEADER: \newcommand{\subject}[1]{%
 #+LATEX_HEADER:     \ifnum#1=1
-#+LATEX_HEADER:         Database Management System
+#+LATEX_HEADER:         Computer Graphics and Animation
 #+LATEX_HEADER:     \else\ifnum#1=2
-#+LATEX_HEADER:         Numerical Methods
+#+LATEX_HEADER:         Computer Networking
 #+LATEX_HEADER:     \else\ifnum#1=3
-#+LATEX_HEADER:         Operating System
+#+LATEX_HEADER:         DotNet Technologies
 #+LATEX_HEADER:     \else\ifnum#1=4
-#+LATEX_HEADER:         Scripting Language
+#+LATEX_HEADER:         MIS and E-Business
 #+LATEX_HEADER:     \else
 #+LATEX_HEADER:         <Insert Subject no.>
 #+LATEX_HEADER:     \fi\fi\fi\fi
 #+LATEX_HEADER: }
 #+LATEX_HEADER: \newcommand{\teacher}[1]{%
 #+LATEX_HEADER:     \ifnum#1=1
-#+LATEX_HEADER:         Mr. Nawaraj Singh Thakuri
+#+LATEX_HEADER:         Mr. Drish Mali
 #+LATEX_HEADER:     \else\ifnum#1=2
-#+LATEX_HEADER:         Mr. Narayan Adhikari
+#+LATEX_HEADER:         Mr. Anup Pandey
 #+LATEX_HEADER:     \else\ifnum#1=3
-#+LATEX_HEADER:         Mr. Roshan Maharjan,\\
-#+LATEX_HEADER:         Er. Himal Chand Thapa
+#+LATEX_HEADER:         Mr. Jeeewan Rai
 #+LATEX_HEADER:     \else\ifnum#1=4
-#+LATEX_HEADER:         Mr. Diwas K.C.
+#+LATEX_HEADER:         Mr. Ishwor Dhungana
 #+LATEX_HEADER:     \else
 #+LATEX_HEADER:         <Insert name>
 #+LATEX_HEADER:     \fi\fi\fi\fi
