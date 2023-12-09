@@ -6,7 +6,7 @@
 
 #+BIBLIOGRAPHY: bibliography.bib
 #+OPTIONS: toc:nil tasks:nil
-#+LATEX_HEADER: \author{Sujal Gurung 6-2-378-82-2020}
+#+LATEX_HEADER: \author{Sujal Gurung 6-2-378-82-2020\\Nischal Karki 6-2-378-67-2020}
 #+LATEX_HEADER: \date{\today}
 
 #+LATEX_HEADER: \usepackage[margin=1in, left=1.25in]{geometry}
@@ -116,10 +116,10 @@ CRUD, database
 :UNNUMBERED: t
 :END:
 
-I am grateful to the Department of Computer Application at Himalaya College and Tribhuvan University for giving me the
-opportunity to work on this project as a partial fulfillment of my Bachelors studies. Special thanks go to some of my friends
-and seniors for assisting me in my times of need. Lastly, I would like to extend my gratitude towards our project Supervisor,
-Coordinator and Examiners for taking the time to go through my work, evaluating it and providing feedback.
+We are grateful to the Department of Computer Application at Himalaya College and Tribhuvan University for giving us the
+opportunity to work on this project as a partial fulfillment of our Bachelors studies. Special thanks go to some of our friends
+and seniors for assisting us in our times of need. Lastly, we would like to extend our gratitude towards our project Supervisor,
+Coordinator and Examiners for taking the time to go through our work, evaluating it and providing feedback.
 
 #+begin_export latex
 \singlespacing
@@ -424,7 +424,7 @@ for maintaining a server for users to connect to.
 CardsQl is viable from an economic standpoint as:
 
 - There are no additional costs for web hosting, server maintenance etc.
-- There were no development costs as I only used existing hardware & freely-licensed tools. 
+- There were no development costs as weonly used existing hardware & freely-licensed tools. 
 - The app is distributed freely to help users & doesn't have any profit incentives.
 
 *** Data Modeling
@@ -576,22 +576,22 @@ The test cases are successfull because of the following measures put in place du
   on a later day, and the algorithm schedules it to =x= number of days from that day.
 * Conclusion and Future Recommendation
 ** Lesson learnt/ Outcome
-From completing this project, I deepened my knowledge of HTML, CSS, Javascript and PHP languages. Some of the language
-features I learned were native =<dialog>= elements in HTML, using =PDO= for connecting with any type of database in PHP, etc.
-This knowledge will no doubt be useful for a long time in my career. Mainly, I experienced the process of turning a project
+From completing this project, we deepened our knowledge of HTML, CSS, Javascript and PHP languages. Some of the language
+features we learned were native =<dialog>= elements in HTML, using =PDO= for connecting with any type of database in PHP, etc.
+This knowledge will no doubt be useful for a long time in our career. Mainly, we experienced the process of turning a project
 idea into a \acrlong{mvp} and all the associated \acrfull{sdlc} phases. This gave me a small taste of how real-world
-projects are worked upon and will surely help me in my career.
+projects are worked upon and will surely help me in our career.
 ** Conclusion
-Thus, I believe CardsQl has met the following goals it set out to achieve:
+Thus, we believe CardsQl has met the following goals it set out to achieve:
 
 - Provide a simple introduction to using flashcards, active recall & spaced repititon for learning
 - Eliminate the need to constantly read or make notes on the same topics
 - Help make studying an effortless, daily habit
 
-I hope that students and other learners can study effectively through CardsQL and be able to retain what they learn for
+We hope that students and other learners can study effectively through CardsQL and be able to retain what they learn for
 longer periods of time. Students and programmers might also take inspiration to build their own flashcard app, either
 simple or complex. Building projects like this is a great way to learn new things as well as solidify previously learned
-programming concepts. As such, I am grateful to have completed this project as part of my coursework.
+programming concepts. As such, we are grateful to have completed this project as part of our coursework.
 
 ** Future recommendation
 Some improvements that can be made to CardsQL are:
