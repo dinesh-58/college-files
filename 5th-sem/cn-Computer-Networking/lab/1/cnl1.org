@@ -1,0 +1,74 @@
+# for project documents, use addtional latex styles used in proposal file
+:edit-this:
+#+EXPORT_FILE_NAME: sujal-cnl1-report
+#+PROPERTY: header-args :eval no-export
+# don't prompt to evaluate code blocks while exporting
+#+OPTIONS: toc:nil ^:{}
+# set toc below instead of here
+# 2nd option exports subscripts only when _{} is used
+#+LATEX_HEADER: \graphicspath{{/home/sujal/programming/college-files/assets/images/}}
+
+# !!!!!!!!!!!!!          only edit this section       !!!!!!
+#+LATEX_HEADER: \def\subjectNum{2}
+# 1: CGA (should be handwritten)
+# 2: CN
+# 3: DN
+# 4: MIS
+# 5: none
+
+#+LATEX_HEADER: \def\labNum{1}
+#+LATEX_HEADER: \def\labTitle{Prepare Hardware \& Software specification for basic computer system}
+#+LATEX_HEADER: \def\yearSem{III/V}
+#+LATEX_HEADER: \newif \iftoc
+# !!!!!!!!!!!!           set toc here by uncommenting option
+# \toctrue    
+\tocfalse
+:end:
+
+#+INCLUDE: "/home/sujal/programming/college-files/assets/template.org" :lines "27-"
+* Objectives
+- to learn about hardware & software requirements for a computer network
+- to understand their purpose and differences among similar devices
+* Theory
+A computer network is a group of connected networks that communicate with one another. This communication is made possible
+using various hardware & software means. Some of these requirements are:
+** Hub
+It is a basic device which acts as a central node for the network. Each computer in the network is connected to it via /ports/.
+It enables communication by sending received data to all ports/computers, regardless of which computer it was supposed
+to send it to. This, combined with Hub operating in half-duplex mode means that when a computer sends data, all computers
+must wait and receive it, and then send out their data.
+
+** Switch
+Switch is more advanced than Hub and allows routing, i.e. sending data only to the required computer. This is done using
+the MAC(Media Access Control) address, which is unique to all physical devices with networking capabilites. They are more
+secure than Hubs, and due to being full-duplex, allow fast, simultaneous communication.
+
+** Router
+Routers are devices that find the best communication path between 2 separate networks. They do so using the destination
+IP(Internet Protocol) address, which are virtual addresses for networking-enabled devices. They are commonly used to create
+connection between home LANs and Internet Service Providers(ISPs).
+
+** Packet Tracer
+Cisco Packet Tracer is a learning software created by Cisco Networking Academy as part of their accredited networking
+certification. It features lectures, videos and interactive material such as quizzes, games.
+It also creates realistic simulations of networking scenarios without the need for all the hardware.
+
+** RJ45
+RJ45 is a standardized interface for connecting devices, networking equipment. The commonly used RJ45 connector has 8 pins
+, with pins 4 and 5 being the most important, thus the name. This connector is used to connect ethernet cables
+between devices to access the internet or other networks.
+
+** Ethernet Cable
+Ethernet is a commonly-used wired networking technology. It includes protocols, adapters and cabling that make it easy to
+setup a newtowrk. Ethernet cables consist of 8 wires, corresponding to the pins in an RJ45 connector, and transmit data in
+the form of electric signals.
+
+** Clamping Tool
+Clamping Tools, also called Crimping Tools, are pincer-like instruments that allow fitting RJ45 connectors to ethernet patch
+cables easily. They have parts for stripping the outer insulation, trimming the inner wires, and attaching the connector.
+This allows us to use the exact length of wire we need.
+* Lab Work
+Lab work consisted of physically observing these devices/tools and learning about them
+* Conclusion
+Thus, we learned about the hardware & software essential for a computer network. We also saw some similar hardware devices
+and understood what differentiated them from one another 
