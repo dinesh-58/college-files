@@ -107,9 +107,7 @@ This reflects real world scenarios like exams and tests how much of our learning
 Practicing flashcards from time to time can be a simple but effective form of revision.
 CardsQL implements this in an easy-to-use web interface with some additional quality of life features.
 
-** Keywords
-studying, flashcards, spaced repitition, memory, efficient learning, self improvement, php, sqlite, self-hosted, web app,
-CRUD, database
+*Keywords*: efficient learning, flashcards, revision, self-hosted, web-app
 
 * Acknowledgement
 :PROPERTIES:
@@ -122,9 +120,9 @@ and seniors for assisting us in our times of need. Lastly, we would like to exte
 Coordinator and Examiners for taking the time to go through our work, evaluating it and providing feedback.
 
 #+begin_export latex
-\singlespacing
-  \clearpage \tableofcontents \clearpage
-\onehalfspacing
+% \singlespacing
+\clearpage \tableofcontents \clearpage
+% \onehalfspacing
 \listoffigures
 \listoftables
 \printglossaries
@@ -155,7 +153,7 @@ effective, is discussed in [[*Background Study and Literature Review][_Chapter 2
 cards once and study them regularly, while retaining that knowledge for much longer. The proof for flashcarcds allowing
 for longer memory retention is also discussed in that chapter.
 
-CardsQL maintains review dates for cards so there is no need to study every card everyday. It sets revie date such that
+CardsQL maintains review dates for cards so there is no need to study every card everyday. It sets review date such that
 when we revise a card on that day, it isn't too hard nor is it too easy. As such, users olny need to use CardsQL a little
 bit every day to revise effectively.
 
@@ -173,8 +171,7 @@ bit every day to revise effectively.
     If we forget to do so, then keeping track of overdue cards adds another layer of unneeded complexity.
 
 ** Objectives
-- *Provide a simple entry point to flashcard programs.* This can be done by implementing an intuitive interface
-  so that user doesn't have to understand how the system works in order to utilize it.
+- *Create an easy to use flashcard program.* 
 - *Promote regular study habit among students by making it effortless and quick to do.*
 - *Improve rate of retaining studied knowledge among users*
 
@@ -219,10 +216,10 @@ hindrances.
 Cognitive researchers have found that trying to recall facts strengthens the relevant neural connections in our brain
 & thus, allows us to remember it for longer periods of time. This process is specifically called *Active Recall* & is proven to be more effective than passive studying[cite:@active_recall]. 
 
-*** Spaced Repitition
+*** Spaced Repetition
 Hermann Ebbinghaus, a German psychologist, concluded after extensive research
-that as time passes, our ability to rememeber a piece of information slowly decreases[cite:@spaced_repitition].
-He called this the forgetting curve[cite:@spaced_repitition].
+that as time passes, our ability to rememeber a piece of information slowly decreases[cite:@spaced_repetition].
+He called this the forgetting curve[cite:@spaced_repetition].
 
 #+CAPTION:Ebbinghaus' forgetting curve 
 #+attr_latex: :height 200px
@@ -230,7 +227,7 @@ He called this the forgetting curve[cite:@spaced_repitition].
 [[file:diagrams/forgetting-curve.png]]
 
 Ebbinghaus discovered that performing Active Recall at increasing time intervals would increase memory retention & thus,
-counter the forgetting curve. This is termed as *Spaced Repitition*[cite:@spaced_repitition].
+counter the forgetting curve. This is termed as *Spaced Repetition*[cite:@spaced_repetition].
 #+CAPTION:Ebbinghaus' forgetting curve countered by Spaced Repition
 #+attr_latex: :height 200px
 #+attr_org: :height 200px
@@ -239,7 +236,7 @@ counter the forgetting curve. This is termed as *Spaced Repitition*[cite:@spaced
 
 *** SM-2 algorithm
 SuperMemo is a learning software that implements the afore-mentioned methods. It uses an underlying algorithm for
-calculating when the next repitition/ revision date for a flashcard should be. The algorithm differs across versions
+calculating when the next repetition/ revision date for a flashcard should be. The algorithm differs across versions
 but the SM-2 algorithm[cite:@sm_2] is popular among other flashcard software. A slightly modified version of SM-2 (used in CardsQL)
 is described below. 
 
@@ -262,7 +259,7 @@ SM-2 also tracks three properties for all cards:
 - The repetition number =N=, which is the consecutive number of times the card has been successfully recalled
   (meaning Q \ge 2).  Rating a card below 2 will thus reset =N= to 0.
 - The interval =I=, which is the number of days after which the card should be reviewed again (to negate the forgetting
-  curve). CardsQL sets next review date = previous review date(today) + =I=.
+  curve). CardsQL sets next review date = previous review date(i.e. today) + =I=.
 - The easiness factor =EF=, which loosely indicates how "easy" the card is (More precisely, it determines how quickly the
   interval grows). The initial value of =EF= for all cards is 2.5.
 
