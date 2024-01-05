@@ -214,7 +214,7 @@ hindrances.
 # description of fundamental theories, general concepts, terminologies related to the project
 *** Active Recall
 Cognitive researchers have found that trying to recall facts strengthens the relevant neural connections in our brain
-& thus, allows us to remember it for longer periods of time. This process is specifically called *Active Recall* & is proven to be more effective than passive studying[cite:@active_recall]. 
+& thus, allows us to remember it for longer periods of time. This process is called *Active Recall* & is proven to be more effective than passive studying[cite:@active_recall]. 
 
 *** Spaced Repetition
 Hermann Ebbinghaus, a German psychologist, concluded after extensive research
@@ -226,7 +226,7 @@ He called this the forgetting curve[cite:@spaced_repetition].
 #+attr_org: :height 200px
 [[file:diagrams/forgetting-curve.png]]
 
-Ebbinghaus discovered that performing Active Recall at increasing time intervals would increase memory retention & thus,
+Ebbinghaus discovered that performing Active Recall / revising studied information regularly, at increasing time intervals would increase memory retention & thus,
 counter the forgetting curve. This is termed as *Spaced Repetition*[cite:@spaced_repetition].
 #+CAPTION:Ebbinghaus' forgetting curve countered by Spaced Repition
 #+attr_latex: :height 200px
@@ -234,65 +234,6 @@ counter the forgetting curve. This is termed as *Spaced Repetition*[cite:@spaced
 [[file:../proposal/diagrams/forgetting-curve-spaced-repitition.png]]
 #+LATEX:\FloatBarrier
 
-*** SM-2 algorithm
-SuperMemo is a learning software that implements the afore-mentioned methods. It uses an underlying algorithm for
-calculating when the next repetition/ revision date for a flashcard should be. The algorithm differs across versions
-but the SM-2 algorithm[cite:@sm_2] is popular among other flashcard software. A slightly modified version of SM-2 (used in CardsQL)
-is described below. 
-
-While practicing flashcards, users can rate how well they were able to remember the answer.
-The rating/ quality of a review is represented by =Q=.
-
-#+CAPTION: Meanings of flashcard rating values
-|---+-----------+------------------------------|
-|   | rating(Q) | meaning                      |
-|---+-----------+------------------------------|
-| / |         < | <>                           |
-|   |         0 | Forgot                       |
-|   |         1 | Partially remembered         |
-|   |         2 | Remembered after some effort |
-|   |         3 | Remembered easily            |
-|---+-----------+------------------------------|
-
-SM-2 also tracks three properties for all cards: 
-
-- The repetition number =N=, which is the consecutive number of times the card has been successfully recalled
-  (meaning Q \ge 2).  Rating a card below 2 will thus reset =N= to 0.
-- The interval =I=, which is the number of days after which the card should be reviewed again (to negate the forgetting
-  curve). CardsQL sets next review date = previous review date(i.e. today) + =I=.
-- The easiness factor =EF=, which loosely indicates how "easy" the card is (More precisely, it determines how quickly the
-  interval grows). The initial value of =EF= for all cards is 2.5.
-
-  Due to the formula used, =EF= value should be ~>=1.3~ so that a card's review isn't scheduled too frequently and isn't too easy.
-  Similarly, it should be ~<=2.5~ so that it isn't scheduled so far into the future that we've forgotten the answer completely by then. 
-
-The main algorithm is as follows:
-# algorithm isn't actually ruby code. I just specified the language for syntax highlighting
-#+BEGIN_SRC ruby
-  input:  user rating(Q),  repetition number(N),  easiness factor(EF),  interval(I)
-  output: updated values of N, EF, I
-
-  if Q >= 2 (i.e. correct response) then
-      if N = 0 then  I = 1
-      else if N = 1 then  I = 6
-      else I = round(I × EF)
-      end if
-      increment n
-  else (incorrect response)
-      N = 0
-      I = 1
-  end if
-
-  EF = EF + (0.1 - (4 - Q) × (0.09 + (4 - Q) × 0.03))
-  if EF < 1.3 then  EF = 1.3
-  else if EF > 2.5 then  EF = 2.5
-  end if
-  return (N, EF, I)
-#+END_SRC
-
-These properties of a card are considered as that card's *metadata* and are stored alongside the card's contents in the
-database. When revising cards on a particular day, CardsQL will show you cards that are scheduled for that day or
-older(for overdue cards).
 ** Literature Review
 # review of similar projects 
 In a study from 2011[cite:@study_2011], researchers divided students into four distinct groups, each responsible for
@@ -446,40 +387,40 @@ Card data can be retrieved from the system and shown to the user when editing or
 The Level 1 DFD below expands on the previous diagram by breaking down the system into a series of processes and data
 stores. It also shows how data flows between processes, data stores and users.
 #+CAPTION: Level 1 Data Flow Diagram for CardsQL
-#+attr_latex: :height 150px
-#+attr_org: :height 150px
+#+attr_latex: :height 140px
+#+attr_org: :height 140px
 [[file:diagrams/cardsql-dfd.svg]]
-#+LATEX:\FloatBarrier
+# +LATEX:\FloatBarrier
 
 ** System Design
 *** Architectural Design
 #+CAPTION: Architectural design for CardsQL
-#+attr_latex: :height 200px
-#+attr_org: :height 200px
+#+attr_latex: :height 160px
+#+attr_org: :height 160px
 [[file:diagrams/cardsql-architecture-design.svg]]
-#+LATEX:\FloatBarrier
+# +LATEX:\FloatBarrier
 
 *** Database Schema Design 
-*Note*: /In SQLite, =text= and =varchar= data type are the same and allocate space according to value's length. =real= data tpye refers to floating-point numbers/
 #+begin_src plantuml :file diagrams/database-schema.svg 
-@startuml
-entity "cards" {
-  {static} *id : int <<primary>>
-  *front : text
-  *back : text
-  *direction : int
-  *successfulRevisions: int 
-  *easeFactor: real  
-  *interval: int
-  *scheduledDate: text 
-}
-@enduml
+  @startuml
+  skinparam Padding 2
+  entity "cards" {
+          {static} *id : int <<primary>>
+          ,*front : text
+          ,*back : text
+          ,*direction : int
+          ,*successfulRevisions: int 
+          ,*easeFactor: real  
+          ,*interval: int
+          ,*scheduledDate: text 
+  }
+  @enduml
 #+end_src
 
 #+RESULTS:
 #+CAPTION: Database schema for CardsQL
-#+attr_latex: :height 200px
-#+attr_org: :height 200px
+#+attr_latex: :height 135px
+#+attr_org: :height 135px
 [[file:diagrams/database-schema.svg]]
 #+LATEX: \FloatBarrier
 
@@ -520,9 +461,72 @@ The following Computer Aided Software Engineering(CASE) tools were used during t
 **** Miscellaneous:
 - Git was used for version control, while Github served as a remote backup for the code.
 *** Implementation Details of Modules
-The different possible actions and how they are implemented are as follows:
+Modules represent different possible actions users can perform. Below are simplified explanations of the underlying
+algorithm & and how modules are implemented. 
 # (Description of procedures/ functions)
-**** *Add flashcards*
+
+**** SM-2 algorithm
+SuperMemo is a learning software that implements the afore-mentioned *Active Recall*[cite:@active_recall] and
+*Spaced Repitition*[cite:@spaced_repetition] methods. It uses an underlying algorithm for
+calculating when the next repetition/ revision date for a flashcard should be. The algorithm differs across versions
+but the SM-2 algorithm[cite:@sm_2] is popular among other flashcard software.
+CardsQL uses a slightly modified version of SM-2, described below.
+
+While practicing flashcards, users can rate how well they were able to remember the answer.
+The rating/ quality of a review is represented by =Q=.
+
+#+CAPTION: Meanings of flashcard rating values
+|---+-----------+------------------------------|
+|   | rating(Q) | meaning                      |
+|---+-----------+------------------------------|
+| / |         < | <>                           |
+|   |         0 | Forgot                       |
+|   |         1 | Partially remembered         |
+|   |         2 | Remembered after some effort |
+|   |         3 | Remembered easily            |
+|---+-----------+------------------------------|
+
+SM-2 also tracks three properties for all cards: 
+
+- The repetition number =N=, which is the consecutive number of times the card has been successfully recalled
+  (meaning Q \ge 2).  Rating a card below 2 will thus reset =N= to 0.
+- The interval =I=, which is the number of days after which the card should be reviewed again (to negate the forgetting
+  curve). CardsQL sets next review date = previous review date(i.e. today) + =I=.
+- The easiness factor =EF=, which loosely indicates how "easy" the card is (More precisely, it determines how quickly the
+  interval grows). The initial value of =EF= for all cards is 2.5.
+
+  Due to the formula used, =EF= value should be ~>=1.3~ so that a card's review isn't scheduled too frequently and isn't too easy.
+  Similarly, it should be ~<=2.5~ so that it isn't scheduled so far into the future that we've forgotten the answer completely by then. 
+
+The main algorithm is as follows:
+# algorithm isn't actually ruby code. I just specified the language for syntax highlighting
+#+BEGIN_SRC ruby
+  input:  user rating(Q),  repetition number(N),  easiness factor(EF),  interval(I)
+  output: updated values of N, EF, I
+
+  if Q >= 2 (i.e. correct response) then
+      if N = 0 then  I = 1
+      else if N = 1 then  I = 6
+      else I = round(I × EF)
+      end if
+      increment n
+  else (incorrect response)
+      N = 0
+      I = 1
+  end if
+
+  EF = EF + (0.1 - (4 - Q) × (0.09 + (4 - Q) × 0.03))
+  if EF < 1.3 then  EF = 1.3
+  else if EF > 2.5 then  EF = 2.5
+  end if
+  return (N, EF, I)
+#+END_SRC
+
+These properties of a card are considered as that card's *metadata* and are stored alongside the card's contents in the
+database. When revising cards on a particular day, CardsQL will show you cards that are scheduled for that day or
+older(for overdue cards).
+
+**** *Add flashcards* Module
 \\
 The homepage allows a user to add a new flashcard by specifying the text contents of its front and back side in an html
 form. Upon submitting the form, the contents are sent to the web server using an \acrfull{http} request.
@@ -530,7 +534,7 @@ PHP code intercepts it and inserts a new row in the database table. Each row in 
 Metadata values for newly created card such as the =Interval, EaseFactor= are set using default constraints defined
 in the table schema.
 
-**** *Review flashcards*
+**** *Review flashcards* Module
 \\
 In the review page, php code retrieves flashcards that have a due date of today or older, one at a time. Only the
 question(content of front side) is shown first and the user is prompted to recall the answer. They can press a button
@@ -538,7 +542,7 @@ to show the correct answer and rate how well they remembered it on a scale of 0 
 server and php code uses it to update the card's metadata using the =SM-2= algorithm discussed previously. This process
 continues until no due cards are left.
 
-**** *Edit flashcards*
+**** *Edit flashcards* Module
 \\
 The edit page initially shows a table of all the cards in the database. Clicking on a row will bring up a modal dialog 
 for editing the selected card. The dialog has a form whose values are populated with the selected card using javascript.
@@ -548,19 +552,19 @@ The dialog also has a delete button which will tell php to execute a =DELETE= SQ
 *** Test cases for Unit(Manual) Testing
 
 #+CAPTION: Unit test cases for CardsQL
-|---+------+---------------------------------------------------------------+-----------------------+--------------+---------------------|
-|   | S.N. | Test case                                                     | Input                 | Result       | Behave as expected? |
-|---+------+---------------------------------------------------------------+-----------------------+--------------+---------------------|
-| / |    < | <>                                                            | <>                    | <>           | <>                  |
-|   |    1 | Text fields should be filled while creating or editing cards  | Empty                 | Can't submit | True                |
-|   |    2 | While practicing cards, 0 \le =rating value= \le 3                | -                     | -            | True                |
-|   |    3 | 1.3 \leq =EaseFactor= \leq 2.5 for algorithm effectivenes           | -                     | -            | True                |
-|   |    4 | Card should be shown even if =scheduledDate= has already passed | set card to past date | still shown  | True                |
-|---+------+---------------------------------------------------------------+-----------------------+--------------+---------------------|
+|---+------+--------------------------------------------------------------+-------+--------------+--------------|
+|   | S.N. | Test case                                                    | Input | Result       | Test Passed? |
+|---+------+--------------------------------------------------------------+-------+--------------+--------------|
+| / |    < | <>                                                           | <>    | <>           | <>           |
+|   |    1 | Text fields should be filled while creating or editing cards | Empty | Can't submit | True         |
+|   |    2 | While practicing cards, 0 \le =rating value= \le 3               | -     | -            | True         |
+|   |    3 | 1.3 \leq =EaseFactor= \leq 2.5 for algorithm effectivenes          | -     | -            | True         |
+|   |    4 | Show card even if =scheduledDate= has already passed         | -     | still shown  | True         |
+|---+------+--------------------------------------------------------------+-------+--------------+--------------|
 
-The test cases are successfull because of the following measures put in place during development: 
+The test cases are successful because of the following measures put in place: 
 
-- Test 1 is successfull because of =required= attribute in HTML form and =NOT NULL= constraint in dtabase schema.
+- Test 1 is successful because of =required= attribute in HTML form and =NOT NULL= constraint in database schema.
 - For Test 2, form for submitting rating only has inputs with specified set of values(0-3). In case its value is
   somehow outside that range, the follwing php code is put in place to keep it inside the 0-3 range:
   #+begin_src php
