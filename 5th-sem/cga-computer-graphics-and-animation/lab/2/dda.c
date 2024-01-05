@@ -6,7 +6,7 @@ int main() {
     int gd=DETECT, gm;
     float x, y, x1, y1, x2, y2, dx, dy, steps, xinc, yinc, k;
     printf("Enter x1, y1, x2, y2 ");
-    scanf("%f %f %f %f", &x1, &y1, &x2, &y2);
+    scanf("%f %f %f %f", &x1, &y1, &x2, &y2);  // note: take input outside graphics mode
 
     dx = x2 - x1;
     dy = y2 - y1;
@@ -18,13 +18,12 @@ int main() {
     k = 0;
 
     initgraph(&gd, &gm, NULL);
-    do {
+    for(k=0; k<= steps; k++) {
         putpixel(roundf(x), roundf(y), WHITE);
         x += xinc;
         y += yinc;
-        k++;
         delay(100);
-    } while(k <= steps);
+    } 
     getch();
     closegraph();
     return 0;

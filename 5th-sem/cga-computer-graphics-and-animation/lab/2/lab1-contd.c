@@ -10,7 +10,7 @@ void main() {
     setcolor(RED);  // set border color
     circle(100, 100, 90);
      setfillstyle(SLASH_FILL, GREEN);   // how to fill (pattern, color)
-     floodfill(300, 300, RED);    // what object to fill
+     floodfill(150, 150, RED);    // what object to fill
     getch();
     closegraph();
 }
