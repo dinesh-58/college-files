@@ -1,0 +1,67 @@
+# for project documents, use addtional latex styles used in proposal file
+:edit-this:
+#+EXPORT_FILE_NAME: cn-lab2-report
+#+PROPERTY: header-args :eval no-export
+# don't prompt to evaluate code blocks while exporting
+#+OPTIONS: toc:nil ^:{}
+# set toc below instead of here
+# 2nd option exports subscripts only when _{} is used
+#+LATEX_HEADER: \graphicspath{{/home/sujal/programming/college-files/assets/images/}}
+
+# !!!!!!!!!!!!!          only edit this section       !!!!!!
+#+LATEX_HEADER: \def\subjectNum{2}
+# 1: CGA (should be handwritten)
+# 2: CN
+# 3: DN
+# 4: MIS
+# 5: none
+
+#+LATEX_HEADER: \def\labNum{2}
+#+LATEX_HEADER: \def\labTitle{Implementation of cross-over ethernet cable}
+#+LATEX_HEADER: \def\yearSem{III/V}
+#+LATEX_HEADER: \newif \iftoc
+# !!!!!!!!!!!!           set toc here by uncommenting option
+# \toctrue    
+\tocfalse
+:end:
+
+#+INCLUDE: "/home/sujal/programming/college-files/assets/template.org" :lines "27-"
+* Objectives
+- understand difference between straight-through & cross-over network cable
+- practically implement the cross-over cable using clamping tool.
+* Introduction 
+Ethernet cables belong to the Physical layer of the OSI model and are used to connect devices together in a network.
+They can be of 2 types:
+
+- Straight-through
+- Cross-over
+
+An un-clamped patch cable consists of 8 smaller color-coded wires. The patch cable can be converted into either of the 2 types based on the wiring standard used i.e. the sequence of organizing and connecting the wires to the RJ45 connectors. 
+** Straight-through
+It is used to connect a computer to a network hub such as a router. Both ends of the wire must follow the same wiring standard, that can be either T568A or TF68B.
+
+** Cross-over
+It is used to connect devices of the same type i.e. computer to coputer, switch to switch etc. Here, one end must use the T568A standard and the other must be T568B. 
+
+#+CAPTION: Cabling Standard/ organization for cross-over ethernet cable
+|---+---------------------+--------------+---------------------+--------------|
+|   | RJ45 pin no.(end 1) | Wire color   | RJ45 pin no.(end 2) | Wire color   |
+|---+---------------------+--------------+---------------------+--------------|
+| / |                   < | <            |                   < | <>           |
+|   |                   1 | White orange |                   1 | White green  |
+|   |                   2 | Orange       |                   2 | Green        |
+|   |                   3 | White green  |                   3 | White orange |
+|   |                   4 | Blue         |                   4 | White brown  |
+|   |                   5 | White blue   |                   5 | Brown        |
+|   |                   6 | Green        |                   6 | Orange       |
+|   |                   7 | White brown  |                   7 | Blue         |
+|   |                   8 | Brown        |                   8 | White blue   |
+* Lab Work
+** Tools used
+- RJ-45 Connector
+- Clamping tool
+- Twisted pair patch cable
+** Procedure
+* Conclusion
+Thus, we clearly understood the different usecases for straight-through & cross-over network cable.
+We also learned how to arrange patch cable into cross-over cabling standard and clamp it by doing so practically. 
