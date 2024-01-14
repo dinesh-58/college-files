@@ -17,11 +17,11 @@ int main() {
     initgraph(&gd, &gm, NULL);
     while(y >= x) {
         plotEightPoints(x, y, xc, yc);    
-        x++;
         if(p > 0) {
-            y--;
             p += 2*x - 2*y + 5;
+            y--;
         } else p += 2*x + 3;
+        x++;
     }
     getch();
     closegraph();
