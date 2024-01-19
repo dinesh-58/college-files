@@ -24,7 +24,7 @@ can be used in many languages but mostly done with JS
 =alert()=
 =confirm()= returns boolean
 =prompt()=  returns input
-** Immediately Invoked Functions
+** Immediately Invoked Functions (not important)
 - f'ns that run as soon as they are declared
 
 #+begin_src js
