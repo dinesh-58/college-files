@@ -58,10 +58,14 @@ It is used to connect devices of the same type i.e. computer to coputer, switch 
 |   |                   8 | Brown        |                   8 | White blue   |
 * Lab Work
 ** Tools used
-- RJ-45 Connector
-- Clamping tool
-- Twisted pair patch cable
+- RJ-45 Connector      - Clamping tool      - Twisted pair patch cable
 ** Procedure
+- Remove a small length of the cable's plastic jacket/covering using the blade on the clamping tool.
+  Length should be about the length of the RJ-45 connector.
+- If needed, trim the inner copper wires so that all are of same length.
+- Untwitst and organize the copper wires, following the appropriate cabling standard.
+- Fit the wires into the connector and clamp it shut.
+- Repeat for the other end as well
 * Conclusion
 Thus, we clearly understood the different usecases for straight-through & cross-over network cable.
 We also learned how to arrange patch cable into cross-over cabling standard and clamp it by doing so practically. 
