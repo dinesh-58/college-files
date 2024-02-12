@@ -2,7 +2,8 @@
 #+EXPORT_FILE_NAME: bca-sujal-gurung-34-project1-report
 #+BIBLIOGRAPHY: bibliography.bib
 #+LATEX_HEADER: \pagenumbering{roman}
-#+LATEX_HEADER: \graphicspath{{/home/sujal/programming/college-files/assets/images/}}
+# +LATEX_HEADER: \graphicspath{{/home/sujal/programming/college-files/assets/images/}}
+#+LATEX_HEADER: \graphicspath{{C:\\Users\\sujal\\programming\\college-files\\assets\\images\\}}
 
 #+BIBLIOGRAPHY: bibliography.bib
 #+OPTIONS: toc:nil tasks:nil
@@ -17,7 +18,8 @@
 #+LATEX_HEADER: \makeglossaries
 #+LaTeX_HEADER: \usepackage{pdfpages}
 #+LaTeX_HEADER: \usepackage{chngcntr}
-#+LATEX_HEADER: \counterwithin{figure}{subsection}
+#+LATEX_HEADER: \counterwithin{figure}{section}
+#+LATEX_HEADER: \counterwithin{table}{section}
 
 
 #+LaTeX_CLASS: article
@@ -32,7 +34,7 @@
 #+LaTeX_HEADER: \titleformat{\section}{\bfseries\fontsize{14}{16}\selectfont}{\thesection}{1em}{}
 #+LaTeX_HEADER: \titleformat{\subsection}{\bfseries\fontsize{12}{14}\selectfont}{\thesubsection}{1em}{}
 #+LaTeX_HEADER: \usepackage{caption}
-#+LaTeX_HEADER: \DeclareCaptionFormat{myformat}{\fontsize{12}{12}\selectfont\bfseries#1#2#3}
+#+LaTeX_HEADER: \DeclareCaptionFormat{myformat}{\fontsize{12}{12}\selectfont#1#2#3}
 #+LaTeX_HEADER: \captionsetup{format=myformat,justification=centering}
 #+LaTeX_HEADER: \captionsetup[figure]{position=bottom}
 #+LaTeX_HEADER: \captionsetup[table]{position=top}
@@ -44,13 +46,14 @@
 \makeatletter
 \begin{titlepage}
 \centering
-\includegraphics[scale=0.5]{tu-logo-transparent} 
+\includegraphics[scale=0.5]{C:/Users/sujal/programming/college-files/assets/images/tu-logo-transparent.png}
+
 \vfill
 
 \textbf{\Large{Tribhuvan University \\Faculty of Humanities and Social Sciences\\}}
 \vfill
 
-\textbf{\Large{A Project report on: \\CardsQL \\- A flashcard revision/quiz web-app }}
+\textbf{\Large{A Project report on: \\CardsQL: \\A flashcard revision/quiz web-app }}
 \vfill
 
 \textbf{Submitted to: \\Department of Computer Application, \\ Himalaya College of Engineering, \\Chyasal,Lalitpur}
@@ -91,6 +94,7 @@ Under the Supervision of
 #+END_EXPORT
 :end:
 
+#+LATEX: \includepdf[pages=-,pagecommand={}]{supervisor-letter.pdf}
 #+LATEX: \includepdf[pages=-,pagecommand={}]{project-sign-certificates.pdf}
 * Abstract
 :PROPERTIES:
@@ -107,7 +111,7 @@ This reflects real world scenarios like exams and tests how much of our learning
 Practicing flashcards from time to time can be a simple but effective form of revision.
 CardsQL implements this in an easy-to-use web interface with some additional quality of life features.
 
-*Keywords*: efficient learning, flashcards, revision, self-hosted, web-app
+*Keywords*: /efficient learning, flashcards, revision, self-hosted, web-app/
 
 * Acknowledgement
 :PROPERTIES:
@@ -171,9 +175,9 @@ bit every day to revise effectively.
     If we forget to do so, then keeping track of overdue cards adds another layer of unneeded complexity.
 
 ** Objectives
-- *Create an easy to use flashcard program.* 
-- *Promote regular study habit among students by making it effortless and quick to do.*
-- *Improve rate of retaining studied knowledge among users*
+- Create an easy to use flashcard program.
+- Promote regular study habit among students by making it effortless and quick to do.
+- Improve rate of retaining studied knowledge among users
 
 ** Scope and Limitaiton
 *** Scope
