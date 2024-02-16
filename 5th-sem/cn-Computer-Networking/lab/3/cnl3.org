@@ -1,0 +1,68 @@
+:PROPERTIES:
+:ID:       f6283bf1-2a5c-413a-b37c-548edfc490bb
+:END:
+# for project documents, use addtional latex styles used in proposal file
+:edit-this:
+#+EXPORT_FILE_NAME: sujal-cn-lab3-report
+#+PROPERTY: header-args :eval no-export
+# don't prompt to evaluate code blocks while exporting
+#+OPTIONS: toc:nil ^:{}
+# set toc below instead of here
+# 2nd option exports subscripts only when _{} is used
+#+LATEX_HEADER: \graphicspath{{~/programming/college-files/assets/images/}}
+
+# !!!!!!!!!!!!!          only edit this section       !!!!!!
+#+LATEX_HEADER: \def\subjectNum{2}
+# 1: CGA (should be handwritten)
+# 2: CN
+# 3: DN
+# 4: MIS
+# 5: none
+
+#+LATEX_HEADER: \def\labNum{3}
+#+LATEX_HEADER: \def\labTitle{Routers \& their setup}
+#+LATEX_HEADER: \def\yearSem{III/V}
+#+LATEX_HEADER: \newif \iftoc
+# !!!!!!!!!!!!           set toc here by uncommenting option
+# \toctrue    
+\tocfalse
+:end:
+
+#+INCLUDE: "~/programming/college-files/assets/template.org" :lines "27-"
+* Objectives
+- to learn about enterprise level routers in depth
+- to simulate initial router setup in Cisco PacketTracer
+
+* Theory
+One of the main components of the OSI model's Network layer is the router. It is a computer specifically designed for *routing*
+(forwarding data packets between different networks). Additionally, it determines the best path for routing packets.
+
+Since a router is just a computer, it has the basic components such as CPU & different types of memory. It also has some
+specialized components as shown in the figure below:
+ 
+#+CAPTION: Hardware Components of a Router
+#+attr_latex: :height 150px
+[[file:diagrams/router-diagram.png]]
+
+** ROM
+It stores bootloader instructions which won't be erased even after formatting / wiping the router's data. These are loaded upon powering on the device, which then start up the operating system.
+
+** Flash 
+It is a small, non-volatile memory, generally used for storing the router's operating system.
+Cisco routers run IOS (Internetwork Operating System), which provides a text-based command line interface for interacting with & configuring the router.
+The OS is loaded into RAM to run it. 
+
+** NVRAM
+Non-Volatile RAM is used for permanent storage of the router's startup configurations / settings in the =startup-config= file.
+One thing to note is that configuration changes are stored in volatile RAM in the =running-config= file.
+These must be manually copied into =startup-config= to save them.
+
+** Interfaces
+A router consists of multiple interfaces / ports for connecting networks / devices through which data transfer occurs. Some basic ones are:
+
+*** Console
+
+Lab work was done in Cisco Packet Tracer by simulating a basic router(1841) and setting it up through text commands.
+
+
+* Conclusion
