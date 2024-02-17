@@ -30,7 +30,7 @@
 
 #+INCLUDE: "~/programming/college-files/assets/template.org" :lines "27-"
 * Objectives
-- to learn about enterprise level routers in depth
+- to learn about enterprise level routers 
 - to simulate initial router setup in Cisco PacketTracer
 
 * Theory
@@ -45,12 +45,11 @@ specialized components as shown in the figure below:
 [[file:diagrams/router-diagram.png]]
 
 ** ROM
-It stores bootloader instructions which won't be erased even after formatting / wiping the router's data. These are loaded upon powering on the device, which then start up the operating system.
+It stores bootloader instructions which won't be erased even after formatting the router's data. These are loaded upon powering on the device, which then start up the operating system.
 
 ** Flash 
 It is a small, non-volatile memory, generally used for storing the router's operating system.
 Cisco routers run IOS (Internetwork Operating System), which provides a text-based command line interface for interacting with & configuring the router.
-The OS is loaded into RAM to run it. 
 
 ** NVRAM
 Non-Volatile RAM is used for permanent storage of the router's startup configurations / settings in the =startup-config= file.
@@ -61,8 +60,28 @@ These must be manually copied into =startup-config= to save them.
 A router consists of multiple interfaces / ports for connecting networks / devices through which data transfer occurs. Some basic ones are:
 
 *** Console
+It is a management port used for configuring the router and setting it up for the first time.
+Using this port, router is connected to a text-based terminal or nowadays, a computer running a terminal emulater program.
+Text commands can then be used to configure settings.
 
+*** Virtual Terminal
+It is used for configuring the router, similar to the console. The difference is that the terminal / computer doesn't need to be physically connected, instead accessing and logging in remotely. This allows multiple authorized people to easily access the router regardless of physical proximity.
+
+*** FastEthernet interfaces
+FastEthernet is an old transmission standard for data transmission inside a LAN.
+A FastEthernet (FE) port can receive signals as well as send some outwards.
+Multiple FE ports are used for different purposes like backups, explicit input & output ports etc.
+
+*** Slot
+Empty slots are provided to install more
+interfaces if needed. E.g: modules for wireless, WAN 
+
+** Routing
+Routers maintain a routing / address table having data about the network (devices, IP addresses, subnet masks, and interfaces). This is used to map what ip address packets should be sent to, determining best path etc.
+IP addresses and subnet masks are assigned to each network device as well as each enabled interface of the router.
+
+* Lab Work
 Lab work was done in Cisco Packet Tracer by simulating a basic router(1841) and setting it up through text commands.
 
-
 * Conclusion
+Thus, we learned how enterprise level routers work. We also simulated initial router setup in Cisco PacketTracer and configured its basic settings such as passwords, interfaces and ip addresses.
