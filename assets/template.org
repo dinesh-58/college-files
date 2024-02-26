@@ -6,7 +6,7 @@
 #+EXPORT_FILE_NAME: test
 #+OPTIONS: toc:nil 
 # set toc below instead of here
-#+LATEX_HEADER: \graphicspath{{/home/sujal/programming/college-files/assets/images/}}
+#+LATEX_HEADER: \graphicspath{{~/programming/college-files/assets/images/}}
 
 # !!!!!!!!!!!!!          only edit this section       !!!!!!
 #+LATEX_HEADER: \def\subjectNum{2}
