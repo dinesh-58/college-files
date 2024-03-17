@@ -27,6 +27,8 @@
 
 #+INCLUDE: "~/programming/college-files/assets/template.org" :lines "27-"
 #+OPTIONS: num:0
+#+BIND: org-latex-tables-centered nil
+
 
 :toc:
 #+ATTR_LATEX: :environment longtable :align |l|p{12cm}|l|
@@ -269,7 +271,6 @@
 ** 11) Write a program to select Employees who are lived in Kathmandu and salary is greater than 10000 using LINQ.
 #+begin_src csharp :exports code
   namespace ConsoleApp1;
-
   public class Employee {
       public string Name;
       public string Address;
@@ -289,7 +290,6 @@
               new Employee("Hari", "Kathmandu", 1500),
               new Employee("Samip", "Pokhara", 20000),
           };
-
           var filtered = from e in employees
               where e.Address.Contains("Kathmandu") && e.Salary > 10000
               select e;
@@ -324,7 +324,6 @@
               new Student("Samip", "Kathmandu", "Deerwalk"),
               new Student("Arpan", "Pokhara",   "Deerwalk"),
             };
-
           var filtered = students.Where(s => s.Address.Contains("Kathmandu") && s.College.Contains("Deerwalk") );
 
           Console.WriteLine("Students living in Kathmandu & studying in Deerwalk are: ");
@@ -335,14 +334,150 @@
   }
 #+end_src
 ** 13) Write a program to create book entry form in one ASP.NET page and display the filled data with another ASP.NET page.
+*** =Form.aspx=
+#+begin_src html
+<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Form.aspx.cs" Inherits="WebApplication1.Form" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <h1>Enter book details: </h1>
+    <label>ISBN: 
+        <asp:TextBox ID="ISBN" runat="server" />
+    </label>
+    <label>Title: 
+        <asp:TextBox ID="BookTitle" runat="server" />
+    </label>
+    <label>Author: 
+        <asp:TextBox ID="Author" runat="server" />
+    </label>
+    <label>Price: 
+        <asp:TextBox ID="Price" runat="server" />
+    </label>
+    <asp:Button ID="Submit" runat="server" Text="Submit" OnClick="Submit_OnClick" />
+</asp:Content>
+#+end_src
+
+*** =Form.aspx.cs=
+#+begin_src csharp
+namespace WebApplication1 {
+    public partial class Form : System.Web.UI.Page {
+        protected void Page_Load(object sender, EventArgs e) {}
+        
+        protected void Submit_OnClick(object sender, EventArgs e) {
+            Session["BookTitle"] = BookTitle.Text;
+            Session["Author"] = Author.Text;
+            Session["Price"] = Price.Text;
+            Session["ISBN"] = ISBN.Text;
+            Response.Redirect("Table.aspx");
+        }
+    }
+}
+#+end_src
+
+*** =Table.aspx=
+#+begin_src html
+<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Table.aspx.cs" Inherits="WebApplication1.Table" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <asp:Table runat="server" border="1">
+        <asp:TableRow >
+            <asp:TableHeaderCell runat="server" >ISBN</asp:TableHeaderCell>
+            <asp:TableHeaderCell runat="server" >Title</asp:TableHeaderCell>
+            <asp:TableHeaderCell runat="server" >Author</asp:TableHeaderCell>
+            <asp:TableHeaderCell runat="server" >Price</asp:TableHeaderCell>
+        </asp:TableRow>
+        <asp:TableRow >
+            <asp:TableCell runat="server" ID="TableISBN"></asp:TableCell>
+            <asp:TableCell runat="server" ID="TableTitle"></asp:TableCell>
+            <asp:TableCell runat="server" ID="TableAuthor"></asp:TableCell>
+            <asp:TableCell runat="server" ID="TablePrice"></asp:TableCell>
+        </asp:TableRow>
+    </asp:Table>
+
+    <asp:Label runat="server" ID="TestLabel" ></asp:Label>
+</asp:Content>
+#+end_src
+
+*** =Table.aspx.cs=
+#+begin_src csharp
+namespace WebApplication1 {
+    public partial class Table : System.Web.UI.Page {
+        protected void Page_Load(object sender, EventArgs e) {
+            TableISBN.Text = Session["ISBN"] as string;
+            TableAuthor.Text = Session["Author"] as string;
+            TableTitle.Text = Session["BookTitle"] as string;
+            TablePrice.Text = Session["Price"] as string;
+        }
+    }
+}
+#+end_src
+
 ** 14) Provided that a mysql database named “dotnet” with table “Product” with following columns (ProductId as int, ProductName as varchar(20), and UnitPrice as float). Write a program for following tasks:-
-(a) Connect to the database.
-(b) Display the product records that have UnitPrice is greater than RS.5000
-(c) Update the product records such as UnitPrice=10000 from product table whose ProductId=11
-(d) Delete the product records from product table whose ProductId=22
-(e) Insert any five product records
-** 14
-*** initial values
+a) Connect to the database. \smallskip
+b) Display the product records that have UnitPrice is greater than RS.5000 \smallskip
+c) Update the product records such as UnitPrice=10000 from product table whose ProductId=11 \smallskip
+d) Delete the product records from product table whose ProductId=22 \smallskip
+e) Insert any five product records \smallskip
+
+#+begin_src csharp :exports code -n 1
+  using MySql.Data.MySqlClient;
+  namespace ConsoleApp1;
+  internal partial class Program {
+      public static void Main() { 
+          try {
+              // a)
+              string connectionString = "server=localhost; user=root; database=dotnet";
+              MySqlConnection conn = new MySqlConnection(connectionString);
+              conn.Open();
+
+              // b)
+              string sql = "select * from product where unitPrice > 5000";
+              MySqlCommand cmd = new MySqlCommand(sql, conn);
+              MySqlDataReader rdr = cmd.ExecuteReader();
+
+              Console.WriteLine("productId | productName  | unitPrice");
+              while(rdr.Read()) {
+                  Console.WriteLine($"{rdr[0]} \t  | {rdr[1]}\t | {rdr[2]}");
+              }
+              rdr.Close();
+
+              // c)
+              sql = "update product set unitPrice = 10000 where productId = 11";
+              cmd = new MySqlCommand(sql, conn);
+              cmd.ExecuteNonQuery();
+
+              // d)
+              sql = "delete from product where productId = 22";
+              cmd = new MySqlCommand(sql, conn);
+              cmd.ExecuteNonQuery();
+
+              // e)
+              // productId is omitted because it is set to autoincrement
+              sql = "insert into product(productName, unitPrice) values ('Monitor', 30000), ('Power Bank', 7000), ('Headphones', 4000)" ;
+              cmd = new MySqlCommand(sql, conn);
+              cmd.ExecuteNonQuery();
+
+
+              sql = "select * from product";
+              cmd = new MySqlCommand(sql, conn);
+              rdr = cmd.ExecuteReader();
+
+              Console.WriteLine("New values are: ");
+              Console.WriteLine("productId | productName  | unitPrice");
+              while(rdr.Read()) {
+                  Console.WriteLine($"{rdr[0]} \t  | {rdr[1]}\t | {rdr[2]}");
+              }
+              rdr.Close();
+              conn.Close();
+          }
+          catch (Exception ex) {
+              Console.WriteLine(ex.Message);
+          }
+      }
+  }
+#+end_src
+
+*** Output
+**** Initial values in database
+
+|-----------+-------------+-----------|
 | productId | productName | unitPrice |
 |-----------+-------------+-----------|
 |         1 | laptop      |     50000 |
@@ -350,16 +485,19 @@
 |         3 | mouse       |      1500 |
 |        11 | Keyboard    |      4000 |
 |        22 | Tablet      |     25000 |
-*** a
-*** b
-**** Output
+
+**** b) (products with unitPrice > 5000)
+
+|-----------+-------------+-----------|
 | productId | productName | unitPrice |
 |-----------+-------------+-----------|
 |         1 | laptop      |     50000 |
 |         2 | phone       |     20000 |
 |        22 | Tablet      |     25000 |
 |           |             |           |
-*** e
+**** Final values in database
+
+|-----------+-------------+-----------|
 | productId | productName | unitPrice |
 |-----------+-------------+-----------|
 |         1 | laptop      |     50000 |
@@ -369,6 +507,3 @@
 |        23 | Monitor     |     30000 |
 |        24 | Power Bank  |      7000 |
 |        25 | Headphones  |      4000 |
-* TODO
-- [ ] cross-check all code snippets
-- [ ] add output if necessary
