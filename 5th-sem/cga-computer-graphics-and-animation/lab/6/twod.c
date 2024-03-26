@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <graphics.h>
-#include <conio.h>
+// #include <conio.h>
 
-void main() {
+int main() {
 	int gd=DETECT, gm;
 	int i, j, k, x_1, y_1, x_2, y_2, x1, x2, y1, y2, X, Y;
 
@@ -20,7 +20,8 @@ void main() {
 	};
 	float Points_new[3][2];
 
-	initgraph(&gd, &gm, "C://turboc3/bgi");
+	// initgraph(&gd, &gm, "C://turboc3/bgi");
+	initgraph(&gd, &gm, NULL);
 	X = getmaxx();
 	Y = getmaxy();
 
@@ -53,4 +54,5 @@ void main() {
 
 	getch();
 	closegraph();
+    return 0;
 }
