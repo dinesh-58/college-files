@@ -28,6 +28,7 @@
 #+INCLUDE: "~/programming/college-files/assets/template.org" :lines "27-"
 #+OPTIONS: num:0
 #+BIND: org-latex-tables-centered nil
+#+BIND: org-latex-images-centered nil
 
 
 :toc:
@@ -77,9 +78,14 @@
       }
   }
 #+end_src
+
+*** Output
+#+begin_src sh :exports code
+Enter a number: 3
+Number is even? False
+#+end_src
 ** 2) Write a C# Sharp program that takes two numbers as input and perform an operation (+,-,*,x,/) on them and displays the result of that operation
 #+begin_src csharp :exports code
-  namespace ConsoleApp1;
   internal partial class Program {
       public static void Main() {
           int a, b;
@@ -94,9 +100,17 @@
       }
   }
 #+end_src
+
+*** Output
+#+begin_src sh :exports code
+  Enter 2 numbers: 4 6
+  4 + 6 = 10
+  4 - 6 = -2
+  4 * 6 = 24
+  4 / 6 = 0
+#+end_src
 ** 3) Write a program to store elements for 3x3 of 2D array and display the elements.
 #+begin_src csharp :exports code
-  namespace ConsoleApp1;
   internal partial class Program {
       public static void Main() {
           int[,] arr = {
@@ -110,6 +124,10 @@
           }
       }
   }
+#+end_src
+*** Output
+#+begin_src sh :exports code
+  1 2 3 4 5 6 7 8 9
 #+end_src
 ** 4) Write a program to add any two 2X2 two dimensional arrays.
 #+begin_src csharp :exports code
@@ -134,6 +152,11 @@
       }
   }
 #+end_src
+*** Output
+#+begin_src sh :exports code
+  2 4 
+  6 8
+#+end_src
 ** 5) Write a program in C# Sharp to display the multiplication table of a given integer.
 #+begin_src csharp :exports code
   namespace ConsoleApp1;
@@ -148,9 +171,22 @@
       }
   }
 #+end_src
+*** Output
+#+begin_src sh :exports code
+  Enter a number: 5
+  5 * 1 = 5
+  5 * 2 = 10
+  5 * 3 = 15
+  5 * 4 = 20
+  5 * 5 = 25
+  5 * 6 = 30
+  5 * 7 = 35
+  5 * 8 = 40
+  5 * 9 = 45
+  5 * 10 = 50
+#+end_src
 ** 6) Write a C# Sharp program to calculate the factorial of a given number.
 #+begin_src csharp :exports code
-  namespace ConsoleApp1;
   internal partial class Program {
       public static void Main() {
           Console.WriteLine("Enter a number ");
@@ -163,6 +199,11 @@
       }
   }
 #+end_src
+*** Output
+#+begin_src sh :exports code
+  Enter a number 5
+  Factorial of 5 is 120
+#+end_src
 ** 7) Write a program of using different namespaces where class of one namespace access class of another namespace program.
 #+begin_src csharp :exports code
   namespace Name1 {
@@ -172,7 +213,6 @@
           }
       }
   }
-
   namespace Name2 {
       using Name1;
       public class C2 {
@@ -181,6 +221,10 @@
           }
       }
   }
+#+end_src
+*** Output
+#+begin_src sh :exports code
+  Class C1 instantiated
 #+end_src
 ** 8) Write a program to implement the use of Default, Parameterized, Static and Copy Constructors.
 #+begin_src csharp :exports code
@@ -208,6 +252,11 @@
           Class1 c13 = new Class1(c12);
       }
   }
+#+end_src
+*** Output
+#+begin_src sh :exports code
+  Passed name: Sujal
+  Copied name Sujal to new object
 #+end_src
 ** 9) Write a program for operator overloading of logical operator.
 #+begin_src csharp :exports code
@@ -239,6 +288,11 @@
       }
   }
 #+end_src
+*** Output
+#+begin_src sh :exports code
+  AND result: False
+  OR result:  True
+#+end_src
 ** 10) Write a program for creation of user defined exception to show whether candidate is eligible to caste vote
 #+begin_src csharp :exports code
   namespace ConsoleApp1;
@@ -268,6 +322,10 @@
       }
   }
 #+end_src
+*** Output
+#+begin_src sh :exports code
+  ERROR: Too young to vote
+#+end_src
 ** 11) Write a program to select Employees who are lived in Kathmandu and salary is greater than 10000 using LINQ.
 #+begin_src csharp :exports code
   namespace ConsoleApp1;
@@ -287,8 +345,10 @@
       public static void Main() { 
           List<Employee> employees = new List<Employee>() {
               new Employee("Sujal", "Kathmandu", 9000),
-              new Employee("Hari", "Kathmandu", 1500),
+              new Employee("Hari", "Kathmandu", 15000),
               new Employee("Samip", "Pokhara", 20000),
+              new Employee("Chandra", "Kathmandu", 20000),
+
           };
           var filtered = from e in employees
               where e.Address.Contains("Kathmandu") && e.Salary > 10000
@@ -300,6 +360,11 @@
           }
       }
   }
+#+end_src
+#+begin_src md :exports code
+  employees living in Kathmandu AND having salary greater than 10000:
+  Hari
+  Chandra
 #+end_src
 ** 12) Write a program to select Students who are lived in Kathmandu and college is Deerwalk College using LAMBDA Expression.
 #+begin_src csharp :exports code
@@ -332,6 +397,12 @@
           }
       }
   }
+#+end_src
+*** Output
+#+begin_src md :exports code
+  Students living in Kathmandu & studying in Deerwalk are:
+  Hari
+  Samip
 #+end_src
 ** 13) Write a program to create book entry form in one ASP.NET page and display the filled data with another ASP.NET page.
 *** =Form.aspx=
@@ -408,6 +479,18 @@ namespace WebApplication1 {
     }
 }
 #+end_src
+
+*** Output
+#+begin_src sh :exports code
+#+end_src
+
+*** Form page
+#+ATTR_LATEX: :width 200px
+[[file:c:/Users/sujal/programming/college-files/5th-sem/dot-net-technology/lab-reports/screenshots/aspForm.png]]
+
+*** Table page
+#+ATTR_LATEX: :width 200px
+[[file:c:/Users/sujal/programming/college-files/5th-sem/dot-net-technology/lab-reports/screenshots/aspTable.png]]
 
 ** 14) Provided that a mysql database named “dotnet” with table “Product” with following columns (ProductId as int, ProductName as varchar(20), and UnitPrice as float). Write a program for following tasks:-
 a) Connect to the database. \smallskip
@@ -486,6 +569,7 @@ e) Insert any five product records \smallskip
 |        11 | Keyboard    |      4000 |
 |        22 | Tablet      |     25000 |
 
+\pagebreak
 **** b) (products with unitPrice > 5000)
 
 |-----------+-------------+-----------|
