@@ -350,7 +350,7 @@ method of organizing data in DB so as to eliminate redundancy, anomalies
 - increases data redundancy(repitition) as multi-valued records will have multiple rows for each value
 *** 2NF
 - must be in 1NF
-- all non-prime keys should be fully functionally dependent on some candidate key
+- all non-prime keys should be fully functionally dependent on entire candidate key, not just subset
 - (?) some other article says primary key must be single-column 
 *** 3NF 
 - must be in 2NF
