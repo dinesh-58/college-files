@@ -1,0 +1,960 @@
+#+TITLE:MIS and E-Business
+* MIS1: Intro to E-commerce
+pdf has been studied fully.
+might need to study remaining headlines here? idk
+** Differentiate E-commerce & E-business :drill:
+SCHEDULED: <2024-05-28 Tue>
+:PROPERTIES:
+:ID:       0314e875-0a7a-4675-87c1-50159194844e
+:DRILL_LAST_INTERVAL: 37.9355
+:DRILL_REPEATS_SINCE_FAIL: 5
+:DRILL_TOTAL_REPEATS: 11
+:DRILL_FAILURE_COUNT: 2
+:DRILL_AVERAGE_QUALITY: 3.364
+:DRILL_EASE: 2.08
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-04-20 Sat 09:%]
+:END:
+#
+*** answer (table w/ 4 points)
+| points                                 | E-commerce                      | E-business                                   |
+|----------------------------------------+---------------------------------+----------------------------------------------|
+| scope                                  | subset of E-business            | includes many aspects                        |
+| refers to ... done by electronic means | business transactions           | any business activity(marketing, inventory)  |
+| technology used                        | website/ apps, payment gateways | CRM, ERP, ...                                |
+| transaction type                       | goods / service / monetary      | service (customer support), info (marketing) |
+** Features /properties of E-commerce :drill:
+SCHEDULED: <2024-05-30 Thu>
+:PROPERTIES:
+:ID:       78e90e98-5043-41d6-a1e1-1c6b449c0029
+:DRILL_LAST_INTERVAL: 26.2443
+:DRILL_REPEATS_SINCE_FAIL: 5
+:DRILL_TOTAL_REPEATS: 15
+:DRILL_FAILURE_COUNT: 5
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 1.8
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-04 Sat 09:%]
+:END:
+# can write whatever comes to mind,
+# but these ones seem important (3 were asked to describe in past paper)
+*** [ubiquitous nature]
+- meaning available anywhere
+- traditional commerce is limited by geography
+
+*** [rich content / information]
+- can use non-text elements to provide info, demonstration
+  & convince user to buy
+- images, video, interactive (3d viewer, customize size, color etc.)
+
+*** [info density]
+- can set up automatic gathering of large amount of info 
+- this can be used for making decisions
+  e.g.: what type of product sells, appropriate pricing
+
+*** [personalization]
+- show specific products that users might like
+- based on:
+  + purchasing / browsing history
+  + preferences
+  + user details (age demographic, gender)
+** E-commerce Dimensions        :drill:
+SCHEDULED: <2024-08-02 Fri>
+:PROPERTIES:
+:ID:       da374255-934f-4681-b213-af5174d5be9e
+:DRILL_LAST_INTERVAL: 126.0957
+:DRILL_REPEATS_SINCE_FAIL: 6
+:DRILL_TOTAL_REPEATS: 5
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.6
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-03-29 Fri 08:%]
+:END:
+differentiated based on [degree of digitization] of 3 dimensions: 
+- [products sold]
+- [process (ordering, payment, store, ...)]
+- [delivery]
+
+*** Traditional commerce
+fully physical
+
+*** Pure e-commerce
+- fully online (no office)
+- digital goods / services (software, music)
+
+*** Partial e-commerce
+- some dimensions are physical
+- e.g:
+  + physical goods
+  + paying w/ cash
+  + online store but physical delivery to home
+
+** E-commerce Framework :drill:
+SCHEDULED: <2024-07-16 Tue>
+:PROPERTIES:
+:ID:       33fa0770-2404-4d54-8b2d-cf4cc09417dd
+:DRILL_LAST_INTERVAL: 87.2981
+:DRILL_REPEATS_SINCE_FAIL: 6
+:DRILL_TOTAL_REPEATS: 9
+:DRILL_FAILURE_COUNT: 2
+:DRILL_AVERAGE_QUALITY: 3.222
+:DRILL_EASE: 2.08
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-04-20 Sat 09:%]
+:END:
+consists of 3 parts:
+in exam, [[https://1.bp.blogspot.com/-zckqwJ1y6Ug/XvoYYqyubcI/AAAAAAAAXaI/M6ysILPmawUQuKxeETZfRW_nSERMb8cKwCK4BGAsYHg/s3120/IMG_20200629_220419%257E2.jpg][make diagram like this]]
+*** [E-comm apps]
+e-comm, e-governance, marketing / ads
+
+*** [services / infrastructure]
+- Business services infra
+  : security, online banking
+
+- Messaging infra
+  : email, SMS, online messaging
+
+- Multi-media / content publishing infra
+  : websites, blogs, videos
+
+- I-way infra
+  : network, internet, sim tower
+
+*** [Public (government) policy & Technical standards]
+that regulate & influence e-comm
+** types / business models      :drill:
+SCHEDULED: <2024-09-26 Thu>
+:PROPERTIES:
+:ID:       0e420f1b-760e-4333-b022-b0bded347adf
+:DRILL_LAST_INTERVAL: 167.4436
+:DRILL_REPEATS_SINCE_FAIL: 6
+:DRILL_TOTAL_REPEATS: 5
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.2
+:DRILL_EASE: 2.6
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-04-12 Fri 15:%]
+:END:
+remember types & 1 example each
+# keep in mind C  stands for Consumer
+*** [B2C]
+- Business to consumer/ individual
+- any branded goods, services
+
+*** [B2B]
+- raw material supplier, wholesaler to retail
+- extra info: 
++ generally large no. of goods
++ companies may have deals in place for special pricing, favoritism 
+
+*** [C2B]
+- freelance (digital services, furniture commission)
+
+*** [C2C]
+- freelance/ handicraft, 2nd hand goods
+
+*** Others (only remember new entity i.e. [Government])
+- G2G (import/export)
+- G2B, G2C & vice-versa
+  + electricity, water, company registration, dollar card 
+- C2G would be paying taxes?
+** Benefits 
+** Electronic markets
+** Role of Internet & Web in E-commerce
+** Limitations & Barriers of E-commerce
+** Social Networks
+- virtual group of users(people, organizations)
+  connected to one another in a social network service
+- allow interacting, communicating, posting content
+*** Social Network Services    :drill:
+SCHEDULED: <2024-05-12 Sun>
+:PROPERTIES:
+:ID:       3f9b491b-e97f-4068-a978-83afcb47422d
+:DRILL_LAST_INTERVAL: 66.9774
+:DRILL_REPEATS_SINCE_FAIL: 5
+:DRILL_TOTAL_REPEATS: 4
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.25
+:DRILL_EASE: 2.6
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-03-06 Wed 06:%]
+:END:
+ex: Facebook, LinkedIn
+**** explain Social E-Commerce
+- entire e-commerce process takes place on social media,
+from product discovery to checkout
+- no need for creating own website
+- e.g: Facebook marketplace, shopping features in Instagram, Spotify
+** M-commerce            :drill:exam_q:
+SCHEDULED: <2024-07-14 Sun>
+:PROPERTIES:
+:DRILL_CARD_TYPE: multisided
+:ID:       82fc2892-0ffe-4127-afab-58bae4886818
+:DRILL_LAST_INTERVAL: 106.805
+:DRILL_REPEATS_SINCE_FAIL: 6
+:DRILL_TOTAL_REPEATS: 5
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.4
+:DRILL_EASE: 2.08
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-03-29 Fri 08:%]
+:END:
+# might also be asked as: future/ impact of M-commerce
+*** define
+- performing e-commerce activities using mobile devices & wireless networks
+  + devices include phones, tablets but not laptops
+- includes: e-commerce apps, digital wallets, convenience purchases (order food, ride whenever you want)
+
+*** advantages (no need to remember all)
+- ubiquitous: such devices are more portable, free wifi / mobile data
+  + users can buy anytime anywhere
+  + businesses can also be open all the time
+  + business owners can manage/ conduct business from anywhere
+
+- phones are more affordable / commonplace than computers;
+  leads to more sales
+
+- can utilize features in phones like location, biometric, NFC, mobile data
+  to enhance experience
+
+*** disadvantages
+- excessive/ impulse buying
+- advertising ruins experience of using mobile devices
+- privacy concerns about targeted advertisements, tracking
+- traditional businesses may take a hit
+
+** Location based I-commerce    :drill:
+SCHEDULED: <2024-09-07 Sat>
+:PROPERTIES:
+:DRILL_CARD_TYPE: multisided
+:ID:       e15afd84-205d-4a65-816f-a2f225a3bd3c
+:DRILL_LAST_INTERVAL: 150.75
+:DRILL_REPEATS_SINCE_FAIL: 6
+:DRILL_TOTAL_REPEATS: 5
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.8
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-04-09 Tue 06:%]
+:END:
+# I just stands for Internet
+# might be called location based M-commerce sometimes
+
+*** define
+using location-based services (GPS, GIS mapping, cell tower triangulation)
+to provide e-commerce facilities
+
+*** services & Applications (basically examples)
+- track delivery, hailed ride (Pathao)
+- provide navigation directions to business
+
+- Provide location based competitive pricing for digital goods (cheaper for lower-income countries)
+
+- tagging location in social media posts acts as convenient form of advertising
+  + others can click on tags to get more info
+    instead of manually searching, inquiring
+
+- detect if product has been stolen from store premises
+  + iPhones kept on display will alert police & disable themselves if stolen
+
+*** Infrastructure / components
+- location finder
+- server to handle location received from finder
+- user
+- mobile device
+- network
+- application / service that uses location
+
+* MIS2: Network infrastructrure for E-commerce
+consists of internet & its requirements (devices, wires, etc.)
+** Information Superhighway (I-way) :drill:exam_q:
+SCHEDULED: <2024-05-06 Mon>
+:PROPERTIES:
+:ID:       901ef1ea-e4a5-49ba-9581-b9832396a79d
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 2
+:DRILL_AVERAGE_QUALITY: 2.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-02 Thu 06:%]
+:END:
+- basically [the internet]
+- define: [high-speed global network for transferring multimedia that supports 2-way communication]
+# 90s ass term
+
+- Components:
+*** [Consumer access equipment]
+hardware + software for accessing network, multimedia
+- computer, router
+- OS, browser
+
+*** [Local on-ramps]
+- connects local network of businesses, homes to global network 
+- providers: 
+ + cable based
+ + telecom
+ + wireless
+ + computer based
+
+*** [Global Info distribution networks]
+definition can be derived from name itself
+- satellite, long-distance network
+
+** Internet as a network infrastructure
+*** Differentiate between Internet, Intranet & Extranet :drill:
+SCHEDULED: <2024-05-06 Mon>
+:PROPERTIES:
+:ID:       75937b59-5c38-4dc3-aade-3e29dd568b23
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 7
+:DRILL_FAILURE_COUNT: 2
+:DRILL_AVERAGE_QUALITY: 3.286
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-05-02 Thu 06:%]
+:END:
+#
+**** Internet
+global network of networks
+WWW, communication
+
+**** Intranet
+- *private* network only accessible within organization
+- has custom server, firewalls
+- more secure cuz limited access, customizable
+
+**** Extranet
+- Intranet + some external users can connect
+  e.g: customers, suppliers
+
+**** TODO make proper difference table using [[https://www.geeksforgeeks.org/difference-between-internet-intranet-and-extranet/][this]]
+** Wireless Application Protocol(WAP) :drill:exam_q:
+SCHEDULED: <2024-05-06 Mon>
+:PROPERTIES:
+:ID:       9eec56b0-83ad-44cd-b60c-e7173a78987f
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-02 Thu 06:%]
+:END:
+#
+*** define
+- old protocol for accessing internet from mobile devices on cellular network (mobile data)
+- used for old "dumb" phones (Nokia)
+- early standard for mobile internet
+
+*** Architecture
+- Client device
+- WAP gateway
+- Web server
+
+*** Working
+- browser in *mobile device* sends request to *WAP gateway*, which forwards request to *web server*
+- server response (WML code) is returned to device
+  + WML(Wireless Markup Language) is XML-like language that renders content optimized for WAP devices
+  + superseded by HTML
+  + server contains XML which is converted to:
+    - WML for WAP browsers
+    - HTML for http browsers
+
+- optimization example: WML takes into account slower processing, network speed, small screens w/ 
+  + making content look good on small screens,
+  + making inputs focusable (due to limited navigation methods)
+
+*** TODO Stack / Layered architecture
+study later
+** Wireless Technologies        :drill:
+:PROPERTIES:
+:ID:       41b5ceec-90b1-415f-b96c-7b47f2705ecf
+:END:
+*** ADSL (Asymmetric digital subscriber line)
+- use voice telephone line for voice & internet
+  + uses unused analog bandwith in wires
+- signal from ISP / carrier travels through copper wire
+- made wireless using modem at home
+- download faster than upload
+
+*** WLAN
+*** WMAN
+**** WiMAX (Worldwide Interoperability for Microwave Access)
+- mostly used WMAN (wireless MAN)
+- newer tech than wifi. compared to wifi, it :
+  - works outdoors over long distance
+  - bit less speed?
+  - less common
+  - higher cost
+  - not meant to replace wifi but used for different purpose 
+*** Wi-Fi :drill:
+SCHEDULED: <2024-09-21 Sat>
+:PROPERTIES:
+:ID:       47532c48-4847-457c-9054-73006c70105d
+:DRILL_LAST_INTERVAL: 140.3784
+:DRILL_REPEATS_SINCE_FAIL: 6
+:DRILL_TOTAL_REPEATS: 6
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 3.333
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-04 Sat 09:%]
+:END:
+- popular wireless local area network
+- consists of [access point that users connect to (generally router)]
+- 2.4 or 5 GHz signal
+
+**** strengths
+- easy deployment (due to using unregulated radio waves?)
+- 300 feet range
+- due to popularity, most consumer devices support it
+- low cost
+- connect large no. of devces at once
+
+**** weaknesses
+- have to stay within range, compared to cellular networks
+- security risk
+- meant for short range use
+- prone to interference
+
+*** mobile internet technology :drill:
+SCHEDULED: <2024-09-15 Sun>
+:PROPERTIES:
+:ID:       58dab3fb-eef2-4620-bc69-20658f6b2a2f
+:DRILL_LAST_INTERVAL: 135.437
+:DRILL_REPEATS_SINCE_FAIL: 6
+:DRILL_TOTAL_REPEATS: 5
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.6
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-03 Fri 05:%]
+:END:
+full-forms:
+
+- UMTS[Universal Mobile Tele-communication System]
+- LTE [Long Term Evolution]
+  
+both are technologies for celllular network (mobile data)
+
+**** UMTS vs LTE (4 points)
+| point                | UMTS                            | LTE                 |
+|----------------------+---------------------------------+---------------------|
+| tech generation      | 3G                              | 4G                  |
+| speed & bandwidth    | slow (upto 384 kbps)            | more (100+ Mbps)    |
+| suitable for         | basic web browsing, texting     | video calls, GPS    |
+| network architecture | complex                         | simpler             |
+| power consumption    | high (compared to new networks) | high, but efficient |
+
+**** 5G NR
+** Security Issues related to Wireless Communications
+* MIS3: Intro to Management Information System (MIS)
+** Info system                  :drill:
+SCHEDULED: <2024-05-07 Tue>
+:PROPERTIES:
+:ID:       654e89ba-70f9-4aa1-a3bd-65daf59d4f58
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 2.5
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-03 Fri 05:%]
+:END:
+- define: [set of inter-related components for gathering, processing, storing organizaion info]
+- helps make data driven decisions
+
+*** mnemonic to remember easily
+eis-mis-diss-teapis
+
+*** types 
+**** Transaction processing system (TPS)
+:PROPERTIES:
+:ID:       5ec359ca-72c0-495a-b3b9-4f961e5cab0c
+:END:
+- records daily transactions like sales, payments, inventory
+- can automatically perform transactions too like employee payroll, bills, taxes
+- help provide raw data for financial questions (audits, tax reports, revenue)
+
+**** Management info system (MIS)
+- convert raw data from [[id:5ec359ca-72c0-495a-b3b9-4f961e5cab0c][TPS]]
+  into meaningful, organized info / reports
+- useful for managers
+- automatically produce results that are needed regularly (weekly, monthly, yearly) 
+  based on predefined conditions /  steps (e.g: total, average sales)
+
+**** Decision support system (DSS)
+- designed to solve unique problems that arise unexpectedly
+  + can't be predicted / automated like MIS
+
+- help decision-making staff 
+  using mostly internal data (TPS, MIS)
+  & external sources if needed
+
+**** Executive info system (EIS)
+# also called ESS? (s for support)
+- used by senior management
+- used for high level strategic decisions,
+  long term planning,
+- allow analyzing, summarizing data,
+  finding trends, predictions
+- external data is as equally important as internal data
+
+** Enterprise applications      :drill:
+SCHEDULED: <2024-05-06 Mon>
+:PROPERTIES:
+:ID:       00f48ed3-0f4d-46ce-868b-ebbf5de87eb9
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-02 Thu 06:%]
+:END:
+used for [performing business activities]
+
+*** types
+**** Enterprise / ERP system  :drill:
+SCHEDULED: <2024-05-07 Tue>
+:PROPERTIES:
+:ID:       6bcdfe5a-c61f-49e2-90df-98756d020c0c
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 2.5
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-03 Fri 05:%]
+:END:
+aka Enterprise Resource Planning(ERP)
+
+***** describe
+single application w/ single, central database
+for resources / activities like:
+
+- manufacturing
+- finances
+- human resource management
+
+such info would normally be stored in separate databases
+which could lead to inefficiency, redundancy (repitition)
+***** extra info: example usecase: automation / efficiency
+
+place order -> check warehouse -> schedule delivery & best route -> mark item for delivery
+
+***** Challenges while implementing
+- training
+- budget
+- customizaation
+- security
+- disruption while implementing
+- resistance to change
+- integrating / migrating existing data into single database
+
+**** Supply Chain Management (SCM) system :drill:
+SCHEDULED: <2024-05-07 Tue>
+:PROPERTIES:
+:ID:       aa51e3e7-f9a1-4665-8d12-5ac26a9fec99
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-03 Fri 05:%]
+:END:
+- for managing [=supplier= relation (akin to CRM)]
+- track & share info for [inventory, delivery, goods being manufactured]
+
+***** inlcudes functions like:
+- multile supplier management
+  (comparing price, quality, availability)
+- payment status /  management
+- inventory management
+
+- sales, production requirements forecast
+- automatically update info,
+  order supplies when inventory is low,
+  create timeline / estimate based on delivery, production time
+
+**** Customer Relation Management (CRM) system :drill:
+SCHEDULED: <2024-05-06 Mon>
+:PROPERTIES:
+:ID:       700442a4-8232-4cf9-bb5f-31620caacc64
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-02 Thu 06:%]
+:END:
+#
+***** used for managing
+- data about all customers
+  + their accounts as well
+- sales leads / potential customers
+- marketing campaigns
+- customer service (e.g: support tickets)
+
+***** generate info such as:
+- profitable users
+- trends
+- analytics such as
+  + click-through rate for ads
+  + churn rate (users who stop using/buying)
+
+** International info system    :drill:
+SCHEDULED: <2024-05-06 Mon>
+:PROPERTIES:
+:ID:       abe202c4-78de-4b00-af50-617da5f6b091
+:DRILL_LAST_INTERVAL: 4.0
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-05-02 Thu 06:%]
+:END:
+[global network for the sake of completing a transaction]
+
+types:
+*** [Out-sourcing]
+work offloaded / contracted to third-party
+
+- contractors might be chosen due to their expertise
+- but they might also lack expertise of the in-house team
+
+*** [Off-shoring]
+to workers in other country
+- cheaper costs
+- language barrier
+- different laws (for labor, business etc.)
+* MIS4: E-Commerce Security & Fraud Issues & Protection
+** E-comm security requirements
+*** CIA triad model :drill:exam_q:
+SCHEDULED: <2024-05-14 Tue>
+:PROPERTIES:
+:ID:       ef26238e-018c-4f61-8f03-5d86e2888f41
+:DRILL_LAST_INTERVAL: 66.9774
+:DRILL_REPEATS_SINCE_FAIL: 5
+:DRILL_TOTAL_REPEATS: 5
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 3.8
+:DRILL_EASE: 2.6
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-03-08 Fri 06:%]
+:END:
+model for [ensuring data security requirement (in Ecomm & other things)]
+
+**** [Confidentiality]
+- protect *sensitive info* from unauthorized access
+- e.g: customer data, login details, internal company data
+
+**** [Integrity]
+- ensure data correctness
+- don't allow to improperly modify (intentionally or accidentally)
+
+**** [Availability]
+ecomm services, info must be available to users whenever they need it
++ implement backup power, data backup
+
+*** Authentication
+verify if an ecomm entity's identity is real / what it claims to be. example:
++ entity can be user, Ecomm software / client, device
+
++ hackers may request for some data by making it seem as if it's made by a valid user
++ modified software can make it seem as if they are using the paid version
+
+*** Authorization
+- setting up roles & permissions to do specific actions
+
+*** Auditing
+- refers to logging / recording user actions
+- helps w/ customer support, finding bad actors
+
+*** Non-repudiation
+- guarantee that users (both buyers, sellers) can't falsely repudiate / deny services. Examples:
+  + seller can't refuse to sell goods after placement of order
+  + customer can't refuse to pay after delivery
+  + refunds / returns should be given in valid cases
+
+- ensures fair, trustworthy Ecomm
+  prevent scam, bad experience
+
+  
+** Ecomm security risks
+- exploiting vulnerabilities in system
+- faking / bypassing payment
+*** Malware Attack  
+:PROPERTIES:
+:ID:       70976379-e751-4c9c-ae6a-0ddb8f35ad3d
+:END:
+malware is any harmful program or code
+**** Technical 
+***** Virus
+attaches to files / executables & replicates (infects other files)
+
+***** Worms
+self-replicates across network
+no need to attach
+
+***** Trojan Horses
+- malware pretending to be legitimate program
+- e.g: cracked software
+
+***** Heartbleed
+old vulnerability in OpenSSL
+that allowed hackers to steal info from affected servers 
+
+***** DDoS (Distributed Denial of Service)
+uses infected devices to
+overwhelm a server by making large no. of requests
+
+***** Page hijacking
+- redirect to harmful webpage
+  using vulnerability (in website, user computer, virus)
+
+***** Botnet
+network of compromised devices
+used for DDoS, spam
+
+***** Malvertising
+ads with malware
+free download, fake download buttons
+
+***** Ransomware
+encrypts files
+& holds them for ransom
+
+****** types
+- crypto: use encryption algo to lock file
+- locker: lock user out of system
+- phishing: spread through phishing emails
+- exploit kit: spread thru vulnerabilities
+***** Sniffing
+- capturing data packets traveling in a network
+to find sensitive data
+
+- encryption (like SSL certs) helps mitigate this
+
+**** Non-technical
+***** Social Engineering / Phishing
+- (exploiting human nature, kindness) 
+tricking people into revealing sensitive info,
+visiting malicious links,
+paying money etc.
+
+***** Pharming
+- redirect to harmful webpage
+  by manipulating DNS server records 
+
+***** Identity Theft / Fraud
+- impersonating someone w/ the purpose of
+  + using identity to commit fraud
+  + scamming their contacts
+
+***** Spam Attack
+frequent, large no. of unwanted messages, emails to
++ promote product
++ share malicious links, malware
+
+
+** EC Defense strategy
+*** How hardware & software fullfills EC security requirements
+:PROPERTIES:
+:ID:       8cd2c50b-9fc5-4660-8e2f-8a04d3b47e59
+:END:
+**** Hardware
+- Firewall
+- Secure routers, network devices
+- TPM (Trusted Platform Module) chip on devices
+  + (encrypts data)
+- physical access to servers, DBs to perform vital tasks
+
+**** Software
+- Update software, dependencies to remove vulnerabilities
+
+- Checksum, digital signature to maintain integrity
+- MFA, biometric login for authentication
+
+- input validation (both client & server side)
+- SSL certificate, VPN for encrypting transferred data 
+- Anti-virus
+
+- Server logger (for auditing all actions, reporting suspicious behavior)
+  + e.g: report suspicious logins to users
+  + Intrusion Detection System (IDS)
+
+- Encryption
+  + while sending data through network
+  + also encrypt storage devices holding sensitive data
+
+   
+* MIS5: E-Payment system
+types of e-payment:
+** Credit card processing steps
+offline: physical card is swiped / scanned
+online:  card details are entered in checkout form
+
+- Person gives card details to merchant
+- Merchant sends details to card-issuing bank to confirm (thru credit card network)
+- Bank accepts or declines
+  - If accept, send money to merchant's bank account
+- Transaction is succesfull
+- Person is asked to pay back the credit by a deadline 
+  or pay interest
+
+** E-checking
+- digital form of check / cheque 
+- automates many steps, more secure compared to physical check
+- processing depends heavily on ACH
+
+*** processing
+- First, the merchant receives authorization from a customer to charge his - or her bank account, including the amount.
+-  Next, the merchant securely transmits the above information to the Authorize.Net Payment Gateway server.
+-  If the transaction is authorized, then its information is sent as an ACH
+  transaction to the Originating Depository Financial Institution (ODFI).
+-  From there, this information is passed to the Automated Clearing House
+  (ACH) Network for settlement. The ACH Network identifi es the government
+  institution that governs the customer's bank account (known as the Receiving
+  Depository Financial Institution (RDFI).
+-  The ACH Network instructs the RDFI what to transact. Then, the RDFI
+  transfers money from the customer's account to the ACH Network.
+-  The money transfer authorization goes to the ACH and to the ODFI, and then to Authorize.Net .
+-  The merchant’s account is now credited.
+
+** ACH (Automatic Clearing House)
+- network of American banks
+- allows digital transfer of money
+  w/o need for physical cash, checks
+
+  
+*** uses
+- direct deposit (salary, government benefits)
+- bank to bank transfer 
+- automated, recurring bill payments
+
+*** Process
+- You initiate the transfer, providing the recipient's bank account details.
+- Your bank sends the transfer request to the ACH network.
+- The ACH network verifies the information and routes the request to the recipient's bank.
+- The recipient's bank credits their account and debits yours for the transfer amount.
+
+** Fiat money
+- government-issued & regulated currency (real world money)
+  + regulated through interest rates, supply
+
+- not e-payment but:
+  + *digital currency* is digital form of fiat
+  + many *virtual currencies* can be exchanged for fiat
+
+** Virtual currency
+- type of digital currency
+  generally not regulated by central bank / government
+- exists electronically, used for electronic transactions
+
+*** types (by issuer)
+
+**** Centralized
+- regulated by generally issuer of currency
+  or maybe even governments, banks
+- even some decentralized currencies have centralized aspects,
+  such as a group controlling minting of new coins, amount of initial coins etc
+
+**** Decentralized
+
+***** Crypto
+- decentralized virtual currency that uses cryptography
+to secure & authenticate transactions
+
+- uses blockchain
+****** blockchain
+- network of large no. of computers.
+  + made up of blocks (set of transactions)
+- each computer verifies blocks & majority result is taken as truth,
+  which theoretically makes it impossible to 
+  forge / fake transactions
+
+- mining: verifying & recording transactions
+****** advantages
+- can be used as global currency
+  - comparatively, fiat has hassles, regulations / restrictions
+- anonymity (no need for KYC)
+- independence from central authority prevents situations like
+  fiat money declining due to a country's economy
+  + although virtual currencies may have highly fluctuating value due to no regulation as well
+*** types (by usecase)
+
+**** Open
+can be traded for fiat
+**** Closed
+can't be traded
+used for specific purposes / platforms
+examples: reward points, in-game currency
+
+** Mobile banking / digital wallet
+type of digital currency
+* MIS6: Launching a successfull EC website
+** Determining feasibility
+*** market analysis
+- existing competitors
+- target audience
+  + is there large no. of people that will use it?
+- local or global
+- will it work?
+*** product analysis
+- USP
+- profit / business model
+*** financial analysis
+*** technical analysis
+- is idea possible or not
+- how complicated
+- how skilled experts are required? are they available
+** funding techniques
+- bootstrap: use own funds
+- loans
+  + from family, friends
+  + banks
+- pitch to VCs, investors, shark tanks
+- crowdfunding (kickstarter, )
+** Cross-selling
+selling / promoting similar products
+** Up-selling
+convincing to buy more expensive product 
+
+* Project: e-commerce site
+maybe astro for frontend and just simple php or node for backend
+- Try out some guided astro projects first? Maybe that blog crud app saved in tablerone
+- for payment gateway, use [[https://docs.khalti.com/khalti-epayment/][Khalti]] or [[https://stripe.com/docs/test-mode][Stripe test mode]]
+  + eSewa requires registering as merchant to use
+    
+** stack
+*** frontend
+- Astro for templating / folder structure
+- React for components / interactivity (don't try learning something like Solid now)
+  + Solid solves a lot of react problems but I need more react experience for now
+- Tailwind + DaisyUI
+
+*** Backend
+- Firebase (don't use alternatives like pocketbase, supabase for now.
+  firebase prob has more tutorials)
+
+*** Testing (do only near end, if time)
+
+- [[https://youtu.be/Jv2uxzhPFl4?feature=shared][fireship vid]]
+- just do unit tests with jest for simplicity?
+  cypress prob overkill for this
+
