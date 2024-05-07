@@ -1,0 +1,1035 @@
+#+OPTIONS: toc:nil
+#+TITLE:DotNet Technology
+* DOT1: Introducing C# & .NET framework
+** Running C# on Linux
+- save file w/ .cs extension
+- compile w/ =mcs= (designed to complie for non-windows OS) or =csc= (windows)
+  + specifying output file name: ~mcs -out:filename.exe input.cs~
+- run with ~mono output.exe~
+*** create projects (preffered instead of individual files)
+~dotnew <projectName>~
+~dotnet new console~ console refers to template for console apps
+~dotnet run~
+** Object Orientation
+- design software around data rather than logic
+*** features
+- common base type (that can be converted to any type? look up)
+*** TODO OOP vs OBP (object-based)
+- [ ] look up if important & if below statements are correct
+- In OOP, everything is done inside class
+- OBP example is JS.
+- OBP does not have all OOP features
+- OBP has built-in object. OOP doesn't?
+  classes not needed to create objects
+** Type Safety
+- checks types at compile time
+- check if operation between types is valid or not
+** Memory Management
+** Platform Support
+- .NET can be used for:
++ Console apps
++ Desktop apps
++ Web apps
++ Mobile apps
+** C# & CLR                     :drill:
+SCHEDULED: <2024-05-24 Fri>
+:PROPERTIES:
+:ID:       757a86d8-017d-4943-801a-244e01dea69f
+:DRILL_LAST_INTERVAL: 24.12
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.667
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-04-30 Tue 05:%]
+:END:
+C# and other .NET languages are [compiled into Intermediate Language (MSIL?)]
+which gets [interpreted by CLR(Common Language Runtime)
+into native machine code]
++ similar to JVM, thus, allowing code to run on multiple platforms
+
+** CLR & .NET Framework
+*** TODO rewatch fireship c# vid
+*** TODO Architecture
+look up if necessary. below doesn't inclde all components of architecture
+**** Languages
+**** CLS (Common Language Specification)
+guidelines followed by all languages in .net framework
+**** ADO.NET & XML
+middle layer between front & backend
+**** Base Class libraries 
+- libraries that provide access to system functions?
+- all .net languages compiled to MSIL(Microsoft Intermediate Language) assembly code
+**** CLR (Common Language Runtime)
+- Virtual machine that runs compiled assembly kinda like JVM(?) as native code
+- makes it possible to run .net on different devices/platforms
+** Other Frameworks
+*** Overview
+** .NET Standard 2.0
+** Applied Technologies
+* DOT2: C# Language Basics
+** Data types
+*** Value
+*data type* where variable holds exact value
+- copies value when passed
+
+- =bool=
+*** Reference type
+variable holds address where value is stored 
+
+- Arrays
+- Objects
+- Delegates
+- Strings
+  + immutable like in java. i.e. changing string creates new string in memory
+*** =var= keyword
+- implicit type 
+- i.e. no need to specify exact type when declaring variables
+  type is assigned based on value
+  & type can't be changed
+
+** C# Arrays
+*** Muliti-dimensional array   :drill:
+SCHEDULED: <2024-05-30 Thu>
+:PROPERTIES:
+:ID:       d75a8ce9-cea4-42b6-b11f-c107808cd653
+:DRILL_LAST_INTERVAL: 24.12
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.667
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-06 Mon 05:%]
+:END:
+#
+**** syntax to initialize 2-dimensional array
+#+begin_src csharp
+  int[,] arr = new int[2,3] { // length can be omitted
+      {1, 2, 3},
+      {4, 5, 6},
+  }
+#+end_src
+
+**** extra info: differences from other languages
+- multi-dim arrays use [,] instead of [][]
+  for both declaring as well as accessing
+
+- values are stored in braces ={}= instead of brackets =[]=
+
+**** GetLength(i)
+- returns length for dimension =i= in multi-dim arrays
+  + \because =Length= property returns total length (product of rows, cols, ...)
+
+- e.g: for int[2,3]
+  GetLength(0) => 2 
+  GetLength(1) => 3 
+*** Jagged array
+- nested array / array of arrays
+  - array where each index / element of outer array
+    holds another array
+
+- each row can have any number of elements
+  + compared to multi-dim where it is fixed & pre-defined 
+
+#+begin_src csharp
+  // notice the [][] syntax similar to other languages
+  // compared to [,]
+  int[][] jaggedArray = new int[3][] {
+      new int[] {1},
+      new int[] {2, 3},
+      new int[] {4, 5, 6}
+  }
+
+  // looping thru
+  for (int row = 0; row < jaggedArray.Length; row++) {
+      for (int column = 0; column < jaggedArray[row].Length; column++) {
+          Console.Write($"{jaggedArray[row][column]} ");
+      }
+      Console.WriteLine();
+  }
+#+end_src
+** Statements
+*** Iteration
+**** foreach 
+w/ multi-dim array loops through all sub-arrays
+
+#+begin_src csharp
+  foreach(var i in arr) {
+      // i holds one value at a time
+  }
+#+end_src
+** Namespace 
+- used to logically group classes
+- initial namespace name should be same as project name?
+*** namespace scope
+- block scope using {}
+- entire file scope using semicolon: =namespace NSOne;= 
+*** using classes from one namespace in another
+- use nsName.Class directly
+  #+begin_src csharp
+    namespace NSOne {
+       class ClassOne {
+          NSTwo.ClassTwo c2 = new NSTwo.ClassTwo()
+       }
+    }
+    namespace NSTwo {
+       class ClassTwo {}
+    }
+  #+end_src
+
+- or import one namespace inside another
+  #+begin_src csharp
+    namespace NSOne {
+       using NSTwo
+       class ClassOne {
+          NSTwo.ClassTwo c2 = new NSTwo.ClassTwo()
+       }
+    }
+  #+end_src
+** Naming convention
+- PascalCase anything that is accessible outside class
+  + class name, methods, properties, public fields
+
+- camelCase for parameters, local variables (w/o access modifier)
+
+- underscore prefix + camelCase for private fields 
+- declare static members at top 
+- use I prefix for Interface names
+** Identifiers & Keywords
+*** =using= keyword
+has 2 uses:
+
+**** importing from namespaces, classes
+**** auto-managing objects in memory
+- calls =Dispose()= method for specified object
+  after it goes out of block scope
+  + performs garbage collection (remove from memory?)
+
+#+begin_src csharp
+  using(var conn = new MySqlConnection()) {
+  }
+#+end_src
+
+- here, connection is closed after code goes outside braces
+- thus, no need to call =Close()= manually for connection, reader, command
+- it is called even if there is exce[tion
+*** contextual keyword
+- have special meaning but not reserved keyword
+- examples: async, await, select, from, where
+* DOT3: Creating Types in c#
+** Classes
+*** types
+**** Partial
+- define different parts of the class across different files
+- later combined into single class
+
+**** Static
+- can't be instantiated
+- can hold only static members
+- useful for classes that provide utility members & which don't make sense to initialize
+  e.g: =System.Math=
+
+
+** Constructors & Deconstructors
+*** constructor types          :drill:
+SCHEDULED: <2024-05-25 Sat>
+:PROPERTIES:
+:ID:       2b338a31-553b-498e-a288-801325b6518b
+:DRILL_LAST_INTERVAL: 25.0
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-04-30 Tue 06:%]
+:END:
+#
+**** default
+- no params
+- automatically created 
+  + not auto-created if non-default constructors are defined
+- can manually define if needed
+
+**** parameterized
+**** static
+- invoked only once (when object is initialized or static members are used for the 1st time)
+  + creating 2 objects will invoke static constructor only once
+  + runs before other constructors
+
+- useful for assigning values static properties
+  or perform actions that only need to be done once. (db connection?)
+
+  + since actions like assigning values, looping
+    can't be done outside a method
+  + placing such code inside other constructors will
+     run it on every new object creation
+     which might be unnecessary
+**** copy
+- takes an object of same class as parameter
+- create a new object using existing object's state (fields)
+  + no need to return obj, just use ~this.prop = prop~
+
+**** private
+can only be instantiated inside class 
+**** extra info
+- constructors have no return type
+
+- =this= keyword isn't necessary when accessing properties inside class
+  + used to distinguish when constructor param name is same as prop name
+*** Deconstructor (?)
+syntax: 
+#+begin_src csharp
+  public class Cls {
+      ...    
+      ~Cls() {
+          ...
+      }
+  }
+#+end_src
+
+NOTE: You'll almost never need to use this.
+only use when class is holding onto memory-expensive resource. [[https://stackoverflow.com/a/4899622][source]]
+
+** Properties
+- member that exposes inner workings (fields) outside class
+- both fields & properties are members
+
+*** Field
+- variables inside a class. these must always be private
+- can be used to hold a property's value / state 
+
+- getter / setter turns field into property  
+*** getter / setter syntax
+- these are basically functions that get called
+  when accessing / assigning properties
+
+- return type of =get=
+  & =value='s type in =set=
+  must match property type
+
+#+begin_src csharp
+  public class Student {
+      private string _name;   // field. 
+      public string name {
+          // access modifiers can be specified for get / set
+          get {
+              return _name;
+          }
+          set {
+              _name = value;  // value is pre-defined keyword that holds value being assigned to prop.
+          }
+      }
+  } 
+#+end_src
+
+*** types
+**** automatic 
+- syntactic sugar;
+  compiler automatically creates private field to hold property value
+#+begin_src csharp
+  public class Student {
+      public string name {get; set;}
+  } 
+#+end_src
+**** combinations of read / write perms
+# use explicitly defined field to store value
+**** static 
+- these belong to the type / class itself rather than to individual objects
+- can be accesssed without instantiating
+
+** Indexers                     :drill:
+SCHEDULED: <2024-05-13 Mon>
+:PROPERTIES:
+:ID:       1b471952-1c00-4331-a7be-af451bebb473
+:DRILL_LAST_INTERVAL: 8.9861
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-04 Sat 09:%]
+:END:
+- special feature that [exposes an object's private collection]
+# collection as in derived class of Collection (List, Array, Dictionary) or custom
+- access using [array syntax by passing an index =objName[index]= ]
+
+*** syntax
+#+begin_src csharp
+  public class StudentsRecord {
+      private string[] _students = new string[10];
+
+      // akin to property, type of indexer dictates
+      // get's return type
+      // & set's value type
+      public string this[int index] {
+          // index type can be non-int too
+          get => _students[index];
+          set => _students[index] = value;
+      }
+  }
+
+  // ...
+  StudentsRecord sr = new StudentsRecord();
+  sr[0] = "Sujal"; // note that we access using object name, not class name
+#+end_src
+
+*** Compare Properties & Indexers
+- both have get, set for validation, logic
+  while accessing values
+- share almost every behavior except for these
+
+|                    | Properties         | Indexers                 |
+|--------------------+--------------------+--------------------------|
+| access using       | prop name          | obj name[index]          |
+| param required for | only =set=         | both get, set            |
+| exposes            | fields of any type | internal collections     |
+| static possible?   | yes                | no. must be instantiated |
+
+*** extra info
+- compared to making the collection public,
+  this provides simpler syntax (syntactical sugar),
+  validation w/ setter, getter,
+  read / write permissions outside class
+
+- kinda like an array type property
+  cause can't pass index / key to normal properties 
+
+- multiple indexers can be defined
+  using overloading for index params for =this[]=
+
+  + note that the indexer is tied to class / object name
+    so we can't use it for every private collection inside class
+
+  + use it when the class' main purpose is to hold a single collection
+    / be a wrapper around it
+
+** Polymorphism
+*** Overloading (static polymorphism)
+- methods function differently when diferent method *signature* (function name + params)
+
+**** operator overloading       :drill:
+SCHEDULED: <2024-05-13 Mon>
+:PROPERTIES:
+:ID:       334f3ad0-3709-4c89-802c-e55f3f11421d
+:DRILL_LAST_INTERVAL: 8.9861
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-04 Sat 09:%]
+:END:
+feature that [allows defining how pre-defined operators work
+when used w/ user-defined classes / types]
+
+***** syntax & example
+#+begin_src csharp
+  public ClassName {
+      public int prop1, prop2;
+      // (returnType is usually ClassName \because return a resulting obj)
+          // or bool for comparison operators
+      // no. of params depends on unary or binary operator
+
+      public static <returnType> operator <operator> (ClassName param) {
+          ClassName result = new ClassName();
+          // perform operation
+          return result;
+      }
+  }
+
+  // example:
+  public Point {
+      int x, y;
+
+      public Point() {}
+      public Point(int x, int y) {
+          this.x = x;
+          this.y = y;
+      }
+
+      public static Point operator +(Point a, Point b) {
+          return new Point(a.x + b.x, a.y + b.y);
+      }
+  }
+#+end_src
+
+- static so that it can be called w/o dot operator ?
+- returnType is generally ClassName because the operation returns a new resultng object 
+
+***** overloadable operators
+- unary 
+  + =++, +, -=
+    
+- binary 
+  + =+, -, /, *=
+
+- logical 
+  + =&, |, !, ^(XOR)=
+  + generallly returnType is boolean
+
+- relational (comparison)    
+  + <, >, ==, !=, ...
+  + *these must be paired. i.e. if overloading >, < must be overloaded too*
+
+***** extra info (& vs &&)
+- & is used for both bitwise AND & logical AND
+  & will evaluate entire expression even if false value
+
+- && is *short-circuit* logical AND
+  i.e. expression is terminated upon encountering false value
+
+- similar for | and || but terminates upon true value
+
+*** Overriding  (dynamic polymorphism) :drill:
+SCHEDULED: <2024-05-14 Tue>
+:PROPERTIES:
+:ID:       b9a56be6-bcc2-4c5e-bec7-9848e49d9842
+:DRILL_LAST_INTERVAL: 10.0
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 3.333
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-05-04 Sat 09:%]
+:END:
+#
+
+**** =virtual=  keyword
+required to mark a method, property as over-ridable
+
+**** =override= keyword 
+- is required when overriding already implemented methods
+  i.e. asbtract, virtual methods
+  + not using will *hide* these methods & cause errors
+- not necesary for implementing interface methods
+
+
+**** How does =virtual= keyword achieve runtime / dynamic binding :drill:
+SCHEDULED: <2024-05-13 Mon>
+:PROPERTIES:
+:ID:       b8c10f20-79af-4d10-b19c-41b688ae147b
+:DRILL_LAST_INTERVAL: 9.3103
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.5
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-05-04 Sat 09:%]
+:END:
+#
+***** code
+#+begin_src csharp
+  public class Base {
+      public virtual void Method() { }
+  }
+  public class Derived: Base {
+      public override void Method() { }
+  }
+
+  Base b = new Derived();
+  b.Method();
+#+end_src
+
+***** explanation
+- achieved when trying to access virtual method using base class reference.
+- here, compiler will not know exact type of object
+  \because objects are created at runtime
+- type is resolved at runtime and thus, the overridden method is called.
+
+** Inheritance                  :drill:
+SCHEDULED: <2024-05-14 Tue>
+:PROPERTIES:
+:ID:       80eab40a-ede1-4980-8f9b-8cd307b52cf6
+:DRILL_LAST_INTERVAL: 10.0
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-05-04 Sat 09:%]
+:END:
+#
+
+*** single
+
+*** multi-level
+*** Multiple Inheritance in C#
+- possible by inheriting interfaces only, not class
+  \because problem may arise while inheriting multiple classes  
+  when multiple classes define same named member
+  & not sure which implementation to use
+
+#+begin_src csharp
+  interface IFirst {
+      void MethodOne();
+  }
+  interface ISecond {
+      void MethodTwo();
+  }
+
+  public class Multi: IFirst, ISecond {
+      // implementation of both methods
+  }
+#+end_src
+*** Hierarchical
+one base class,
+many derived classes
+*** =base= keyword             :drill:
+SCHEDULED: <2024-05-14 Tue>
+:PROPERTIES:
+:ID:       3185c726-1b07-4b4f-9218-9fe72a12a64b
+:DRILL_LAST_INTERVAL: 10.0
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-05-04 Sat 09:%]
+:END:
+used for [accessing base class' constructor & members]
+
+** Abstract Classes & Methods
+- can't be inherited
+- can have both abstract & non-abstract methods
+- derived / child class must implement all abstract methods
+  + must use =override= keyword when implementing method
+
+- can have constructors which gets invoked when instantiatin
+
+- getter / setters for abstract properties must not be defined
+  src_csharp{ public abstract string Name {get; set;} }
+
+** Interfaces
+- blueprint of class that define / specify
+  what members the inheriting class should implement
+  but doesn't specify implementation details (method body, variables / fields)
+  
+#+begin_src csharp
+  interface IExample {
+      // all members are public by default
+      void doSomething();
+  }
+
+  public class Implementor : IExample {
+      void doSomething() {
+          // do something
+      }
+  }
+#+end_src
+*** extra info
+- doesn't allow fields but can declare properties
+
+- =abstract= keyword is optional inside them
+  abstract memebers by default
+
+- classes can inherit multiple interfaces
+  but only one abstract class
+
+** Access modifiers
+
+*** =internal=
+accessible inside assembly (smallest unit of program?)
+
+*** if not specified
+- assigns least accessible modifier, depending on context
+
+- if class inside namespace -> =internal=
+- class, members inside class -> =private=
+
+** Generics
+- feature that allows writing code that works w/
+  general type (i.e. not specific type)
+
+*** generic class (C#)         :drill:
+SCHEDULED: <2024-05-30 Thu>
+:PROPERTIES:
+:ID:       c8454564-e3b7-42c8-b914-28fb935af648
+:DRILL_LAST_INTERVAL: 25.0
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-05-05 Sun 06:%]
+:END:
+allow [class to be used for different data types]
+
+**** example code to create & instantiate generic class 
+#+begin_src csharp
+  public class Generic<T> {
+      public Generic() {};
+      public Generic(T param) {
+          ...
+      }
+  }
+
+  // instantiating
+  // for g1, type T is replaced with String 
+  Generic<String> g1 = new Generic<String>();
+  Generic<Int> g2 = new Generic<Int>();
+#+end_src
+
+**** types
+- single type param
+- multiple type params (e.g: =Dictionary<Key, Value>=)
+- w/ constraint
+- inherit generic base class 
+
+**** extra info: [generic class w/ constraint]
+# prob not important for exam
+
+- set constraint / limit on what type can be used
+- type must be one that inherits base class or implements interface 
+
+#+begin_src csharp
+  public class Shape<T> where T : IComparable<T> {}
+  // T must implement IComparable
+#+end_src
+
+*** type parameter (in generics) :drill:
+SCHEDULED: <2024-05-30 Thu>
+:PROPERTIES:
+:ID:       07a779cc-83b1-4aed-b512-1dde563464b5
+:DRILL_LAST_INTERVAL: 25.0
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-05-05 Sun 06:%]
+:END:
+define: [placeholder for specifying type. typically written as ~<T>~ ]
+
+extra info: [type T is replaced with whatever type is specified when instantiating]
+
+*** generic methods & fields  :drill:
+SCHEDULED: <2024-05-29 Wed>
+:PROPERTIES:
+:ID:       8985e7be-5df0-4996-a978-6a55ae62b188
+:DRILL_LAST_INTERVAL: 24.12
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.667
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-05 Sun 06:%]
+:END:
+- must [be inside generic class & use type parameter]
+
+- methods must use [Type params in return value's type or parameter's type]
+
+**** example code for methods
+  #+begin_src csharp
+    public class GenericClass<T>{
+        public T GenericField;
+
+        public void displayData(T data) {
+            Console.WriteLine("The data passed is: " + data);
+        }
+        public T getField() {
+            return GenericField;
+        }
+    }
+  #+end_src
+
+**** extra info
+allows defining functionality for different types by defining only once
+
+* DOT4: Advanced C#
+# more important chapter for exams
+# might need to use jetbrains rider (already installed) for ASP.net
+** Delegate
+- reference type data type
+  that holds reference to a method
+  + like storing callback / anonymous functions in a variable in JS
+
+- pass either method name or Lambda expresssion
+  + passed method must match signature used when declaring delegate
+    (return type & params) 
+
+- useful for:
+  + passing methods as arguements,
+  + event handlers
+  + flexible methods w/ user specified methods
+    like map, foreach in js
+
+  #+begin_src csharp
+    public delegate void MyDelegate(int i);
+
+    public void DoSomething(int i) { ... }
+    // instantiating
+    MyDelegate del1 = DoSomething;
+    del1(1);
+
+    MyDelegate del2 = (int i) => ...
+  #+end_src
+*** Multicast delegate
+- delegate holds multiple methods
+  - calling delegate will call all methods
+    returns last method's return value
+
+- add using += or del1 = del1 + func2 
+  remove using -=
+** Event
+** Lambda
+- basically arrow f'n expressions from JS
+- expressions / statements that take parameters & execute body
+  + called statement if wrapped in braces / has statements in body. else expression
+- can be used to create anonymous functions, LINQ (using method syntax)
+
+~=>~ is labmbda operator
+
+e.g: ~(x) => x*2~
+*** uses outside LINQ
+**** in setter / getter
+#+begin_src csharp
+class Student
+{
+    private string _name;  // the name field
+    public string Name    // the Name property
+    {
+        get => _name;
+        set => _name = value;
+    }
+}
+#+end_src
+**** delegate / function using =Action=, =Func=
+***** Action<T>
+method that takes T type param and doesn't return
+***** Func<T, TResult> 
+src_csharp{Func<int, int, int> sum = (int a, int b) => a + b}
+takes 2 int params & returns int
+** Exception 
+event that occurs during runtime & disrupts normal flow of program
+
+- =throw= ing exception means to create exception obj & pass to runtime
+
+- runtime looks through call stack for code that handles exception
+
+*** SystemException
+class w/ built-in exceptions
+
+=DivideByZeroException= 
+=IndexOutOfRangeException= (access non-existent array index)
+=ArgumentException=  (invalid arg passed to method)
+=ArgumentNullException=  (null arg passed to method)
+
+*** Message property
+- contains error message
+- read-only. can be set by passing it as arg when instantiating Exception 
+  + for custom exception, create parameterized constructor that inherits base constructor
+  + see below for implementing this 
+
+*** Custom exceptions
+- should extend =Exception= (recommended) or =ApplicationException= class
+  + =Exception= is base class for System & Application exception classes
+
+  #+begin_src csharp
+    public class IneligibleVoteException : Exception {
+        public IneligibleVoteException() { }
+        // here, base constructor (Exception) is being inherited
+        public IneligibleVoteException(string message): base(message) {}
+        // this isn't too important
+        public IneligibleVoteException(string message, Exception innerException): base(message, innerException) {}
+    }
+  #+end_src
+
+*** innerException
+- when an exception causes another exception
+- throw new exception using parameterized constructor
+  like =Exception(message, innerException)=
+** LINQ
+- single consistent method of querying from various sources (objects, database, XML)
+
+2 types of syntax:
+
+*** query syntax
+similar to sql
+
+#+begin_src csharp
+  from ... in <data-source>
+  where ...
+  select ...
+#+end_src
+
+compiler converts to method syntax
+
+#+begin_src csharp
+  Console.WriteLine("test");
+#+end_src
+
+*** method syntax
+similar to method chaining, arrow functions in JS
+
+=Select= is like map
+=Where= is like filter
+** ASP.NET
+- event driven model
+  i.e. server side code is run when events occur
+  instead of line by line
+- Page_Load is event too
+
+*** Web Forms
+- programming model / /tarika/ in ASP.NET
+web servers are stateless by nature
+ASP handles state
+
+designed to separate markup from business logic
+- Default.aspx is 1st page in template (like index.html)
+- Site.master is used for shared layouts,
+  like =baseof.html= in Hugo or =layout= in NextJS
+
+wrap scripts(c#) with <% %> in .aspx files
+~<%@ Page %>~  is used to set metadata 
+Title, CodeBehind, MasterPageFile, Inherits
+
+
+**** =.aspx= files
+used for frontend
+- write html tags as well as =<aspx:>= tags
+- linked to =.aspx.cs= file using =CodeBehind= attrib in =Page=
+  + this is used for writing logic (c# code) such as database interaction, form / event handling
+
+**** =.aspx.cs= (CodeBehind file)
+- set namespace to ProjectName.FolderName (if any)
+- create class w/ same name as .aspx file
+  + that inherits System.Web.UI.Page
+
+- create functions like Page_Load, event handlers
+  that have params object Sender, EventArgs e
+
+
+**** server controls
+- ASP.NET feature
+- manage state
+- can be accessed easily in server-side code (codeBehind)
+
+***** html server controls
+- native html elements w/ runat attribute
+
+***** web server controls (<asp:>)
+- converted to native html elements
+- requires less knowledge of html elements, attribs
+
+****** Common attributes for =<asp: >= elements
+- ID: element can be directly accessed in CodeBehind file using this
+- Value: for =ListItem=
+- runat: only value is "server". if set, server processes it before sending 
+  form controls must be wrapped in a =<form>= or =<script>= having ~runat="server"~
+- GroupName: for =RadioButton=
+- OnClick
+- CssClass
+
+****** asp:TextBox vs input
+- TextBox maintains state when other form controls cause page refresh / send data to server
+  i.e. text typed into TextBox is retained when for e.g. choosing an
+- input resets
+
+****** TextBox
+****** Label
+****** Button
+****** Table
+****** TableRow
+****** TableCell
+** Database
+[[https://dev.mysql.com/doc/connector-net/en/connector-net-tutorials.html][Official MySQL tutorial / documentation]]
+
+*** ADO.NET
+provides collection of classes for interacting w/ data sources
+like XML, database (relational & non-relational)
+
+*** connecting to DB using ADO.NET :drill:
+SCHEDULED: <2024-05-10 Fri>
+:PROPERTIES:
+:ID:       72cc4b62-3bc4-476e-9028-72359a99669f
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-06 Mon 05:%]
+:END:
+#
+**** syntax
+#+begin_src csharp
+  using MySql.Data.MySqlClient;
+  // ... Main Method
+  MySqlConnection conn = new MySqlConnection("connection string")
+#+end_src
+
+**** connection string format / parameters
+- params:
+  + server
+  + uid || user
+  + pwd || password
+  + database
+
+- e.g: ~"server=localhost; uid=root; database=students"~
+  + pwd empty because that is default xampp configuration
+
+*** =MySqlCommand= object
+- pass command string & connection object to constructor 
+- see [[id:8fa1632c-6a79-4b2f-81b6-1b474aa01192][parameterized query]] for example code
+
+**** ExecuteReader (Queries)
+- returns =Reader= object (called =recordSet= in sql, java)
+
+  + loop thru rows w/ =Reader.Read()=
+  + =Reader[i]= stores value of each column 
+     where i is 0-based index
+
+#+begin_src csharp
+  using(rdr = cmd.ExecuteReader()) {
+      while(rdr.Read()) {
+          Console.WriteLine(rdr[0] + '\t' + rdr[1]);
+      }
+  }
+#+end_src
+
+**** ExecuteNonQuery (Statements)
+- syntax is similar to =ExecuteReader=
+- returns no. of rows affected
+
+***** extra info: floating value differences
+- c# float values require f suffix at the end (=1.0f=)
+  + omitting f will make it =double= type
+- but sql doesn't. will throw error if used (=1.0=)
+
+**** ExecuteScalar
+returns single value
+*** Parameterized queries
+- parameterized queries prevent SQL injection,
+  & allow reusing command object by just changing param values
+
+- param represented by ~@<ParamName>~ inside sql string
+
+- cmd has =Parameters= class
+  + for setting parameter value, use ~.AddWithValue("@ParamName", <value>)~ 
+  + =.Clear()= useful when looping
+
+**** example code
+:PROPERTIES:
+:ID:       8fa1632c-6a79-4b2f-81b6-1b474aa01192
+:END:
+#+begin_src csharp
+  string sql = "select * from students where sid = @sid"
+  var cmd = new MySqlCommand(sql, conn);
+  cmd.Parameters.AddWithValue("@sid", 10);
+  var rdr = cmd.ExecuteReader();
+#+end_src
+
+
