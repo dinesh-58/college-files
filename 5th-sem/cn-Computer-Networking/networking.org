@@ -1,0 +1,1083 @@
+#+TITLE:Computer Networking
+# follow syllabus while making notes. sir's pdfs have alot of unneeded depth, extra topics
+
+* study from [[https://www.facebook.com/story.php?story_fbid=395862216581531&id=100084732675763&rdid=hVJkUngBOT6ZuhEM][RR pre-board questions]] too
+* CN1: Intro
+Network: group of computers connected together to communicate, share resources, data 
+** Network as Infrastructure for data communication
+*** Network Infrastructure
+hardware, software & services that allow network connection, communication
+& ensure smooth operation
+
+*** Transmission Modes
+- Simplex
+- Half-Duplex
+- Full-Duplex
+
+*** Jitter                     :drill:
+SCHEDULED: <2024-05-12 Sun>
+:PROPERTIES:
+:ID:       a478ae88-0356-4d67-860c-9a0164e0f7fc
+:DRILL_LAST_INTERVAL: 7.979
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 5
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.08
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-04 Sat 08:%]
+:END:
+define: [inconsistent arrival time of video / audio packets. delay]
+- if [all packets take same time to arrive] => low jiter
+
+
+** Applications of network
+
+*** Business
+- communication
+- share resources (files, devices like printers)
+- restrict access to network to organization users only
+
+*** Home
+- Internet
+- LAN file sharing (ShareIt, LanXchange)
+- LAN games 
+- home media server (jellyfin, plex)
+
+*** Schools
+- student / teacher account management
+- provided access to files regardless of which computer is used
+- teachers can share study materials
+- students can submit assignments
+
+*** Bank
+- tellers enter transactions
+- mainframe processes them
+- data stored & accessed through database
+
+** Network Architecture
+physical & logical design / organization of components in network
+
+*** P2P
+- all computers connected to each other
+  + each computer can both make & serve request 
+- load is distributed across computers so high load doesn't cause much stress
+
+*** Client-Server
+- *central* server
+- single point of failure: if server goes down, network goes down
+- high load / no. of requests may put stress on server, cause issues
+- can be more secure as easier to harden single server 
+** Types of network
+*** LAN 
+*** MAN
+generally, group of LANs
+*** WAN
+generaly, group of LANs & MANs
+** Protocols & Standards
+*** Protocols
+- set of rules governing how data transfer should be done, format, ... etc.
+- necessary to follow
+
+*** Standards
+- set of guidelines / best practices
+- not necessary but following will ensure high quality
+** OSI Reference Model          :d rill:
+- model for [understanding how networking / data communication happens between devices]
+
+  + not actually used IRL, only for reference
+
+*** Mnemonics (to easily remember)
+- All People Seem To Need Data Processing
+- Please Do Not Throw Sausage Pizza Away
+
+*** Layers
+- Physical
+- Data Link
+- Network
+- Transport
+- Session
+- Presentation
+- Application
+*** why do we need layered protocol architecture :drill:
+SCHEDULED: <2024-06-01 Sat>
+:PROPERTIES:
+:ID:       c437d328-48a1-4121-9335-6f1dd64f0c46
+:DRILL_LAST_INTERVAL: 24.12
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.667
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-08 Wed 06:%]
+:END:
+i.e. something like OSI or TCP
+
+**** answer
+- *Layered architecture* breaks down complex tasks into smaller sub-tasks managed by specific layers.
+
+- makes networking process easier to understand, manage
+
+** recall
+** TCP / IP Protocol            :drill:
+SCHEDULED: <2024-05-30 Thu>
+:PROPERTIES:
+:ID:       725cdeaf-c071-4853-9534-2b109cf0f9e7
+:DRILL_LAST_INTERVAL: 22.4605
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.333
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-08 Wed 06:%]
+:END:
+this is actually used IRL
+
+*** layers (and which layers from OSI are merged )
+1) Application      (Application, Presentation & Session)
+   + mostly performs work of application, presentation
+   + session handling isn't specified
+     but can be performed by protocols in Transport if needed 
+
+2) Transport
+   + data transfer, reliability, EC
+
+3) Internet         (Network layer)
+   + routing, logical addressing
+
+4) Network Access   (Data Link + Physical)
+   + hardware addressing, data transmission
+
+** Comparison between OSI & TCP / IP :drill:
+SCHEDULED: <2024-05-10 Fri>
+:PROPERTIES:
+:ID:       8db9152e-0f91-4bce-afd3-15601ba2d0f6
+:DRILL_LAST_INTERVAL: 8.2695
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 4
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-05-02 Thu 06:%]
+:END:
+#
+
+*** OSI vs TCP/ IP 4 differences 
+|               | OSI                                                             | TCP                       |
+|---------------+-----------------------------------------------------------------+---------------------------|
+| used for      | understanding networking process                                | actually used             |
+| no. of layers | 7                                                               | 4 (groups similar layers) |
+| specificity   | specifies exact protocols, how data must be transferred         | simplified, flexible      |
+| can describe  | any type of network comms (internet, LAN, bluetooth, satellite) | only TCP / IP protocl     |
+
+
+** Critiques                    :drill:
+SCHEDULED: <2024-05-10 Fri>
+:PROPERTIES:
+:DRILL_CARD_TYPE: twosided
+:ID:       65e1845b-202a-4f0c-9401-6246240cccdb
+:DRILL_LAST_INTERVAL: 8.2695
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 4
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-05-02 Thu 06:%]
+:END:
+when asked to critically analyze a model,
+explain it and then list out its advantages & disadvantages
+
+*** of OSI 
+- same functionality repeated across layers  
+  (e.g: addressing, error control)
+
+- redundant layers (presentation, session)
+  w/ little functionality
+
+- initial implementations were slow, complex & unreliable
+  which harmed its reputation
+
+- bad timing as TCP was already gaining traction & was invested into
+  by the time OSI was released
+  + might not be valid critique
+
+*** of TCP / IP
+- not generalized. i.e can only be used to describe TCP / IP protocol
+
+- physical & data link layer should be separate \because of different functions
+
+- network access layer doesn't match description of layer as per layered architecture
+  + more of an interface between network & data link layer
+
+- some protocols (excluding TCP /IP) are not well designed but are still in use
+  + eg: TelNET doesn't support mice & GUI 
+* CN2: Physical Layer
+** physical layer :drill:
+SCHEDULED: <2024-05-12 Sun>
+:PROPERTIES:
+:ID:       48bcc99e-bc62-45a6-a9cd-5a0e8268f943
+:DRILL_LAST_INTERVAL: 3.725
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 22
+:DRILL_FAILURE_COUNT: 9
+:DRILL_AVERAGE_QUALITY: 2.727
+:DRILL_EASE: 1.16
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-08 Wed 06:%]
+:END:
+
+define: lowest layer (layer 1) that deals w/
+[data transmission across transmission medium (wired, wireless)]
+
+*** functions
+- representation of bits: data is transmitted as binary bits depending on medium
+  + electric signals for wires,
+     light signals for fiber optic
+
+- describes technical specifications, protocols for transmission like:
+  + topology:
+    formation of connecting devices (star, bus, etc.)
+
+  + transmission mode:
+    (simplex, duplex, etc.)
+    
+*** devices used
+ cable, hub, repeater
+
+*** protocols
+- USB
+- RJ45
+
+*** TODO Network monitoring
+
+** terms
+- bandwidth: [max data transfer rate]
+- throughput:
+
+** Data & Signals
+*** Analog Signals
+continuous
+*** Digital Signals
+discrete
+*** Transmission Impairment    :drill:
+SCHEDULED: <2024-05-09 Thu>
+:PROPERTIES:
+:ID:       78fb3de1-6f3a-422c-a39f-5225dee87dd8
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 2.5
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-05 Sun 07:%]
+:END:
+# 
+**** describe
+phenomenon where received signal is different from sent signal
+after traveling through transmission media
+
+- analag signal => degradation of signal quality 
+- digital signal => errors
+
+**** Caused by:
+***** Attenuation            :drill:
+SCHEDULED: <2024-05-09 Thu>
+:PROPERTIES:
+:ID:       a84bc4d8-2e94-492e-812d-3e9b96ac6d68
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-05 Sun 06:%]
+:END:
+- define: [decrease in signal strength due to transmission medium resistance]
+- countered w/ [amplifier]
+
+***** Distortion             :drill:
+SCHEDULED: <2024-05-09 Thu>
+:PROPERTIES:
+:ID:       3eb36594-a237-4c7e-803c-43947466ad9a
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-05 Sun 06:%]
+:END:
+#
+****** describe
+- signal changes (shape / form)
+  + signal made up of frequencies, each w/ different arrival time
+  + frequncy delay causes signal to be slightly different
+
+***** Noise                  :drill:
+SCHEDULED: <2024-05-09 Thu>
+:PROPERTIES:
+:ID:       300eaf9b-8024-446e-812d-b1bd72f99142
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-05 Sun 07:%]
+:END:
+[unwanted signal mixes w/ sent signal]
+
+****** types? might be unnecessary
+- thermal / white: extra signal generated by moving electrons in wire
+- cross talk:
+- impulse noise
+- induced noise
+*** Data Rate limits
+*** Performance
+** Data Transmission Media
+*** Guided Media (wired)
+*** Unguided Media (wireless) & Satellites
+** Bandwidth Utilization
+*** Multiplexing
+:PROPERTIES:
+:ID:       a0669893-cbb2-486d-ad46-83d592f5b076
+:END:
+technique for sending multiple signals thru one transmission medium / channel
+/ sharing transmisson medium
+
+done when transmission bandwidth > signal badnwidth requirement
+**** Frequence-division multiplexing
+- signals are sent at same time but at different frequencies
+- each signal source is allocated frequency range
+  + guard band: gap between frequency ranges to prevent overlapping
+
+**** Time-division multiplexing
+- signals are allocated time slots to send
+  + slots are so small that signals seem parallel
+
+***** Synchronous
+slots are pre-determined
+transmission happens even if source isn't ready so empty data is sent
+***** Asynchronous
+slots are allocated dynamically as per need
+*** Spreading
+** TODO Switching               :drill:
+SCHEDULED: <2024-09-06 Fri>
+:PROPERTIES:
+:ID:       bdbbd45c-3e84-401c-8225-f6d21d6edc25
+:DRILL_LAST_INTERVAL: 130.6699
+:DRILL_REPEATS_SINCE_FAIL: 6
+:DRILL_TOTAL_REPEATS: 5
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.6
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-04-28 Sun 08:%]
+:END:
+define: [forwarding data from one device to another using physical medium]
+
+*** Circuit switching
+- dedicated path established between 2 nodes/devices
+  to ensure reliability
+
+- other devices can't use that path
+  as long as the communication session between the 2 is open
+
+- underutilization of resource, expensive 
+
+*** Message switching
+- entire message is transmitted across network until it reaches destination
+- no routing so might not be optimal
+
+- slow, expensive 
+- need to retransmit entire message if error  
+
+*** Packet switching
+- message broken into packets, which are separately *routed*
+  across network until it reaches destination
+- used by *switch* device
+
+
+** Telephone, Mobile & Cable network
+** Ethernet
+*** Straight through cable
+used for connecting 2 different types of devices
+same cabling standard / color order on both ends
+
+- switch to computer
+- switch to router
+
+*** Crossover cable
+used for connecting smae type of devices
+different cabling standard / color order on both ends
+
+- pc to pc
+- switch to switch
+* CN3: Data Link Layer
+** Data Link layer              :drill:
+SCHEDULED: <2024-05-14 Tue>
+:PROPERTIES:
+:ID:       d78ad799-0ffd-44ca-9704-b185ffeb3174
+:DRILL_LAST_INTERVAL: 7.9786
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 6
+:DRILL_FAILURE_COUNT: 2
+:DRILL_AVERAGE_QUALITY: 2.667
+:DRILL_EASE: 1.94
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-06 Mon 05:%]
+:END:
+# device: switch
+- sub layers: 
+  + [MAC (unique physical address)]
+  + [LLC (flow control, EC, synchronization)]
+
+*** functions
+- ED & EC:
+  perform Error Detection, Correction
+  on data from physical layer
+
+- flow control
+
+  - limit amount of data sent before waiting for ACK
+  - ensures data transfer rate is same on both sides to prevent issues
+
+- hardware addressing (MAC; used for communication between devices in same network)
+
+- [[id:c42d8d9f-4b54-406a-b7ea-02df2a51a055][framing]]  
+
+*** protocols
+
+- [[id:269cb527-745d-495e-8bd0-da02a629106b][HDLC]] (High-level data link control)
+- PPP (point to point protocol)
+
+*** extra info
+MAC connected to Physical Layer (\because *physical* address)
+LLC connected to Network Layer
+
+** LLC
+- interface for communicating w/ network layer
+
+*** frame format
+- DSAP (Destination Service Access Point)
+- SSAP (Destination Service Access Point)
+- Control Header
+- Data
+
+** MAC
+interface for communicating w/ physical layer
+
+*** frame format
+- Control Header
+- Destination
+- Source
+- LLC Data
+- CRC
+
+** framing
+:PROPERTIES:
+:ID:       c42d8d9f-4b54-406a-b7ea-02df2a51a055
+:END:
+- converting packets (PDU (Protocol Data Unit) of network layer) to frame
+  + by adding header, tailer (having control info like source, dest addr)
+    & flag to mark beginning, end
+- frames are uniquely identifiable?
+  
+*** types
+**** fixed size
+- start & end of frame denoted by length
+- prone to fragmentation if data size less than length
+  - use padding (extra useless bits / bytes) to solve
+**** dynamic size             :drill:
+SCHEDULED: <2024-05-12 Sun>
+:PROPERTIES:
+:ID:       f4e33704-40db-4cc6-9bac-a8bb451d6acb
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-08 Wed 06:%]
+:END:
+- need to specify frame length
+  or, flag delimiter (special character) to indicate frame end
+  + [[id:269cb527-745d-495e-8bd0-da02a629106b][HDLC]] uses flag for both frame start & end
+
+***** Byte / character stuffing
+- used when frame is collection of bytes
+- message may contain flag character
+
+- to avoid errors, place another delimiter (escape character byte) in front of it
+  + e.g: =0x7E= 
+- if escape character found, escape it as well
+- receiving side will then unstuff message
+
+***** Bit stuffing
+- same as Byte but place bit when delimiting pattern of bits found in body
+
+****** implementation in [[id:269cb527-745d-495e-8bd0-da02a629106b][HDLC]]
+- frame start & end indicated by 01111110 patter (6 1's)
+- whenever pattern of 0 followed by 5 1's found in body,
+  add (stuff) a 0 after it
+
+#+begin_src sh
+     0111111
+  => 01111101    (prevents error here)
+
+     0111110
+  => 01111100    (prevents data loss. \because receiver woulda unstuffed 0 which was part of data)
+#+end_src
+
+- receiver will "unstuff" by removing 0 after 5 1s
+
+** flow control                 :drill:
+SCHEDULED: <2024-05-12 Sun>
+:PROPERTIES:
+:ID:       3db9463b-4648-4b3b-a98b-0c2d645b5989
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-08 Wed 06:%]
+:END:
+these protocols are for error control too
+
+*** protocols for noiseless channel
+hypothetical. there will always be chance of noise
+
+**** simplest
+- no flow or error control.
+  assume data transfer is always successful
+
+- one-way communication:
+  data sent to receiver w/o getting ACK back
+
+**** Stop & Wait
+- adds flow control & ACK to Simplest
+- send one frame, 
+  wait for ACK then send next
+- if ACK not received in a timeframe, resend that frame
+
+*** protocols for noisy channel
+**** Stop & Wait ARQ (Automatic repat request)
+- similar to Stop & Wait
+  but sends error control code (e.g: checksum) along w/ frame
+- if error detected on receiver side, 
+  send NAK (-ve ACK) to sender
+  then resend frame
+  
+**** Go-Back-N ARQ
+- implementation of sliding window
+  + multiple frames can be sent at once,
+    compared to 1-by-1 in Stop & Wait
+
+  + window of size N in sender side
+     window of size 1 in receiver
+
+- send all frames in window 1st
+- if ACK received, send next frame after window
+- if ACK not received or NAK,
+  + *go back* to whichever frame failed
+     i.e. move starting of window to that frame
+  + then resend entire window
+  + discard out-of-order received frames
+
+***** uses piggyback protocol
+- utilize unused bandwidth & space in packet / frame
+  by sending extra control info
+
+- e.g: when sending a packet, device may include ACK or NACK
+  from prev. received packet
+  + prevents having to send a separate packet just for that
+
+**** Selective repeat ARQ
+- improves go-back
+- when error occurs, only retransmits faulty frame
+  instead of entire window
+- reorders out-of-order frames instead of discarding them
+
+** Error control
+consists of detection + correction
+*** error types
+- single bit:
+- burst  bit: multiple bits have error
+  
+*** Error Detection codes / techniques
+**** parity bit check
+- even parity: make no.of 1 bits even anyhow
+  (set parity bit 1 if odd)
+- odd parity
+- can only be used for single bit error
+
+**** checksum
+- checksum value calculated based on data
+- send data + checksum
+- checksum recalculated using received data & compared
+  to test error
+
+***** 1's complement addition checksum
+- data divided into segments of equal size
+- perform 1's complement addition of all segments
+  + no need to complement segments before adding
+  + if carry 1 occurs, remove & add
+
+- checksum = complement of sum
+
+on receiving side:
+- add all data with checksum
+- if result is all 0s, no error
+
+****** 1's complement info (if needed)
+- a number is complemented by inverting 1s & 0s
+- when adding, if carry bit occurs (extra 1 MSB)
+  then remove it and add it to LSB
+
+- usually numbers are complemented before adding
+  but not needed for checksum
+
+**** CRC (cyclic redundancy check)
+used in HDLC 
+
+summary:
+- similar to checksum, performs calculation on both sender & receiver 
+  to check errors
+- uses binary division instead of addition
+- sends data appended with some digits to make it perfectly divisible by CRC
+
+***** formula: 
+- generate CRC pattern using generator polynomial
+  e.g: x^{3} + x + 1 => 1011
+- for =n= no. of CRC bits,
+  append =n-1= 0s to data
+  + extra info: done to ensure consistent length (that is divisible by CRC)
+
+- perform binary division w/ data & CRC
+  + just repeat CRC pattern & instead of subtraction, perform XOR
+
+- add remainder to data
+- send to receiver
+- dividing received data by CRC should return all 0s
+
+*** Error Correction
+**** Hamming
+- parity bits at bit positions that correspond to power of 2
+  (1,2,4,8,...)
+- remaining positions used for data
+- parity bit 1 checks parity of positions w/ 1 at MSB in binary (1,3,5,..)
+  bit 2 checks parity for 1 at 2nd MSB (2,3,6,7,...)
+**** Parity checking
+
+** HDLC (High-level data link control) :drill:
+SCHEDULED: <2024-05-12 Sun>
+:PROPERTIES:
+:ID:       269cb527-745d-495e-8bd0-da02a629106b
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-08 Wed 06:%]
+:END:
+bit-oriented protocol for transmitting data between network points in data link layyer
+
+*** transfer modes
+**** normal
+one node sender, other receiver
+used for muiltipoint(multiple receivers), point to point (1 sender, 1 receiver) comms
+
+**** async balanced
+both can send & receive
+*** frame format (6 parts)
+:PROPERTIES:
+:ID:       9289cbf7-93a8-44f7-8ea5-63435ec9a2ca
+:END:
+- Beginning flag  (8 bits)
+  + value is 0x7E or 01111110 (6 1s)
+
+- Dest. Address (16)
+- Control (8 or 16)
+  + control info depending on frame type
+- Payload (variable size)
+- Frame Check Sequence (FCS)
+  stores CRC pattern (16 or 32 bits)
+- Ending flag (8)
+*** frame types
+frame format is same for all
+just payload content is different
+**** I-frame (info)
+carries *user info* in payload field
+& maybe piggyback control info
+**** S-frame (supervisor)
+- no payload field
+- carries control info like ACK, RR (receive ready) when piggyback not used
+
+**** U-frame (unnumbered)
+- carries *management info* in payload
+- used to manage data link
+- other 2 frames have sequence numbers
+  this doesn't
+** PPP (point-to-point protocol)
+byte-oriented protocol so uses byte stuffing
+*** frame format 
+- same as [[id:9289cbf7-93a8-44f7-8ea5-63435ec9a2ca][HDLC]] but has Protocol field between Control & Payload 
+  + Protocol defines type of data in payload
+*** components
+
+** Channel allocation problem
+- shared channel is divided into sub-channels
+- problem arises when multiple users try accessing
+  & users > sub-channels
+  
+*** static channel allocation
+- fixed portion of channel & bandwidth allocated to all users
+- hypothetical
+
+*** dynamic channel allocation
+- allocate as per need
+- optimize bandwidth use
+
+**** assume
+- collision caused if 2 frame's transfer timings intersect 
+  + must resend both
+- user / stations can sense if channel is busy
+
+** Multiple / Media Access protocol
+- to solve dynamic channel allocation problem
+- MAC address is used in most
+*** Random access
+- no station / user can stop another from sending data in channel
+- fast but prone to collision
+**** ALOHA
+called so \because developed in Hawai
+***** Pure
+- simple but very ineffective
+- any station can send regardless if carrier is free
+- if ACK isn't sent back after some time,
+  assume collision & resend
+
+***** Slotted
+- called so because transmission time
+  split into intervals (slots)
+- stations can only send @ start of slot
+  & sense if channel free @ that time
+- only 1 frame can be sent in a slot
+- slightly more efficient but still chance of error when 2 stations send at same time
+**** CSMA (Carrier Sense Multiple Access)
+stations can "sense" if comms channel is busy
+
+***** CD (collision detection)
+if collision, wait for random time then try again (this is used in ALOHA too)
+***** CA (collision avoidance)
+
+uses RTS(request to send)
+& CTS (clear to send) frame
+- station sends RTS frame and if receiver replies w/ CTS, it can send
+
+*** Skip?
+**** Controlled access
+stations consult each other to decide which can send
+*** Channelization 
+available bandwidth divided into frequency, time or code
+**** FDMA & TDMA (see [[id:a0669893-cbb2-486d-ad46-83d592f5b076][ch.2 -> multiplexing]])
+**** CDMA (code division multiple access)
+- different stations can transmit 
+  @ same time by each transmitting in a different code / language 
+*** skim thru ch3 before moving on?
+
+* CN4: Network Layer
+** Network layer                :drill:
+SCHEDULED: <2024-05-29 Wed>
+:PROPERTIES:
+:ID:       dd990a6c-dc81-492e-8510-7fcddd7d4752
+:DRILL_LAST_INTERVAL: 21.6744
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.333
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-07 Tue 08:%]
+:END:
+#
+*** functions
+- routing: forwarding data packets along best route
+- logical addressing (ip) for identifying source, destination
+  + ip is used for communication between devices on different networks, internet
+- fragmentation
+*** protocols
+- IP(v4, v6)
+** Fragmentation
+- data link layer may have size limit
+- if network packet is larger than limit,
+  network layer splits up packet into  smaller sizes
+
+*** re-assembly
+reassemble fragments on receiving network layer
+** Datagram packet switching
+simiar to fragmentation but separate concept
+
+- breaking up data into packets (called datagrams)
+- related packets can travel across different routes
+- packets' arrival order may be different from sending order
+- doesn't require
+- can be unreliable
+- used in UDP
+** Virtual circuit packet switching
+- packets sent in order
+- all packets of a virtual circuit sent thru same route
+- connection oriented
+** subnetting 
+dividing network into subnetworks
+** NAT (Network Address Translator) router
+- devices in home / local networks have private ip address
+  - only need to be unique inside network
+- NAT routers have public IP
+  - need to be unique globally
+- device sends request / packet when accessing internet
+- NAT replaces private IP w/ public IP
+
+- efficient use of limited IP (esp. in v4)
+- security by not exposing individual device's address
+
+** IPv4 address
+- 32 bit (4 * 8 bits & maybe subnet mask)
+  - represented by 4 decimal numbers separated by .
+
+*** class-based addressing
+class A uses 1st byte for network part
+B uses 2st 2 bytes ...
+**** network part
+specify network / subnet
+
+**** host part
+unique for each device on same network
+
+**** reserved addressses
+these reduce no. of possible addresss by 2
+
+***** base network address
+- starting point of addresses
+- identifies network
+- calculated using bitwise AND between network address & subnet mask
+
+***** broadcast address
+- unique address used for broadcasting messages to all devices in subnet
+- calculated using: 
+
+** IPv6 address
+- 128 bit (8 * 16 bits)
+  - represented by 8 hex numbers separated by :
+* CN5: Transport Layer
+** Transport layer              :drill:
+SCHEDULED: <2024-05-11 Sat>
+:PROPERTIES:
+:ID:       d338e875-7857-4141-acd1-af2fab003588
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 6
+:DRILL_FAILURE_COUNT: 3
+:DRILL_AVERAGE_QUALITY: 2.5
+:DRILL_EASE: 2.08
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-07 Tue 08:%]
+:END:
+#
+*** functions
+- transporting data from source to dest. 
+- breaks up data into packets
+- ED (error detection) only
+- ensure reliable data transmission?
+- validates data format
+
+*** protocols
+- TCP
+- UDP
+** UDP 
+- doesn't wait for ACK
+- doesn't check if connection established properly
+  just sends
+- useful when simplicity, speed > reliability required 
+
+** TCP
+- listens for ACK & resends if needed 
+
+steps:
+- handshake: establishes connection
+- break down data into packets
+- add error control info (like checksum) to packet
+- packets are ordered & sent in order
+- flow control: check if receiver can handle 
+** TCP vs UDP
+| Feature               | UDP (User Datagram Protocol)   | TCP (Transmission Control Protocol)  |
+|-----------------------+--------------------------------+--------------------------------------|
+| *Connection-oriented* | No                             | Yes                                  |
+| *Reliability*         | Low (no guarantees, faster)    | High (guaranteed delivery,           |
+|                       |                                | error checking, retransmission)      |
+| *Ordering*            | Unordered (packets may arrive  | Ordered (packets arrive in sequence) |
+|                       | out of order)                  |                                      |
+| *Flow Control*        | No                             | Yes (prevents overwhelming receiver) |
+| *Speed*               | Faster                         | Slower                               |
+| *Applications*        | Online gaming, live streaming, | File transfer (FTP), web browsing    |
+|                       | VoIP (Voice over IP), DNS      | (HTTP/HTTPS), email (SMTP)           |
+|                       | (Domain Name System)           |                                      |
+
+* CN6: Application Layer
+** Session layer                :drill:
+SCHEDULED: <2024-05-11 Sat>
+:PROPERTIES:
+:ID:       759e7dd2-ad44-484a-9cdb-649f2b35a6a6
+:DRILL_LAST_INTERVAL: 3.725
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 4
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-07 Tue 08:%]
+:END:
+#
+*** functions
+- create, manage session (dedicated communication channel)
+- start call, transmit data, terminate call
+
+*** protocols
+- NetBIOS
+** Presentation layer           :drill:
+SCHEDULED: <2024-05-12 Sun>
+:PROPERTIES:
+:ID:       8c629f6e-7f44-4071-9736-308da2cacbe2
+:DRILL_LAST_INTERVAL: 3.725
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 4
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-08 Wed 06:%]
+:END:
+#
+*** functions
+- mainly data formatting tasks
+
+- translating (between different data formats to be compatible on both devices)
+- encryption, decryption
+- compression, decompression
+
+*** protocols
+- MIME (for data types)
+- SSL (certificate wala)
+  Secure Socket Layer (for encrypting data in session)
+** Application layer            :drill:
+SCHEDULED: <2024-05-30 Thu>
+:PROPERTIES:
+:ID:       9d707888-3685-4ae0-a33f-da697f01dd04
+:DRILL_LAST_INTERVAL: 22.4605
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.333
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-08 Wed 06:%]
+:END:
+define: [layer / interface that users interact w/ along w/ the related services / protocols]
+
+*** functions
+- data is 1st generated here
+- abstraction? users don't have to be concerned with implemetation
+- provdes UI for services like:
+  + mail
+  + Database
+  + VTY (virtual terminal)
+
+*** protocols
+- HTTP
+- SMTP
+- FTP
+* CN7: Network Security
+** Cryptography
+- process of securing data using encryption, decryption.
+- can only be accessed properly after decrypting
+
+*** Asymmetric key encryption
+*** Symmetric Key encryption
+- uses 2 keys (public & private)
+- public is publicly given out / known
+
+** Public Key algorithm - RSA
+used for encryption
+
+- user generates 2 keys(public & private)
+- if someone wants to send message to user,
+  encrypt data using public key
+- it can only be decrypted by private key
+
+** Digital Signature
+used for verification,
+ensuring data hasn't been tampered
+
+- keys are used in opposite way of public key infrastructure (PKI)
+
+- data is encrypted w/ private key
+- decrypt w/ public key to verify sender 
+
+** VPN
+software that creates secure tunnel network connection
+
+- encrypts data (unreadable to others, ISPs, hackers)
+- instead of direct connection to websites, services,
+  routes requests through a remote server in the middle
+  + hides IP address 
+
+** Firewall
+- software for filtering network requests, activity on a device
+- can allow / deny inbound & outbound request
+- e.g: if you don't want an applicatin to connect to the internet, block outbound rule for it
+- built in to OSes or external software
+* LAB: Packet Tracer
+Exploration 2 - 1.2.1
+continue with config ? n
+enable
+config t
+** config command line
+** IOS CLI
+prompt
+>: read mode
+#: exec mode
+** lab5: router -> switch -> pc
+:PROPERTIES:
+:ID:       27c54578-65f2-4bee-82ca-c05f7797f28e
+:END:
+interface ip address for switch can't be set
+switch interface turns on automatically upon connection
+router interface must be manually turned on (using =no shutdown=)
+*** access router using vty
+=telnet <router_interface_ip>= 
+**** prerequisites
+- [ ] set vty password in router config
+- [ ] set router =secret= if needed to configure router w/ vty
+
+| field           | value                        |
+|-----------------+------------------------------|
+| ip              | add 1 to router interface ip |
+| subnet mask     | same as router interface's   |
+| default gateway | router interface ip          |
+| dns server      | no need. set automatically   |
+
+*** report topics
+router, switch, vty, telnet, proper ip config
