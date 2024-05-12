@@ -1,0 +1,575 @@
+#+TITLE:Introduction to Management
+* MAN1: Intro
+** Management
+*** Concept
+overall process of planning, organizing and controlling
+the human, financial, physical and informational resources of an organization
+to meet its goals efficiently
+
+*** TODO Functions (look up definitions / examples for these)
+# must be in this exact order. next step can only happen after prev.
+- Planning
+- Organizing
+- Staffing (hiring, assigning to projects / teams ?)
+- Directing (leading??)
+- Controlling
+
+** Managers
+individuals who oversee and coordinate work of others so organization's goals can be achieved
+*** Types of Managers
+**** top-level
+- oversee & manage entire organization
+- make large decisions,
+  set visions, plans
+- CEO, Director, President
+
+**** middle-level
+- oversee departments
+- work towards organizational goals
+  on department level
+- HR, Finance Manager
+**** first-line / lower level
+- oveersee / supervise workers
+- make daily plans, check status
+- Product manager, supervisor
+
+*** Managerial roles 
+
+**** inter-personal role
+- leader
+- figure-head (just for show/ formality)
+  e.g: ribbom-cutting, giving speeches
+- liasion (team representive, intermediary between departments, manager levels ),
+  motivate
+
+**** informational role
+- spokesperson: speak up for team, communicate to external people / higher-ups
+  
+- disseminator: distribute info from higher-ups
+- monitor: gather info (e.g: performance, output)
+
+**** decision-making role
+- assign tasks, priorotize, negotiate
+
+*** Managerial skills
+| manager level | skill that is more required here                |
+|---------------+-------------------------------------------------|
+| top           | conecptual (running org, management techniques) |
+| middle        | managing people                                 |
+| lower         | technical (regarding work the workers do)       |
+
+*** challenges
+**** technology
+- leverage it
+- fast rate of innovation may make current things obsolete
+
+**** workforce diversity
+- representation
+- give fair chance
+- no nepotism, favoritism
+
+**** globalization
+- operate / compete on global level
+- manage according to global standards
+  (fair wages, management techniques like Agile)
+**** ethics
+- treat workers humanely
+- don't harm society, others
+**** maintain quality & productivity
+
+* MAN2: Perspectives in Management
+** Classical perspective / scientific management 
+- developed by Frederick Taylor
+- assume workers only have physical & economic needs
+  compared to modern theories where social needs, job satisfaction taken into account
+
+- centralized leadership
+- profit, producitivity maximization
+  + create a step-by-step scientific process for doing work
+  + assign tasks to workers based on skill
+  + managers analyze where time is wasted & optimize it
+
+*** strengths 
+- clear structure for management, operations
+- division of labour leads to optimized prodcutivity, smooth flow
+- clear definition of employee roles, tasks
+
+*** flaws
+- only suitable for assembly lines / factories
+- leaves out human relation, creativity
+- low job satisfaction, may not be sustainable
+*** Frederick Taylor's contributions :exam_q:
+- father of scientific management
+- before, work used to be done based on "rule of thumb" i.e. guess work / feel
+  + he introuduced idea of scientifically measuring
+    & working exactly to prevent defects
+- wage tied to output (to incentivize productivity)
+- standardization; create series of steps for production
+- separate management & work responsibilities
+  + before, managers used to be involved in work too
+** Behavioral perspective
+*** Human relations movement / theory
+- occured after the world war
+- include workers in decision making roles too
+- workers have needs & desires too (job satisfaction, recognition)
+**** Hawthorne studies
+# use this to describe above too
+treating workers humanely, being kind
+leads to better output
+
+** Quantitaive perspective
+making managerial decisions w/ quantitaive data
++ use past data, forecasts
++ use outcomes from decisions to shape future decisions
+
+*** advantages
+- help find correlation between factors / metrics
+  e.g: price decrease leads to more sales
+
+*** disadvantages
+- over-reliance on numeric data,
+  always striving to increase numbers
+
+- oversimplification (outcomes can depend on many factors, unquantifiable ones too)
+
+*** Management science theory
+# different from scientific management
+- uses quantitative theory for decisions
+- used in finance, management, HR
+
+*** Operations management
+- measures amount of input & output generated
+- used for inventory management, quality control
+
+** contingency perspectives / theory :exam_q:
+aka situational theory
+\because it states there is no "one size fits all"
+solution for decision making, managing organization
+
+best solution to a problem depends on many factors like:
+- skill & expertise of team / leader
+- nature of problem
+  - if similar problem was solved previously
+
+*** contributions 
+- promote flexibility / adaptability
+- improves decision making, confidence
+- promotes analyzing problems
+- encourages creative, new solutions
+
+*** limitations
+- too much time in planning phase only, may be time-waste
+- lack of clear guidelines, decision paralysis
+- difficult to measure some factors
+
+* MAN3: Planning & Decision Making
+process of setting organization's objectives
+& deciding how to best achieve them
+
+** Levels of Planning
+- Strategic / Corporate (set by top managers)
+- Tactical (mid managers)
+- Operational (lower managers)
+
+** Planning steps
+explain using example scenario for planning
+*** setting objectives
+#+begin_quote
+A mobile phone company sets the objective to sell 2,00,000 units next year,
+which is double the current sales.
+#+end_quote
+*** developing planning premises
+- assumptions / conditions / limitations that affect planning
+  e.g: government policies regarding tax on freelancing
+- used for predicting future events / outcome
+  #+begin_quote
+The mobile phone company has set the objective of 2,00,000 units sale on the basis of forecast done
+on the premises of favourable Government policies towards digitisation of transactions.
+  #+end_quote
+*** identifying alternative course of action
+#+begin_quote
+The mobile company has many alternatives like reducing price, increasing advertising and promotion, after
+sale service etc.
+#+end_quote
+*** evaluating alternative course of action
+- compare cost, effort, time, outcome
+- +ves & -ves
+ #+begin_quote
+The mobile phone company will evaluate all the alternatives and check its pros and cons.
+ #+end_quote
+*** choosing best one
+#+begin_quote
+Mobile phone company selects more T.V advertisements and online marketing with great after sales
+service.
+#+end_quote
+*** implementing plan
+#+begin_quote
+Mobile phone company hires salesmen on a large scale, creates T.V advertisement, starts online
+marketing activities and sets up service workshops
+#+end_quote
+*** follow-up action
+- measure output w/ objectives, estimates
+- take feedback
+
+#+begin_quote
+A proper feedback mechanism was developed by the mobile phone company throughout its branches so
+that the actual customer response, revenue collection, employee response, etc. could be known.
+#+end_quote
+** Decision making
+examining possible options, comparing them
+& choosing best course of action
+
+*** decision types
+
+**** by no. of people involved
+- individual decision
+- group
+
+**** by complexity
+- simple
+- complex
+
+**** by importance
+- major
+- minor
+*** process
+similar to planning process
+**** identifying problem
+**** defining decision situation
+conditions, available resources?
+**** identifying alternatives
+**** evaluating alternatives
+**** choosing & implementing best alternative
+**** review & evaluation
+of decision effectiveness
+*** conditions
+**** under certainty (low chance of making bad decision)
+- has all info
+- info allows to predict outcome of taken decision
+
+**** under risk
+- can predict but may not go accordingly
+
+**** under uncertainty
+- gamble
+- has little or no previous related data
+- must depend on intuition, experience 
+
+* MAN4: Organizing
+arranging work, resources among organization members
+** Organizing 
+*** principle
+- clarity about objective
+- authority / responsibility
+- simplicity
+- division of work
+- flexible
+- decentralizatoin
+
+*** process
+# explain using example scenario like planning process
+
+**** Determination of objectives
+**** Determination of Activities
+required to achieve objective
+
+**** Grouping of Activities
+by similarity, timeline
+
+**** Establishing Formal Relationship
+assigning official roles / job titles? 
+
+**** Creation of Management Position
+**** Assignment of Works
+**** Establishment of Communication and Coordination
+** Organization Architecture / structure
+** Staffing
+acquirung, retaining competent workforce
+
+* MAN5: Leading & Communication
+** Leadership
+*** leadership                 :drill:
+SCHEDULED: <2024-05-14 Tue>
+:PROPERTIES:
+:ID:       da740f8c-1e14-4cd3-83e6-f418e64b69e5
+:DRILL_LAST_INTERVAL: 9.3103
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-05-05 Sun 06:%]
+:END:
+#
+**** define 
+ability to influence behavior & performance of individual / group
+toward achieving objective
+
+**** qualities of good leader / leadership (5 points)
+- empathy / understanding
+- inspirational
+- self-confident
+- technical knowledge (helps make better decisions)
+- flexible (adapt to any new changes)
+
+*** Leadership types           :drill:
+SCHEDULED: <2024-05-13 Mon>
+:PROPERTIES:
+:ID:       0886850e-2421-4c78-bc1a-0065e0341a0d
+:DRILL_LAST_INTERVAL: 3.855
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 5
+:DRILL_FAILURE_COUNT: 2
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.32
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-09 Thu 19:%]
+:END:
+[Transactional, Transformational]
+
+**** differences
+|           | Transactional                                       | Transformational                         |
+|-----------+-----------------------------------------------------+------------------------------------------|
+| purpose   | maintain order, smooth operation                    | bring about drastic change / improvement |
+| hierarchy | middle manager (manage people, report to higher-up) | visionary leader                         |
+| rules     | follow defined rules, objectives                    | may change rules if needed               |
+| problem   | responsive (if problem arise, fix it)               | actively seek out problems & fix         |
+| e.g:      | Drill Seargants                                     | radical political figures, founders      |
+
+*** Leadership styles (different from types) :drill:
+SCHEDULED: <2024-05-15 Wed>
+:PROPERTIES:
+:ID:       4132fa4d-ce98-441b-ac01-8be5bde7eb8f
+:DRILL_LAST_INTERVAL: 10.0
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-05-05 Sun 06:%]
+:END:
+#
+**** [autocratic]
+- leader makes decisions & enforces it
+- expect everyone to agree / follow
+
+- fast desicion making
+- may be disconnect / lack of motivation in team 
+  
+**** [democratic]
+- leaders involve others in decision-making, get opinions
+
+**** [participative / Laissez-faire]
+- let team / others work freely w/ little interference
+- problem if team isn't motivated, has bad intentions 
+
+** Managerial ethics
+** Motivation
+*** Concept
+degree to which an individual is willing to work towards achieving something
+
+*** Importance
+
+*** Techniques
+- goal setting
+- breaking down tasks
+- positive reenforcement
+- social support
+- self reflection
+*** Theories
+**** Maslow's heirarchy of needs
+- 1st ones need to be fulfilled 1st
+- draw pyramid diagram & put these in reverse order
+  (self-actualization at top)
+
+***** Physiological needs
+- hunger, thirst
+***** Safety needs
+- physical safety, health insurance
+***** Social needs
+- family, partner, friendship
+***** Esteem needs
+- recognization, promotion
+***** Self-actualization needs
+- sense of purpose
+**** Herzberg 2-factor theory (motivation-hygiene)
+***** Motivation
+- achievement, recognition
+***** Hygiene / maintenance factor
+required to maintain motivation?
+- salary
+- job security
+** Communication                :drill:
+SCHEDULED: <2024-05-14 Tue>
+:PROPERTIES:
+:ID:       a3f73ce9-546a-4c20-8503-cb8909928155
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-10 Fri 05:%]
+:END:
+define: [conveying info from one person to another using common symbols]
+
+*** Process
+- Sender: sender has idea / info to send
+- Encoding: how sender sends info (talking, text, ...)
+- Medium
+- Receiver
+- Decoding: how receiver receives / understands
+- Feedback
+
+*** Types
+- formal: meetings, emails, notice
+- informal 
+- face to face / inter-personal: in-person talking
+  (since other comms can be non-talking too)
+
+- non-verbal: body language, eye contact
+
+*** effective communication    :drill:
+SCHEDULED: <2024-05-14 Tue>
+:PROPERTIES:
+:ID:       2359cc3a-abf3-4a25-af29-94cefbe252b4
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-10 Fri 05:%]
+:END:
+#
+**** Barriers 
+- language barrier
+- info overload (long emails / meetings where unnecessary info sent too)
+- lack of clarity 
+- emotion (anger, calm, bored)
+- all parties don't participate / aren't active
+- delayed comunication in non-verbal:
+  for e.g: replying hours later to messages \because busy, timezones
+
+**** ways to enhance effective communication
+- just solve above problems
+- provide precise, useful info
+- use technology to advantage
+  + chat apps for non in-person meetings
+  + pin messages, announcements for all to see (helpful for future as well)
+  + AI summarizer tools
+- participate, active listening, give feedback
+*** extra info / unimportant: communication Network
+
+how info flows in organization
+**** formal (done through formal channels)
+- downward (boss to worker)
+- upward
+- lateral (worker to worker @ same level)
+**** informal
+gossip, social media posts
+
+* MAN6: Controlling & Total Quality Management
+** Total Quality Management
+*** Concept
+- management approach to maintain high quality of produced goods / services
+  thru continuous improvement of production process
+- this aims for long term success thru customer satisfaction
+
+*** Components
+**** Quality Planning
+- Identifying your quality goals and standards
+- how to check if these are met, when these are met (e.g: ip rating for waterproof, dustproof)
+
+**** Quality Control
+- analyzing and testing quality plans to see if viable
+- adjust if necessary
+  
+**** Quality Assurance
+- test product quality before delivering to customer
+- role of QA departments / individuals
+
+**** Quality Improvement
+- analyze data / results from QA step
+- identify pain points that may be hindering quality & implement improvements
+
+*** Principles
+**** customer focused
+should be main focus
+**** total employee involvement
+all employees must be on the same page,
+aim towards customer satisfaction
+
+**** Integrated
+- regardless of departments having different scope, 
+  org size & complexity,
+- all should understand and work towards main goal
+**** Process oriented
+- sequence of steps to follow (e.g: assembly line)
+- constant improvement / optimization of steps
+**** Strategic
+- emphasize quality in company's vision / long term plan 
+
+**** Continuous improvement
+- even after delivering goods to one customer,
+  try to find ways to improve for next customer
+  (endless)
+**** fact based decision making
+collect performance data for analysis, decision making
+**** Communication
+- clear comms between departments so everyone understands their & others' roles
+
+*** Tools & Techniques
+
+**** Pareto principle
+80% of effects caused by 20% of the cause
+
+- 80% of the work can be done by 20% of effort ("good enough")
+  + e.g: deliver rough graphic design of entire site first instead of fixating on font
+- use to identify what 20% areas have biggest impact on quality & focus on that
+- and then decide if it is worth putting more time in
+
+- impact on quality can be:
+  + positive: small effort gives biggest result
+  + negative: small thing causes biggest problems
+
+**** Check list
+basic todo list for steps to take
+
+**** Check sheet
+- document for collecting data about specific traits relating to product quality
+- can be qualitative or quantitative
+- quantitative allows easily visualizing what trait is more prominent
+- it is more beneficial if we track defects, instead of successes
+
+- many types of sheets. one such is freqeuncy check sheet
+# I used instead of | here for tallying 
+| Defect                  | Frequency | Comment                         |
+|-------------------------+-----------+---------------------------------|
+| wrong delivery addresss | II        | software bug                    |
+| missing label           | IIII      | machine stopps working at times |
+
+frequency can be used to prioritize
+comments can be used to identify pain points, solutions
+
+*** Emerging Issues in quality management
+**** goals, vision must be aligned
+- different goals, levels of motivation in a team can cause roadbumps, disrupt smooth flow
+
+**** Remote work & displaced teams
+- barrier to effective communication
+- timezone differences
+- difficult to convey company vision, keep workers motivated virtually 
+
+**** Balancing automation and human resources
+- automation can be more effective in terms of cost, time for manufacturing, QA tasks
+- but might not be suitable for complex tasks.
+
+**** similar competitors
+- many users may "jump ship" if a company makes one misstep or if a competitor provides more features / satisfaction
+* MAN7: Organizational Change & Development
+* MAN8: Technology, Organization & Management
