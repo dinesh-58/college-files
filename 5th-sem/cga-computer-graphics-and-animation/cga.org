@@ -1,0 +1,930 @@
+#+TITLE: Computer Graphics and Animation(CGA) 
+
+# don't study everything in sir's notes, only things he teaches
+* CGA1: Intro
+** Computer Graphics            :drill:
+SCHEDULED: <2024-06-08 Sat>
+:PROPERTIES:
+:ID:       a428ce3c-2a60-42dc-983a-f6ecf25ba095
+:DRILL_LAST_INTERVAL: 35.3271
+:DRILL_REPEATS_SINCE_FAIL: 5
+:DRILL_TOTAL_REPEATS: 7
+:DRILL_FAILURE_COUNT: 2
+:DRILL_AVERAGE_QUALITY: 2.857
+:DRILL_EASE: 1.94
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-04 Sat 09:%]
+:END:
+#
+*** define
+digital representation of visual elements on computer screens (images, animations)
+*** uses
+- multimedia (images, movies)
+- games
+- digital art, design (CAD, graphic design)
+- education, visual learning (presentation, ads)
+- devices w/ displays
+*** persistence of vision      :drill:
+SCHEDULED: <2024-05-14 Tue>
+:PROPERTIES:
+:ID:       f4e36322-dee1-426e-b917-dfb636936948
+:DRILL_LAST_INTERVAL: 22.4605
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.333
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-04-22 Mon 05:%]
+:END:
+# 
+**** describe (not too important)
+phenomena where an object remains / persists in human vision
+for a very short time(~ 1/25th of a second)
+after it is already removed from view
+
+animations, movies use this to create illusion of movement
+by changing images faster than persistence time
+** Hardware & Software for Computer Graphics
+*** Hard Copy (?)
+
+*** Display Technologies
+**** Raster display technology  :drill:
+SCHEDULED: <2024-08-15 Thu>
+:PROPERTIES:
+:ID:       6b40a3a3-0e9b-4329-9288-8626711ffb21
+:DRILL_CARD_TYPE: multisided
+:DRILL_LAST_INTERVAL: 150.75
+:DRILL_REPEATS_SINCE_FAIL: 6
+:DRILL_TOTAL_REPEATS: 5
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.8
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-03-17 Sun 06:%]
+:END:
+# used in CRTs(Cathode Ray Tube) displays
+***** explain 
+- display is made up of grid of pixels;
+  horizontal line called scan lines
+
+- applications instruct to display something
+  & the required data of each pixel is stored in
+  section of memory called *frame buffer*
+
+- electron beam from CRT moves/ "scans" from top to bottom of screen,
+  lighting up pixels according to frame buffer
+- thus, 1 frame/image is created
+
+***** advantage
+- allows filling/ shading areas with colors, patterns
+- time to refresh the screen stays same regardless of complexity of image
+
+***** disadvantage
+- lower resolution/ clarity than vector
+- aliasing effect may cause diagonal lines to appear jagged/ not smooth
+
+***** extra info (retrace)
+- horizontal retrace: move electron beam from right to left after finishing scanning a row
+- vertical retrace: move beam from bottom to top after scanning entire screen
+
+***** Raster display properties
+
+****** Bit depth
+= ceil(log_{2}(no. of true colors))
+
+TurboC has ...
+
+****** frame buffer size
+=resolution * bit depth(in bits)=
+
+****** refresh rate             :drill:
+SCHEDULED: <2024-07-08 Mon>
+:PROPERTIES:
+:ID:       69e83657-014e-4a6d-b7ca-e1d7b957af1b
+:DRILL_LAST_INTERVAL: 60.3
+:DRILL_REPEATS_SINCE_FAIL: 5
+:DRILL_TOTAL_REPEATS: 4
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.75
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-09 Thu 19:%]
+:END:
+
+*define*: [no. of times a display updates its image in a second]
+
+- extra info
+in CRT, [no. of times electron beam moves across screen]
+
+
+****** Access time
+per pixel = 1 / (resoultion * refresh rate)
+
+per scan line = acess time * no. of horizontal pixels
+
+/horizontal pixels means 1st number in resolution || no. of pixels in a horizontal line/ 
+
+****** Common values
+SVGA = 800 x 600
+4K = 3840 x 2160 (aspect ratio can be taken as 2:1)
+
+****** standardized values
+all are divided by 1000
+second -> millisecond -> microsecond (\mu) -> nanosecond
+
+****** Video size
+frame buffer size * fps * video length (in seconds)
+
+**** Random (Vector) display technology :drill:
+SCHEDULED: <2024-07-30 Tue>
+:PROPERTIES:
+:ID:       42d2dae4-e91f-48e1-a1b3-51a3213839bd
+:DRILL_CARD_TYPE: multisided
+:DRILL_LAST_INTERVAL: 137.3031
+:DRILL_REPEATS_SINCE_FAIL: 6
+:DRILL_TOTAL_REPEATS: 5
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.6
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-03-15 Fri 05:%]
+:END:
+# used in military radar displays
+***** explain 
+- image displayed by drawing geometric graphics primitives using co-ordinates
+- commands for drawing are stored in display file/ list 
+  which is read by Display Processor to refresh screen
+
+***** advantage
+- electron beam is only moved to parts of screen that need to be drawn.
+  + moves *randomly* compared to raster's top to bottom
+- produces smoother, higer resolution images
+
+***** disadvantage
+- can't fill shapes with colors
+- can't use as many colors/ shades as raster
+- refresh time (not refresh rate) increases w/ complexity of shapes
+
+**** Draw Block Diagram for Raster & Random display technology :drill:
+SCHEDULED: <2024-05-22 Wed>
+:PROPERTIES:
+:ID:       14ae9cc9-e74a-4511-8530-84b8a65374df
+:DRILL_LAST_INTERVAL: 9.9063
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 21
+:DRILL_FAILURE_COUNT: 5
+:DRILL_AVERAGE_QUALITY: 3.191
+:DRILL_EASE: 1.52
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-05-12 Sun 09:%]
+:END:
+
+#+attr_org:   :height 80px
+[[https://image.slidesharecdn.com/rasterscansystemswithvideocontrolleranddisplayprocessor-171213071912/75/raster-scan-systems-with-video-controller-and-display-processor-4-2048.jpg][image link, just change some text for Random]]
+
+***** common things between the 2
+- system memory
+  + with designated area for storing image data (named differently)
+- CPU
+- Monitor
+- Display Processing Unit (DPU) 
+- I/O devices
+- Bus connecting everything (except monitor)
+
+***** differences
+- memory area for:
+  Raster => frame buffer
+  Random => data file
+
+***** extra info regarding DPU
+*directly connected to Monitor & frame buffer*
+
+- graphical tasks are offloaded from CPU to this
+- performs scan conversion / digitization
+  to convert digital signals to analog for displaying
+- DPU tasks are handled by GPUs nowadays
+** Scan Conversion Algorithms
+*** define
+representing graphics objects as a series of pixels
+*** math concepts
+$slope(m) = \displaystyle \frac{\Delta y}{\Delta x} = \frac{dy}{dx} = tan(\theta)$
+*** Line
+**** DDA (Digital Differential Analyzer) :drill:
+SCHEDULED: <2024-05-15 Wed>
+:PROPERTIES:
+:ID:       99dd684d-680f-4c79-b795-a92150d8484c
+:DRILL_LAST_INTERVAL: 19.9491
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.333
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-04-25 Thu 13:%]
+:END:
+#
+***** basic concept
+- one axis always sampled (changes by 1)
+- other changes w/ formula that uses slope(m)
+- round off after changing
+  + but still take non-rounded off values for next calculation
+
+***** \Delta x > \Delta y  (|m| < 1)
+x++
+y += m
+
+***** \Delta y > \Delta x  (|m| > 1)
+y++ or y--
+x += 1/m or -= 1/m (depends on rising/falling)
+
+***** extra info: algo
+- input 2 points
+- find dx, dy
+- step = max(|dx|, |dy|)
+  # inc values will be 1 or related to slope(m)
+  + xinc = dx / step
+  + yinc = dy / step
+
+- while(i < step)
+  + putpixel(round(x), round(y))
+  + x += xinc
+  + y += yinc
+**** BSA line drawing         :drill:
+SCHEDULED: <2024-05-25 Sat>
+:PROPERTIES:
+:ID:       2612e5fe-2603-42d2-86fb-9c13ff7fa529
+:DRILL_LAST_INTERVAL: 17.7133
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 6
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 3.167
+:DRILL_EASE: 2.08
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-07 Tue 08:%]
+:END:
+d1 is always distance between initial & actual point
+d2 is always distance between next & actual point
+
+***** +ve m < 1
+x always increment
+
+$P_0 = 2 \Delta y - \Delta x$
+
+if pk < 0
++ P_{k+1} = P_{k} + 2 \Delta y 
++ y stays same
+
+if pk \ge 0   (consider 0 as +ve)
++ P_{k+1} = P_{k} + 2 \Delta y - 2 \Delta x
++ y++
+
+***** +ve m > 1
+just swap x & y from prev. formulae?
+y always changes by 1
+
+if pk < 0, x stays same
+
+*** Circle midpoint algo       :drill:
+SCHEDULED: <2024-05-29 Wed>
+:PROPERTIES:
+:ID:       3eeec20c-dec9-4a3a-bf5e-e5f769aaea4e
+:DRILL_LAST_INTERVAL: 25.0
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-05-04 Sat 09:%]
+:END:
+based on BSA
+
+**** formulae (this is the only important part?)
+P_{0} = 1 -r
+x_{k+1} = x_{k} + 1
+
+while y_{k} \ge x_{k}
+if P_{k} < 0
++ y_{k+1} = y_{k}  (stays same)
++ P_{k+1} = P_{k} + 2x_{k} + 3
+
+if P_{k} > 0
++ y_{k+1} = y_{k} - 1 (decrease)
++ P_{k+1} = P_{k} + 2x_{k} + 5 - 2y_{k}
+
+**** extra info
+
+dx >= dy (|slope| < 1) is always true
+always x++
+
+***** derivation related info
+assume center at origin
+- [ ] find points for 1st octant (while  0 \le m \le 1)
+  i.e. 90\deg to 45\deg
+P_{k} (decision parameter) is circle function at midpoint of 2 possible points:
++ $f_{circle}(x_{k+1},\ y_{k}-\frac{1}{2})$
++ above is only required for derivation
+
+y_{k} - 1/2 is midpoint of y_{k} & y_{k-1} 
+*keep in mind that y decreases or stays same*
+
+
+****** 8-point symmetry (extra info)
+circle always has same radius & shape
+thus by finding 1 point that lies on its circumference,
+we can find 7 other points that lie too by:
+- changing \pm sign
+- swapping x & y positions
+
+by this logic, we only find points in 1st octant (90\deg to 45\deg)
+which can be used to then digitize/plot entire cirlce
+****** P_{k} value:
+# actual point refers to point that lies on 
+<0 :  lies in circle. actual point is above so y_{k} is same
+>0 :  lies outside circle. actual point is below so y_{k} decreases by 1
+***** if question says:
+- digitize *1st octant*
+  only find points while y_{k} \ge x_{k}
+  \because x = y at 45\deg (endpoint of 1st octant)
+
+- digitize *complete circle*
+  + find points
+  + then choose any of those points & perform 8-point symmetry
+
+- center at different point than origin,
+  perform above steps assuming center at origin
+  then translate center
+  + apply difference between origin and center to found points
+
+always conclude with "This process can be repeated for other points & thus, digitize circle"     
+
+*** Ellipse
+/similar to circle/
+
+remember that P_{0} = P_{k}(x_{0}, y_{0}), not f_{ellipse}
+for P_{20}, take $P_{2k}(x_{0} + \frac{1}{2}, y_0 - 1)$ [\because next point after last point of region 1]
+**** formulae 
+***** region 1
+starting from (0,ry) 
+loop while    $2\cdotr x^{2}\cdot y_{k+1} >= 2\cdot ry^{2}\cdot x_{k+1}$
+
+$\displaystyle P_{10} = ry^{2} + rx^{2}(-ry + \frac{1}{4})$
+
++ve x sampling
+x_{k+1} = x_{k} + 1
+
+if P_{1k} < 0
++ y_{k+1} = y_{k}  (stays same)
++ $P_{1k+1} = P_{1k} + 2\cdot ry^{2}\cdot (x_{k+1} + 1)$
+
+
+if P_{1k} > 0
++ y_{k+1} = y_{k} - 1 (decrease)
++ $P_{1k+1} = P_{1k} + 2\cdot ry^{2}(x_{k+1} + 1) - 2\cdot rx^2 \cdot y_{k+1}$
+
+***** region 2
+starting from last point of Region 1
+loop till (0, rx)
+
+$\displaystyle P_{20} = ry(x_0 + \frac{1}{2})^2 + rx^{2}(y_0 - 1)^2 - rx^2\cdot ry^2$
+
+-ve y sampling
+y_{k+1} = y_{k} - 1
+
+if P_{2k} < 0, x increases
++ (draw figure to understand. y must stay constant @ y_k - 1)
+if P_{2k} > 0, x stays same
+** Area Filling                 :drill:
+SCHEDULED: <2024-05-17 Fri>
+:PROPERTIES:
+:ID:       8837e18c-7299-46c4-b20f-6fdad69d1c89
+:DRILL_LAST_INTERVAL: 25.0
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-04-22 Mon 05:%]
+:END:
+define: [filling a closed-region / bordered object with colors, patterns]
+
+*** seed fill                  :drill:
+SCHEDULED: <2024-07-04 Thu>
+:PROPERTIES:
+:ID:       d056dfe3-f871-4fe0-ae29-94013e9bd4cb
+:DRILL_LAST_INTERVAL: 52.2785
+:DRILL_REPEATS_SINCE_FAIL: 5
+:DRILL_TOTAL_REPEATS: 4
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.5
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-13 Mon 06:%]
+:END:
+- set starting point (seed) & start filling from there
+- both are recursive & both have 4-point or 8-point variants:
+- takes up more memory due to recursion?
+
+  common algo, different condition:
+#+begin_src c
+  void fill(x, y, c1, c2) {
+    if (condition) {
+      putpixel(x, y, c2);
+
+      // order doesn't have to be this specific
+      fill(x + 1, y, ...);
+      fill(x - 1, y, ...);
+      fill(x, y + 1, ...);
+      fill(x, y - 1, ...);
+    }
+  } 
+#+end_src
+**** Flood fill
+- bucket fill tool uses this
+- only replaces a specific color. other colors considered border
+  + src_c{if(getpixel(x, y) == oldColor)}
+
+params: (x, y, oldColor, newColor)
+- border can be made of different colors
+
+**** Boundary fill
+similar to flood fill but only stops when it hits border 
+- replaces any color that isn't fill color or border color
+#+begin_src c
+  int curColor = getpixel(x,y);
+  if(curColor != newColor && curColor != borderColor)
+#+end_src
+- border can only be of one color
+
+params: (x, y, borderColor, newColor)
+
+
+*** scanline fill              :drill:
+SCHEDULED: <2024-06-30 Sun>
+:PROPERTIES:
+:ID:       86c2e1c4-9d38-40aa-b174-d694d97997c3
+:DRILL_LAST_INTERVAL: 48.1172
+:DRILL_REPEATS_SINCE_FAIL: 5
+:DRILL_TOTAL_REPEATS: 4
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.5
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-05-13 Mon 06:%]
+:END:
+fill polygon using [horizontal scanlines]
+
+**** algorithm
+1) find intersection points between scanline & polygon edge / border
+2) fill odd pairs (i.e. pixels in pair 1, pair 3, ...) 
+
+special case: when intersection happens at vertex
+(i.e. point belongs to 2 edges)
+
+1) if both edges are moving in *same* direction 
+   (both are rising or both are falling, LTR convention)
+   consider it as 1 *same* point
+
+2) if edges are moving in *different* direction,
+   consider it as 2 *different* points
+
+- [ ] draw diagrams to understand ([[https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuRaSLp9WxkI2YUkkUhQET-jAA1Dp0QbOnYGZx9v4tJA&s][reference]], [[http://www.sunshine2k.de/coding/java/Polygon/Filling/edges.gif][reference2]])
+** TODO write down formulae for image, file size, color depth ... from daily docs
+
+* CGA2: 2d & 3D transformations
+** Transformations
+*** homogenous co-ordinates
+add 1 to 3rd row
+
+- perform different transformation w/ just matrix multiplication
+- allow performing mutiple transformations at once
+*** Non-rigid
+change object position only
+**** Translation
+| 1 | 0 | tx |
+| 0 | 1 | ty |
+| 0 | 0 | 1  |
+
+**** Rotation                 :drill:
+SCHEDULED: <2024-05-21 Tue>
+:PROPERTIES:
+:ID:       40b919d5-fdc0-470f-9cf0-57767010f8da
+:DRILL_LAST_INTERVAL: 8.2681
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 6
+:DRILL_FAILURE_COUNT: 2
+:DRILL_AVERAGE_QUALITY: 2.833
+:DRILL_EASE: 2.08
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-05-13 Mon 05:%]
+:END:
+Composite Matrix (CM) for:
+
+***** +ve (anti-clockwise)
+| cos(\theta) | -sin(\theta) | 0 |
+| sin(\theta) | cos(\theta)  | 0 |
+| 0      | 0       | 1 |
+
+i.e. $x' = x \cdot \cos(\theta) - y \cdot \sin(\theta)$ & so on
+***** -ve
+just swap +- signs of sin()
+
+**** Reflection
+rx = -1 if reflection along x-axis
+| ry |  0 | 0 |
+|  0 | rx | 0 |
+|  0 |  0 | 1 |
+
+*** Rigid
+change size or scale too
+**** Scaling
+| sx |  0 | 0 |
+|  0 | sy | 0 |
+|  0 |  0 | 1 |
+**** Shearing                 :drill:
+SCHEDULED: <2024-05-21 Tue>
+:PROPERTIES:
+:ID:       354388dc-6999-4517-afba-7d668b0ec326
+:DRILL_LAST_INTERVAL: 8.2681
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 6
+:DRILL_FAILURE_COUNT: 2
+:DRILL_AVERAGE_QUALITY: 2.833
+:DRILL_EASE: 2.08
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-05-13 Mon 05:%]
+:END:
+#
+***** define shearing (along an axis) + formula
+point is displaced along that axis,
+proportional to its distance from that axis
+
+i.e. for x-axis, y value farther from 0 will cause more displacement
+~x' = x + shx * y~
+
+***** Composite Matrix(CM)
+|   1 | shx | 0 |
+| shy |   1 | 0 |
+|   0 |   0 | 1 |
+
+*** Composite transformations
+i.e. multiple transformations w/ single matrix
+- perform matrix multiplication in reverse order
+- convert to standard form(?) i.e. at origin if needed
+  + need to perform reverse transformation as well
+* CGA3: Clipping
+
+** define                       :drill:
+SCHEDULED: <2024-05-29 Wed>
+:PROPERTIES:
+:ID:       2e99569b-6b2f-4585-8656-fce7cbd0226e
+:DRILL_LAST_INTERVAL: 19.9491
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.333
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-05-09 Thu 19:%]
+:END:
+#
+*** Window
+- A scene / picture exists virtually
+- window is area of scene / picture that is selected to be shown
+
+*** Viewport
+- Area of *display device* where window's contents are shown 
+- extra info:
+  can be understood as application windows in modern windowing operating systems 
+
+** Projection
+representing 3d object as 2d by mapping or transforming
+object onto a projection plane
+
+** 2d Pipelining                :drill:
+SCHEDULED: <2024-05-21 Tue>
+:PROPERTIES:
+:ID:       cb24e606-4a5f-4c5f-a8f6-9fad0a2f02eb
+:DRILL_LAST_INTERVAL: 8.2681
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 8
+:DRILL_FAILURE_COUNT: 3
+:DRILL_AVERAGE_QUALITY: 2.876
+:DRILL_EASE: 2.08
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-05-13 Mon 05:%]
+:END:
+- aka Viewing transformation
+- consists of window to viewport transformation
+  & some other steps
+
+*** diagram
+1) Modeling co-ords (MC)
+         \downarrow
+2) construct World co-ord scene using MC
+         \downarrow WC
+
+3) map WC to Viewing co-ords
+         \downarrow VC
+
+4) map VC to normalized VC (using Window-Viewport transformation)
+         \downarrow Normalized VC
+
+5) map Normalized viewport to Device co-ordinates
+         \downarrow 
+6) DC
+
+*** explain
+# here, map just means convert
+
+- objects are created using MC & graphics primitives
+
+- construct scene (uses WC system) & place multiple objects
+  by mapping MC -> WC
+
+- construct window,
+  map WC -> VC (POV of camera)
+
+- construct viewport (uses device-independent normalized VC)
+  map VC -> NVC
+  + device-independent allows displaying picture in same way across different displays
+
+- map NVC / viewport to specific device-specific coordinates to display
+
+** Window to viewport transformation :drill:
+SCHEDULED: <2024-05-28 Tue>
+:PROPERTIES:
+:ID:       2a7b510a-4b6e-4845-8f4b-2849a10eaacf
+:DRILL_LAST_INTERVAL: 19.2482
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.08
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-09 Thu 19:%]
+:END:
+mapping points in window to associated viewport
+such that point is placed relative to viewport
+based on its placement relative to window
++ e.g: point at 1/3rd of window
+  should be at 1/3rd of viewport
+
+*** derivation starting point 
+$\displaystyle \frac{x_v - x_{vmin}}{x_{vmax} - x_{wmin}} = \frac{x_w - x_{wmin}}{x_{wmax} - x_{wmin}}$
+
+- similar for y.
+
+*** formula
+$\displaystyle x_v = x_{vmin} + S_x \cdot (x_w - x_{wmin})$
+
+where, S_{x} (scaling factor) = $\displaystyle \frac{x_{vmax} - x_{vmin}}{x_{wmax} - x_{wmin}}$
+
+- similary for y_{v}
+
+*** extra info
+scaling factor used to:
+- scale points if size difference between window & viewport
+- maintain aspect ratio
+
+** Clipping
+only rendering objects / parts of objects that lie inside window
++ results in better performance due to skipping unnecessary processing 
+
+*** line clipping
+perform clipping on a straight line
+**** Cohen-Sutherland line clipping :drill:
+SCHEDULED: <2024-05-17 Fri>
+:PROPERTIES:
+:ID:       8bc79f8c-fa02-4397-a5e4-8ba122c08bd9
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-05-13 Mon 05:%]
+:END:
+#
+***** algo
+1) find region codes of line endpoints relative to window
+   using UDRL convention 
+   # i.e. line above window will have code 1000
+
+2) if both endpoints have code 0000, trivially accept & stop
+   # means entire line inside window
+
+3) else, perform Bitwise AND between codes
+   a. if result != 0000, trivially reject
+      # means endpoints are in same direction
+      # & line is fully outside window
+
+   b. else, take non-0000 endpoint &
+      [[id:056395a1-898b-4f5c-beef-6ad5ef21086b][find intersection point]] @ window border near it
+
+   c. replace endpoint w/ intersection
+
+4) repeat steps 2 & 3 until line is trivially accepted or rejected
+
+***** finding intersection
+:PROPERTIES:
+:ID:       056395a1-898b-4f5c-beef-6ad5ef21086b
+:END:
+- use point-slope form: y - y_{1} = m( x - x_{1})
+  where, (x_{1}, y_{1}) is endpoint & (x, y) is intersection
+
+| intersection @ | then      |
+|----------------+-----------|
+| bottom         | y = y_{wmin} |
+| top            | y = y_{wmax} |
+| left           | x = x_{wmin} |
+| right          | x = x_{wmax} |
+***** pro tip
+draw figure & find intersection w/ border
++ instead of finding in UDRL order
++ when a point is outside window in multiple directions
+  e.g: top left region
+
+
+*** Polygon clipping
+perform clipping on a polygon (closed object made of lines)
+
+**** Sutherland & Gary Hodgman polygon clipping 
+given: window and polygon 
+1) create input list of vertexes V = {v_{0}, v_{1}, .., v_{n}}
+   ordered by clockwise order of traversal
+   where v_{n} = v_{0} (start & end on same vector)
+
+2) loop.
+   a) perform left border clipping for each polygon edge
+      & add to output list [[      & add to output list based on condition
+][based on condition]]
+      # (switch to other border in clockwise direction in other loop iterations)
+   
+   b) perform top border clipping
+      using prev. output list as input list
+      # remember to create extra pair / edge using last & 1st vertex in list
+
+   c) repeat for right & bottom
+3) final polygon is clipped polygon
+   if co-ordinate values needed, use point-slope form like in line clipping
+
+**** inside-outside test condition
+:PROPERTIES:
+:ID:       401387ea-f5a4-484c-b790-8a0488b7fa91
+:END:
+| Case  | add to output vertex list      |
+|-------+--------------------------------|
+| In-In | endpoint (endpoint of BC is C) |
+| I-Out | intersection                   |
+| O-I   | intersection & endpoint        |
+| O-O   | nothing                        |
+
+
+
+* CGA4: Visible Surface Determination 
+check if object / part of object in 3d scene
+is visible in final 2d image
+(from POV of viewer / camera)
++ don't display invisible parts 
+
+** Object space vs Image space techniques
+|                            | Object                            | Image                     |
+|----------------------------+-----------------------------------+---------------------------|
+| perform calculation on     | object before conversion to pixel | pixel                     |
+| device resolution imp.?    | no                                | yes                       |
+| used for _ displays        | vector                            | raster                    |
+| efficient w/ multi-objects | less                              | more                      |
+| renders                    | only visible parts                | all parts (invisible too) |
+
+here, rendering refers to converting 3d objects to final 2D image that is shown
+
+** Object-space
+*** Back-face removal
+*** Painter's algorithm
+
+** Image-space
+*** Z / depth buffer algorithm
+- z-value is depth (distance from camera)
+  (assume 0 depth @ camera & moving in -ve direction from camera)
+  # some implementations may move in +ve direction
+
+- maintain Z-buffer(2D array) for all screen pixels
+  + each element holding depth(z) & refresh (color)
+  + initialize:
+     depth(x, y) = -\infin   (farthest distance) 
+     refresh(x, y) =
+- for each object, scan:
+  + compare z value for all object pixels
+     w/ corresponding pixel's value in z-buffer
+
+  + if depth(x, y) of object > prev. depth(x, y) in z-buffer
+    update z & refresh for (x, y) in z-buffer w/ object's
+
+# order of scaning doesn't matter
+
+**** Depth calculation (write this only for long question)
+~AX + BY + CZ + D = 0~
+from above, we can derive depth formula:
+$\displaystyle Z = \frac{-AX -BY -D}{C}$
+
+depth for next horizontal point can be calculated using prev depth
+$\displaystyle Z' = Z - \frac{A}{C}$
++ show derivation for this. hint: replace x with x + 1 in Z formula
+*** Scan-line algorithm
+*** A-buffer (out of syllabus?)
+** Light & Color & different color models
+RGB, CMY, YIQ
+* CG5: Animation & VR
+** VR
+*** [[https://rextheme.com/types-of-virtual-reality/][types]]
+** Adobe Flash
+*** ActionScript
+based on EcmaScript
+
+- =trace()= same as console.log()
+- objects can be referenced using their instance name
+
+- keep each object / group of objets on its own layer
+**** Instance name
+keep this same as symbol name
+
+**** Scenes
+- basically just movie scenes / when location changes / camera cut happens
+
+- [ ] use these to divide work, organize animation
+these play in order specified in scene panel
+
+**** Actions
+script files
+- each keyframe in a layer can have an associated action / script
+  + convention is to create a separate layer for scripts
+- if changing variable values, 
+  declare & initialize variables in 1st keyframe action
+  then loop back to 2nd keyframe if needing to loop animation
+  (else changes to variable overridden by initialization)
+** Anim Project resources
+- [[https://open-flash.github.io/][OpenFlash]] (bunch of resources. preservation project)
+- Adobe's [[https://open-flash.github.io/][Learning AS3]]
+- [[https://www.flashdevelop.org/][FlashDevelop]] FOSS IDE
+- [[https://www.amazon.com/_/dp/0596526954?smid=ATVPDKIKX0DER&_encoding=UTF8&tag=oreilly20-20][AS3 O'Reily book]]
+- [[https://help.adobe.com/en_US/as3/dev/as3_devguide.pdf][AS3 Developer's guide]] (pretty long. might not use)
+*** Adobe Animate uses AS3
+Ruffle mostly supports AS2
+* self study topics
+- floodfill
+- 3d rotation about arbitrary axis
+* Lab
+[[https://home.cs.colorado.edu/~main/bgi/doc/index.html][BGI documentation]]
+** NOTE: =<graphics.h>= on Linux
+implemented by SDL_BGI package
++ also implements =getch()=
+use ~cgcc filename~ to run
+
+remember to replace NULL in initgraph with c:\\TURBOC3\\bgi for lab reports
+- [ ] just paste this command in emacs | nvim
+%s/NULL/c:\\\\TURBOC3\\\\bgi/gc
+
+** Lab1: Intro to built-in graphics
+report should be handwritten & have unique Discussion & Conclusion
+submit during lab 3
+*** BGI (graphics.h)
+DETECT is a macro that auto-detects built in graphics driver & graphics mode & initializes them
+- upon using DETECT, gm is also set to max or something?
+int gd = DETECT
+int gm
+
+y co-ordinate increases from top to bottom
+**** turboC color depth: 4 bits
+use this if exam question says same color depth as turboC 
+*** TODO syntax for used functions in THEORY
+initgraph() // enter graphic mode. can't declare new variables inside this mode
+putpixel()
+setcolor()
+getmaxx()
+getmaxy()
+line()
+rectangle() // params: co-ordinates of 2 end-points of diagonal 
+   for square, del x = del y
+circle()
+ellipse()
+   stangle, endangle (0,360) makes full ellipse
+   allows displaying curves using incomplete ellipses 
+*** Programs
+**** putpixel (w/ color param)
+**** plot 2 parallel lines  (1 paralllel on x, axis, 1 on y)
+**** plot diagonal line from start to end of screen
+***** make each line different color
+**** plot cross (x & y at halfway of screen)
+**** plot rectangle 
+*****  square when y2 is not given
+**** plot circle, curve
+**** baaghchal
+* TODO Practice 3d transformations with current calc then decide
+
+-;Might have problem with composite
+- look up simplifying 4x4 matrix multiplications to 3x3
+
