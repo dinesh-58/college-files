@@ -1,0 +1,941 @@
+# use this file for daily docs & assignments
+# use subject files for notes only (they are not in agenda)
+
+* skippable classes
+| Sub         | Skip? | Notes                                               | Go      |
+|-------------+-------+-----------------------------------------------------+---------|
+| Management  | \check     | attend upto & including presentation.               | home    |
+| MIS         | \check     | only come to submit ecommerce proj.                 | library |
+| CGraphics   | \times     | *NQ*                                                |         |
+| CNetworking | ?     | says NQ but dunno. maybe skip sat class             |         |
+| DotNet      | \times     | stay for all. chadai sakkincha. maybe work in class |         |
+
+* past paper mega links
+:PROPERTIES:
+:ID:       a85b5ee8-1c56-414b-90be-72656a340a25
+:END:
+- [ ] organize links to these later subject wise
+[[https://drive.google.com/file/d/1Qt7gwhRkHNm0itKGAR41G9ZSHhhyXVwe/view][2018]] (all subjects in the same google drive link)
+[[https://bcanotesnepal.com/bca-fifth-semester-2020-year-all-subject-bca-tu-question-paper/][2020]]
+[[https://bcanotesnepal.com/bca-fifth-semester-2021-year-question-paper-exam-attempt-in-2023-of-2019-year-batch-all-subject-question-paper/][2021]]
+
+[[https://benchpartner.com/course/bca-tu][BenchPartner(only has some)]]
+* [[file:cga.org][CG]]: Computer Graphics & Animation :cg:
+:PROPERTIES:
+:links: [[https://drive.google.com/drive/folders/17NkZG2D_iAoea22E4RxO6DBCQD0yRDeJ][sir's notes]]
+:CATEGORY: sem5-CGA
+:END:
+** [CG] Daily docs
+*** Archive
+**** DONE <2023-11-29 Wed> docs: intro (prashant's notes)
+:PROPERTIES:
+:Copy_num: in messenger
+:Page_range: 
+:END:
+:LOGBOOK:
+CLOCK: [2023-11-29 Wed 16:59]--[2023-11-29 Wed 17:16] =>  0:17
+CLOCK: [2023-11-29 Wed 15:31]--[2023-11-29 Wed 16:33] =>  1:02
+CLOCK: [2023-11-29 Wed 14:16]--[2023-11-29 Wed 15:24] =>  1:08
+CLOCK: [2023-11-29 Wed 13:28]--[2023-11-29 Wed 14:08] =>  0:40
+:END:
+*** TODO <2023-12-01 Fri> docs: CG1: differences, numericals: image depth, frame buffer size :1:
+:PROPERTIES:
+:Copy_num: spiral(black)
+:Page_range: 36-39
+:END:
+*** TODO <2023-12-05 Tue> docs: CG1: Numericals: Access times, video size :1:
+:PROPERTIES:
+:Copy_num: spiral(black)
+:Page_range: 47-51
+:END:
+*** TODO <2023-12-06 Wed> docs: CG1: Scan conversion: DDA :1:
+:PROPERTIES:
+:Copy_num: spiral(black)
+:Page_range: 60-66
+:END:
+**** DONE Digitize line w/ A(7,2) & B(1,7) using DDA
+SCHEDULED: <2023-12-06 Wed>
+:LOGBOOK:
+CLOCK: [2023-12-06 Wed 18:41]--[2023-12-06 Wed 18:57] =>  0:16
+:END:
+**** practice deriving formulae (potential exam question)
+*** TODO <2023-12-06 Wed> docs: CG LAB1: :1:
+:PROPERTIES:
+:Copy_num: [[file:cga.org::*Lab1: Intro to built-in graphics][Lab1: Intro to built-in graphics]]
+:END:
+*** TODO <2023-12-08 Fri> docs: CG1: problems of DDA + Bresenham's line drawing Algo :1:
+:PROPERTIES:
+:Copy_num: spiral(black)
+:Page_range: 76-82
+:END:
+**** retry derivation
+*** TODO <2023-12-19 Tue> docs: CG1: BSA numerical + circular theory :1:
+:PROPERTIES:
+:Copy_num: spiral(black)
+:Page_range: 123-127
+:END:
+**** DONE [#A] Derive 3 remaining BSA formulae :offline:
+SCHEDULED: <2024-01-01 Mon 06:30> DEADLINE: <2024-01-02 Tue>
+:LOGBOOK:
+CLOCK: [2024-01-01 Mon 10:49]--[2024-01-01 Mon 11:59] =>  1:10
+CLOCK: [2024-01-01 Mon 08:29]--[2024-01-01 Mon 09:06] =>  0:37
+CLOCK: [2023-12-31 Sun 18:37]--[2023-12-31 Sun 19:05] =>  0:28
+CLOCK: [2023-12-31 Sun 16:00]--[2023-12-31 Sun 17:01] =>  1:01
+:END:
+m +ve & > 1 // tips for this on pg. 125
+m -ve & < 1
+m -ve & > 1
+
+- [ ] check online if formula for m - ve < 1 is correct 
+  + [ ] try taking opposite d1 and d2?
+    
+**** [#C] make BSA notes after lab & submitting assignment 
+- [ ] write down formulae only?
+  + maybe derivation for only one or just save photo of assignment
+- [ ] find single usable formula for all 4 conditions
+  + maybe can be taken from lab program
+
+*** TODO <2023-12-19 Tue> docs: CG LAB1 fill + LAB2: DDA implementation :1:
+:PROPERTIES:
+:Copy_num: spiral(black)
+:Page_range: 127, cg/lab/2 folder
+:END:
+**** DONE [#B] CG lab1 + 2 report
+SCHEDULED: <2023-12-26 Tue> DEADLINE: <2023-12-26 Tue>
+:LOGBOOK:
+CLOCK: [2023-12-26 Tue 18:52]--[2023-12-26 Tue 21:02] =>  2:10
+CLOCK: [2023-12-26 Tue 17:49]--[2023-12-26 Tue 18:15] =>  0:26
+CLOCK: [2023-12-25 Mon 17:59]--[2023-12-25 Mon 18:30] =>  0:31
+CLOCK: [2023-12-24 Sun 19:39]--[2023-12-24 Sun 20:11] =>  0:32
+:END:
+**** study dda program someday
+**** adjust cgcc to take additional flags
+*** TODO <2023-12-23 Sat> docs: CG1: Circle numerical, ellipse theory :1:
+:PROPERTIES:
+:Copy_num: spiral(black)
+:Page_range: 135-139
+:END:
+**** [#A] CG mid-point study :offline:
+# SCHEDULED: <2023-12-26 Tue>
+:LOGBOOK:
+CLOCK: [2023-12-26 Tue 15:26]--[2023-12-26 Tue 16:43] =>  1:17
+CLOCK: [2023-12-26 Tue 10:51]--[2023-12-26 Tue 12:11] =>  1:20
+:END:
+- [X] study circle pdf (downloaded on phone)
+- [X] derive ellipse pk1 (prashant sent in messenger GC)
+- [ ] maybe try pk2 if free time after lab reports
+- [ ] notes & cards? maybe do some other day
+*** TODO <2023-12-27 Wed> docs: CG1: Ellipse numerical :1:
+:PROPERTIES:
+:Copy_num: sem4-rough3
+:Page_range: 75-77
+:END:
+**** practice deriving formulae(sure exam q)
+*** TODO <2023-12-29 Fri> docs: CG2: 2D transformations :2:
+:PROPERTIES:
+:Copy_num: sem4-rough 3
+:Page_range: 82-85
+:END:
+*** TODO <2024-01-03 Wed> docs: CG2: 2D numerical(rotation + shearing), composite intro :2:
+:PROPERTIES:
+:Copy_num: sem4-rough 3
+:Page_range: 96-99
+:END:
+*** DONE <2024-01-03 Wed> docs: CG lab 3: BSA :1:
+SCHEDULED: <2024-01-08 Mon> DEADLINE: <2024-01-09 Tue>
+:PROPERTIES:
+:Copy_num: sem5-rough 1
+:Page_range: 1
+:Effort:   1h15min
+:END:
+:LOGBOOK:
+CLOCK: [2024-01-08 Mon 15:22]--[2024-01-08 Mon 15:47] =>  0:25
+CLOCK: [2024-01-08 Mon 13:35]--[2024-01-08 Mon 14:23] =>  0:48
+:END:
+**** DONE lab report (using format specified in copy)
+*** TODO <2024-01-05 Fri> docs: CG2: 2D Composite transformations :2:
+:PROPERTIES:
+:Copy_num: sem5-rough 1
+:Page_range: 5-10
+:END:
+*** TODO <2024-01-09 Tue> docs: CG2: 2D composite about arbitrary line :2:
+:PROPERTIES:
+:Copy_num: sem5-rough 1
+:Page_range: 16-20
+:END:
+*** DONE <2024-01-09 Tue> docs: CG Lab 4: Midpoint circle algorithm :offline:1:
+SCHEDULED: <2024-01-15 Mon 06:35> DEADLINE: <2024-01-16 Tue>
+:PROPERTIES:
+:Copy_num: sem5-rough 1, /lab/4/
+:Page_range: 20
+:END:
+:LOGBOOK:
+CLOCK: [2024-01-15 Mon 07:38]--[2024-01-15 Mon 08:43] =>  1:05
+CLOCK: [2024-01-15 Mon 06:00]--[2024-01-15 Mon 07:08] =>  1:08
+CLOCK: [2024-01-14 Sun 06:13]--[2024-01-14 Sun 06:32] =>  0:19
+:END:
+**** DONE write down formulae for ellipse here for next lab
+:LOGBOOK:
+CLOCK: [2024-01-15 Mon 10:19]--[2024-01-15 Mon 10:42] =>  0:23
+CLOCK: [2024-01-15 Mon 09:17]--[2024-01-15 Mon 10:14] =>  0:57
+:END:
+**** DONE practice derivation
+:LOGBOOK:
+CLOCK: [2024-01-14 Sun 08:00]--[2024-01-14 Sun 08:38] =>  0:38
+CLOCK: [2024-01-14 Sun 06:32]--[2024-01-14 Sun 07:07] =>  0:35
+:END:
+*** TODO <2024-01-10 Wed> docs: CG3: 2D Viewport :3:
+:PROPERTIES:
+:Copy_num: sem5-rough 1
+:Page_range: 22-25
+:END:
+*** TODO <2024-01-21 Sun> docs: CG2: 3D transformation, 3d view pipeline :3:2:
+:PROPERTIES:
+:Copy_num: sem5-rough 1
+:Page_range: 30-34
+:END:
+
+*** TODO <2024-02-06 Tue> docs: CG3: Clipping :3:
+:PROPERTIES:
+:Copy_num: sem5-rough 1
+:Page_range: 54-59
+:END:
+*** TODO <2024-02-07 Wed> docs: CG3: Clipping numericals :3:
+:PROPERTIES:
+:Copy_num: sem5-rough 1
+:Page_range: 60-64
+:END:
+*** TODO <2024-02-09 Fri> docs: CG3: Polygon clipping, color filling concepts :3:1:
+:PROPERTIES:
+:Copy_num: sem5-rough 1
+:Page_range: 66-68
+:END:
+*** DONE <2024-02-09 Fri> docs: CG Lab 5: Ellipse
+SCHEDULED: <2024-02-25 Sun> DEADLINE: <2024-02-27 Tue>
+:LOGBOOK:
+CLOCK: [2024-02-26 Mon 19:29]--[2024-02-26 Mon 19:38] =>  0:09
+CLOCK: [2024-02-26 Mon 17:41]--[2024-02-26 Mon 19:15] =>  1:34
+CLOCK: [2024-02-26 Mon 13:55]--[2024-02-26 Mon 14:40] =>  0:45
+:END:
+in messenger group chat (use OCR screenshot)
+*** TODO <2024-02-10 Sat> docs: color filling algos, CG4: Hidden surface removal :4:
+:PROPERTIES:
+:Copy_num: sem5-rough 1
+:Page_range: 69-70
+:END:
+*** TODO <2024-02-15 Thu> docs: CG4: z-buffer, a-buffer, scanline :4:
+:PROPERTIES:
+:Copy_num: sem5-rough 1
+:Page_range: 72-76
+:END:
+*** DONE <2024-02-16 Fri> docs: CG Lab 6: 2D transformations
+SCHEDULED: <2024-02-25 Sun> DEADLINE: <2024-02-27 Tue>
+:PROPERTIES:
+:Copy_num: sem5-rough 1
+:Page_range: 76, lab/6/ folder
+:END:
+:LOGBOOK:
+CLOCK: [2024-02-26 Mon 19:38]--[2024-02-26 Mon 20:30] =>  0:52
+:END:
+- report instructions in copy
+*** DONE CG lab 7 
+SCHEDULED: <2024-02-28 Wed>
+:LOGBOOK:
+CLOCK: [2024-02-28 Wed 18:11]--[2024-02-28 Wed 18:33] =>  0:22
+:END:
+program file in messenger / outlook
+** [CG] past paper checklist
+*** [[https://drive.google.com/file/d/1Qt7gwhRkHNm0itKGAR41G9ZSHhhyXVwe/view][2018 (last page)]]
+**** group b :b:
+***** DONE 2 (area fill, boundary fill) :1:
+:LOGBOOK:
+CLOCK: [2024-03-30 Sat 19:07]--[2024-03-30 Sat 19:26] =>  0:19
+:END:
+***** 3 (scaling, prove successive scaling) :2:
+***** DONE 4 (digitize circle)   :1:
+***** DONE 5 (2d viewing pipeline) :3:
+***** 6 (2d reflection)          :2:
+***** 7 (visible surface, Z buffer) :4:
+***** 8 (steps for animation sequence) :5:
+**** group c :c:
+***** DONE 9 (refresh rate & persistence, architecture of random scan ) :1:
+:LOGBOOK:
+CLOCK: [2024-03-30 Sat 18:53]--[2024-03-30 Sat 18:59] =>  0:06
+CLOCK: [2024-03-30 Sat 17:19]--[2024-03-30 Sat 17:46] =>  0:27
+:END:
+***** DONE 10 (BSA explain + numerical) :1:
+***** DONE 11 (line clipping explain + numerical) :3:
+*** [[https://drive.google.com/file/d/1jb00Thwrchl9W4FMgaiCCmODh4mmWpO9/view][2020]] [[https://drive.google.com/file/d/1QAc3xBDD6Ro1KPSK9LCk41K89tQxKmTY/view][alt link]]
+**** group b :b:
+***** DONE 2 (applications of CG) :1:
+:LOGBOOK:
+CLOCK: [2024-03-30 Sat 18:59]--[2024-03-30 Sat 19:02] =>  0:03
+:END:
+***** DONE 3 (midpoint circle explain) :1:
+***** 4 (explain 3d transformation) :2:
+***** DONE 5 (explain polygon clipping) :3:
+***** 6 (transformation numerical) :2:
+***** 7 (explain scan line for visible surface) :4:
+***** 8 (explain VR architecture) :5:
+**** group c :c:
+***** DONE 9 (DDA explain + BSA numerical) :1:
+***** 10 (object-space vs image-space, explain z-buffer) :4:
+***** DONE 11 (viewport formula derivation + numerical) :3:
+**** questions
+***** Group b :b:
+
+2. What is computer graphics? Explain different application areas of computer graphics.
+
+3. How can you draw a circle using mid-point circle algorithm? Explain with the algorithm.
+
+4. Explain 3D basic geometric transformation with an example.
+5. What is polygon clipping? Explain Sutherland Hodgman algorithm for polygon clipping.
+
+6. Given a triangle with vertices A(2,3), B(5,5), C(4,3) by rotating 90 degree about the origin and then translating two unit in each direction. Use homogenous transformation matrix to find the new vertices of the triangle Note.
+
+7. Explain the scan line algorithm for visible surface detection.
+
+8. Explain the architecture of VR system with necessary components.
+
+***** Group c :c:
+
+9. Explain the working details of DDA line drawing algorithm? Digitize the line with endpoints
+
+(2,2) and (10,5) using Bresenham's line drawing algorithm. [5+5=10]
+
+10. Write the difference between object space method and image space method. Explain Z-buffer algorithm for visible surface detection. [5+5=10]
+
+11. Derive the formula for windows to viewport transformation. Given a window bordered by (0,0) at the lower-left and (4,4) at the upper right. Similarly, a viewport bordered by (0,0) at the lower-left and (2,2) at the upper right. If a window at position (2,4) is mapped into the viewport.
+
+12.What will be the position of viewport to maintain same relative placement as in window? [5+5=10]
+*** [[https://drive.google.com/file/d/1Mj1vykJ40IePMlkRIxKpOCLtuvsN6Dlv/view][2021]]
+:LOGBOOK:
+CLOCK: [2023-12-31 Sun 17:29]--[2023-12-31 Sun 18:32] =>  1:03
+:END:
+**** group b :b:
+***** DONE 2 (horizontal retrace, random scan architecture) :1:
+:LOGBOOK:
+CLOCK: [2024-03-30 Sat 19:03]--[2024-03-30 Sat 19:06] =>  0:03
+:END:
+***** 3 (circle numerical)       :1:
+***** DONE 4 (explain 2d pipeline) :3:
+***** DONE 5 (DDA numerical)     :1:
+***** 6 (explain z-buffer, pros, cons) :4:
+***** 7 (explain VR + types)     :5:
+***** 8 (derive 2d reflection matrix) :2:
+**** group c :c:
+***** 9 (homogenous transformation numerical) :2:
+***** DONE 10 (explain sutherland polygon clipping + numerical) :3:
+***** 11 (explain object space, image space, flood fill algo) :1:4:
+*** Internals
+question paper in clear bag, else sent to Pawan in messenger
+* [[file:networking.org][CN ]]: Computer Networking          :cn:
+:PROPERTIES:
+:links: [[https://classroom.google.com/c/NjQ5Mjc4NzkwNTI4]]
+:classroom_code: 37iwimq
+:CATEGORY: sem5-CN
+:END:
+** [CN] Daily docs
+*** Archive
+*** TODO <2023-11-30 Thu> docs: CN1: Intro :1:
+:PROPERTIES:
+:Copy_num: spiral(black)
+:Page_range: 30-32
+:END:
+*** TODO <2023-12-03 Sun> docs: CN1: bunch of stuff + lab1 :1:
+:PROPERTIES:
+:Copy_num: spiral(black)
+:Page_range: 43-46
+:END:
+**** DONE [#A] CN lab report 1
+SCHEDULED: <2023-12-07 Thu> DEADLINE: <2023-12-09 Sat>
+:LOGBOOK:
+CLOCK: [2023-12-09 Sat 19:42]--[2023-12-09 Sat 20:21] =>  0:39
+CLOCK: [2023-12-09 Sat 18:27]--[2023-12-09 Sat 19:29] =>  1:02
+:END:
+*** TODO <2023-12-07 Thu> docs: CN1: OSI reference model :1:
+:PROPERTIES:
+:Copy_num: spiral(black)
+:Page_range: 70-74
+:END:
+*** TODO <2023-12-09 Sat> docs: CN1, 2: remaining OSI layers, Physical layer :1:2:
+:PROPERTIES:
+:Copy_num: spiral(black)
+:Page_range: 86-91
+:END:
+**** DONE read "Critiques of OSI & TCP/IP" section in Tanenbaum's networking book (notes in pg.107-108 if needed)
+DEADLINE: <2023-12-13 Wed>
+:LOGBOOK:
+CLOCK: [2023-12-13 Wed 15:37]--[2023-12-13 Wed 16:13] =>  0:36
+CLOCK: [2023-12-13 Wed 14:59]--[2023-12-13 Wed 15:25] =>  0:26
+:END:
+- [X] send pdf to shweta
+
+  
+**** DONE solve past questions for CN1
+SCHEDULED: <2023-12-14 Thu> DEADLINE: <2023-12-15 Fri>
+:LOGBOOK:
+CLOCK: [2023-12-15 Fri 20:12]--[2023-12-15 Fri 20:32] =>  0:20
+CLOCK: [2023-12-15 Fri 19:16]--[2023-12-15 Fri 20:01] =>  0:45
+:END:
+- do repeat questions only once
+- do in loose sheet or separate copy
+*** TODO <2023-12-10 Sun> docs: small notes on wireless medium :2:
+:PROPERTIES:
+:Copy_num: spiral(black)
+:Page_range: 92-93
+:END:
+*** TODO <2023-12-14 Thu> docs: CN2: Multiplexing, switching :2:
+:PROPERTIES:
+:Copy_num: spiral(black)
+:Page_range: 108-112
+:END:
+*** TODO <2023-12-16 Sat> docs: CN2: Data, signals, mobile network :2:
+:PROPERTIES:
+:Copy_num: spiral(black)
+:Page_range: 115-119
+:END:
+*** TODO <2023-12-17 Sun> docs: CNLab: basics, using CCNA :lab:
+:PROPERTIES:
+:Copy_num: loose sheet in spiral(black)
+:END:
+**** no need for lab report
+**** download newer version using link written down? or search for it 
+*** TODO <2023-12-21 Thu> docs: CN3: Data Link Layer, framing, ARQ :3:
+:PROPERTIES:
+:Copy_num: spiral(black)
+:Page_range: 128-133
+:END:
+**** DONE [#A] CN1 past paper questions
+SCHEDULED: <2023-12-22 Fri> DEADLINE: <2023-12-23 Sat>
+*** TODO <2023-12-28 Thu> docs: CN3: Piggybacking protocol, Error correction & Detection :3:
+:PROPERTIES:
+:Copy_num: sem4-rough 3
+:Page_range: 78-82
+:END:
+*** TODO <2023-12-30 Sat> docs: CN3: Sol'ns to channel allocation problem :3:
+:PROPERTIES:
+:Copy_num: sem4-rough 3
+:Page_range: 92-95
+:END:
+*** TODO <2024-01-04 Thu> docs: CN3: Controlled Access Protocol :3:
+:PROPERTIES:
+:Copy_num: sem5-rough 1
+:Page_range: 2-5
+:END:
+*** TODO <2024-01-06 Sat> docs: CN4: Network layer :4:
+:PROPERTIES:
+:Copy_num: sem5-rough 1
+:Page_range: 12-14
+:END:
+*** TODO <2024-01-07 Sun> docs: CN4: ipv4 & ipv6
+:PROPERTIES:
+:Copy_num: sem5-rough 1
+:Page_range: 14-15
+:END:
+*** DONE [#B] <2024-01-07 Sun> docs: CN Lab 2
+DEADLINE: <2024-02-04 Sun>
+:LOGBOOK:
+CLOCK: [2024-01-13 Sat 16:28]--[2024-01-13 Sat 16:43] =>  0:15
+CLOCK: [2024-01-13 Sat 14:08]--[2024-01-13 Sat 14:57] =>  0:49
+:END:
+**** Tasks (if any)
+use [[https://www.ace-edu.in/wp-content/uploads/2018/06/CN-Lab-Manual.pdf][this pdf]] for figure, lab title and details
+*** TODO <2024-01-11 Thu> docs: CN4
+:PROPERTIES:
+:Copy_num: sem5-rough 1
+:Page_range: 26-27
+:END:
+
+*** DONE [#A] <2024-01-14 Sun> docs: CN [[id:f6283bf1-2a5c-413a-b37c-548edfc490bb][Lab 3]]
+:PROPERTIES:
+:Copy_num: sem5-rough 1
+:Page_range: 34-35
+:ID:       b1cd0bba-c057-4904-96d0-7070d7ba0006
+:END:
+:LOGBOOK:
+CLOCK: [2024-02-18 Sun 00:38]--[2024-02-18 Sun 01:28] =>  0:50
+CLOCK: [2024-02-15 Thu 20:43]--[2024-02-15 Thu 21:03] =>  0:20
+CLOCK: [2024-02-15 Thu 20:11]--[2024-02-15 Thu 20:30] =>  0:19
+:END:
+- handwritten? idk
+- only theory needed about router setup (hostname, interfaces, etc.)
+  no need for CLI commands
+
+*** DONE [#A] <2024-02-11 Sun> docs: CN Lab4: configuring interface in Packet Tracer
+SCHEDULED: <2024-02-16 Fri>
+- write about saving running config as well & other stuff?
+*** TODO <2024-02-15 Thu> docs: CN5: RPC, RDT
+:PROPERTIES:
+:Copy_num: sem5-rough 1
+:Page_range: 71-72
+:END:
+*** DONE <2024-02-18 Sun> docs: CN Lab 5: physical setup of router & switch
+SCHEDULED: <2024-02-24 Sat> DEADLINE: <2024-02-25 Sun>
+:LOGBOOK:
+CLOCK: [2024-02-24 Sat 20:09]--[2024-02-24 Sat 21:15] =>  1:06
+CLOCK: [2024-02-24 Sat 19:14]--[2024-02-24 Sat 20:04] =>  0:50
+CLOCK: [2024-02-24 Sat 18:08]--[2024-02-24 Sat 18:49] =>  0:41
+:END:
+- [ ] make report after last lab?
+   to see if any new stuff taught & combine into one report if needed
+some [[id:27c54578-65f2-4bee-82ca-c05f7797f28e][notes here]]
+- [ ] look up switch, ip address conventions, on what basis to set address, subnet masks
+*** TODO <2024-02-21 Wed> docs: CN6: Email, CN7
+:PROPERTIES:
+:Copy_num: sem5-rough 1
+:Page_range: 77-78
+:END:
+
+** [CN] past paper checklist
+*** [[https://drive.google.com/file/d/1Qt7gwhRkHNm0itKGAR41G9ZSHhhyXVwe/view][2018]] (3rd page)
+**** group b :b:
+***** DONE 2 tcp/ip              :1:
+***** DONE 3 (stored ALOHA > pure ALOHA) :3:
+***** 4 (reliable vs unreliable connection) :5:
+***** 5 (DNS) :6:
+***** 6 (cryptography) :7:
+***** 7 (TCP segment header) :5:
+***** 8 (fragmentation, channelization, VPN) :short_notes:3:
+**** group c :c:
+***** 9  ipv4 :4:
+***** 10 ipv4 header format :4:
+***** DONE 11 switching, its types :2:
+*** +[[https://entrance.bcanepaltu.com/catalog/old-questions/fifth-semester/computer-networking][fake 2019]] (same as 2020 one.)+
+*** [[https://benchpartner.com/oldquestion/computer-networking-2020-bca-tu-old-questions/view][2020]] [[https://drive.google.com/file/d/1QAc3xBDD6Ro1KPSK9LCk41K89tQxKmTY/view][alt link]]
+**** group b :b:
+***** 2 WWW & HTTP protocol      :6:
+***** DONE 3 (slotted ALOHA vs pure) :3:
+***** DONE 4 HDLC & frame format :3:
+***** 5 ipv4 address classes     :4:
+***** 6 ipv4 numerical           :4:
+***** 7 user datagram format     :5:
+***** 8 (dns, public key crypto, vpn) :short_notes:7:6:
+**** group c :c:
+***** DONE 9  (critically analyze OSI) :1:
+this refers to explain + criticize
+***** 10 (random access protocol) :3:
+***** 11 (ipv4 header format) :4:
+**** questions
+***** Group b :b: [6x5=30]
+
+Attempts any SIX questions
+
+2. Define protocols. Explain WWW and HTTP protocol. [1+2+2]
+
+3. Define transmission impairment. Explain the causes of impairments. [1+4]
+
+4. Define HDLC. Explain the HDLC frame formats. [1+4]
+
+5. Define IP Address. Specify IPv4 address classes with their address ranges. [1+4]
+
+6. Define Subnetting. Suppose you are given network address: 192.168.10.0 and subnet mask: 255.255.255.240 then calculate total number of subnets and numbers of hosts per subnet. [1+2+2]
+
+7. Draw a User Datagram format. Explain UPD operations. [2+3]
+
+8.Write short notes on (Any Two): [2.5+2.5]
+
+DNS
+Public Key Cryptography
+VPN
+***** Group c :c:
+
+Attempt any TWO questions. [2x10=20]
+
+9. Critically analyze the OSI reference model. [10]
+
+10. Explain the random-access protocols under the multiple access taxonomy. [10]
+
+11. Explain the IPv4 Header format in detail. [10]
+*** [[https://drive.google.com/file/d/1AKcUxyyuLvlG4pn2_VBcfjTXWEJzd9sg/view][2021]]
+:LOGBOOK:
+CLOCK: [2023-12-31 Sun 17:29]--[2023-12-31 Sun 18:32] =>  1:03
+:END:
+**** group b :b:
+***** 2 (digital signature)      :7:
+***** 3 (dns to ip process)      :6:
+***** 4 (IP datagram fragmentation) :4:
+***** DONE 5 (byte, bit stuffing) :3:
+***** DONE 6 (causes of transmission impairment) :2:
+***** DONE 7 (go back n arq)     :3:
+***** 8 (ipv6 structure; ipv4 vs ipv6) :4:
+**** group c :c:
+***** DONE 9 (slotted ALOHA vs pure, CRC numerical) :3:
+***** DONE 10 layered protocol + explain TCP/IP :1:
+***** 11 (subnetting) :4:
+*** Internals
+question paper in clear bag, else sent to Pawan in messenger
+* [[file:dotnet.org][DN ]]: DotN                         :dn:
+et Technology
+:PROPERTIES:
+:links: [[www.example.com]]
+:classroom_code: 3lg47ma
+:CATEGORY: sem5-DN
+:END:
+** [DOT] Daily docs
+*** Archive
+*** TODO <2023-12-01 Fri> docs: Intro + google class code: 3lg47ma
+:PROPERTIES:
+:Copy_num: spiral(black)
+:Page_range: 40
+:END:
+*** TODO <2023-12-02 Sat> docs: DOT1: OBP, dotnet Architecture
+:PROPERTIES:
+:Copy_num: spiral(black)
+:Page_range: 40-42
+:END:
+*** TODO <2023-12-07 Thu> docs: .NET features, C# basiscs
+:PROPERTIES:
+:Copy_num: spiral(black)
+:Page_range: 74-76
+:END:
+*** TODO <2023-12-08 Fri> docs: DN2: small, special features in C#
+:PROPERTIES:
+:Copy_num: spiral(black)
+:Page_range: 83
+:END:
+*** TODO <2023-12-09 Sat> docs: DN2: few notes, ref, out params
+:PROPERTIES:
+:Copy_num: spiral(black)
+:Page_range: 84, 91-92, 2023-12-09 folder
+:END:
+**** go thru dot net tab group to clear confusions
+*** TODO <2023-12-15 Fri> docs: DN2: few notes, foreach, goto
+:PROPERTIES:
+:Copy_num: spiral(black)
+:Page_range: 113, 2023-12-15 folder
+:END:
+***** go thru tabs in c# tablerone tab group
+read up on stuff
+*** TODO <2023-12-16 Sat> docs: DN2: multi-dim array, namespace, constructors, partial class :2:
+:PROPERTIES:
+:Copy_num: spiral(black)
+:Page_range: 114-115, 119-121, 2023-12-16 folder
+:END:
+*** TODO <2023-12-28 Thu> docs: DN3: overriding, interfaces, properties
+:PROPERTIES:
+:Copy_num: sem4-rough 3
+:Page_range: 82
+:END:
+**** look up
+- method hiding vs overriding
+- interface boxing
+**** practice programming questions in google classroom
+*** TODO <2023-12-29 Fri> docs: DN3: Generics, operator overloading
+:PROPERTIES:
+:Copy_num: sem4-rough 3
+:Page_range: 85-86
+:END:
+*** TODO <2023-12-30 Sat> docs: DN Lab (properties, generics)
+:PROPERTIES:
+:Copy_num: 2023-12-30 folder
+:END:
+no need for lab report
+**** 
+*** TODO <2024-01-04 Thu> docs: DN Lab (operator overloading, generics)
+:PROPERTIES:
+:Copy_num: 2024-01-04
+:END:
+*** TODO <2024-01-05 Fri> docs: DN4: Exception, event handling, LINQ
+:PROPERTIES:
+:Copy_num: sem5-rough 1
+:Page_range: 11-12
+:END:
+*** TODO <2024-01-11 Thu> docs: DN Lab (LINQ & lambda)
+:PROPERTIES:
+:Copy_num: 2024-01-11 folder
+:END:
+*** TODO <2024-01-18 Thu> docs: DN LAB (ASP) + Report guidelines
+:PROPERTIES:
+:Copy_num: sem5-rough 1
+:Page_range: 30
+:END:
+
+** past paper checklist
+*** [[https://drive.google.com/file/d/1Qt7gwhRkHNm0itKGAR41G9ZSHhhyXVwe/view][2018 (2nd page)]]
+**** group b :b:
+***** 2 CLR :1:
+***** DONE 3 (value vs reference type) :2:
+***** DONE 4 (interface, multiple inheritance) :3:
+***** 5 (namespace) :2:
+***** DONE 6 (Exception)         :4:
+***** 7 (LINQ) :4:
+***** DONE 8 (static)            :3:
+**** group c :c:
+***** DONE 9 (operator overloading) :3:
+***** DONE 10 (database w/o ASP) :4:
+***** 11 (web server controls in ASP) :4:
+*** [[https://drive.google.com/file/d/1qPMBx1yHVIhanorw-nkFiQkoQ1IjRvYT/view][2020]]
+**** group b :b:
+***** 2 (OOP vs OBP + C# major features) :1:
+***** 3 (overview of .NET framework) :1:
+***** DONE 4 (property vs method, autmatic property vs others) :3:
+***** DONE 5 (types of constructors) :3:
+***** DONE 6 (multi-level & multiple inheritance) :3:
+***** DONE 7 (generics, delegate) :4:3:
+***** 8 (lambda expressions)     :4:
+**** group c :c:
+***** 9  (ASP display data, ASP exception) :4:
+***** DONE 10 (virtual method, binary operator overloading) :3:
+***** 11 (LINQ)                  :4:
+**** questions
+***** Group b :b: [6x5=30]
+2.Differentiate Object Oriented Programming and Object Based Programming. Explain some of the major features of C# language. [2+3]
+
+3. Explain overview of Microsoft .NET framework and its components in detail. [5]
+
+4. What do you mean by property in C# language? How it is different from method? Compare automatic property with other types of property with suitable example. [1+1+3]
+
+5.Define constructor. Explain different types of constructors used in C# with example. [1+4]
+
+6.Define inheritance. Write a C# program to demonstrate multilevel and multiple inheritance. [1+2+2]
+
+7.What is generics? List different types of generic classes. Explain delegate with example. [1+1+3]
+
+8. What do you mean by lambda expression? Explain different types of lambda expression used in C# with example. [1+4]
+
+***** Group c :c:
+9. a) Write a program to create user registration form in one ASP.NET web page and display filled data in another page. [7]
+
+b) Write a program for handling exception in ASP.NET. [3]
+
+10. a) How virtual method is used to achieve dynamic binding in C#? Explain with the help of suitable program. [1+4]
+
+b) Define operator overloading. Write a C# program to overload binary operator. [1+4]
+
+11. a) What is LINQ? Write a program to select employees whose salary is greater than 20000 and whose address is kathmandu using LINQ. [1+4]
+
+b) Write a C# program to show insert and select operation in database. [5]
+*** [[https://drive.google.com/file/d/17NPOj3yjiN0im2vPiyomPvjj6GGdS_uk/view][2021]]
+**** group b :b:
+***** 2 (C# type safety, techs in .NET framework) :1:
+***** DONE 3 (contextual keyword, jagged array) :2:
+***** 4 (pass value vs pass reference) :2:
+***** DONE 5 (abstract)          :3:
+***** DONE 6 (virtual, multi-level inheritance) :3:
+***** DONE 7 (indexer vs properties, generic class) :3:
+***** 8 (ASP display data)       :4:
+**** group c :c:
+***** 9  (exception, LINQ)       :4:
+***** DONE 10 (delegate types, operator overloading) [1/2] :3:4:
+- [ ] a
+- [X] b
+***** DONE 11 (database w/o ASP) :4:
+*** Internals
+question paper in clear bag, else sent to Pawan in messenger
+* [[file:management.org][MAN]]: Intro to Management         :man:
+:PROPERTIES:
+:links: [[www.example.com]]
+:CATEGORY: sem5-MAN
+:END:
+** [MAN] Daily docs
+*** Archive
+**** DONE <2023-12-05 Tue> docs: Info regarding presentation
+:PROPERTIES:
+:Copy_num: spiral(black)
+:Page_range: 52
+:END:
+***** DONE [#C] MAN presentation (info in copy) :bored:
+DEADLINE: <2024-02-02 Fri>
+:PROPERTIES:
+:ID:       59902837-9f7d-405b-a8a5-0d9469a3a413
+:END:
+:LOGBOOK:
+CLOCK: [2024-02-17 Sat 05:37]--[2024-02-17 Sat 06:41] =>  1:04
+:END:
+topic: ch.6 from Total Quality Management till end
+*** TODO <2023-12-09 Sat> docs: MAN1: exam q's :1:
+:PROPERTIES:
+:Copy_num: spiral(black)
+:Page_range: 84-86
+:END:
+*** TODO <2023-12-12 Tue> docs: MAN3: planning & decision making :3:
+:PROPERTIES:
+:Copy_num: spiral(black)
+:Page_range: 96-100
+:END:
+*** TODO <2023-12-13 Wed> docs: MAN5: Leadership :5:
+:PROPERTIES:
+:Copy_num: spiral(black)
+:Page_range: 105-106
+:END:
+*** TODO <2023-12-19 Tue> docs: MAN2: presentations :2:
+:PROPERTIES:
+:Copy_num: spiral(black)
+:Page_range: 122-123
+:END:
+*** TODO <2023-12-30 Sat> docs: MAN5: Communication :5:
+:PROPERTIES:
+:Copy_num: sem4-rough 3
+:Page_range: 90-92
+:END:
+
+*** TODO <2024-01-21 Sun> docs: MAN7: Change :7:
+:PROPERTIES:
+:Copy_num: sem5-rough 1
+:Page_range: 35-38
+:END:
+
+*** TODO <2024-02-11 Sun> docs: MAN8: Organization structure :8:
+:PROPERTIES:
+:Copy_num: sem5-rough 1
+:Page_range: 70
+:END:
+
+*** TODO <2024-02-17 Sat> docs: presentation + little imp. info
+:PROPERTIES:
+:Copy_num: sem5-rough 1
+:Page_range: 77
+:END:
+**** DONE MAN presentation on 6 Tools & Techniques for TQM
+DEADLINE: <2024-02-20 Tue>
+*** TODO <2024-02-21 Wed> docs: presentation contd. + imp. tools & techniques
+:PROPERTIES:
+:Copy_num: sem5-rough 1
+:Page_range: 
+:END:
+focus on these ones in exam. no need to write about others?
+** Internals
+question paper in clear bag, else sent to Pawan in messenger
+** Past paper checklist
+*** [[https://drive.google.com/file/d/1Qt7gwhRkHNm0itKGAR41G9ZSHhhyXVwe/view][2018]] (4th page)
+**** group b :b:
+***** 11 skills for succesfull manager :1:
+***** 12 contingency theory      :2:
+***** DONE 13 levels of planning :3:
+***** 14 organization structure  :4:
+***** DONE 15 steps in communication :5:
+***** DONE 16 styles of leadership :5:
+***** 17 techniques of control   :6:
+*** [[https://drive.google.com/file/d/1J3qCdLbtDHqPtLTTecQpmFhYE6LodmFB/view][2020]]
+**** group b :b:
+***** 2 functions of management  :1:
+***** 3 scientific management, Taylor's contributions :2:
+***** 4 formal, informal group   :4:
+***** DONE 5 steps of planning process :3:
+***** DONE 6 barriers to effective communication :5:
+***** DONE 7 motivation to achieve organization goals :5:
+***** 8 delegation of authority  :5:
+**** group c :c:
+***** 9  planning & controlling are opposite :6:3:
+***** DONE 10 styles of leadership :5:
+***** 11 skills for succesfull manager :1:
+
+*** [[https://drive.google.com/file/d/1MS51WXKkbCJ8AO-a-KAC0Z2dLsrshNGA/view][2021]]
+**** group b :b:
+***** 2 functions of management  :1:
+***** DONE 3 process of planning :3:
+***** DONE 4 conditions for decision making :3:
+***** 5 steps for controlling    :6:
+***** DONE 6 styles of leadership :5:
+
+***** DONE 7 techniques of motivation :5:
+***** DONE 8 types of communication :5:
+**** group c :c:
+***** 9  contingency theory, contributions & limitations :2:
+***** 10 process + principle of structuring organization :4:
+***** 11 areas of organization change, resistant factors :7:
+
+
+* [[file:mis.org][MIS]]: Management Info System and E-Business :mis:
+:PROPERTIES:
+:links: [[www.example.com]]
+:classroom_code: r7qebfm
+:CATEGORY: sem5-MIS
+:END:
+** [MIS] Daily docs
+*** Archive
+*** TODO <2023-11-30 Thu> docs: MIS1: intro :1:
+:PROPERTIES:
+:Copy_num: spiral(black)
+:Page_range: 32-34
+:END:
+**** DONE assignment 1: differentiate E-commerce & E-business 
+done in page 68 (spiral black)
+
+*** DONE <2023-12-02 Sat> docs: MIS1: assignment 2 :1:
+:PROPERTIES:
+:Copy_num: spiral(black)
+:Page_range: 42
+:END:
+**** DONE assignment 2: future of M-commerce
+done in pages 69-70 (spiral black)
+*** DONE <2023-12-13 Wed> docs: MIS2: Network Infrastructure :2:
+:PROPERTIES:
+:Copy_num: spiral(black)
+:Page_range: 106-107
+:END:
+*** TODO <2023-12-27 Wed> docs: MIS3: ERP exam imp. question :3:
+:PROPERTIES:
+:Copy_num: sem4-rough 3
+:Page_range: 77
+:END:
+
+
+** past paper checklist
+*** [[https://drive.google.com/file/d/1Qt7gwhRkHNm0itKGAR41G9ZSHhhyXVwe/view][2018]]
+**** group b :b:
+***** DONE 2 explain C2C & B2B e-comm model :1:
+***** DONE 3 M-commerce & its benefits :1:
+***** DONE 4 differentiate UMTS & LTE wireless :2:
+***** DONE 5 how enterprise apps used in org :3:
+***** 6 digital signature (ch. 4?)
+***** 7 crypto :5:
+***** 8 SEO :6:
+**** group c :c:
+***** DONE 9 security requirements of ecomm :4:
+***** 10 discuss digital payment trend :5:
+***** 11 (feasibility, funding techniques) :6:
+*** [[https://drive.google.com/file/d/1ru36bPJuDYDCi0yA36H2NafIQd5sP3t6/view][2020]]
+**** group b :b:
+***** DONE 2 how properties make ecommerce better than traditional :1:
+in pg.13 of pdf 
+***** DONE 3 differentiate B2C, B2B, C2C :1:
+***** DONE 4 role, components of information superhighway :2:
+***** DONE 5 int'l info system; outsourcing, offshoring :3:
+***** DONE 6 (CIA)               :4:
+***** 7 (e-checking) :5:
+***** 8 (website design criteria) :6:
+**** group c :c:
+***** TODO 9  discuss WAP protocol, layered architecture:2:
+***** 10 discuss web content     :6:
+***** DONE 11 (defense strategies) :4:
+**** questions
+***** Group b :b: [6x5=30]
+
+2. How properties like ubiquity, richness and information density make e-commerce better than traditional commerce?
+
+3. Differentiate B2C, B2B and C2C e-commerce with examples.
+
+4. What is the role of information superhighway in e-commerce? List the components of information superhighway. [2+3]
+
+5. What is international information system? Describe the concepts of outsourcing and offshoring in the system. [1+4]
+
+6. Define availability, authentication and authorization. How they can be enforced in e-commerce security? [3+2]
+
+7. What is e-checking? Describe its working mechanism. [2+3]
+
+8.Describe the website design criteria that one should show while designing an e-commerce website.
+
+***** Group c :c:
+
+9. What do you mean by Wireless Application Protocol (WAP)? How it works? Discuss the layered architecture of WAP. [2+2+6]
+
+10. How important web contents are for e-commerce systems? Discuss their types. Justify, with examples, how web contents can be used to promote cross-selling, up-selling and promotions in e-commerce. [2+2+6]
+
+11. Discuss in detail the security defends strategies that you can implement while securing e-commerce systems from security attacks and threats.
+*** [[https://drive.google.com/file/d/1tmj4tDE2NnK5-8ZhlDfJxEK9g7hVhb8-/view][2021]]
+**** group b :b:
+***** DONE 2 discuss location-based e-commerce :1:
+***** DONE 3 features of WIFI :2:
+***** DONE 4 how CRM help biz get close to cust. :3:
+***** DONE 5 (virus vs worm vs trojan) :4:
+***** 6 (symmetric, asymmetric key encryption) :4:
+***** 7 (virtual currency types) :5:
+***** 8 (ecomm promotion techniques) :6:
+**** group c :c:
+***** DONE 9 significance & types of e-commerce models :1:
+***** DONE 10 why info systems necessary :3:
+***** DONE 11 (discuss ransomware) :4:
+*** Internals
+question paper in clear bag, else sent to Pawan in messenger

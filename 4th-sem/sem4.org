@@ -1,0 +1,1777 @@
+# prob no need for sem, subject template?
+# tip for next sem: use one main file for daily docs, past paper checklist
+# & subject-wise file for notes?
+# tag daily doc heading w/ subject name & tag entries with ch. number
+* <Subject>
+:PROPERTIES:
+:links: [[www.example.com]]
+:END:
+** [sub] Daily docs
+*** Archive
+*** use daily doc template in org-capture 
+** Notes 
+*** sub1: ch. name
+
+* [[file:4th-sem/dbms.org][DBMS]]: Database Management Systems
+:PROPERTIES:
+:links: [[https://classroom.google.com/c/NjAyMzI4NTU1Nzk5][google classroom]]
+:END:
+** [dbms] Daily docs
+*** Archive
+*** [2023-03-25 Sat]
+:PROPERTIES:
+:Copy_num: 1
+:Page_range: 47 
+:Chapter_topic:
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+*** [2023-03-26 Sun]
+:PROPERTIES:
+:Copy_num: 1
+:Page_range: 51-53 
+:Chapter_topic: 1,2
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+*** [2023-03-28 Tue]
+:PROPERTIES:
+:Copy_num: 1
+:Page_range: 53-54 
+:Chapter_topic: 2
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+*** [2023-04-01 Sat]
+:PROPERTIES:
+:Copy_num: 1
+:Page_range: 79-80 
+:Chapter_topic: E-R diagram
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** 
+*** [2023-04-02 Sun]
+:PROPERTIES:
+:Copy_num: skipped class so no notes
+:Chapter_topic: lab 3?
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** make notes & cards
+***** lab report
+
+*** [2023-04-04 Tue]
+:PROPERTIES:
+:Copy_num: 1
+:Page_range: 85-87 
+:Chapter_topic: 2: ER diagrams, 3: relational model
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** Recall keywords 1st, then details
+delete this heading if not doing
+***** go thru pages 
+***** make notes & cards
+***** Practice ER diagram questions in pptx 2
+
+*** [2023-04-08 Sat]
+:PROPERTIES:
+:Copy_num: 1
+:Page_range: 111 
+:Chapter_topic: db schema, keys
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+
+*** [2023-04-18 Tue]
+:PROPERTIES:
+:Copy_num: 1
+:Page_range: 112-114
+:Chapter_topic: types of keys, Relational Algebra
+:END:
+**** Tasks
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+
+*** [2023-04-20 Thu]
+:PROPERTIES:
+:Copy_num: 1
+:Page_range: 117-119 
+:Chapter_topic: 3
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+
+*** [2023-04-22 Sat]
+:PROPERTIES:
+:Copy_num: lab 3 in lab manual
+:Chapter_topic:
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+***** DONE [#A] dbms lab reports :important:
+- [X] fix mssql in vscode for now
+  /use org-mode for reports. see [[file:~/test-org-sql/mssql.org][here]]/
+****** DONE [#A] one last try to configure sql w/ org-mode 
+SCHEDULED: <2023-07-14 Fri>
+:PROPERTIES:
+:Effort:   1h
+:END:
+:LOGBOOK:
+CLOCK: [2023-07-14 Fri 14:11]--[2023-07-14 Fri 14:47] =>  0:36
+CLOCK: [2023-07-14 Fri 11:05]--[2023-07-14 Fri 11:38] =>  0:33
+CLOCK: [2023-07-14 Fri 10:36]--[2023-07-14 Fri 11:03] =>  0:27
+CLOCK: [2023-07-14 Fri 08:46]--[2023-07-14 Fri 08:48] =>  0:02
+CLOCK: [2023-07-14 Fri 08:23]--[2023-07-14 Fri 08:45] =>  0:22
+:END:
+- [ ] set effort/ time limit. prob 1 hour
+- [ ] set 30 min timer to try CLIs listed in [[https://www.emacswiki.org/emacs/SqlMode#h5o-8][emacs-wiki]] & [[https://github.com/kostafey/ejc-sql#mssqlserverconnection][this]]
+- [ ] tyeti ma bhayena bhane choddeu
+****** DONE [#A] dbms lab3 report
+SCHEDULED: <2023-08-01 Tue>
+****** DONE [#B] dbms lab4 report
+SCHEDULED: <2023-08-01 Tue>
+
+****** DONE finish lab3 tasks before lab class
+SCHEDULED: <2023-05-19 Fri 18:00>
+
+*** [2023-04-26 Wed]
+:PROPERTIES:
+:Copy_num: 1
+:Page_range: 133-134 
+:Chapter_topic: 2 remaining parts, 4
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+
+*** [2023-04-27 Thu]
+:PROPERTIES:
+:Copy_num: 2
+:Page_range: 2-3
+:Chapter_topic: normalization
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+
+*** [2023-04-30 Sun]
+:PROPERTIES:
+:Copy_num: 2
+:Page_range: 7 
+:Chapter_topic: normalization, fell asleep
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+
+*** [2023-05-03 Wed]
+:PROPERTIES:
+:Copy_num: 2
+:Page_range: 19 
+:Chapter_topic: normalization
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+
+*** [2023-05-04 Thu]
+:PROPERTIES:
+:Copy_num: 2
+:Page_range: 27-28
+:Chapter_topic:
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+
+*** [2023-05-09 Tue]
+:PROPERTIES:
+:Copy_num: 2
+:Page_range: 32-33 
+:Chapter_topic: normalization
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+
+*** [2023-05-14 Sun] ch. 9: transaction processing
+:PROPERTIES:
+:Copy_num: 3
+:Page_range:4-6 
+:Chapter_topic:
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+
+*** [2023-05-16 Tue] Transaction scheduling
+:PROPERTIES:
+:Copy_num: 3
+:Page_range: 8-9 
+:Chapter_topic: 
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+
+*** [2023-05-17 Wed] transaction contd.
+:PROPERTIES:
+:Copy_num: 3
+:Page_range: 11-12 
+:Chapter_topic:
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** Recall keywords 1st, then details
+delete this heading if not doing
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+
+*** [2023-05-18 Thu] Trigger, indexing
+:PROPERTIES:
+:Copy_num: 3
+:Page_range: 12 
+:Chapter_topic: 
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+
+*** TODO <2023-08-18 Fri> docs: exam study (upto pg.10 of 9-1 pdf)
+:PROPERTIES:
+:Copy_num: spiral (esatya)
+:Page_range: 46-47
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** DONE read up on [[https://www.geeksforgeeks.org/acid-properties-in-dbms/][ACID]] properties
+***** look up css grid stuff on pg. 46
+***** make notes
+***** make cards
+***** tick off pages
+
+*** DONE <2023-08-19 Sat> docs: few notes
+:PROPERTIES:
+:Copy_num: spiral (esatya)
+:Page_range: 47
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** DONE go thru pages 
+***** DONE make notes
+***** DONE make cards
+***** tick off pages
+*** DONE <2023-08-21 Mon> docs: finish 9-1 pdf
+:PROPERTIES:
+:Copy_num: spiral (e)
+:Page_range: 48-49
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes
+***** make cards
+***** tick off pages
+*** DONE <2023-08-22 Tue> docs: upto pg. 32 of 9-2
+:PROPERTIES:
+:Copy_num: spiral(e)
+:Page_range: 49-52
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes
+***** make cards
+***** tick off pages
+*** DONE <2023-08-23 Wed> docs: ch.7 & 9-2 pdf
+:PROPERTIES:
+:Copy_num: spiral(e)
+:Page_range: 53-57
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes
+***** make cards
+***** tick off pages
+
+** dbms past paper checklist       :db:
+*** 2019
+**** b
+***** 2 (dbms, its merits)       :1:
+***** DONE 3 (heriarchical vs network data model) :2:
+***** DONE 4 (indexing, dense vs sparse index) :7:
+***** 5 (materialized & pipeline evaluation of query) :8:
+***** DONE 6 (lost update, dirty read) :9:
+***** DONE 7 (timestamp ordering) :9:
+***** DONE 8 (pros, cons, create, exec stored procedure) :7:
+**** c
+***** 9 (ER diagram)             :2:
+***** 10 (normaliztion & all its types) :4:
+***** 11 (SQL, relational algebra statements) :6:3:half_half_marks:
+*** 2020
+**** b
+***** 2 (imp. of dbms)           :1:
+***** 3 (union compatibility)    :3:
+***** 4 (question numbers in pdf are messed up)
+***** 5 (order, group clause)    :6:
+***** 6 (normalization, 1NF, 2NF) :4:
+***** 7 (query cost measuring, query expression tree) :8:
+***** DONE 8 (wait-for graph to detect deadlock) :9:
+***** DONE 9 (transaction read/ write, transaction states) :9:
+**** c
+***** 10 (sql queries)           :6:
+***** 11 (ER diagram)            :2:
+***** DONE 12 (stored procedures, triggers) :7:
+*** 2021
+**** b
+***** 2 (DBMS advantages, disadvantages) :1:
+***** DONE 3 (3-schema architectrure of DB) :2:
+***** 4 (roles of DBA)           :8:
+***** DONE 5 (dense vs sparse indexing) :7:
+***** DONE 6 (transaction states, ACID) :9:
+***** 7 (ER diagram)             :2:
+***** 8 (relational algebra)     :3:
+**** c
+***** 9 (normalization & all types) :4:
+***** DONE 10 (stored procdeure vs trgger, concurrency control, timestamp) :20_80_marks:9:7:
+***** DONE 11 (data model, types) :2:
+* [[file:4th-sem/nm.org][NUM]]:  Numerical Methods
+** [num] Daily docs                :nm:
+*** Archive
+*** TODO <2023-03-23 Thu> docs: ch.2 start :2:
+:PROPERTIES:
+:Copy_num: 1
+:Page_range: 32-37 
+:END:
+**** Tasks
+***** go thru pages 
+***** numericals @pg.36
+***** make notes
+***** make cards
+***** tick off pages
+
+*** TODO <2023-03-24 Fri> docs: solving newton interpolation numericals :2:
+:PROPERTIES:
+:Copy_num: 1
+:Page_range: 42-46 
+:END:
+**** Tasks
+***** go thru pages 
+***** make notes
+***** numericals @pg. 44
+***** make cards
+***** tick off pages
+
+*** [2023-03-28 Tue] Interpolation w/ unequal intervals :2:
+:PROPERTIES:
+:Copy_num: 1
+:Page_range: 54-58 
+:Chapter_topic: 2; 
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** practice numericals on pg. 55
+
+*** [2023-03-29 Wed] ch.2: newton divided difference, cubic spline :2:
+:PROPERTIES:
+:Copy_num: 1
+:Page_range: 59-64 
+:Chapter_topic: 2; 
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** numericals on pg. 59, 63
+
+*** [2023-03-31 Fri] curve fitting :2:
+:PROPERTIES:
+:Copy_num: 1
+:Page_range: 72-76 
+:Chapter_topic: 2?
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** Numericals on page 73-74
+
+*** [2023-04-04 Tue] curve fitting numericals :2:
+:PROPERTIES:
+:Copy_num: 1
+:Page_range: 87-93 
+:Chapter_topic: 
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** numericals on pg. 89
+
+*** [2023-04-07 Fri] newton Differentiation & Integration, Trapezoidal :2:3:
+:PROPERTIES:
+:Copy_num: 1
+:Page_range: 103-108 
+:Chapter_topic: 3
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+***** Numericals on pg. 104, 106
+
+*** [2023-04-18 Tue] lil tips for numerical integration :3:
+:PROPERTIES:
+:Copy_num: 1
+:Page_range: 114 
+:Chapter_topic: idk
+:END:
+**** Tasks
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+
+*** [2023-04-22 Sat] Gauss Elimination :4:
+:PROPERTIES:
+:Copy_num: 1
+:Page_range: 124-129 
+:Chapter_topic: 4
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** Recall keywords 1st, then details
+delete this heading if not doing
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+
+*** [2023-04-26 Wed] Gauss elimination w/ pivot, Gauss-Jordan :4:
+:PROPERTIES:
+:Copy_num: 1
+:Page_range: 134-139 
+:Chapter_topic:
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+
+*** [2023-05-02 Tue] LU factorization method :4:
+:PROPERTIES:
+:Copy_num: 2
+:Page_range: 11-16 
+:Chapter_topic: 4, 
+:END:
+**** Tasks
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+
+*** [2023-05-03 Wed] Gauss-Seidel & Gauss-Jacobi numericals, power/eigen theory :4:
+:PROPERTIES:
+:Copy_num: 2
+:Page_range: 20-23
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+***** Numericals on page 21
+
+*** [2023-05-04 Thu] power/eigen numericals :4:
+:PROPERTIES:
+:Copy_num: 2
+:Page_range: 28-31 
+:Chapter_topic:
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+
+*** [2023-05-09 Tue] Poisson Equation :6:
+:PROPERTIES:
+:Copy_num: 2
+:Page_range: 33-37
+:Chapter_topic: Poisson equation
+:END:
+**** Tasks
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+***** DONE [#A] Study for Numerical internal exam
+SCHEDULED: <2023-05-11 Thu 16:00>
+
+/break down into study theory, skim numericals, practice only a few; for each method/
+
+- [ ] Simpson's Trapezoidal 1/3 or 3/8
+- [ ] Gauss Jordan or Gauss Elimination
+- [ ] Laplacian or Poisson Equation
+
+*** [2023-05-11 Thu] ch.5: Euler's method :5:
+:PROPERTIES:
+:Copy_num: 2
+:Page_range: 44-45 
+:Chapter_topic: 5
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+
+*** [2023-05-12 Fri] Runge-Kutta   :5:
+:PROPERTIES:
+:Copy_num: 2
+:Page_range: 50-53 
+:Chapter_topic: 5
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+
+*** [2023-05-13 Sat] Lab1: Bisection & lab 2: Regular-Falsi
+:PROPERTIES:
+:Copy_num: 3, lab1.c, photos in phone
+:Page_range: 2 
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+***** lab report (format in lab1.c file)
+
+*** [2023-05-16 Tue] Lab 3: Newton-Raphson method
+:PROPERTIES:
+:Copy_num: 3, lab3.c, photos in phone
+:Page_range: 9 
+:Chapter_topic:
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+***** lab report
+
+*** [2023-05-18 Thu] lab 4: fixed point method
+:PROPERTIES:
+:Copy_num: lab4.c, photos in lab4-photos folder(laptop)
+:Page_range: 
+:Chapter_topic:
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** Recall keywords 1st, then details
+delete this heading if not doing
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+
+*** [2023-05-19 Fri] lab 5-8
+:PROPERTIES:
+:Copy_num: in laptop lab folder
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+***** lab 8 incomplete
+
+*** [2023-05-20 Sat] RK-2, RK-4 contd. :5:
+:PROPERTIES:
+:Copy_num: 3
+:Page_range: 16-20 
+:Chapter_topic:
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+*** [2023-05-21 Sun] syllabus speedrun any % :5:
+:PROPERTIES:
+:Copy_num: 3
+:Page_range: 16-24 
+:Chapter_topic: ch.5 remaining
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+
+*** [2023-05-23 Tue] labs idk 
+:PROPERTIES:
+:Copy_num: photos in lab-5-23 folder
+:Page_range: 
+:Chapter_topic:
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+
+** nm past paper checklist         :nm:
+*** 2019
+**** group b
+***** DONE 2 (inherent vs numerical errors) :1:
+***** 3 (bisection)              :1:
+***** 4 (lagrange's interpolation polynomial) :2:
+***** 5 (trapezoidal program)  :code:3:
+***** DONE 6 (gauss jordan)      :4:
+***** 7 (classical runge-kutta)  :5:
+***** 8 (poisson)                :6:
+**** group c
+***** 9
+****** DONE a (cholesky)        :4:
+****** DONE b (fixed point)     :1:
+***** 10
+****** a (curve fitting)        :2:
+****** b(ordinary vs partial diff. eqn) :6:5:half_half_marks:
+***** 11  (cubic spline)         :2:
+*** 2020
+**** group b
+***** 2 (newton-raphson)         :1:
+***** 3 (newton forward differentiation) :2:
+***** DONE 4 (simpson's 1/3 algo) :3:code:
+***** DONE 5 (cholseky)          :4:
+***** 6 (classic runge-kutta)    :5:
+***** 7 (poisson)                :6:
+***** 8 (short notes) :6:1:half_half_marks:
+**** group c
+***** 9 (algo + code bisection) :1:code:
+***** 10 (cubic spline)          :2:
+***** 11
+****** DONE a (gauss seidel)    :4:
+****** b (taylor)               :5:
+*** 2021
+**** group b
+***** 2 (abs. & relative errors) :1:
+***** 3 (lagrange vs newton interpolation) :theory:2:
+***** DONE 4 (newton divided difference) :2:
+***** 5 (trapezoidal rule)       :3:
+***** 6 (gauss elim. vs jordan, siedel vs jacobi) :4:theory:
+***** 7 (euler)                  :5:
+***** 8 (poisson)                :6:
+**** group c
+***** 9 (bisection)              :1:
+***** DONE 10 (eigen, gauss seidel?) :4:
+- for 2nd half, do full table w/ seidel
+- &, 1st 3-4 values w/ jacobi 
+***** 11 (taylor)                :5:
+* [[file:4th-sem/os.org][OS]]:   Operating Systems
+** [os] Daily docs
+*** Archive
+*** [2023-03-26 Wed]
+:PROPERTIES:
+:Copy_num: 1
+:Page_range: 48-51 
+:Chapter_topic: 2,3
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+*** [2023-03-30 Thu]
+:PROPERTIES:
+:Copy_num: 1
+:Page_range: 64-66 
+:Chapter_topic: 4
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** Recall keywords 1st, then details
+****** deadlock resolution
+******* Djikstra's khai k algoithm
+find order for running processes such that deadlock doesn't occur
+run process only if available resources meets its needed no. of resources
+
+***** go thru pages 
+***** make notes & cards
+*** [2023-03-31 Fri]
+:PROPERTIES:
+:Copy_num: 1
+:Page_range: 70-71 
+:Chapter_topic: 5: memory management
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** question on page 71
+***** Recall keywords 1st, then details
+****** Mono-programming
+At a time, main memory can only load OS & 1 process.
+Used in early computers
+****** Multi-programming
+******* Fixed Partition
+memory separated into partitions of different partitions.
+1 partition holds one process at a time
+
+As process size increases, we need to allocate more memory
+******** Continuous allocation
+allocating memory in same partition
+******** Non-continuous allocation
+allocating additional memory from free partition.
+link/pointer is used to show in which partition process continues?
+******** implemented using
+********* Absolute translation
+maintain queues for each partition. processes can only run in assigned partition
+********* Relocatable translation
+use one queue for entire memory.
+process runs on whichever partition is free 
+******** Drawback
+unused memory in partitions (fragment?) if partition size > process size
+there may be enough memory to run another process but it may be split up as fragments in different partitions
+********* Solution: Memory compaction/ Defragmentation?
+- partitions are resized & moved in memory such that there are no fragments
+- creates one large empty area for additional processes to run
+
+******* Variable Partition
+
+***** go thru pages 
+***** make notes & cards from above recall
+*** [2023-04-02 Sun]
+:PROPERTIES:
+:Copy_num: 1
+:Page_range: 81-83 
+:Chapter_topic: memory management 
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+*** [2023-04-06 Thu]
+:PROPERTIES:
+:Copy_num: 1
+:Page_range: 97-100 
+:Chapter_topic: paging?
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+*** [2023-04-07 Fri]
+:PROPERTIES:
+:Copy_num: 1
+:Page_range: 102-103 
+:Chapter_topic: MMU
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+*** [2023-04-20 Thu]
+:PROPERTIES:
+:Copy_num: 1
+:Page_range: 115-116 
+:Chapter_topic: ch. 6: I/O device management
+:END:
+**** Tasks
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+*** [2023-04-22 Sat]
+:PROPERTIES:
+:Copy_num: 1
+:Page_range: 120-123 
+:Chapter_topic: 6
+:END:
+**** Tasks
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+*** [2023-04-23 Sun]
+:PROPERTIES:
+:Copy_num: 1
+:Page_range: 130-131 
+:Chapter_topic: 7 file handling (finished in one class)
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+
+*** [2023-04-27 Thu]
+:PROPERTIES:
+:Copy_num: 2
+:Page_range: 1-2 
+:Chapter_topic: 9
+:END:
+**** Tasks
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+*** [2023-04-28 Fri]
+:PROPERTIES:
+:Copy_num: 2
+:Page_range: 4-6 
+:Chapter_topic: finished ch. 9 & 8
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+*** [2023-06-24 Sat] internal exams study
+:PROPERTIES:
+:Copy_num: 3
+:Page_range: 54 
+:Chapter_topic:
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+*** TODO <2023-07-29 Sat> missed lab (process programs in C)
+:PROPERTIES:
+:Copy_num: photos in college-files/../os/lab
+:Page_range: 
+:END:
+**** Tasks
+***** OS lab reports 3 & 4
+- 3 tasks for lab 3
+- 2 tasks for lab 4
+*** TODO <2023-08-01 Tue> lab: priority scheduling
+:PROPERTIES:
+:Copy_num: college-files/../os/lab/aug-01
+:END:
+**** Tasks
+/I just copied programs from the internet. Try to do on own or at least understand?/
+***** go thru pages 
+***** make notes
+***** make cards
+***** report
+*** TODO <2023-08-02 Wed> lab: solving deadlock with banker's algorithm
+:PROPERTIES:
+:Copy_num: spiral (esattya)
+:Page_range: 33
+:END:
+**** Tasks
+***** no need to fix program. do that after exam
+***** report
+***** go thru pages 
+***** make notes
+***** make cards
+***** tick off pages
+*** TODO <2023-08-10 Thu> lab: process management (first fit, last fit)
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** lab report
+***** make notes
+***** make cards
+***** tick off pages
+*** TODO <2023-08-11 Fri> lab: page replacement (FIFO)
+**** Tasks
+***** go thru pages 
+***** lab report
+***** make notes
+***** make cards
+***** tick off pages
+*** DONE <2023-08-16 Wed> exam study (upto pg. 52 of longer ch.5 pdf)
+:PROPERTIES:
+:Copy_num: spiral (esatya)
+:Page_range: 42-46
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** DONE go thru pages 
+***** DONE make notes
+***** DONE read [[https://www.geeksforgeeks.org/requirements-of-memory-management-system/][requirements]] article
+***** make cards
+***** tick off pages
+*** DONE <2023-08-26 Sat> docs: examp study (ch. 5)
+:PROPERTIES:
+:Copy_num: spiral(e)
+:Page_range: 62-64
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes
+***** make cards
+***** tick off pages
+*** DONE <2023-08-29 Tue> docs: exam study(ch.5 past paper q's)
+:PROPERTIES:
+:Copy_num: spiral (e)
+:Page_range: 69-73
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes
+***** make cards
+***** tick off pages
+*** TODO <2023-09-02 Sat> docs: exam study (ch. 9)
+:PROPERTIES:
+:Copy_num: spiral(e)
+:Page_range: 77-79
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes
+***** make cards
+***** tick off pages
+
+** os past paper checklist         :os:
+*** 2019
+**** b
+***** 2 (os functions)           :1:
+***** DONE 3 (semaphore, dining philosopher) :3:
+***** 4 (numerical: deadlock)    :4:
+***** DONE 5 (numerical: cpu busy) :3:
+# not sure if this is from ch.3
+***** DONE 6 (numerical: page: fifo, lru) :5:
+- [ ] look up how to write (table n shit)
+- [ ] check if solution is right
+***** 7 (access control matrix)  :7:
+***** 8 (OTP, worm vs virus)     :8:
+**** c
+***** DONE 9  (scheduling criteria, gantt chart) :3:
+***** DONE 10 (numerical: disk scheduling) :6:
+***** DONE 11 (clock synchrnization algos) :9:
+*** 2020
+**** b
+***** 2 (os functions)           :1:
+***** 3 (kernel mono vs micro)   :2:
+***** DONE 4 (numerical: disk scheduling) :6:
+***** 5 (file vs dir. ACL & ACM) :7:
+***** 6 (biometric, System threats) :8:
+***** DONE 7 (distributed vs centralized OS) :9:
+***** TODO 8 (short notes) :3_sub_questions:3:5:10:
+- [ ] producer consumer problem
+- [X] coalescing, compaction 
+- [ ] Ubuntu (look up UNIX description, rolling release stuff) 
+**** c
+***** DONE 9  (gantt: cpu scheduling) :3:
+***** DONE 10 (numerical: page: fifo, lru, optimal) :5:
+***** 11 (deadlock conditions, handling) :4:
+*** 2021
+**** b
+***** 2 (OS, multi-tasking vs batch) :1:
+***** DONE 3 (scheduler)         :3:
+***** DONE 4 (race condition, semaphore) :3:
+***** DONE 5 (gantt: cpu scheduling) :3:
+***** DONE 6 (thrashing, mem. manage requirements) :5:
+- [ ] look up thrashing
+- [X] recall requirements
+***** DONE 7 (numerical: malloc? process fit algos) :5:
+- [X] garne ta bujhe
+- [ ] look up how to write (tables, process names or directly size, ...)
+- [X] look up for worst fit
+  
+***** 8 (I/O handling, system threats) :20_80_marks:8:6:
+**** c
+***** 9  (numerical: banker's algo) :4:
+***** DONE 10 (page replacement, belady's anomaly) :5:
+***** DONE 11 (clock synchrnization algos) :9:
+* [[file:4th-sem/scr.org][SCR]]:  Scripting Languages
+:PROPERTIES:
+:links: [[https://classroom.google.com/c/NTE3MjE4Mjk1NDAw][Google Classroom]]
+        [[https://replit.com/team/bca-fourth-semester1][Replit team]]
+:END:
+** [scr] Daily docs
+*** Archive
+*** [2023-03-26 Sun]
+:PROPERTIES:
+:Copy_num: 
+:Page_range: 
+:Chapter_topic: 1, 2nd half of 'JS Fundamentals', half of 'Basic problems'
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru repls 
+***** make notes & cards
+*** [2023-03-30 Thu]
+:PROPERTIES:
+:Copy_num: 1
+:Page_range: 66-68 
+:Chapter_topic: 3
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** DONE [#A] s.eng questions on page 68
+SCHEDULED: <2023-03-31 Fri> DEADLINE: <2023-04-01 Sat>
+*** [2023-04-01 Sat]
+:PROPERTIES:
+:Copy_num: 1
+:Page_range:  
+:Chapter_topic: 'basic problems' & 'built-in methods' repls
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** Recall keywords 1st, then details
+****** Built-in methods
+different built-in objects have built-in methods
+******* Arrays
+******** toString()
+******** join()
+like toString() but we can specify string with which to separate elements in combined string
+default is ","
+******* Strings
+******* Math
+
+***** go thru pages 
+***** make notes & cards
+***** DONE [#B] [[https://replit.com/@bca-fourth-semester1/Assignment-JS-Problems-dinesh-58#index.js][js problems]]
+SCHEDULED: <2023-04-04 Tue> DEADLINE: <2023-04-08 Sat>
+:LOGBOOK:
+CLOCK: [2023-04-04 Tue 19:40]--[2023-04-04 Tue 20:13] =>  0:33
+CLOCK: [2023-04-04 Tue 19:18]--[2023-04-04 Tue 19:36] =>  0:18
+CLOCK: [2023-04-01 Sat 18:57]--[2023-04-01 Sat 20:06] =>  1:09
+:END:
+*** [2023-04-02 Sun] DOM manipulation
+:PROPERTIES:
+:Copy_num: 1
+:Page_range: 83-84, class-04-02 folder 
+:Chapter_topic: dom manipulation
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+*** [2023-04-08 Sat] 
+:PROPERTIES:
+:Copy_num: 1
+:Page_range: 112, class-04-08 folder 
+:Chapter_topic: selecting elements w/ js, DOM manipulation 
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+***** skim [[https://developer.mozilla.org/en-US/docs/Web/API/Element/lastElementChild][mdn1]] [[https://developer.mozilla.org/en-US/docs/Web/API/Node/lastChild][mdn2]]
+*** [2023-04-22 Sat] Event handling, HTMLFormElement
+:PROPERTIES:
+:Copy_num: 1, lab-4-22 folder
+:Page_range: 129
+:Chapter_topic:
+:END:
+**** Tasks
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+*** [2023-04-23 Sun] Forms, RegEx, Spotify form 
+:PROPERTIES:
+:Copy_num: 1, class-04-23 folder
+:Page_range: 132-133 
+:Chapter_topic: regex
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+*** [2023-04-29 Sat] Spotify form
+:PROPERTIES:
+:Copy_num: clas-04-23/forms folder
+:Page_range: 
+:Chapter_topic: continuing spotify registration validation project
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+*** [2023-04-30 Sun] Spotify form
+:PROPERTIES:
+:Copy_num: clas-04-23/forms folder
+:Page_range: 
+:Chapter_topic: finishing spotify registration validation project
+:END:
+**** Tasks
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+*** [2023-05-11 Thu] php built-in methods
+:PROPERTIES:
+:Copy_num: 2, /scripting/php/class-05-11/ folder
+:Page_range: 43-44
+:Chapter_topic:
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+***** TODO study php basics using syllabus, prashant's git repo
+*** [2023-05-13 Sat] php form-handling, datetime
+:PROPERTIES:
+:Copy_num: 3
+:Page_range: 2-3 
+:Chapter_topic:
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+*** [2023-05-14 Sun] file & error handling
+:PROPERTIES:
+:Copy_num: 3, class-05-14 folder
+:Page_range: 6-8 
+:Chapter_topic:
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+*** [2023-05-19 Fri] (yt) php basics youtube playlist
+:PROPERTIES:
+:Copy_num: 3
+:Page_range: 14-15 
+:Chapter_topic:
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+*** [2023-05-20 Sat] php file uploads
+:PROPERTIES:
+:Copy_num: 3, class-05-20 folder
+:Page_range: 15-16 
+:Chapter_topic:
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+***** DONE [#A] assignments on both pages
+SCHEDULED: <2023-05-20 Sat>
+*** [2023-05-21 Sun] PHP sessions, mail, mysql
+:PROPERTIES:
+:Copy_num: 3, class-05-21, opt/lampp/htdocs/mysql.php (because doesn't connect with php'
+s dev server for some reason)
+:Page_range: 25-26 
+:Chapter_topic:
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+***** DONE SCR lab 1
+DEADLINE: <2023-05-25 Thu> 
+****** DONE [#A] complete form validation program
+SCHEDULED: <2023-05-24 Wed>
+:LOGBOOK:
+CLOCK: [2023-05-24 Wed 19:32]--[2023-05-24 Wed 20:36] =>  1:04
+CLOCK: [2023-05-24 Wed 17:43]--[2023-05-24 Wed 18:55] =>  1:12
+CLOCK: [2023-05-24 Wed 13:16]--[2023-05-24 Wed 14:02] =>  0:46
+:END:
+[[https://docs.google.com/document/d/16HJJ9trU1zYMn648dJ1jpJg2dV2jvc6XaNtZN-XhAKU/edit][details]]
+[[https://classroom.google.com/c/NTE3MjE4Mjk1NDAw/a/NjEwNzg5NDYwMTMx/details][submission link]]
+
+******* finish css for home page
+:LOGBOOK:
+CLOCK: [2023-05-25 Thu 10:17]--[2023-05-25 Thu 11:03] =>  0:46
+CLOCK: [2023-05-25 Thu 09:50]--[2023-05-25 Thu 10:08] =>  0:18
+:END:
+- [X] button border
+- [X] button hover
+  
+******* DONE store inputs in object 
+******* make temporary button that will send accurate values? 
+idk might take too long
+******* separate object for regex. keys should be same as inputs object
+
+******* css for confirm dialog
+- [ ] position: fixed?
+- [ ] use close icon with appropriate color. maybe svg cause you can use color property
+******* go thru all comments
+****** DONE [#C] scr lab report
+SCHEDULED: <2023-05-27 Sat>
+*** [2023-05-21 Sun] (yt) php basics playlist
+:PROPERTIES:
+:Copy_num: 3
+:Page_range: 26-27 
+:Chapter_topic:
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+*** [2023-05-22 Mon] (yt) sql basics playlist
+:PROPERTIES:
+:Copy_num: 3
+:Page_range: 28-29 
+:Chapter_topic:
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+*** [2023-05-23 Tue] php mysql CRUD
+:PROPERTIES:
+:Copy_num: 3, /otp/lampp/htdocs/scr/mysql-*.php files
+:Page_range: 30
+:Chapter_topic:
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+***** DONE [#A] TOOD select students whose roll no > 2
+SCHEDULED: <2023-05-24 Wed 18:00>
+*** [2023-05-23 Tue] (yt) php w/ sqlite playlist
+:PROPERTIES:
+:Copy_num: 1
+:Page_range: 31-32 
+:Chapter_topic:
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** Recall keywords 1st, then details
+delete this heading if not doing
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+*** [2023-05-24 Wed] (yt) php w/ sqlite
+:PROPERTIES:
+:Copy_num: 3
+:Page_range: 33-35 
+:Chapter_topic:
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** Recall keywords 1st, then details
+delete this heading if not doing
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+*** [2023-04-24 Mon] regex (learned for assignment)
+:PROPERTIES:
+:Copy_num: 3
+:Page_range: 35-38
+:Chapter_topic:
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+
+*** [2023-05-26 Fri] mysql aggregrate functions
+:PROPERTIES:
+:Copy_num: 3, mysql-*.php files in htdocs
+:Page_range: 38-40
+:Chapter_topic: 2
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+*** [2023-05-27 Sat] php OOP
+:PROPERTIES:
+:Copy_num: 3, oop.php file
+:Page_range: 40-41
+:Chapter_topic:
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+***** skim old java notes for topics I specified in the copy
+*** [2023-05-28 Sun] php interface, abstraction, exceptions; AJAX
+:PROPERTIES:
+:Copy_num: 3, class-05-28 folder, htdocs/ajax/
+:Page_range: 42-43 
+:Chapter_topic: 2,3
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+*** [2023-05-30 Tue] (php sqlite)some thoughts
+:PROPERTIES:
+:Copy_num: 3
+:Page_range: 44-45 
+:Chapter_topic: 
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+*** [2023-06-01 Thu] dynamic search bar using AJAX, jQuery intro
+:PROPERTIES:
+:Copy_num: 3, files in htdocs/scr/ajax/
+:Page_range: 45 
+:Chapter_topic:
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+***** DONE [#A] Written Assignment 1
+SCHEDULED: <2023-06-02 Fri> DEADLINE: <2023-06-03 Sat>
+Due Date: 2023/06/03
+Note: Students must submit handwritten answers to the questions in the A4 sized paper.
+
+1. Explain the concept, structure and importance of Document Object Model(DOM).
+2. What is a dialog Box ? Explain different dialog boxes with suitable examples.
+3. Explain two HTTP methods to accept user inputs from interfaces with suitable php programs.
+***** DONE [[https://docs.google.com/document/d/1p1SXplK5xtBNvulzZC-0E2A-jQ5n7rHDIDdf0KympA4/edit?usp=drive_web&authuser=0][Lab assignment 2]]
+SCHEDULED: <2023-06-03 Sat> DEADLINE: <2023-06-04 Sun>
+- [ ] just get shitty functional for now
+- [ ] refactor later
+***** DONE Lab report: assignment 2 
+SCHEDULED: <2023-06-03 Sat>
+*** [2023-06-02 Fri] jQuery carousel, UI, CMS intro
+:PROPERTIES:
+:Copy_num: 3, htdocs/ajax/jquery
+:Page_range: 46-47
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+*** [2023-06-13 Tue] WP-admin, JOOMLA intro
+:PROPERTIES:
+:Copy_num: 3
+:Page_range: 49-50 
+:Chapter_topic:
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+*** [2023-06-14 Wed] mcq practice, lab 3
+:PROPERTIES:
+:Copy_num: lab3 folder
+:Chapter_topic:
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+***** DONE [#B] scr lab report 3                       :important:urgent:
+SCHEDULED: <2023-06-19 Mon>
+- [X] program already solved. just make report
+******* DONE [#A] SCR lab 3 handwritten theoretical questions :important:urgent:
+SCHEDULED: <2023-06-19 Mon>
+****** error cases
+- [X] just copy paste error message
+- [X] calling displayAll() for object of Employee
+- [X] passing 0 or != 2 arguements for constructor
+*** [2023-06-16 Fri] lab4 
+:PROPERTIES:
+:Copy_num: 3, lab4 folder
+:Page_range: 51
+:Chapter_topic:
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+***** DONE [#A] finish scr lab4 program :important:
+SCHEDULED: <2023-07-04 Tue>
+****** DONE filter all inputs
+****** DONE if input false, set error
+****** DONE if boolean is true, insert into db
+****** DONE format php file
+:PROPERTIES:
+:Effort:   20min
+:END:
+:LOGBOOK:
+CLOCK: [2023-07-04 Tue 13:36]--[2023-07-04 Tue 14:00] =>  0:24
+:END:
+****** DONE use new dialog element (use devdocs)
+- [ ] straight up just echo dialog instead of setting innerhtml?
+****** DONE css
+:PROPERTIES:
+:Effort:   25min
+:END:
+:LOGBOOK:
+CLOCK: [2023-07-04 Tue 16:55]--[2023-07-04 Tue 17:19] =>  0:24
+:END:
+****** DONE redo vim php indent fix
+***** DONE [#A] scr lab4 report :important:urgent:
+SCHEDULED: <2023-07-28 Fri>
+- [X] just use org mode bruh. fuc libreoffice
+  - [X] use template in college-files/assets
+    - [X] might have to make it into .org file w/ no TOC & intro, objectives, ... headings
+****** DONE [#A] fix code wrap for org exports & put in template
+SCHEDULED: <2023-07-29 Sat>
+*** [2023-06-17 Sat] lab5: ajax
+:PROPERTIES:
+:Copy_num: 3, lab5 folder
+:Page_range: 52
+:Chapter_topic:
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+***** DONE [#B] scr lab5 report :important:urgent:
+SCHEDULED: <2023-07-29 Sat>
+- [ ] notes
+** scr past paper checklist        :sc:
+*** 2019
+**** b 
+***** DONE 2 (DOM structure, imp.) :1:
+***** DONE 3 (js print largest, smallest) :1:
+***** DONE 4 (dialog boxes)      :1:
+***** DONE 5 (http methods + php code) :2:
+***** DONE 6 (show, hide w/ jquery) :3:
+***** DONE 7 (synchronize data between js & php) :3:
+just echo in php & retrieve responseText in js
+***** 8 (CMS, shitty question)   :3:
+**** c
+***** DONE 9 (calculator w/ js)  :1:
+***** DONE 10 (php OOP)          :3:
+***** DONE 11 (php + sql form handling) :2:
+*** 2020
+**** b 
+***** DONE 2 (where can js be used?) :1:
+***** DONE 3 (how eventListener works) :1:
+***** DONE 4 (immediately invoked js function?) :1:
+***** DONE 5 (how foreach works in php) :2:
+practice forEach for assoc arrrays
+***** 6 (jquery selectors)       :3:
+***** 7 (ajax methods)           :3:
+***** 8 (MVC arch.)              :3:
+**** c
+***** 9
+****** DONE a (function w/ any no. of parameters) :1:2:half_half_marks:
+******* js
+using ~arguments~ pre-defined array inside a *non-arrow* function 
+/NOTE: arguments spelled without e after u/
+******* php
+****** DONE b (js display time continuously) :1:
+use sleep or something?
+***** DONE 10 (php method overriding) :3:
+***** DONE 11 (php + sql form handling) :2:
+*** 2021
+**** b 
+***** DONE 2 (features of javascript) :1:
+***** DONE 3 (js change bg-color every second) :1:
+***** DONE 4 (factorial using arrow function) :1:
+***** 5 (php print chessboard)   :2:
+***** 6 (jquery datepicker)      :3:
+sir said just use package in jquery ui
+***** DONE 7 (AJAX: js only for retrieving info from server) :3:
+***** DONE 8 (php constructor)   :3:
+**** c
+***** DONE 9 (php function overloading) :3:
+***** 10 (js calculator)         :1:
+***** 11 (php, sql store form)   :2:
+look up how to store files in database, maybe string to represent location?
+remember enc-type
+* [[file:4th-sem/seng.org][SENG]]: Software Engineering
+** [seng] Daily docs
+*** Archive
+*** [2023-03-25 Sat]
+:PROPERTIES: 
+:Copy_num: 1
+:Page_range: 47 
+:Chapter_topic: 2, 3; 
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+*** [2023-03-29 Wed]
+:PROPERTIES:
+:Copy_num: 1
+:Page_range: 58 
+:Chapter_topic: 3
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+*** [2023-04-01 Sat]
+:PROPERTIES:
+:Copy_num: 1
+:Page_range: 79 
+:Chapter_topic: 3
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+*** [2023-04-05 Wed]
+:PROPERTIES:
+:Copy_num: 1
+:Page_range: 94-95 
+:Chapter_topic: 4
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+*** [2023-04-06 Thu]
+:PROPERTIES:
+:Copy_num: 1
+:Page_range: 101-102 
+:Chapter_topic: MVC, Architecture
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** Recall keywords 1st, then details
+delete this heading if not doing
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+*** [2023-04-08 Sat]
+:PROPERTIES:
+:Copy_num: 1
+:Page_range: 108-110 
+:Chapter_topic: cohesion & coupling, models
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+*** [2023-04-23 Sun]
+:PROPERTIES:
+:Copy_num: 1, class-04-23 folder 
+:Page_range: 132-133 
+:Chapter_topic:
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** make notes & cards
+***** tick off pages
+***** extra links/ resources
+- [[https://regex101.com/]]
+- [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp][MDN regex page]]
+** seng past paper checklist        :se:
+*** 2019
+**** b 
+***** 2 ()                          :1:
+***** 3 (software process model)    :2:
+***** 4 (types of software requirement, explain) :3:
+***** 5 ()                          :4:
+***** 6 (ui design)                 :4:
+***** 7 (software maintenance)      :7:
+***** 8 (configuration management)  :7:
+**** c 
+***** 9 (manaage software project)  :8:
+***** 10 (ISO standard, b/w testing) :6:
+***** 11 (requirements analysis techniques) :3:
+*** 2020
+**** b 
+***** 2 ()                          :1:
+***** 3 (extreme programming)       :2:
+***** 4 (quality assurance, CMM)    :6:
+***** 5 (architecture, layered model) :4:
+***** 6 (verification vs validation, inspection) :6:
+***** 7 (code translation, reverse eng.) :7:
+***** 8 (quality management activities) :6:
+**** c 
+***** 9 (software process model, waterfall, prototyping, spiral) :2:
+***** 10 (requirement, func vs non-func) :3:
+***** 11
+****** a (risk management, its block diagram) :8:
+****** b (good programming practices, CASE) :5:2:half_half_marks:
+*** 2021
+**** b 
+***** 2 (waterfall)                 :2:
+***** 3 (CASE)                      :2:
+***** 4 (modularization, cohesion vs coupling) :4:
+***** 5 (development tools)         :5:
+***** 6 (COCOMO cost estimation)    :8:
+***** 7 (verify & validate, black/white box) :6:
+***** 8 (QA activities)             :6:
+**** c 
+***** 9 (challenges of seng)        :1:
+***** 10 (CMM, alpha/beta testing)  :6:
+***** 11 (types of maintenance, reengineering) :7:
+* Project I
+:PROPERTIES:
+:links: [[www.example.com]]
+:END:
+** [sub] Daily docs
+*** Archive
+*** [2023-03-30 Thu]
+:PROPERTIES:
+:Copy_num: 1
+:Page_range: 68-69 
+:Chapter_topic: proposal format
+:END:
+**** Tasks
+# add assignments here as * TODO headings
+***** go thru pages 
+***** DONE [[file:project-1/proposal/bca-project-proposal-sujal-34.org][project proposal]] 
+DEADLINE: <2023-04-25 Tue -2d>
+:LOGBOOK:
+CLOCK: [2023-04-23 Sun 18:15]--[2023-04-23 Sun 20:23] =>  2:08
+CLOCK: [2023-04-23 Sun 17:22]--[2023-04-23 Sun 17:45] =>  0:23
+CLOCK: [2023-04-22 Sat 20:07]--[2023-04-22 Sat 20:31] =>  0:24
+CLOCK: [2023-04-22 Sat 18:30]--[2023-04-22 Sat 19:10] =>  0:40
+CLOCK: [2023-04-20 Thu 20:16]--[2023-04-20 Thu 20:40] =>  0:24
+CLOCK: [2023-04-20 Thu 19:25]--[2023-04-20 Thu 20:15] =>  0:50
+CLOCK: [2023-04-20 Thu 18:38]--[2023-04-20 Thu 19:21] =>  0:43
+CLOCK: [2023-04-20 Thu 18:23]--[2023-04-20 Thu 18:38] =>  0:15
+CLOCK: [2023-04-19 Wed 20:35]--[2023-04-19 Wed 21:00] =>  0:25
+CLOCK: [2023-04-19 Wed 17:21]--[2023-04-19 Wed 18:21] =>  1:00
+CLOCK: [2023-04-19 Wed 17:05]--[2023-04-19 Wed 17:21] =>  0:16
+CLOCK: [2023-04-19 Wed 16:57]--[2023-04-19 Wed 17:05] =>  0:08
+CLOCK: [2023-04-19 Wed 15:56]--[2023-04-19 Wed 16:34] =>  0:38
+CLOCK: [2023-04-19 Wed 15:17]--[2023-04-19 Wed 15:37] =>  0:20
+CLOCK: [2023-04-19 Wed 14:20]--[2023-04-19 Wed 14:49] =>  0:29
+CLOCK: [2023-04-16 Sun 20:06]--[2023-04-16 Sun 20:50] =>  0:44
+CLOCK: [2023-04-16 Sun 14:04]--[2023-04-16 Sun 14:10] =>  0:06
+CLOCK: [2023-04-16 Sun 12:55]--[2023-04-16 Sun 13:33] =>  0:38
+CLOCK: [2023-04-15 Sat 19:01]--[2023-04-15 Sat 19:45] =>  0:44
+CLOCK: [2023-04-15 Sat 18:35]--[2023-04-15 Sat 18:56] =>  0:21
+CLOCK: [2023-04-12 Wed 19:23]--[2023-04-12 Wed 19:30] =>  0:07
+CLOCK: [2023-04-04 Tue 17:46]--[2023-04-04 Tue 18:51] =>  1:05
+CLOCK: [2023-04-04 Tue 17:33]--[2023-04-04 Tue 17:38] =>  0:05
+:END:
+- [X] instead of making todos for everything, just start working?
+****** DONE [#A] finish all methodology except for High level design
+SCHEDULED: <2023-04-22 Sat 16:30>
+****** DONE [#A] polish proposal. finish everything except drivers
+SCHEDULED: <2023-04-24 Mon>
+- [X] look at todos in project file
+- [X] cover page
+  - [X] keep simple for now. ask tomorrow if logo & other shit needed?
+  - [X] try to keep same as report if possible
+- [X] fix org citations & add references
+  - [X] use org references tab group
+- [X] use case diagram
+- [X] mention waterfall or other model in GAntt chart
+- [X] watch the exporting videos in project tab group & then: 
+  - [X] make formatting match specified
+  - [X] make presentation-ready pdf
+- [X] fix image sizes & images going out of order 
+- [X] page break after cover page & each lvl 1 heading
+- [X] figure captions
+** project mid-term
+*** DONE brainstorm how to rewrite project
+SCHEDULED: <2023-05-17 Wed>
+- [X] read up on SM-2 algorithm to see if implementable
+  - [X] test outputs when 5 is changed to 4 in formula & compare w/ outputs from original formula
+    - [X] compare og ef, new ef, & their difference
+- [X] 4 because partial recall & recalled with difficulty should be different
+- [X] leave comment on youtube [[https://www.youtube.com/watch?v=dF5rY3xQeAQ][vid]] asking for advice
+  - [X] or ask in spaced-repitition subreddit
+  - [X] check the links in description 1st
+  - [X] finalize decision to use this or old simple one
+- [X] decide on db schema for cards (based on requirements for SRS & card type)
+  table name is just *default_table* or something
+  /to allow for categorizing by subject & storing subject as separate table in the future/
+  | id | front | back | direction | successful_revisions | ease_factor | scheduled_date |
+  |----+-------+------+-----------+----------------------+-------------+----------------|
+  |    |       |      |           |                      |             |                |
+
+  - just do front, back & bi-directional cards. no cloze
+
+- [X] break down into specific tasks to do sequentially? (build html form, add operation, db connection)
+  this list doesn't need to be complete. just to get started
+
+*** start programing work on project
+/for now, only work on add & review pages/
+**** DONE finish Add page w/o css
+- [X] create new repo 
+- [X] link to new repo in old one, then archive it
+- [X] header.html file for header only
+  - [X] no css for now 
+- [X] test.html file (add to gitignore)
+  /write html here, then copy over to php file? cause no html autocomplete in php file/
+- [X] basic form for index/add page
+**** DONE [#A] watch php & sql playlists
+SCHEDULED: <2023-05-22 Mon>
+- [X] watch php basics [[https://www.youtube.com/watch?v=QFirCQGYxAg&list=PLU70qqWW4frHHqylLnqwQ3e2WyAsENmMf&index=15][playlist]]
+- [X] watch sql basics [[https://www.youtube.com/playlist?list=PLU70qqWW4frE996QWFqVwPmXixRzYRIwi][playlist]]
+**** DONE [#B] watch last 3 videos of php w/ sqlite [[https://www.youtube.com/playlist?list=PLU70qqWW4frENsWYAm-tAKp2ZJQ_dt3WR][playlist]] 
+SCHEDULED: <2023-05-24 Wed 06:00>
+***** DONE [#A] implement learned stuff by building input form & movie details page
+SCHEDULED: <2023-05-30 Tue>
+hint: use querystring (href="./moviedetails.php?id=1")
+
+- [X] try by yourself
+- [X] compare w/ video
+  - [X] debug additional null row on insert
+**** DONE implement insertion into db
+- [X] create sqlite.db file w/ this [[*brainstorm how to rewrite project][table]] 
+  - [X] save table sql query somewhere for future use(creating table if non-existent, creating new tables for different subjects)
+- [X] add db to gitignore
+- [X] insert
+**** DONE [#C] centralize/ maintain only 1 [[file:~/programming/cardsQL/cardsql-notes.org][document]] for notes, todos regarding this
+SCHEDULED: <2023-05-31 Wed 07:30>
+- [X] turn notes.md from old repo into .org file
+- [X] go thru legacy repo's code to see if any TODOs
+
+*** for report, remember to export plantuml diagrams to vector(svg, pdf) instead of png
+/png will be blurry/
