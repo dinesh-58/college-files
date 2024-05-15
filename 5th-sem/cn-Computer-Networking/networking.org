@@ -1,7 +1,6 @@
 #+TITLE:Computer Networking
 # follow syllabus while making notes. sir's pdfs have alot of unneeded depth, extra topics
 
-* study from [[https://www.facebook.com/story.php?story_fbid=395862216581531&id=100084732675763&rdid=hVJkUngBOT6ZuhEM][RR pre-board questions]] too
 * CN1: Intro
 Network: group of computers connected together to communicate, share resources, data 
 ** Network as Infrastructure for data communication
@@ -1081,3 +1080,54 @@ router interface must be manually turned on (using =no shutdown=)
 
 *** report topics
 router, switch, vty, telnet, proper ip config
+
+** lab type 1: Router setup
+*** NOTE: if doing physically,
+- connect router's console port to computer
+- open PuTTY then use Serial option to connect
+
+*** commands inside config mode
+=en= to enter write mode
+=config t= to enter config mode
+=hostname <hostname>=
+**** router password:
+=enable secret <password>=
+**** =line=
+***** =line console 0=
+enter config mode for *console* port
+****** setting password:
+=password <password>=
+=login= : enable password system
+
+***** =line vty 0 4=
+configure *virtual terminal*.
+These allow any devices in network to access router's CLI
+
+****** setting pasword:
+same method as for console
+
+*** Interface
+(in read mode) =show ip interface brief=  (to check status of interfaces)
+
+- [ ] enter write mode, then config mode
+
+**** enter config mode for specific interface
+- =interface <interface>= for e.g. FastEthernet0/0
+  (use autocomplete, then specify number)
+=ip address <ip_Address> <subnet_mask>=
+  for.e.g =ip address 192.168.1.1 255.255.255.0=
+
+=no shutdown= manually set interface status to "up"
+** lab type 2: basic LAN network setup
+- [ ] repeat all from previous
+- connect switch to a ethernet interface of router which has status "up"
+- connect PC to switch, then configure the following:
+  + ip address
+    (network part must be same as router interface,
+    last byte must be different)
+  + subnet same as interface
+  + Gateway as ip address of interface
+*** test connection
+- [ ] ensure telnet is enabled (in control panel > program & features > enable features)
+- in cmd, =telnet <interface ip address>=
+- =ping <interface ip address>=
