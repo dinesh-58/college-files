@@ -1,3 +1,4 @@
+#+OPTIONS: toc:nil
 * num1: Solution of Non-Linear equations
 ** Intro
 ** types of equations
@@ -345,9 +346,8 @@ SCHEDULED: <2023-09-10 Sun>
   + multiply by Y_{i}
 
 ***** Calculator formula for [1 fraction]
-(X-A)(X-B)(X-C)            (X-X_{1})(X-X_{2})(X-X_{3})
---------------- * Y_{i}   =>  -------------------  * Y_{0}
-(E-A)(E-B)(E-C)            (X_{0}-X_{1})(X_{0}-X_{2})(X_{0}-X_{3})
+
+$\displaystyle \frac{(X-A)(X-B)(X-C)}{(E-A)(E-B)(E-C)} \cdot Y_1 \Rightarrow \frac{(X-X_{1})(X-X_{2})(X-X_{3})}{(X_{0}-X_{1})(X_{0}-X_{2})(X_{0}-X_{3})} \cdot Y_0$ 
 
 where,
 - X is specific value given in question
@@ -368,7 +368,9 @@ SCHEDULED: <2023-09-14 Thu>
 :DRILL_LAST_QUALITY: 3
 :DRILL_LAST_REVIEWED: [Y-09-05 Tue 14:%]
 :END:
-given: 
+
+#+LATEX: \newline
+given:  
 | x | x_{0} | x_{1} | x_{2} | x_{3} |
 | y | y_{0} | y_{1} | y_{2} | y_{3} |
 
@@ -387,7 +389,7 @@ find y value at certain value of x
   + no denominator
   + & instead of p we use (x - x_{0}) & subtract similarly
 *** Cubic Spline 
-/wtf is this formula bruh. exam agadi herera jamla/
+/exam agadi herera jamla/
 *** Least Square method (curve fitting) :drill:
 SCHEDULED: <2023-09-08 Fri>
 :PROPERTIES:
