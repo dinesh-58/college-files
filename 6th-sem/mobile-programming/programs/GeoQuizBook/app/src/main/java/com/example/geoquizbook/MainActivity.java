@@ -1,5 +1,6 @@
 package com.example.geoquizbook;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,10 +18,7 @@ import androidx.core.view.WindowInsetsCompat;
 public class MainActivity extends AppCompatActivity {
 	private String TAG = "lifecycle";
 	private int mCurrentIndex = 0;
-	private Button mTrueButton;
-	private Button mFalseButton;
-	private Button mNextButton;
-	private Button mPrevButton;
+	private Button mTrueButton, mFalseButton, mNextButton, mPrevButton, mCheatButton;
 	private TextView mQuestionTextView;
 
 	private Question[] mQuestionBank = {
@@ -103,6 +101,16 @@ public class MainActivity extends AppCompatActivity {
 				updateQuestion();
 			}
 		});
+
+		mCheatButton = findViewById(R.id.cheat_button);
+		mCheatButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(MainActivity.this, CheatActivity.class);
+				i.putExtra("answer", mQuestionBank[mCurrentIndex].isAnswerTrue());
+				startActivity(i);
+			}
+		});
 	}
 
 	/* 
@@ -130,12 +138,11 @@ public class MainActivity extends AppCompatActivity {
 		super.onDestroy();
 		Log.d(TAG, "onDestroy: ");
 	}
-
+	 */
 	@Override
 	protected void onSaveInstanceState(@NonNull Bundle outState) {
 		super.onSaveInstanceState(outState);
 		Log.d(TAG, "onSaveInstanceState: saved");
 		outState.putInt("currentIndex", mCurrentIndex); // TODO: replace this w/ variable later
 	}
-	 */
 }
