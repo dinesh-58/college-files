@@ -1,3 +1,7 @@
 <resources>
 	<string name="app_name">CustomGreet</string>
+	<string name="hint_name_input">Name</string>
+	<string name="submit_button">Submit</string>
+	<!-- *: %1$s is xml syntax for placeholder at index 1 of type string -->
+	<string name="display_name_format">Hello, %1$s</string>
 </resources>
