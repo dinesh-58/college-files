@@ -9,16 +9,16 @@
 #+LATEX_HEADER: \graphicspath{{~/programming/college-files/assets/images/}}
 
 # !!!!!!!!!!!!!          only edit this section       !!!!!!
-#+LATEX_HEADER: \def\subjectNum{2}
-# 1: CGA (should be handwritten)
-# 2: CN
-# 3: DN
-# 4: MIS
+#+LATEX_HEADER: \def\subjectNum{3}
+# 1: ECON
+# 2: JAVA
+# 3: MOBILE
+# 4: NETWORK
 # 5: none
 
-#+LATEX_HEADER: \def\labNum{2}
+#+LATEX_HEADER: \def\labNum{1}
 #+LATEX_HEADER: \def\labTitle{Escape ampersand \&}
-#+LATEX_HEADER: \def\yearSem{III/V}
+#+LATEX_HEADER: \def\yearSem{III/II}
 #+LATEX_HEADER: \newif \iftoc
 # !!!!!!!!!!!!           set toc here by uncommenting option
 # \toctrue    
@@ -31,26 +31,26 @@
 #+LaTeX_HEADER: \AtBeginDocument{\fontsize{12}{15}\selectfont}
 #+LATEX_HEADER: \newcommand{\subject}[1]{%
 #+LATEX_HEADER:     \ifnum#1=1
-#+LATEX_HEADER:         Computer Graphics and Animation
+#+LATEX_HEADER:         Applied Economics
 #+LATEX_HEADER:     \else\ifnum#1=2
-#+LATEX_HEADER:         Computer Networking
+#+LATEX_HEADER:         Advanced Java Programimng
 #+LATEX_HEADER:     \else\ifnum#1=3
-#+LATEX_HEADER:         DotNet Technologies
+#+LATEX_HEADER:         Mobile Programming
 #+LATEX_HEADER:     \else\ifnum#1=4
-#+LATEX_HEADER:         MIS and E-Business
+#+LATEX_HEADER:         Network Programming
 #+LATEX_HEADER:     \else
 #+LATEX_HEADER:         <Insert Subject no.>
 #+LATEX_HEADER:     \fi\fi\fi\fi
 #+LATEX_HEADER: }
 #+LATEX_HEADER: \newcommand{\teacher}[1]{%
 #+LATEX_HEADER:     \ifnum#1=1
-#+LATEX_HEADER:         Mr. Drish Mali
+#+LATEX_HEADER:         Dr. Madhav Dahal
 #+LATEX_HEADER:     \else\ifnum#1=2
-#+LATEX_HEADER:         Mr. Anup Pandey
+#+LATEX_HEADER:         Er. Sudarshan Subedi
 #+LATEX_HEADER:     \else\ifnum#1=3
-#+LATEX_HEADER:         Mr. Jeeewan Rai
+#+LATEX_HEADER:         Mr. Diwas Khatri
 #+LATEX_HEADER:     \else\ifnum#1=4
-#+LATEX_HEADER:         Mr. Ishwor Dhungana
+#+LATEX_HEADER:         Er. Jeeevan Rai
 #+LATEX_HEADER:     \else
 #+LATEX_HEADER:         <Insert name>
 #+LATEX_HEADER:     \fi\fi\fi\fi
