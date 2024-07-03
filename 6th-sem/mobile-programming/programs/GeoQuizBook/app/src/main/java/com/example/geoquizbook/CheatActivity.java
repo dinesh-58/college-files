@@ -1,5 +1,6 @@
 package com.example.geoquizbook;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -34,6 +35,10 @@ public class CheatActivity extends AppCompatActivity {
 			@Override
 			public void onClick(View v) {
 				mAnsTextView.setText(answer.toString());
+
+				Intent data = new Intent();
+				data.putExtra("cheated", true);
+				setResult(RESULT_OK, data);
 			}
 		});
 	}
