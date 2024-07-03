@@ -1,0 +1,110 @@
+:PROPERTIES:
+:ID:       606ae5b7-c747-4d4f-baec-27f9d0cac525
+:END:
+:edit-this:
+#+EXPORT_FILE_NAME: mob-lab1-report
+#+PROPERTY: header-args :eval no-export
+# don't prompt to evaluate code blocks while exporting
+#+OPTIONS: toc:nil ^:{}
+# set toc below instead of here
+# 2nd option exports subscripts only when _{} is used
+#+LATEX_HEADER: \graphicspath{{~/programming/college-files/assets/images/}}
+
+# !!!!!!!!!!!!!          only edit this section       !!!!!!
+#+LATEX_HEADER: \def\subjectNum{3}
+# 1: ECON
+# 2: JAVA
+# 3: MOBILE
+# 4: NETWORK
+# 5: none
+
+#+LATEX_HEADER: \def\labNum{1}
+#+LATEX_HEADER: \def\labTitle{}
+#+LATEX_HEADER: \def\yearSem{III/II}
+#+LATEX_HEADER: \newif \iftoc
+# !!!!!!!!!!!!           set toc here by uncommenting option
+# \toctrue    
+\tocfalse
+:end:
+
+#+INCLUDE: "~/programming/college-files/assets/template.org" :lines "27-"
+
+* Demonstrate the setup & installation of Android Project with Java [2 marks]
+** Project setup steps
+1) From the top menu, go to =File= \rarr =New= \rarr =New Project...=
+ [[file:img/q1-1.png]]
+
+2) From the given project templates, select =Empty Views Activity= to use the old XML-based View layouts in your project.
+  [[file:img/q1-2.png]]
+
+3) Fill in your app details, such as its display name, package (for uniquely identifying it). Make sure to choose =Java= as the language
+  [[file:img/q1-3.png]]
+
+4) Done. Android Studio will auto-generate the required files and code to create a basic app
+
+** App install steps
+1) Apps can be installed on an actual android device or a virtual emulator.
+   - To use an actual device, connect it to the computer using a USB cable. Ensure =USB debugging= & =Install apps over USB= are enabled inside the device's =Developer Settings=.
+   - To use a virtual emulator, configure it using the top right ribbon beside the run button
+
+2) Use the green Run button to install and open the app
+  [[file:img/q1-4.png]]
+
+* Develop an android application that prints "Hello World" on the bottom of the page [4 marks]
+
+** =MainActivity.java=
+#+begin_src java
+  package com.hcoe.sujal34;
+
+  import android.os.Bundle;
+  import androidx.activity.EdgeToEdge;
+  import androidx.appcompat.app.AppCompatActivity;
+  import androidx.core.graphics.Insets;
+  import androidx.core.view.ViewCompat;
+  import androidx.core.view.WindowInsetsCompat;
+
+  public class MainActivity extends AppCompatActivity {
+
+      @Override
+      protected void onCreate(Bundle savedInstanceState) {
+          super.onCreate(savedInstanceState);
+          EdgeToEdge.enable(this);
+          setContentView(R.layout.activity_main);
+          ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+                  Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+                  v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+                  return insets;
+              });
+      }
+  }
+#+end_src
+
+** =activity_main.xml=
+#+begin_src xml
+  <?xml version="1.0" encoding="utf-8"?>
+  <LinearLayout
+      xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      android:id="@+id/main"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:gravity="bottom|center"
+      tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        android:layout_marginBottom="20dp" />
+
+  </LinearLayout>
+#+end_src
+
+** Output
+[[file:img/q2.jpg]]
+* Develop an android application w/ 2 activities: MainActivity & GreetActivity.  [5 marks]
+MainActivity should contain a textbox and button w/ label "submit".
+
+When clicked on submit, GreetActivity should open w/ message "Hello {name}" where name is submitted from MainActivity.
+# for project documents, use addtional latex styles used in proposal file
