@@ -48,7 +48,7 @@
 #+LATEX_HEADER:     \else\ifnum#1=2
 #+LATEX_HEADER:         Er. Sudarshan Subedi
 #+LATEX_HEADER:     \else\ifnum#1=3
-#+LATEX_HEADER:         Mr. Diwas Khatri
+#+LATEX_HEADER:         Mr. Diwas K.C.
 #+LATEX_HEADER:     \else\ifnum#1=4
 #+LATEX_HEADER:         Er. Jeeevan Rai
 #+LATEX_HEADER:     \else
@@ -77,7 +77,7 @@
 \textbf{\Large{\labString}}
 \vfill
 
-\textbf{Submitted to:} \\\teacher{\subjectNum}, \\Department of Computer Application, \\ Himalaya College of Engineering, \\Chyasal,Lalitpur
+\textbf{Submitted to:} \\\teacher{\subjectNum}, \\Department of Computer Application, \\ Himalaya College of Engineering, \\Chyasal, Lalitpur
 \vfill
 
 \textbf{Submitted by:}\\\@author\\\@date\\
