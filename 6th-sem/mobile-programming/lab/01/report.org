@@ -258,5 +258,5 @@ When clicked on submit, =GreetActivity= should open with message "Hello {name}" 
 
 #+CAPTION: GreetActivity
 #+ATTR_LATEX: :width 220px :float nil
-[[file:img/q3-1.jpg]]
+[[file:img/q3-2.jpg]]
 
