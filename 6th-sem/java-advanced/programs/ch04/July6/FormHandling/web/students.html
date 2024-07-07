@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+	<head>
+		<title>TODO supply a title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<h1>Insert new student</h1>
+		<form action="insertStudent" method="post">
+			<label>
+				First name: 
+				<input type="text" name="fName" />
+			</label>
+			<label>
+				Last name: 
+				<input type="text" name="lName"/>
+			</label>
+			<label>
+				District:
+				<select name="district">
+					<option value="KTM">KTM</option>
+					<option value="Pokhara">Pokhara</option>
+					<option value="Birgunj">Birgunj</option>
+				</select>
+			</label>
+			<div>
+				Gender:
+				<div>
+					<label>
+						<input type="radio" name="gender" value="male" />
+						Male
+					</label>
+					<label>
+						<input type="radio" name="gender" value="female" />
+						Female
+					</label>
+					<label>
+						<input type="radio" name="gender" value="other" />
+						Other
+					</label>
+				</div>
+			</div>
+			<label>
+				Vehicle type: 
+				<label>
+					<input type="checkbox" name="vehcile-bus" value="bus" />
+					Bus:
+				</label>
+				<label>
+					<input type="checkbox" name="vehcile-bike" value="bike" />
+					Bike:
+				</label>
+				<label>
+					<input type="checkbox" name="vehcile-car" value="car" />
+					Car:
+				</label>
+			</label>
+			<input type="submit" value="Submit" />
+		</form>
+	</body>
+</html>
