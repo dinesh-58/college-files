@@ -9,6 +9,7 @@ import jakarta.servlet.annotation.*;
 import jakarta.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.*;
 
 /**
  *
@@ -37,20 +38,37 @@ public class InsertStudent extends HttpServlet {
 			// instead of this, can use same input name for multiple inputs
 			// and use request.getParameterValues(name), which returns string[]  of values
 			String[] vehicleInputNames = {"vehcile-bus", "vehcile-bike", "vehcile-car"};
-			String vehicle = ""; 
+			String vehicle = "";
 
-			for(String v: vehicleInputNames) {
-				if(request.getParameter(v) != null) {
+			for (String v : vehicleInputNames) {
+				if (request.getParameter(v) != null) {
 					vehicle += request.getParameter(v) + ", ";
 					break;
 				}
 			}
 
+			// Glassfish may not find jdbc driver so use either of these 2
+			// to specify which Driver class to use
+
+			// DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/javadb", "root", "");
+			String sql = "insert into student(first_name, last_name, gender, district, vehicle_type) values"
+				+ "(?, ?, ?, ?, ?)";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, fName);
+			ps.setString(2, lName);
+			ps.setString(3, district);
+			ps.setString(4, gender);
+			ps.setString(5, vehicle);
+			ps.execute();
+			ps.close();
+			conn.close();
 
 			out.println("<!DOCTYPE html>");
 			out.println("<html>");
 			out.println("<head>");
-			out.println("<title>Servlet InsertStudent</title>");			
+			out.println("<title>Servlet InsertStudent</title>");
 			out.println("</head>");
 			out.println("<body>");
 			out.println("<h1>Inserted: </h1>");
@@ -60,6 +78,8 @@ public class InsertStudent extends HttpServlet {
 			out.println("<br/>Vehicle Type: " + vehicle);
 			out.println("</body>");
 			out.println("</html>");
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
 		}
 	}
 
