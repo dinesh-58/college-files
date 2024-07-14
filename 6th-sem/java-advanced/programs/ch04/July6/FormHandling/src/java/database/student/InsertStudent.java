@@ -4,6 +4,7 @@
  */
 package database.student;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.*;
 import jakarta.servlet.http.*;
@@ -47,24 +48,35 @@ public class InsertStudent extends HttpServlet {
 				}
 			}
 
+			String email="", password="";
+			email = request.getParameter("email");
+			password = request.getParameter("password");
+
 			// Glassfish may not find jdbc driver so use either of these 2
 			// to specify which Driver class to use
 
 			// DriverManager.registerDriver(new com.mysql.jdbc.Driver());
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/javadb", "root", "");
-			String sql = "insert into student(first_name, last_name, gender, district, vehicle_type) values"
-				+ "(?, ?, ?, ?, ?)";
+			String sql = "insert into student(first_name, last_name, gender, district, vehicle_type, email, password_plain_text) values"
+				+ "(?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, fName);
 			ps.setString(2, lName);
 			ps.setString(3, district);
 			ps.setString(4, gender);
 			ps.setString(5, vehicle);
+			ps.setString(6, email);
+			ps.setString(7, password);
 			ps.execute();
 			ps.close();
 			conn.close();
 
+			RequestDispatcher rd = request.getRequestDispatcher("signIn.html");
+			rd.forward(request, response);
+			
+
+			/*
 			out.println("<!DOCTYPE html>");
 			out.println("<html>");
 			out.println("<head>");
@@ -76,8 +88,10 @@ public class InsertStudent extends HttpServlet {
 			out.println("<br/>District: " + district);
 			out.println("<br/>Gender: " + gender);
 			out.println("<br/>Vehicle Type: " + vehicle);
+			out.println("<br/>Email: " + email);
 			out.println("</body>");
 			out.println("</html>");
+			*/
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}

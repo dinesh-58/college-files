@@ -22,7 +22,7 @@ public class July10 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		ServerSocket server = new ServerSocket(8080);
 		Socket socket = server.accept();
-//		socket.setSoTimeout(3000);
+		socket.setSoTimeout(10000);
 		System.out.println("client connected to server");
 		System.out.print("Enter messages to send to client: ");
 		DataInputStream inStream = new DataInputStream(socket.getInputStream());
