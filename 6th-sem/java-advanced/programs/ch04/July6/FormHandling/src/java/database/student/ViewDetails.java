@@ -6,11 +6,11 @@ package database.student;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.*;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.*;
+import java.sql.*;
+import java.util.Arrays;
 
 /**
  *
@@ -32,21 +32,48 @@ public class ViewDetails extends HttpServlet {
 		throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		try (PrintWriter out = response.getWriter()) {
+			DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/javadb", "root", "");
+			String sql = "select id, first_name, last_name, gender, district, vehicle_type, email from student";
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+
 			out.println("<!DOCTYPE html>");
 			out.println("<html>");
 			out.println("<head>");
 			out.println("<title>Servlet ViewDetails</title>");			
+			out.println("<style>tr:nth-child(even){ background: gray;}</style>");
 			out.println("</head>");
 			out.println("<body>");
 			out.println("<h1>Student details: </h1>");
-			out.println("<table>");
+
+			out.println("<table border='2'>");
 			out.println("<thead>");
-			out.println("<th>");
-			out.println("</th>");
+			out.println("<th>id</th>");
+			out.println("<th>First Name</th>");
+			out.println("<th>Last Name</th>");
+			out.println("<th>Gender</th>");
+			out.println("<th>District</th>");
+			out.println("<th>Vehicle types</th>");
+			out.println("<th>Email</th>");
 			out.println("</thead>");
+
+			while(rs.next()) {
+				out.println("<tr>");
+				for(int i=1; i<8; i++) {
+					out.println("<td>"+rs.getString(i)+"</td>");
+				}
+				out.println("</tr>");
+			}
 			out.println("/<table>");
 			out.println("</body>");
 			out.println("</html>");
+
+			stmt.close();
+			conn.close();
+		} catch(Exception e) {
+			System.err.println(Arrays.toString(e.getStackTrace()));
+			System.err.println(e.getMessage());
 		}
 	}
 
