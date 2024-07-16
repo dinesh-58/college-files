@@ -5,4 +5,8 @@
 		android:title="New record"
 		android:id="@+id/new_record_menuItem"
 		/>
+	<item
+		android:title="List all records"
+		android:id="@+id/list_records_menuItem"
+		/>
 </menu>

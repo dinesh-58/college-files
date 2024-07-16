@@ -5,6 +5,5 @@
 	<string name="correct_password">1234</string>
 	<string name="email_input_label">Email:</string>
 	<string name="password_input_label">Password:</string>
-	<!-- TODO: Remove or change this placeholder text -->
-	<string name="hello_blank_fragment">Hello blank fragment</string>
+	<string name="default_dashboard_text_format">Welcome, %1$s</string>
 </resources>

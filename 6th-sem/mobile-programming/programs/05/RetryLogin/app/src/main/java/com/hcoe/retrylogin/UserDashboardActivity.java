@@ -21,13 +21,24 @@ public class UserDashboardActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_user_dashboard);
-		TextView userDashboardWelcome = findViewById(R.id.user_dashboard_welcome);
-		Intent i = getIntent();
-		userDashboardWelcome.setText("Welcome, " + i.getStringExtra("email"));
 
 		// to show menu inside toolbar; use if actionBar is not enabled
+		/*
+		 TODO: fix  error caused by this
 		Toolbar dashboardToolbar = findViewById(R.id.dashboard_toolbar);
 		this.setSupportActionBar(dashboardToolbar);
+		 */
+
+		fm = getSupportFragmentManager();
+		currentFragment = fm.findFragmentById(R.id.dashboard_fragment_container);
+		if (currentFragment == null) {
+			Intent i = getIntent();
+			Bundle defaultfragmentBundle = new Bundle();
+			defaultfragmentBundle.putString("email", i.getStringExtra("email"));
+			currentFragment = new DefaultDashboardFragment();
+			currentFragment.setArguments(defaultfragmentBundle);
+			fm.beginTransaction().add(R.id.dashboard_fragment_container, currentFragment).commit();
+		}
 	}
 
 	@Override
@@ -35,9 +46,6 @@ public class UserDashboardActivity extends AppCompatActivity {
 //		return super.onCreateOptionsMenu(menu);
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.menu_main, menu);
-
-		fm = getSupportFragmentManager();
-		currentFragment = fm.findFragmentById(R.id.dashboard_fragment_container);
 		return true;
 	}
 
@@ -45,8 +53,11 @@ public class UserDashboardActivity extends AppCompatActivity {
 	public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 		if (item.getItemId() == R.id.new_record_menuItem) {
 			currentFragment = new NewRecordFragment();
+		} else if (item.getItemId() == R.id.list_records_menuItem) {
+			currentFragment = new ListRecordsFragment();
 		}
-		fm.beginTransaction().add(R.id.dashboard_fragment_container, currentFragment).commit();
+		// *: using .replace() instead of .add() to get rid of prev. fragment as well
+		fm.beginTransaction().replace(R.id.dashboard_fragment_container, currentFragment).commit();
 		return false;
 	}
 }

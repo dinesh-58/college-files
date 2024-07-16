@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class DefaultDashboardFragment extends Fragment {
 
@@ -22,7 +23,11 @@ public class DefaultDashboardFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
-		// Inflate the layout for this fragment
-		return inflater.inflate(R.layout.fragment_default_dashboard, container, false);
+		View view = inflater.inflate(R.layout.fragment_default_dashboard, container, false);
+		Bundle bundle = getArguments();
+		String email = bundle != null ? bundle.getString("email") : "foo@bar.com";
+		TextView tView =  view.findViewById(R.id.default_dashboard_textview);
+		tView.setText(this.getString(R.string.default_dashboard_text_format, email));
+		return view;
 	}
 }
