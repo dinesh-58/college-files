@@ -1,14 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
+	android:orientation="vertical"
 	tools:context=".NewRecordFragment">
 
-	<!-- TODO: Update blank fragment layout -->
 	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Name:"
+		/>
+	<EditText
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:text="hello world" />
+		android:layout_height="50dp"
+		android:id="@+id/new_record_name_EditText"
+		/>
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Email:"
+		/>
+	<EditText
+		android:layout_width="match_parent"
+		android:layout_height="50dp"
+		android:id="@+id/new_record_email_EditText"
+		/>
+	<Button
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="Submit"
+		android:id="@+id/new_record_submit_btn"/>
 
-</FrameLayout>
+</LinearLayout>

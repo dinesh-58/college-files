@@ -22,6 +22,8 @@ public class ServerSide {
 			SSLServerSocketFactory sslServerSocketFactory = (SSLServerSocketFactory) SSLServerSocketFactory.getDefault();
 			SSLServerSocket sslServerSocket = (SSLServerSocket) sslServerSocketFactory.createServerSocket(8080);
 			SSLSocket sslSocket = (SSLSocket) sslServerSocket.accept();
+			sslSocket.addHandshakeCompletedListener(new CustomHandShakeListener());
+			sslSocket.startHandshake();
 			System.out.println("client connected from: " + sslSocket.getInetAddress() + ":"+sslSocket.getPort());
 			
 		} catch (Exception e) {
