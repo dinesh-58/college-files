@@ -1,7 +1,7 @@
 # !!!!!!   if you configure this, edit org-capture template too
-# make sure that :lines value for #+INCLUDE matches line number for :dont-edit:.    currently 26
+# make sure that :lines value for #+INCLUDE matches line number for :dont-edit:.    currently 27
 # only editable settings are in capture template so that non-editable can be #+Included and keep loc low
-# for college project documents, use addtional latex styles used in 4th sem proposal file
+# for college project documents, use addtional latex styles used in 4th sem final-report file
 :edit-this:
 #+EXPORT_FILE_NAME: test
 #+OPTIONS: toc:nil 
