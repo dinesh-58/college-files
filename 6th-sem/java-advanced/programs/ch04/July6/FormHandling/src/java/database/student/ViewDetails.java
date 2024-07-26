@@ -47,6 +47,8 @@ public class ViewDetails extends HttpServlet {
 			out.println("<body>");
 			out.println("<h1>Student details: </h1>");
 
+			
+
 			out.println("<table border='2'>");
 			out.println("<thead>");
 			out.println("<th>id</th>");
@@ -56,6 +58,7 @@ public class ViewDetails extends HttpServlet {
 			out.println("<th>District</th>");
 			out.println("<th>Vehicle types</th>");
 			out.println("<th>Email</th>");
+			out.println("<th></th>");
 			out.println("</thead>");
 
 			while(rs.next()) {
@@ -63,8 +66,11 @@ public class ViewDetails extends HttpServlet {
 				for(int i=1; i<8; i++) {
 					out.println("<td>"+rs.getString(i)+"</td>");
 				}
+				out.println("<td><a href='/deleteRecord?id="+rs.getString("id")+"'>Delete</a></td>");
 				out.println("</tr>");
 			}
+			HttpSession session = request.getSession(true);
+			session.setAttribute("foo", "bar");
 			out.println("/<table>");
 			out.println("</body>");
 			out.println("</html>");

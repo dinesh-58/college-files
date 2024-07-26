@@ -39,6 +39,7 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
 		description.setText(currentMovie.getDescription());
 //		poster.setImageDrawable(Drawable.createFromPath(currentMovie.getPosterUrl()));
 
-		return super.getView(position, convertView, parent);
+		return convertView;
+//		return super.getView(position, convertView, parent);
 	}
 }

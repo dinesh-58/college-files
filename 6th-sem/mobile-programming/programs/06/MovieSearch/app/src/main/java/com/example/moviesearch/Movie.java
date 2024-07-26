@@ -3,6 +3,7 @@ package com.example.moviesearch;
 public class Movie {
 	private String title, description, posterUrl;
 
+	public Movie() { }
 	public Movie(String title, String description, String posterUrl, double rating) {
 		this.title = title;
 		this.description = description;

@@ -42,8 +42,12 @@ public class Login extends HttpServlet {
 			ps.setString(2, password);
 			ResultSet rs = ps.executeQuery();
 			if(rs.next()) {
-				out.println("Welcome, "+ rs.getString("first_name"));
-				response.sendRedirect("index.html");
+				RequestDispatcher rd = request.getRequestDispatcher("viewDetails");
+				// pass request body to /viewDetails
+				rd.forward(request, response);
+
+//				out.println("Welcome, "+ rs.getString("first_name"));
+//				response.sendRedirect("index.html");
 			} else {
 				out.println("Error: Couldn't login");
 			}
