@@ -4,19 +4,19 @@
  */
 package database.student;
 
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.*;
+
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.*;
 
 /**
  *
  * @author sujal
  */
-@WebServlet(name = "Login", urlPatterns = {"/login"})
-public class Login extends HttpServlet {
+@WebServlet(name = "Logout", urlPatterns = {"/logout"})
+public class Logout extends HttpServlet {
 
 	/**
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,31 +31,15 @@ public class Login extends HttpServlet {
 		throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		try (PrintWriter out = response.getWriter()) {
-
-			String email = request.getParameter("email");
-			String password = request.getParameter("password");
-			DriverManager.registerDriver(new com.mysql.jdbc.Driver());
-			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/javadb", "root", "");
-			String sql = "select id from student where email=? and password_plain_text=? limit 1;";
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, email);
-			ps.setString(2, password);
-			ResultSet rs = ps.executeQuery();
-			if (rs.next()) {
-				HttpSession session = request.getSession(true);
-				session.setAttribute("id", rs.getString("id"));
-				RequestDispatcher rd = request.getRequestDispatcher("viewDetails");
-				// pass request body to /viewDetails
-				rd.forward(request, response);
-
-//				out.println("Welcome, "+ rs.getString("first_name"));
-//				response.sendRedirect("index.html");
-			} else {
-				out.println("Error: Couldn't login");
-			}
-
-		} catch (Exception e) {
-			System.err.println(e.getMessage());
+			/* TODO output your page here. You may use following sample code. */
+			HttpSession session = request.getSession(true);
+			session.removeAttribute("id");
+			session.invalidate();
+//			out.println("Logged out user id: "+ session.getAttribute("id"));
+			response.sendRedirect("signIn.html");
+		} catch(Exception e) {
+			System.err.println(e.getMessage());	
+			e.printStackTrace();
 		}
 	}
 

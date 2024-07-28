@@ -5,18 +5,20 @@
 package database.student;
 
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.*;
 import jakarta.servlet.http.*;
+import jakarta.servlet.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author sujal
  */
-@WebServlet(name = "Login", urlPatterns = {"/login"})
-public class Login extends HttpServlet {
+@WebServlet(name = "DeleteStudent", urlPatterns = {"/deleteStudent"})
+public class DeleteStudent extends HttpServlet {
 
 	/**
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,31 +33,20 @@ public class Login extends HttpServlet {
 		throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		try (PrintWriter out = response.getWriter()) {
-
-			String email = request.getParameter("email");
-			String password = request.getParameter("password");
+			String id = request.getParameter("id");
 			DriverManager.registerDriver(new com.mysql.jdbc.Driver());
 			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/javadb", "root", "");
-			String sql = "select id from student where email=? and password_plain_text=? limit 1;";
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, email);
-			ps.setString(2, password);
-			ResultSet rs = ps.executeQuery();
-			if (rs.next()) {
-				HttpSession session = request.getSession(true);
-				session.setAttribute("id", rs.getString("id"));
-				RequestDispatcher rd = request.getRequestDispatcher("viewDetails");
-				// pass request body to /viewDetails
-				rd.forward(request, response);
+			PreparedStatement ps = conn.prepareStatement("delete from student where id=?");
+			ps.setString(1, id);
 
-//				out.println("Welcome, "+ rs.getString("first_name"));
-//				response.sendRedirect("index.html");
+			if (ps.executeUpdate() != 0) {
+				out.println("Deleted user");
 			} else {
-				out.println("Error: Couldn't login");
+				out.println("Error: Couldb't delete");
 			}
 
-		} catch (Exception e) {
-			System.err.println(e.getMessage());
+		} catch (SQLException ex) {
+			Logger.getLogger(DeleteStudent.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
 

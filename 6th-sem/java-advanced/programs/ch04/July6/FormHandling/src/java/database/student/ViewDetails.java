@@ -32,6 +32,12 @@ public class ViewDetails extends HttpServlet {
 		throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		try (PrintWriter out = response.getWriter()) {
+			HttpSession session = request.getSession(false);
+			if(session.getAttribute("id") == null) {
+				response.sendRedirect("signIn.html");
+			}
+			String sessionID = session.getAttribute("id").toString();
+			
 			DriverManager.registerDriver(new com.mysql.jdbc.Driver());
 			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/javadb", "root", "");
 			String sql = "select id, first_name, last_name, gender, district, vehicle_type, email from student";
@@ -47,6 +53,8 @@ public class ViewDetails extends HttpServlet {
 			out.println("<body>");
 			out.println("<h1>Student details: </h1>");
 
+			out.println("<a href='logout'>Log out</a>");
+//			out.println("<a href='logout?id="+sessionID+"'>Log out</a>");
 			
 
 			out.println("<table border='2'>");
@@ -66,11 +74,9 @@ public class ViewDetails extends HttpServlet {
 				for(int i=1; i<8; i++) {
 					out.println("<td>"+rs.getString(i)+"</td>");
 				}
-				out.println("<td><a href='/deleteRecord?id="+rs.getString("id")+"'>Delete</a></td>");
+				out.println("<td><a href='deleteStudent?id="+rs.getString("id")+"'>Delete</a></td>");
 				out.println("</tr>");
 			}
-			HttpSession session = request.getSession(true);
-			session.setAttribute("foo", "bar");
 			out.println("/<table>");
 			out.println("</body>");
 			out.println("</html>");
