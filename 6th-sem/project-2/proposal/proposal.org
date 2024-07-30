@@ -1,5 +1,5 @@
 :LATEX_SETTINGS:
-#+EXPORT_FILE_NAME: bca-sujal-pawan-project2-report
+#+EXPORT_FILE_NAME: bca-sujal-pawan-project2-proposal
 # +BIBLIOGRAPHY: bibliography.bib
 #+LATEX_HEADER: \pagenumbering{roman}
 #+LATEX_HEADER: \graphicspath{{C:\\Users\\sujal\\programming\\college-files\\assets\\images\\}}
