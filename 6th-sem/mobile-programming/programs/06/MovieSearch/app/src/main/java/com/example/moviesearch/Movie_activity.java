@@ -10,15 +10,23 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
+
 
 import cz.msebera.android.httpclient.Header;
 
+
 public class Movie_activity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,48 +56,46 @@ public class Movie_activity extends AppCompatActivity {
         findViewById(R.id.movie_search_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String API_KEY = "c5db3bd0";
-                String API_URL = "http://www.omdbapi.com/";
 
-                RequestParams params = new RequestParams("apikey", API_KEY);
-                params.add("s", "great");
+				String API_KEY = "c5db3bd0";
+				String API_URL = "http://www.omdbapi.com/";
 
-                AsyncHttpClient client = new AsyncHttpClient();
-                client.get("http://www.omdbapi.com/?apikey=c5db3bd0&s=great", new JsonHttpResponseHandler() {
-//                client.get(API_URL, params, new JsonHttpResponseHandler() {
+				RequestParams params = new RequestParams("apikey", API_KEY);
+				params.add("s", "great");
 
-                    @Override
-                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                        // called when http request is succesful
-                        super.onSuccess(statusCode, headers, response);
-                        Log.d("OMDB_API", "status code: " + statusCode + "\n response: " + response.toString());
+				AsyncHttpClient client = new AsyncHttpClient();
+//                client.get("http://www.omdbapi.com/?apikey=c5db3bd0&s=great", new JsonHttpResponseHandler() {
+				client.get(API_URL, params, new JsonHttpResponseHandler() {
+
+					@Override
+					public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+						// called when http request is succesful
+						super.onSuccess(statusCode, headers, response);
+						Log.d("OMDB_API", "status code: " + statusCode + "\n response: " + response.toString());
 
 						try {
 							JSONArray items = response.getJSONArray("Movies");
-                            /*
-                            for(var m: items) {
-//                                JSONObject currentMovie = items.getJSONObject(i);
-                                movieList.add(new Movie());
-
-                            }
-                             */
-                            movieAdapter.clear();
-                            movieAdapter.addAll(movieList);
-                            movieAdapter.notifyDataSetChanged();
+//							for(var m: items) {
+////                                JSONObject currentMovie = items.getJSONObject(i);
+//								movieList.add(new Movie());
+//
+//							}
+							movieAdapter.clear();
+							movieAdapter.addAll(movieList);
+							movieAdapter.notifyDataSetChanged();
 						} catch (JSONException e) {
-                            e.printStackTrace();
+							e.printStackTrace();
 						}
 					}
 
-                    @Override
-                    public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                        super.onFailure(statusCode, headers, throwable, errorResponse);
-                        Log.d("OMDB_API", "onFailure: response: ");
-                                throwable.printStackTrace();
-                    }
-
-                });
-            }
+					@Override
+					public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+						super.onFailure(statusCode, headers, throwable, errorResponse);
+						Log.d("OMDB_API", "onFailure: response: ");
+						throwable.printStackTrace();
+					}
+				});
+			}
         });
 
 //                apikey=c5db3bd0
