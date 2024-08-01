@@ -3,16 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package july31.rmi;
-
-import java.rmi.RemoteException;
 public class AdderImpl implements IAdder {
 	public AdderImpl() {
-		super(); // calls constructor for Remote class?
-
+//		super(); // calls constructor for which interface?
 	}
 
 	@Override
-	public int Add(int a, int b) throws RemoteException {
+	public int Add(int a, int b) {
 		return a + b;
 	}
 	

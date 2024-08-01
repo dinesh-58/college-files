@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package july31.rmi;
 import java.rmi.registry.*;
 
@@ -19,6 +15,7 @@ public class ClientSide {
 			System.out.println("Sum: " + stub.Add(1, 2));
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
+			e.printStackTrace();
 		}
 
 	}
