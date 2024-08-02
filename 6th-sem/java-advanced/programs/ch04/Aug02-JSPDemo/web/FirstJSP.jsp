@@ -12,9 +12,10 @@
         <title>JSP Page</title>
     </head>
     <body>
+		<%@ include file="includes/header.html" %>
         <h1>Add </h1>
 		<%! public int sum(int a, int b) {
-			return a + b;
+				return a + b;
 			}
 		%>
 		<form action="" method="post">
@@ -22,15 +23,14 @@
 			Second number: <input name="b" type="number" required />
 			<input name="submit" type="submit" value="submit" />
 		</form>
-		<%= "Sum function example" %>
-		<% 
-			if(request.getMethod().equalsIgnoreCase("post")) {
-			if(request.getParameter("submit") != null) {
-
-			int a = Integer.parseInt(request.getParameter("a"));
-			int b = Integer.parseInt(request.getParameter("a"));
-			out.println("<br/> Sum is "+sum(a,b));
-			}
+		<%= "Sum function example"%>
+		<%
+			if (request.getMethod().equalsIgnoreCase("post")) {
+				if (request.getParameter("submit") != null) {
+					int a = Integer.parseInt(request.getParameter("a"));
+					int b = Integer.parseInt(request.getParameter("a"));
+					out.println("<br/> Sum is " + sum(a, b));
+				}
 			}
 		%>
     </body>

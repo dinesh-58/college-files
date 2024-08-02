@@ -6,6 +6,42 @@
 	 version="6.0">
 
 	<welcome-file-list>
-		<welcome-file>FirstJSP.jsp</welcome-file>
+		<welcome-file>Login.jsp</welcome-file>
 	</welcome-file-list>
+
+	<servlet>
+		<servlet-name>FirstJSP</servlet-name>
+		<jsp-file>FirstJSP.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FirstJSP</servlet-name>
+		<url-pattern>/firstJSP</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Login</servlet-name>
+		<jsp-file>Login.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Login</servlet-name>
+		<url-pattern>/login</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Register</servlet-name>
+		<jsp-file>Register.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Register</servlet-name>
+		<url-pattern>/register</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Dashboard</servlet-name>
+		<jsp-file>Dashboard.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Dashboard</servlet-name>
+		<url-pattern>/dashboard</url-pattern>
+	</servlet-mapping>
 </web-app>
