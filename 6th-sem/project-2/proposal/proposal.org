@@ -52,7 +52,7 @@
 \textbf{\Large{Tribhuvan University \\Faculty of Humanities and Social Sciences\\}}
 \vfill
 
-\textbf{\Large{A Project proposal on: \\Project 2 }}
+\textbf{\Large{A Project proposal on: \\Daraz price-tracker chatbot }}
 \vfill
 
 \textbf{Submitted to: \\Department of Computer Application, \\ Himalaya College of Engineering, \\Chyasal,Lalitpur}
@@ -89,244 +89,200 @@ Under the Supervision of
 #+end_export
 
 * Introduction
-- [ ] talk about ecommerce kati thulo cha, then nepal context
-- [ ] online helps people find products available, comparing prices
-Daraz is a major and popular ecommerce platform in Nepal, seeing upto 7 lakh (0.7 million) daily users[cite:@daraz_sales_record].
+#+LATEX:\pagenumbering{arabic}
 
-With frequent sales, promo campaigns and price drops, product prices change constantly. 
+E-commerce has been a great innovation in the fields of both technology & business. 
+It allows both buyers and sellers to perform various trading activities such as marketing, product inquiry,
+purchase through online/digital means. One advantage for buyers is that most e-commerce platforms
+show product prices, which allows them to make a purchasing decision from the comfort of their home.
 
-
+Even in Nepal, e-commerce is a useful tool for connecting today's modern businesses with the
+digitized populace, and making trade possible between them.
+Daraz is a major and popular ecommerce platform in Nepal, seeing upto 7 lakh (0.7 million)
+daily users[cite:@daraz_sales_record]. With frequent sales, promo campaigns and price drops,
+product prices change constantly. For this project, we aim to make a chatbot that
+allows users to specify product on Daraz, and then notifies them of price changes. This proposal
+outlines what our proposed project is going to accomplish in detail, and provides a foundation
+for the project development lifecycle.
 
 * Problem Statement
-+ *inefficient traditional studying techniques*
-:Scientific_shit_sort_later:
-Cognitive researchers have found that trying to recall such facts strengthens the relevant neural connections in our brain & thus, allows us to remember it for longer periods of time. This process is specifically called *Active Recall[cite:@active_recall]*.
-Another technique used in tandem with Active Recall is *Spaced Repitition[[[cite:@spaced_repitition]]]*. It dictates that your ability to remember a fact deteriorates over time. By performing Active Recall at specific intervals, we can re-strengthen our memory retention.
-# image size is 1024x574
-#+CAPTION:Ebbinghaus' forgetting curve countered by Spaced Repition
-#+attr_latex: :width 400px
-#+attr_org: :width 400px
-[[file:diagrams/forgetting-curve-spaced-repitition.png]]
-Thus, instead of studying entire topics repeatedly, we can just revise small key points & be more effective.
-:end:
+- *Buyers may miss out on discounts, special offers:*\\
+  Often times, buyers might not be aware of special offers that reduce the price of a product they want.
+  This might be due to e-commerce platforms not informing them of such things, or not realizing
+  that offers apply to a specific product.
 
-#+begin_export latex
-  \clearpage 
-#+end_export
-+ *inconvenient to manage physical flashcards*   
-  - Physical cards will eventually get damaged or wear out. It may also be impractical to store or carry around a large number of cards. 
-  - Storing cards digitally allows them to be physically secure & portable.
-+ *cumbersome to schedule, keep track of next repition for cards*   
-  - After reviewing/ recalling a card, we need to schedule its next Spaced Repitition. We not only need to keep track of its schedule, but also remember to review it on that day. If we forget, then keeping track of overdue cards adds another layer of unneeded complexity.
+  Such offers also generally only last for a certain period of time. Buyers may not be able to 
+  purchase the product during that time.
 
-  - CardsQL automates all these processes. After reviewing a card, we can rate how well we remembered the answer. This rating is used to determine the next review date for that card. This date is set such that by the next review, we haven't completely forgotten the answer, nor is it too easy.
-  - When revising on a particular day, CardsQL will show you cards that are scheduled for that day or older. Thus, overdue cards are handled easily.
+- *Buyers may have to pay more for a product due to purchasing at the wrong time*
+
+- *Hassle of checking price regularly:*\\
+  Having to constantly check if the price of a wanted product has decreased can be a
+  time-consuming process.
+
+- *Sellers may lose potential sales due to buyers seeing high price:*\\
+  Economics' basic law of demand[cite:@econ_law_demand] states that when price of a good decreases,
+  its demand increases i.e. consumers tend to buy more of that good. Buyers may see non-discounted
+  price of a product and not buy it, thinking it's too expensive.
+
+  Conversely, seeing discounts on products can influlence potential buyers' decisions, thinking
+  they are getting a good deal, as shown by a 2021 study[cite:@impact_discount_purchase].
 
 * Objectives
+- To create an easy to use price-tracking chatbot
+- To implement Waterfall model of software development during the project's lifecycle
 
 * Methodology
-** Requirement Identification (sujal)
+** Requirement Identification 
 This project makes use of the *Waterfall development* approach in order to set concrete requirements & build towards achieving them.
+
+#+CAPTION: Waterfall model of Software Development
+[[file:diagrams/waterfall-model.jpg]]
+\FloatBarrier
+
 *** Study of existing system
-Two popular flashcard apps are:
-
-**** Quizlet
+**** CamelCamelCamel
+It is a price-tracking website for Amazon products.
 ***** Pros
-- pre-made flashcards for subjects
-- emphasis on mobile version UX which allows users to revise anytime, anywhere
-- utilize machine learning from anonymous user-data to create custom study plans for users
+- shows price history of products to visualize how low / high a product's price can go
+- sends price drop alerts to users via email 
 ***** Cons
-- free version has ads & lacks advanced features
-- can't be used offline on free version
+- Only supports price-tracking for Amazon, which can't be used in Nepal due to shipping,
+  payment issues. As such, CamelCamelCamel is not suitable for our usecase of price-tracking
+  Daraz products in Nepal.
 
-**** Anki
-***** Pros
-- Free & Open Source (FOSS)
-- supports sync between multiple devices
-- highly customizable with user-defined card types & community-made plugins
-***** Cons
-- complex from start
-- CardsQL should act as gateway/ intro to flashcards. can use Anki later
-- might have to spend a lot of time customizing the program, adding plugins, to get a great experience
+#+LATEX: \clearpage
 *** Requirement Collection
 **** Functional requirements    
-
-Note: /As CardsQL is meant for personal use, it only has one type of user instead of admin, multiple users etc./
 ***** User
-- can add different types of cards
-- can revise due cards
-- can revise cards regardless of due date (for pre-exam practice)
-- can edit text, type  & review date of existing cards
-- can reset review date for all cards
+- can request bot to track prices of multiple products in a "wishlist"
+- should be notified when tracked products' price decreases
+- can specify minimum price for a product such that they are only notified if price falls below that amount
+- can manually trigger bot to check current price of product
+- can request bot to stop tracking a product
+
+***** Bot Admin
+- can see list of users and products they are tracking 
+- can manually remove users and products
+- can manually send specific messages to users. e.g.: useful for troubleshooting, providing tech support
+
 **** Non-Functional requirements
-- offline access to all features 
-  achieved by hosting sql server & storing data on user's computer
-- simple to use;
-  1st thing user sees is just card creation interface
-- not have too many due cards (set maximum limit)
-- regular data backups
-  # sql has built-in backup command/ functionality
-  # option to clean up old backup files
+- *No downtime:* Preferrably, bot should be available at all times.
+- Bot should have fast response time 
+
+- *Simple to use:* Users should be able to interact with the bot through a simple GUI.
+  The bot should also provide help messages regarding how to use specific text commands to 
+  interact with it.
+
+- *Reliability:* User should always be notified when the notification conditions are met
+  i.e. they should not miss out on price drops.
+
+#+LATEX: \clearpage
 **** Use Case diagram
 
-#+begin_src plantuml :file diagrams/use-case-diagram.png
-  @startumL
-  skinparam 300 dpi
-  skinparam packageStyle rectangle
-  actor user as u
-  rectangle System {
-          (Create Cards) as (CC)
-          (Revise Cards) as (RC)
-          (Edit Cards) as (EC)
-          (Delete Cards) as (DC)
-          u -up- (CC)
-          u -up- (RC)
-          u -up- (EC)
-          (RC) .left.> (CC) :<<includes>>
-          (DC) .left.> (EC) :<<extends>>
-  }
-  @enduml
-#+end_src
-
-#+RESULTS:
 #+CAPTION: Use case diagram for CardsQL
 #+attr_latex: :width 400px
 #+attr_org: :width 400pX
-[[file:diagrams/use-case-diagram.png]]
-
-\FloatBarrier
+[[file:diagrams/use-case.jpg]]
 
 #+begin_export latex
-  \clearpage 
+ \FloatBarrier
+ \clearpage 
 #+end_export
-** Feasibility Study (pawan)
-*** Technical
-CardsQL is not too difficult to implement from a technical standpoint because it uses:
+** Feasibility Study 
+*** Technical Feasibility
+The proposed price tracking chatbot is technically feasible due to the availability of:
 
-- plain HTML, CSS for the front-end
-- basic JS, PHP for the busienss logic
-- SQLite, a lightweight RDBMS, for the database. It uses a database file on the user's computer so it negates the need for maintaining a server for users to connect to.
-*** Operational
-- Because of the serverless architecture, the app will work at all times after downloading it. Thus, there is no need to designate manpower to ensure the app stays operational after launch.
-- Users are sure to adopt the app as it is designed to be more convenient than paper flashcards. Anyone should be able to learn to use it, compared to other more advanced flashcard programs discussed in [[*Study of existing system][Study of existing system]]
-*** Economic
-CardsQl is viable from an economic standpoint as:
+- *Telegram's bot features*: Telegram is a popular messaging service similar to WhatsApp.
+  It provides advanced features for developing "chatbots", which are special Telegram accounts.
+  These are basically a backend server that sends a text response to users based on their specific text message.
 
-- The project was willingly built by the devloper for free.
-- There are no additional costs for web hosting, server maintenance etc.
-- There were no development costs as the app was builton the developer's existing hardware & using freely-licensed tools. 
-- The app is distributed freely to help users so there is no potential profit or loss.
-#+begin_export latex
-  \clearpage 
-#+end_export
+  It also allows creating GUI buttons for performing actions, instead of users having to send
+  specific text commands. This achieves our non-functional requirement of making the chatbot 
+  simple to use.
+
+- *Daraz product API:* Daraz provides a powerful, well-documented REST API for getting their products' data.
+  This simplifies the devlopment process. 
+
+- *Web scraping libraries:* Tools like Puppeteer can be combined with custom code to scrape
+  data from Daraz's website for cases when the Daraz API is not enough.
+
+- *Front-end technologies:* HTML, CSS for creating user-friendly interface for the chatbot's
+  GUI buttons and admin interface. 
+
+- *Back-end technologies:* NodeJS environment for using JavaScript on the server-side.
+  
+- *SQLite Database:* As a single-file databse, SQLite vastly simplifies local development
+  as there is no need to run a separate server for it. The database can then easily used
+  for the production environment i.e. when the chatbot is made publicly available.
+
+*** Operational Feasibility
+The app's operational feasibility is dependent on:
+
+- *Data accuracy:* This refers to the reliability of the price data extracted from online retailers.
+  Price data is guaranteed to always be up to date due to using Daraz's official API as well
+  as scraping data from their live website.
+
+- *Daraz website changes*:
+  Making extensive use of the Daraz API prevents future issues caused by changes to Daraz's website's HTML structure.
+  This is because most APIs are not modified after being publicly released, allowing
+  the project to be operational long-term even without maintenance. 
+
+  This can be an issue when using web-scraping techniques to get product data. Error handling
+  can be implemented to notify developers / admin when such issues arise & fix them promptly. 
+
+- *Notification / message delivery reliability:* Telegram is a major service with a robust
+  messaging system. Thus, we can be sure that all messages between users and bots are sent properly.
+
+- *Server uptime*: Back-end server hosting providers ensure that the chatbot stays operational at all times.
+
+*** Economic Feasibility
+The economic feasibility of the project is high due to:
+- *Low development costs:* The chatbot can be developed using free or open-source technologies.
+
+- *No hosting costs:* It can be hosted on a personal computer for demo purposes,
+  or with free plans from cloud platforms like Render to make it publicly accesible.
+  The SQLite database can also be hosted for free on SQLiteCloud.
+
+- *Potential revenue streams:* While the chatbot can be initially offered for free,
+  monetization options for premium features can be explored in the future.
+ The low initial investment and potential for future revenue make this project economically viable.
+
 ** High level design of System
-As the following are high level representations of the system, they aim to provide a basic understanding of the system and thus, leave out intricate implementation details.
+As the following are high level representations of the system, they aim to provide a basic
+understanding of the system and thus, leave out intricate implementation details.
 
-*** System Flow Chart
-
-#+CAPTION: System flow chart
-#+attr_latex: :width 200px
-#+attr_org: :width 200px
-[[file:diagrams/system-flow-chart.png]]
-\FloatBarrier 
-# to ensure image is placed exactly here
-
+#+LATEX: \clearpage
 *** Methodology/ Working Mechanism
-/As stated previously, CardsQL does not have different types of users so all the following actions can be done by the user./
+The flowchart for the major operations of the chatbot are as follows
 
-**** Add Cards
-#+begin_src plantuml :file diagrams/add-cards-flow-chart.png
-  @startuml
-  scale 400 width
-
-  start
-  :enter card data/
-  :insert into database;
-  stop
-  @enduml
-#+end_src
-
-#+RESULTS:
-#+CAPTION: Flow chart for adding cards
+**** Add Products to track
+#+CAPTION: Flow chart for adding products to be tracked
 #+attr_latex: :width 200px
-[[file:diagrams/add-cards-flow-chart.png]]
+[[file:diagrams/flowchart-add.png]]
 \FloatBarrier
 
-**** Edit Cards  
-
-Card details can be edited or the entire card can be deleted
-#+begin_src plantuml :file diagrams/edit-cards-flw-chart.png
-  @startuml
-  scale 400 width
-  start
-  :select card from database;
-  :enter new data for card/
-  :update corresponding card\'s record in database;
-  stop
-  @enduml
-#+end_src
-
-#+RESULTS:
-#+CAPTION: Flow chart for editing cards
+#+LATEX: \clearpage
+**** Regularly check price of products
+#+CAPTION: Flow chart for chatbot to check price regularly
 #+attr_latex: :width 240px
-[[file:diagrams/edit-cards-flw-chart.png]]
+[[file:diagrams/flowchart-check-price.png]]
 \FloatBarrier
 #+begin_export latex
   \clearpage 
 #+end_export
-**** Revise Cards
-#+begin_src plantuml :file diagrams/review-cards-flow-chart.png
-  @startuml
-  scale 400 width
-  start
-  repeat :retrieve card from database;
-  if (due today?) then(yes)
-          :ask card to user;
-          :schedule next due date for card;
-          :increment no/. of cards revised today;
-          if (daily revision limit reached?) then(yes)
-          stop
-  else (no)
-  endif
-  else (no)
-  endif 
-  repeat while (all cards retrieved?) is(no) not(yes) 
-  stop
-  @enduml
-#+end_src
-
-#+RESULTS:
-#+CAPTION: Flow chart for revising cards
-#+attr_latex: :width 260px
-#+attr_org: :width 20px
-[[file:diagrams/review-cards-flow-chart.png]]
-\FloatBarrier
-
-#+begin_export latex
-  \clearpage 
-#+end_export
-* Gantt Chart (sujal)
-#+begin_src plantuml :file diagrams/gantt-chart.png
-  @startgantt
-  projectscale daily
-  Project starts 2023-04-13
-  [Requirement analysis] lasts 8 days
-  [Design] lasts 7 days and starts at [Requirement analysis]'s end
-  [Development] lasts 12 days and starts at [Design]'s end
-  [Testing] lasts 6 days and starts at [Development]'s end
-  @endgantt
-#+end_src
+* Gantt Chart 
 
 #+CAPTION: Gantt chart based on Waterfall model
-#+RESULTS:
-[[file:diagrams/gantt-chart.png]]
+[[file:diagrams/gantt-chart.jpg]]
 \FloatBarrier
 * Expected Outcome 
-- Provide a simple introduction to using flashcards,  active recall & spaced repititon for learning
-- Eliminate the need to constantly read or make notes on the same topics
-- Help make studying a daily habit
+- Save time & money for buyers
+- Inform users of price drops, frequently occuring campaings
+- Promote e-commerce
+- Increase sales for sellers on Daraz
 
 * References 
-# +cite_export: csl ~/.emacs.d/packages/ieee.csl
+#+cite_export: csl ~/.emacs.d/packages/ieee.csl
 #+LATEX: \setlength{\parindent}{0cm}
-# +PRINT_BIBLIOGRAPHY:
+#+PRINT_BIBLIOGRAPHY:
