@@ -25,6 +25,8 @@
 \tocfalse
 :end:
 :dont-edit:
+#+LATEX_HEADER: \usepackage{enumitem}
+#+LATEX_HEADER: \setlist{noitemsep}
 #+LATEX_HEADER: \usepackage[margin=1in, left=1.25in]{geometry}
 #+LaTeX_HEADER: \usepackage{times}
 #+LaTeX_HEADER: \usepackage[12pt]{moresize}
