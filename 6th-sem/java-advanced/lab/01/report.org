@@ -1,0 +1,297 @@
+# for project documents, use addtional latex styles used in final-report file
+:edit-this:
+#+EXPORT_FILE_NAME: java-lab1-report
+#+PROPERTY: header-args :eval no-export
+# don't prompt to evaluate code blocks while exporting
+#+OPTIONS: toc:nil ^:{}
+# set toc below instead of here
+# 2nd option exports subscripts only when _{} is used
+#+LATEX_HEADER: \graphicspath{{~/programming/college-files/assets/images/}}
+
+# !!!!!!!!!!!!!          only edit this section       !!!!!!
+#+LATEX_HEADER: \def\subjectNum{2}
+# 1: ECON
+# 2: JAVA
+# 3: MOBILE
+# 4: NETWORK
+# 5: none
+
+#+LATEX_HEADER: \def\labNum{1}
+#+LATEX_HEADER: \def\labTitle{Java Swing Basics}
+#+LATEX_HEADER: \def\yearSem{III/II}
+#+LATEX_HEADER: \newif \iftoc
+# !!!!!!!!!!!!           set toc here by uncommenting option
+# \toctrue    
+\tocfalse
+:end:
+
+#+INCLUDE: "~/programming/college-files/assets/template.org" :lines "27-"
+* Objectives
+- learn more in depth about java =Swing= and =AWT= libraries than before
+- utilize =Graphics2D= class for drawing graphics primitives
+- implement handling for user input, events
+* Introduction 
+**Java Swing** is a toolkit used to create graphical user interfaces (GUIs) in Java programs. It provides a wide range of components like buttons, labels, text fields, and more, making it easy to build interactive and visually appealing desktop applications.
+
+**Event handling** is a fundamental concept in GUI programming. It allows our program to respond to user actions like button clicks, mouse movements, and key presses. When an event occurs, our program can execute specific code to handle it.
+
+**Graphics2D** is a class that provides advanced drawing capabilities. It offers methods to draw shapes, lines, and text, as well as effects like color, gradients, and transformations. With Graphics2D, we can create complex and customized graphics within Java Swing applications.
+
+* Lab Work
+** Write a Java swing program to display a frame. Set the background color of frame to CYAN and use setdefaultCloseOperation() method.
+#+begin_src java
+  import java.awt.*;
+  import javax.swing.*;
+
+  public class q1 extends JFrame {
+      public q1() {
+          this.setSize(500, 500);
+          this.getContentPane().setBackground(Color.CYAN);
+          this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+          this.setVisible(true);
+      }
+      public static void main(String[] args) {
+          new q1();
+      }
+  }
+#+end_src
+
+*** Output
+#+attr_latex: :height 90px
+[[file:img/q1.png]]
+** Create a frame as below illustrating the concept of Graphics2D.
+#+attr_latex: :width 170px
+[[file:img/q2-smile.png]]
+
+#+begin_src java
+  import javax.swing.*;
+  import java.awt.*;
+
+  public class q2 extends JPanel {
+      public static void main(String[] args) {
+          JFrame f = new JFrame();
+          f.setSize(250, 250);
+
+          f.getContentPane().setBackground(Color.white);
+          f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+          q2 jp = new q2();
+          f.add(jp);
+          f.setVisible(true);
+
+      }
+
+      @Override
+      protected void paintComponent(Graphics g) {
+          Graphics2D g2d = (Graphics2D) g;
+          g2d.setColor(Color.yellow);
+          g2d.fillOval(10, 10, 200, 200);
+          g2d.setColor(Color.BLACK);
+          g2d.fillOval(55, 65, 30, 30);
+          g2d.fillOval(135, 65, 30, 30);
+          g2d.fillOval(50, 130, 120, 30);
+          g2d.setColor(Color.yellow);
+          g2d.fillOval(50, 130, 120, 26);
+      }
+  }
+#+end_src
+*** Output
+#+attr_latex: :width 170px
+[[file:img/q2.png]]
+
+** Ilustrate the concept of Layout Management in Java Swing.
+Hint: Add components in a frame with different layouts
+#+begin_src java
+  import javax.swing.*;
+  import java.awt.*;
+
+  public class q3 extends JFrame {
+      public q3() {
+          this.setSize(300, 600);
+          this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+          getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
+
+          this.add(new JLabel("Border Layout:")); 
+          JPanel pBorder = new JPanel(new BorderLayout());
+          pBorder.add(new JButton("North"), BorderLayout.NORTH);
+          pBorder.add(new JButton("South"), BorderLayout.SOUTH);
+          pBorder.add(new JButton("East"), BorderLayout.EAST);
+          pBorder.add(new JButton("West"), BorderLayout.WEST);
+          pBorder.add(new JButton("Center"), BorderLayout.CENTER);
+          this.add(pBorder);
+          this.add(Box.createVerticalStrut(10));
+
+          this.add(new JLabel("Flow Layout:")); 
+          JPanel pFlow = new JPanel(new FlowLayout());
+          pFlow.add(new JButton("1"));
+          pFlow.add(new JButton("2"));
+          pFlow.add(new JButton("3"));
+          this.add(pFlow);
+          this.add(Box.createVerticalStrut(10));
+
+          this.add(new JLabel("Box Layout:")); 
+          JPanel pBox = new JPanel();
+          pBox.setAlignmentX(JPanel.CENTER_ALIGNMENT);
+          pBox.setLayout(new BoxLayout(pBox, BoxLayout.Y_AXIS));
+          pBox.add(new JButton("Button A"));
+          pBox.add(new JButton("Button B"));
+          pBox.add(new JButton("Button C"));
+          this.add(pBox);
+          this.add(Box.createVerticalStrut(10));
+
+          this.add(new JLabel("Grid Layout:")); 
+          JPanel pGrid = new JPanel(new GridLayout(2, 3, 5, 5));
+          pGrid.add(new JButton("1"));
+          pGrid.add(new JButton("2"));
+          pGrid.add(new JButton("3"));
+          pGrid.add(new JButton("4"));
+          pGrid.add(new JButton("5"));
+          pGrid.add(new JButton("6"));
+          this.add(pGrid);
+
+          this.setVisible(true);
+      }
+
+      public static void main(String[] args) {
+          new q3();
+      }
+  }
+#+end_src
+
+*** Output
+#+attr_latex: :width 170px
+[[file:img/q3.png]]
+
+** WAP in Java to add following components on the frame:
+a. JLabel displaying “First Swing Application”
+b. JCheckBox – to select subjects you like
+c. JRadio Button- to select your favorite Subject
+d. JComboBox to select your interest
+e. JButton to submit data
+
+Also use actionListener for button and display the selected data using a JOptionPane.
+
+#+begin_src java
+  package pkg01;
+
+  import java.awt.*;
+  import java.awt.event.*;
+  import java.util.ArrayList;
+  import javax.swing.*;
+
+  public class q4 extends JFrame implements ActionListener {
+
+      JCheckBox[] checkBoxes;
+      JRadioButton r1, r2, r3;
+      JComboBox jc;
+      JButton b;
+
+      public q4() {
+          JCheckBox c1, c2, c3;
+          ButtonGroup bg;
+          this.setSize(650, 200);
+          getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
+          this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+          JLabel l = new JLabel("First Swing Application");
+          this.add(l);
+
+          JPanel p1 = new JPanel();
+          p1.setLayout(new FlowLayout());
+          JLabel l1 = new JLabel("Choose Subjects You Like :");
+          p1.add(l1);
+
+          c1 = new JCheckBox("Mobile Programming");
+          c1.addActionListener(this);
+          p1.add(c1);
+
+          c2 = new JCheckBox("Advanced Java");
+          c2.addActionListener(this);
+          p1.add(c2);
+
+          c3 = new JCheckBox("Network Programming");
+          c3.addActionListener(this);
+          p1.add(c3);
+          checkBoxes = new JCheckBox[]{c1, c2, c3};
+          this.add(p1);
+
+          JPanel p2 = new JPanel();
+          p2.setLayout(new FlowLayout());
+          JLabel l2 = new JLabel("Choose Your Best Subjects:");
+          l2.setBounds(10, 100, 100, 20);
+          p2.add(l2);
+
+          r1 = new JRadioButton("Mobile Programming");
+          r1.addActionListener(this);
+          p2.add(r1);
+
+          r2 = new JRadioButton("Advanced Java");
+          r2.addActionListener(this);
+          p2.add(r2);
+
+          r3 = new JRadioButton("Network Programming");
+          r3.addActionListener(this);
+          p2.add(r3);
+
+          bg = new ButtonGroup();
+          bg.add(r1);
+          bg.add(r2);
+          bg.add(r3);
+
+          this.add(p2);
+
+          JPanel p3 = new JPanel(new FlowLayout());
+          JLabel l3 = new JLabel("Interest:");
+          p3.add(l3);
+
+          String[] interest = {"Reading", "Footbal", "Guitar"};
+
+          jc = new JComboBox(interest);
+          jc.setSize(50, 16);
+          p3.add(jc);
+          this.add(p3);
+
+          b = new JButton("Submit");
+          b.addActionListener(this);
+          this.add(b);
+
+          this.setVisible(true);
+
+      }
+
+      @Override
+      public void actionPerformed(ActionEvent e) {
+          if (e.getSource() == b) {
+              ArrayList<String> subjects = new ArrayList<String>();
+              for (var s : checkBoxes) {
+                  if (s.isSelected()) {
+                      subjects.add(s.getText());
+                  }
+              }
+
+              String liked = r1.isSelected() ? r1.getText()
+                  : r2.isSelected() ? r2.getText()
+                  : r3.isSelected() ? r3.getText()
+                  : "Not selected";
+              String Interested = jc.getSelectedItem().toString();
+
+              JOptionPane.showMessageDialog(this,
+                                            "Subjects liked By User: " + subjects.toString() + "\n"
+                                            + "Subject Most Liked By User: " + liked + "\n"
+                                            + "User is Interested In: " + Interested,
+                                            "Details Submited ",
+                                            JOptionPane.PLAIN_MESSAGE);
+          }
+      }
+
+      public static void main(String[] args) {
+          new q4();
+      }
+  }
+#+end_src
+*** Output
+#+attr_latex: :width 200px
+[[file:img/q4.png]]
+
+#+attr_latex: :width 200px
+[[file:img/q4-b.png]]
+* Conclusion
+In this laboratory session, we delved deeper into the Java Swing and AWT libraries. By employing the Graphics2D class, we were able to create sophisticated graphics primitives, such as shapes, lines, and text. Furthermore, we successfully implemented event handling mechanisms to respond to user interactions, making our applications dynamic and interactive. This practical experience has enhanced our understanding of Java's graphical user interface capabilities and provided a solid foundation for future projects involving GUI development.
