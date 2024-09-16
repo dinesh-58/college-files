@@ -1,0 +1,163 @@
+# for project documents, use addtional latex styles used in final-report file
+#+LATEX_HEADER: \usepackage{enumitem}
+#+LATEX_HEADER: \setlist{noitemsep}
+:edit-this:
+#+EXPORT_FILE_NAME: java-lab3-report
+#+PROPERTY: header-args :eval no-export
+# don't prompt to evaluate code blocks while exporting
+#+OPTIONS: toc:nil ^:{}
+# set toc below instead of here
+# 2nd option exports subscripts only when _{} is used
+#+LATEX_HEADER: \graphicspath{{~/programming/college-files/assets/images/}}
+
+# !!!!!!!!!!!!!          only edit this section       !!!!!!
+#+LATEX_HEADER: \def\subjectNum{2}
+# 1: ECON
+# 2: JAVA
+# 3: MOBILE
+# 4: NETWORK
+# 5: none
+
+#+LATEX_HEADER: \def\labNum{3}
+#+LATEX_HEADER: \def\labTitle{SQL Basics and JDBC}
+#+LATEX_HEADER: \def\yearSem{III/II}
+#+LATEX_HEADER: \newif \iftoc
+# !!!!!!!!!!!!           set toc here by uncommenting option
+# \toctrue    
+\tocfalse
+:end:
+
+#+INCLUDE: "~/programming/college-files/assets/template.org" :lines "27-"
+* Objectives
+- learn to connect java programs with database
+- be able to execute various database statements, queries through java
+* Introduction 
+JDBC (Java Database Connectivity) is an API that provides a standard way for Java applications to interact with databases. It acts as a bridge between Java code and various database management systems, allowing us to perform operations like creating, reading, updating, and deleting (CRUD) data from databases.
+
+** Key Components of JDBC
+- Driver Manager: Responsible for loading and registering JDBC drivers for different database systems.
+- Connection: Represents a connection to a database.
+- Statement: Used to execute SQL statements.
+- ResultSet: Stores the results of a query.
+* Lab Work
+** Write a Java program to connect with MySQL database.
+#+begin_src java
+  import java.sql.*;
+  // put inside main method
+  try {
+      String url = "jdbc:mysql://localhost/javadb";
+      Connection conn = DriverManager.getConnection(url, "root", "");
+  } catch (SQLException e) {
+      e.printStackTrac();
+  }
+#+end_src
+** Write a Java program to create a database whose name provided by user from console.
+#+begin_src java
+  import java.sql.*;
+
+  public class CreateDatabase {
+      public static void main(String[] args) {
+          try {
+              Scanner scanner = new Scanner(System.in);
+              System.out.print("Enter the database name: ");
+              String dbName = scanner.nextLine();
+
+              String url = "jdbc:mysql://localhost/";
+              Connection conn = DriverManager.getConnection(url, "root", "");
+              Statement statement = conn.createStatement();
+              String query = "CREATE DATABASE " + dbName;
+              statement.executeUpdate(query);
+
+              System.out.println("Database " + dbName + " created successfully.");
+              conn.close();
+          } catch (SQLException e) {
+              e.printStackTrace();
+          }
+      }
+  }
+#+end_src
+** Inside the database created above, create a table named employee having following attributes using Java code.
+a. RollNo(PRIMARY KEY)
+b. Firstname
+c. Lastname
+d. Address
+e. Email (UNIQUE)
+f. DateOfBirth
+#+begin_src java
+  // put inside main method
+  try {
+      String url = "jdbc:mysql://localhost/javadb";
+      Connection conn = DriverManager.getConnection(url, "root", "");
+      Statement statement = conn.createStatement();
+
+      String query = "CREATE TABLE employee (" +
+          "RollNo INT PRIMARY KEY," +
+          "Firstname VARCHAR(50)," +
+          "Lastname VARCHAR(50)," +
+          "Address VARCHAR(100)," +
+          "Email VARCHAR(50) UNIQUE," +
+          "DateOfBirth DATE" +
+          ")";
+
+      statement.executeUpdate(query);
+  } catch (SQLException e) {
+      e.printStackTrac();
+  }
+#+end_src
+** Write a Java program to display all the records of student who live in Kathmandu.
+#+begin_src java
+  // put inside main method
+  try {
+      String url = "jdbc:mysql://localhost/javadb";
+      Connection conn = DriverManager.getConnection(url, "root", "");
+      Statement statement = conn.createStatement();
+      String query = "SELECT * FROM employee WHERE Address = 'Kathmandu'";
+      ResultSet resultSet = statement.executeQuery(query);
+
+      while (resultSet.next()) {
+          int rollNo = resultSet.getInt("RollNo");
+          String firstName = resultSet.getString("Firstname");
+          String lastName = resultSet.getString("Lastname");
+          // Print or process the student information
+          System.out.println("Roll No: " + rollNo);
+          System.out.println("First Name: " + firstName);
+          System.out.println("Last Name: " + lastName);
+          System.out.println("Address: " + resultSet.getString("Address"));
+          System.out.println();
+      }
+
+      resultSet.close();
+  } catch (SQLException e) {
+      e.printStackTrac();
+  }
+#+end_src
+** Write a Java Program to update the name of 5th record you have in your student table to Ram Sharma.
+#+begin_src java
+  import java.sql.*;
+  // put inside main method
+  try {
+      String url = "jdbc:mysql://localhost/javadb";
+      Connection conn = DriverManager.getConnection(url, "root", "");
+      Statement statement = conn.createStatement();
+
+      String query = "UPDATE employee SET Firstname = 'Ram', Lastname = 'Sharma' WHERE RollNo = (SELECT RollNo FROM employee LIMIT 4, 1)";
+       statement.executeUpdate(query);
+  } catch (SQLException e) {
+      e.printStackTrac();
+  }
+#+end_src
+** Write a Java Program to delete the record of last student.
+#+begin_src java
+  import java.sql.*;
+  // put inside main method
+  try {
+      String url = "jdbc:mysql://localhost/javadb";
+      Connection conn = DriverManager.getConnection(url, "root", "");
+      Statement statement = conn.createStatement();
+      String query = "DELETE FROM employee ORDER BY RollNo DESC LIMIT 1";
+      statement.executeUpdate(query);  } catch (SQLException e) {
+      e.printStackTrac();
+  }
+#+end_src
+* Conclusion
+In this lab, we learned to decouple data from our code, allowing for separation of concerns and data persistence. We performed various database operations, including executing SQL statements, querying data, updating records, and deleting data. Through hands-on practice, we gained a solid understanding of JDBC's role in bridging the gap between Java and database systems. This knowledge will be helpful for developing applications that interact with data-driven systems.
