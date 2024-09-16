@@ -1,0 +1,343 @@
+# for project documents, use addtional latex styles used in final-report file
+:edit-this:
+#+EXPORT_FILE_NAME: java-lab2-report
+#+PROPERTY: header-args :eval no-export
+# don't prompt to evaluate code blocks while exporting
+#+OPTIONS: toc:nil ^:{}
+# set toc below instead of here
+# 2nd option exports subscripts only when _{} is used
+#+LATEX_HEADER: \graphicspath{{~/programming/college-files/assets/images/}}
+
+# !!!!!!!!!!!!!          only edit this section       !!!!!!
+#+LATEX_HEADER: \def\subjectNum{2}
+# 1: ECON
+# 2: JAVA
+# 3: MOBILE
+# 4: NETWORK
+# 5: none
+
+#+LATEX_HEADER: \def\labNum{2}
+#+LATEX_HEADER: \def\labTitle{Java Swing Basics and Event Handling}
+#+LATEX_HEADER: \def\yearSem{III/II}
+#+LATEX_HEADER: \newif \iftoc
+# !!!!!!!!!!!!           set toc here by uncommenting option
+# \toctrue    
+\tocfalse
+:end:
+
+#+INCLUDE: "~/programming/college-files/assets/template.org" :lines "27-"
+* Objectives
+- implement various event listeners in depth
+- learn to add menu items to menu pane
+- utilize event listeners to create a drawing app and a simple calculator app
+* Introduction 
+Swing provides many event listener interfaces so that developers can define custom behavior to handle specific events.
+**MouseListeners** are used to handle mouse events like clicking, pressing, releasing, entering, and exiting a component. They allow us to perform actions when the user interacts with the mouse within our application.
+
+**MouseWheelListeners** are used to handle mouse wheel events. They allow us to detect when the user scrolls the mouse wheel up or down, which can be useful for zooming, scrolling through content, or other actions.
+
+**KeyListeners** are used to handle keyboard events like key presses, key releases, and key typing. They allow us to detect when the user presses or releases specific keys, enabling us to respond to user input from the keyboard.
+
+**WindowListeners** are used to handle window events like opening, closing, activating, deactivating, iconifying, and deiconifying a window. They allow us to perform actions when the window's state changes, such as saving data before closing or restoring the window's position when it is reopened.
+
+* Lab Work
+** Write a Java Swing program to illustrate the concept of MouseListener, MouseWheelListener, WindowListener and KeyListener.
+#+begin_src java
+  import java.awt.*;
+  import java.awt.event.*;
+
+  public class EventListenerExample extends Frame {
+      public EventListenerExample() {
+          setSize(400, 300);
+          setVisible(true);
+
+          addMouseListener(new MouseListener() {
+                  @Override
+                  public void mouseClicked(MouseEvent e) {
+                      System.out.println("Mouse clicked");
+                  }
+
+                  @Override
+                  public void mousePressed(MouseEvent e) {
+                      System.out.println("Mouse pressed");
+                  }
+
+                  @Override
+                  public void mouseReleased(MouseEvent e) {
+                      System.out.println("Mouse released");
+                  }
+
+                  @Override
+                  public void mouseEntered(MouseEvent e) {
+                      System.out.println("Mouse entered the window");
+                  }
+
+                  @Override
+                  public void mouseExited(MouseEvent e) {
+                      System.out.println("Mouse exited the window");
+                  }
+              });
+
+          addMouseWheelListener(new MouseWheelListener() {
+                  @Override
+                  public void mouseWheelMoved(MouseWheelEvent e) {
+                      System.out.println("Mouse wheel moved");
+                  }
+              });
+
+          addWindowListener(new WindowListener() {
+                  @Override
+                  public void windowOpened(WindowEvent e) {
+                      System.out.println("Window opened");
+                  }
+
+                  @Override
+                  public void windowClosing(WindowEvent e) {
+                      System.exit(0);
+                  }
+
+                  @Override
+                  public void windowClosed(WindowEvent e) {
+                      System.out.println("Window closed");
+                  }
+
+                  @Override
+                  public void windowIconified(WindowEvent e) {
+                      System.out.println("Window iconified");
+                  }
+
+                  @Override
+                  public void windowDeiconified(WindowEvent e) {
+                      System.out.println("Window deiconified");
+                  }
+
+                  @Override
+                  public void windowActivated(WindowEvent e) {
+                      System.out.println("Window activated");
+                  }
+
+                  @Override
+                  public void windowDeactivated(WindowEvent e) {
+                      System.out.println("Window deactivated");
+                  }
+              });
+
+          addKeyListener(new KeyListener() {
+                  @Override
+                  public void keyPressed(KeyEvent e) {
+                      System.out.println("Key pressed");
+                  }
+
+                  @Override
+                  public void keyReleased(KeyEvent e) {
+                      System.out.println("Key released");
+                  }
+
+                  @Override
+                  public void keyTyped(KeyEvent e) {
+                      System.out.println("Key typed: " + e.getKeyChar());
+                  }
+              });
+      }
+
+      public static void main(String[] args) {
+          new EventListenerExample();
+      }
+  }
+#+end_src
+** Create a frame having menu as below. Also give a message to user using JOptionPane of which menu-item user has clicked.
+#+attr_latex: :height 130px
+[[file:img/q2.png]]
+
+#+begin_src java
+  import javax.swing.*;
+  /**
+   ,* @author sujal
+   ,*/
+  public class MenuDemo extends ACtionListener {
+      public MenuDemo() {
+          JFrame jf1 = new JFrame();
+          jf1.setVisible(true);
+          jf1.setSize(500, 500);
+          jf1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+          JMenuBar jmBar = new JMenuBar();
+          jf1.setJMenuBar(jmBar);
+
+          JMenu jmFile = new JMenu("File");
+          jmBar.add(jmFile);
+
+          JMenuItem jmiOpen = new JMenuItem("Open");
+          jmiOpen.addActionListener(this);
+          jmFile.add(jmiOpen);
+
+
+          JMenuItem jmiSave = new JMenuItem("Save");
+          jmiSave.addActionListener(this);
+          jmFile.add(jmiSave);
+
+          JMenuItem jmiExit = new JMenuItem("Exit");
+          jmiExit.addActionListener(this);
+          jmFile.add(jmiExit);
+
+          JMenu jmTools = new JMenu("Tools");
+          jmBar.add(jmTools);
+
+          JMenu jmLoad = new JMenu("Load");
+          jmFile.add(jmLoad);
+
+          JMenuItem jmiLoadSite = new JMenuItem("Load from site");
+          jmiLoadSite.addActionListener(this);
+          jmLoad.add(jmiLoadSite);
+          JMenuItem jmiLoadDevice = new JMenuItem("Load from device");
+          jmiLoadDevice.addActionListener(this);
+          jmLoad.add(jmiLoadDevice);
+      }
+      @Override
+      public void actionPerformed(ActionEvent e) {
+          JMenuItem menuItem = (JMenuItem) e.getSource();
+          String text = menuItem.getText(); 
+              JOptionPane.showMessageDialog(null, "You clicked " + text);
+      }
+  }
+#+end_src
+** Write a Java Program to create a window where user can draw anything by dragging mouse on it.
+#+begin_src java
+  import java.awt.Color;
+  import java.awt.Graphics;
+  import java.awt.event.MouseAdapter;
+  import java.awt.event.MouseEvent;
+  import javax.swing.JFrame;
+
+  /**
+   ,* @author sujal
+   ,*/
+  public class q3 extends MouseAdapter {
+      JFrame f;
+      public q3() {
+          f = new JFrame();
+          f.setSize(300, 300);
+          f.setVisible(true);
+          f.addMouseMotionListener(this);  // used for mouse drag
+          f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      }
+
+      @Override
+      public void mouseDragged(MouseEvent e) {
+          Graphics g = f.getGraphics();
+          Color c = Color.BLACK;
+          g.setColor(c);
+          g.drawOval(e.getX(), e.getY(), 5, 5);
+          g.fillOval(e.getX(), e.getY(), 5, 5);
+      }
+
+      public static void main(String[] args) {
+          new q3();
+      }
+  }
+#+end_src
+*** Output
+#+attr_latex: :height 90px
+[[file:img/q3.png]]
+** Write a Java program to create a calculator.
+Application above should perform appropriate actions as per the button click.
+#+begin_src java
+  import java.awt.BorderLayout;
+  import java.awt.GridLayout;
+  import java.awt.event.ActionEvent;
+  import java.awt.event.ActionListener;
+
+  import javax.swing.*;
+
+  public class CalculatorGridLayout {
+
+      private JTextField screen;
+      private String currentInput = "";
+      private String operator = "";
+
+      public CalculatorGridLayout() {
+          JFrame frame = new JFrame("Simple Calculator");
+          frame.setSize(500, 500);
+          frame.setLayout(new BorderLayout());
+          frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+          screen = new JTextField();
+          screen.setEditable(false); 
+          JPanel panelButtons = new JPanel();
+          panelButtons.setLayout(new GridLayout(4, 4));
+
+          frame.add(screen, BorderLayout.NORTH);
+          frame.add(panelButtons, BorderLayout.CENTER);
+
+          String[] buttonValues = {
+              "7", "8", "9", "C",
+              "4", "5", "6", "+",
+              "1", "2", "3", "-",
+              "/", "0", "*", "="
+          };
+
+          JButton[] buttons = new JButton[16];
+          for (int i = 0; i < 16; i++) {
+              buttons[i] = new JButton(buttonValues[i]);
+              buttons[i].addActionListener(new ButtonListener());
+              panelButtons.add(buttons[i]);
+          }
+          frame.setVisible(true);
+      }
+
+      private class ButtonListener implements ActionListener {
+          @Override
+          public void actionPerformed(ActionEvent e) {
+              String buttonText = ((JButton) e.getSource()).getText();
+
+              if (buttonText.equals("C")) {
+                  currentInput = "";
+                  operator = "";
+                  screen.setText("");
+              } else if (buttonText.equals("=")) {
+                  if (!operator.isEmpty() && !currentInput.isEmpty()) {
+                      double result = calculate(Double.parseDouble(currentInput), Double.parseDouble(screen.getText()), operator);
+                      screen.setText(String.valueOf(result));
+                      currentInput = "";
+                      operator = "";
+                  }
+              } else if (isOperator(buttonText)) {
+                  operator = buttonText;
+                  currentInput = screen.getText();
+                  screen.setText("");
+              } else {
+                  screen.setText(screen.getText() + buttonText);
+                  currentInput = screen.getText();
+              }
+          }
+
+          private boolean isOperator(String text) {
+              return "+-*/".contains(text);
+          }
+
+          private double calculate(double num1, double num2, String operator) {
+              switch (operator) {
+              case "+":
+                  return num1 + num2;
+              case "-":
+                  return num1 - num2;
+              case "*":
+                  return num1 * num2;
+              case "/":
+                  if (num2 == 0) {
+                      throw new ArithmeticException("Division by zero is not allowed");
+                  }
+                  return num1 / num2;
+              default:
+                  throw new IllegalArgumentException("Invalid operator");
+              }
+          }
+      }
+  }
+#+end_src
+*** Output
+#+attr_latex: :height 130px
+[[file:img/q4.png]]
+* Conclusion
+In this lab, we learned how to make our programs listen for more advanced events. We used listeners to know when the user clicks the mouse, presses keys, or modifies the window, and handle it properly. We also learned how to add menus to our programs, that are commonly found in other desktop programs. We used these skills to make a drawing app and a simple calculator. This helped us understand how to use these concepts in a practical, usable project.
+
