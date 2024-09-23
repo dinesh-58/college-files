@@ -59,7 +59,13 @@
 #+LATEX_HEADER: }
 
 # title doesn't work so just use labString for title
-#+LATEX_HEADER: \newcommand{\labString}{Lab report on: \\\subject{\subjectNum}Lab \labNum: \\\labTitle}
+# +LATEX_HEADER: \newcommand{\labString}{Lab report on: \\\subject{\subjectNum}Lab \labNum: \\\labTitle}
+#+LATEX_HEADER: \usepackage{ifthen}
+#+LATEX_HEADER: \newcommand{\labString}{%
+#+LATEX_HEADER:   Lab report on: \\\subject{\subjectNum} Lab \labNum%
+#+LATEX_HEADER:   \ifthenelse{\equal{\labTitle}{}}{}{ : \labTitle}%
+#+LATEX_HEADER: }
+
 #+LATEX_HEADER: \author{Sujal Gurung \\ Roll no: 34 \\ BCA \yearSem}
 #+LATEX_HEADER: \date{\today}
 :end:
