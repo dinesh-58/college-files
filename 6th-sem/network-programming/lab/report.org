@@ -1,0 +1,855 @@
+# for project documents, use addtional latex styles used in final-report file
+:edit-this:
+#+EXPORT_FILE_NAME: net-prog-lab-report
+#+PROPERTY: header-args :eval no-export
+# don't prompt to evaluate code blocks while exporting
+#+OPTIONS: toc:nil ^:{}
+# set toc below instead of here
+# 2nd option exports subscripts only when _{} is used
+#+LATEX_HEADER: \graphicspath{{~/programming/college-files/assets/images/}}
+
+# !!!!!!!!!!!!!          only edit this section       !!!!!!
+#+LATEX_HEADER: \def\subjectNum{4}
+# 1: ECON
+# 2: JAVA
+# 3: MOBILE
+# 4: NETWORK
+# 5: none
+
+#+LATEX_HEADER: \def\labNum{}
+#+LATEX_HEADER: \def\labTitle{}
+#+LATEX_HEADER: \def\yearSem{III/II}
+#+LATEX_HEADER: \newif \iftoc
+# !!!!!!!!!!!!           set toc here by uncommenting option
+# \toctrue    
+\tocfalse
+:end:
+
+#+INCLUDE: "~/programming/college-files/assets/template.org" :lines "27-"
+* Chapter – 2: InetAddress 
+** Introduction
+An IP address (Internet Protocol address) is a unique identifier assigned to devices on a network, allowing them to communicate with each other.
+There are two main types: IPv4 (32-bit) and IPv6 (128-bit). In Java, the InetAddress class is used to represent IP addresses, providing methods to retrieve the IP address of a host, convert hostnames to IP addresses, and check if an address is a loopback or multicast address.
+
+NetworkInterface class represents a network interface (like Wi-Fi or Ethernet adapters) and provides details about their IP addresses and hardware addresses. Together, these classes facilitate network programming, enabling developers to create applications that efficiently communicate over IP networks.
+** Lab Work
+*** Write a program that prints the address of www.tufohss.edu.np 
+**** Code
+#+begin_src java
+  import java.net.*;
+  /**
+   ,* @author sujal
+   ,*/
+  public class NetLab {
+      public static void main(String[] args) {
+          try {
+              InetAddress address = InetAddress.getByName("www.tufohss.edu.np");
+              System.out.println(address);
+          } catch (Exception ex) {
+              ex.printStackTrace();
+          }
+      }
+  }
+#+end_src
+**** Output
+#+begin_src sh
+www.tufohss.edu.np/202.45.144.31
+#+end_src
+*** Write a program that finds the address of the local machine 
+**** Code
+#+begin_src java
+  import java.net.*;
+  /**
+   * @author sujal
+   */
+  public class NetLab {
+      public static void main(String[] args) {
+          try {
+              InetAddress address = InetAddress.getLocalHost();
+              System.out.println(address);
+          } catch (Exception ex) {
+              ex.printStackTrace();
+          }
+      }
+  }
+#+end_src
+**** Output
+#+begin_src sh
+  MBPro/192.168.208.1
+#+end_src
+*** Write a program that finds the canonical hostname of a given address 
+**** Code
+#+begin_src java :exports code
+  import java.net.*;
+  public class NetLab {
+      public static void main(String[] args) {
+          try {
+              InetAddress ia = InetAddress.getByName("66.102.15.255");
+              System.out.println(ia.getCanonicalHostName());
+          } catch (Exception ex) {
+              ex.printStackTrace();
+          }
+      }
+  }
+#+end_src
+**** Output
+#+begin_src sh
+  255.15.102.66.bc.googleusercontent.com
+#+end_src
+*** Write a program to find the IP address and Host name of the local machine 
+**** Code
+#+begin_src java 
+  import java.net.*;
+  public class NetLab {
+      public static void main(String[] args) {
+          try {
+              InetAddress me = InetAddress.getLocalHost();
+              String dottedQuad = me.getHostAddress();
+              System.out.println("My address is " + dottedQuad);
+              String hostname = me.getHostName();
+              System.out.println("Local host name: " + hostname);      
+          } catch (Exception ex) {
+              ex.printStackTrace();
+          }
+      }
+  }
+#+end_src
+**** Output
+#+begin_src sh
+  My address is 192.168.208.1
+  Local host name: MBPro
+#+end_src
+*** Write a program for determining whether a web address uses IPv4 or IPv6, then print the ip address
+**** Code
+#+begin_src java :exports code
+  import java.net.*;
+  public class NetLab {
+      public static void main(String[] args) {
+          try {
+              InetAddress addr = InetAddress.getByName("ipv6.google.com");
+              if (addr instanceof Inet6Address) {
+                  System.out.println("IPv6 = " + addr.getHostAddress());
+              }
+              if (addr instanceof Inet4Address) {
+                  System.out.println("IPv4 = " + addr.getHostAddress());
+              }
+          } catch (Exception ex) {
+              ex.printStackTrace();
+          }
+      }
+  }
+#+end_src
+**** Output
+#+begin_src sh
+IPv6 = 2404:6800:4002:814:0:0:0:200e
+#+end_src
+*** Write a program that lists all the network interfaces. 
+**** Code
+#+begin_src java :exports code
+  import java.net.*;
+  public class NetLab {
+      public static void main(String[] args) {
+          try {
+              Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
+              while (interfaces.hasMoreElements()) {
+                  NetworkInterface ni = interfaces.nextElement();
+                  System.out.println(ni);
+              }
+          } catch (Exception ex) {
+              ex.printStackTrace();
+          }
+      }
+  }
+#+end_src
+**** Output
+#+begin_src text
+  name:ethernet	_0 (Hyper-V Virtual Switch Extension Adapter-Hyper-V Virtual Switch Extension Filter-0000)
+  name:ethernet_1 (Hyper-V Virtual Ethernet Adapter-WFP Native MAC Layer LightWeight Filter-0000)
+  name:ethernet_2 (Hyper-V Virtual Ethernet Adapter-QoS Packet Scheduler-0000)
+  name:ethernet_3 (Hyper-V Virtual Ethernet Adapter-WFP 802.3 MAC Layer LightWeight Filter-0000)
+  name:ethernet_4 (WAN Miniport (IP)-WFP Native MAC Layer LightWeight Filter-0000)
+  name:ethernet_5 (WAN Miniport (IP)-QoS Packet Scheduler-0000)
+  name:ethernet_6 (WAN Miniport (IPv6)-WFP Native MAC Layer LightWeight Filter-0000)
+  name:ethernet_7 (WAN Miniport (IPv6)-QoS Packet Scheduler-0000)
+  name:ethernet_8 (WAN Miniport (Network Monitor)-WFP Native MAC Layer LightWeight Filter-0000)
+  name:ethernet_9 (WAN Miniport (Network Monitor)-QoS Packet Scheduler-0000)
+  name:ethernet_32768 (Microsoft Kernel Debug Network Adapter)
+  name:ethernet_32769 (Bluetooth Device (Personal Area Network))
+  name:ethernet_32770 (WAN Miniport (IP))
+  name:ethernet_32771 (WAN Miniport (IPv6))
+  name:ethernet_32772 (WAN Miniport (Network Monitor))
+  name:ethernet_32773 (Hyper-V Virtual Switch Extension Adapter)
+  name:ethernet_32774 (Hyper-V Virtual Ethernet Adapter)
+  name:ppp_32768 (WAN Miniport (PPPOE))
+  name:ppp_32769 (RAS Async Adapter)
+  name:loopback_0 (Software Loopback Interface 1)
+  name:wireless_0 (Realtek 8822CE Wireless LAN 802.11ac PCI-E NIC-WFP Native MAC Layer LightWeight Filter-0000)
+  name:wireless_1 (Realtek 8822CE Wireless LAN 802.11ac PCI-E NIC-Virtual WiFi Filter Driver-0000)
+  name:wireless_2 (Realtek 8822CE Wireless LAN 802.11ac PCI-E NIC-Native WiFi Filter Driver-0000)
+  name:wireless_3 (Realtek 8822CE Wireless LAN 802.11ac PCI-E NIC-QoS Packet Scheduler-0000)
+  name:wireless_4 (Realtek 8822CE Wireless LAN 802.11ac PCI-E NIC-WFP 802.3 MAC Layer LightWeight Filter-0000)
+  name:wireless_5 (Microsoft Wi-Fi Direct Virtual Adapter-WFP Native MAC Layer LightWeight Filter-0000)
+  name:wireless_6 (Microsoft Wi-Fi Direct Virtual Adapter-Native WiFi Filter Driver-0000)
+  name:wireless_7 (Microsoft Wi-Fi Direct Virtual Adapter-QoS Packet Scheduler-0000)
+  name:wireless_8 (Microsoft Wi-Fi Direct Virtual Adapter-WFP 802.3 MAC Layer LightWeight Filter-0000)
+  name:wireless_9 (Microsoft Wi-Fi Direct Virtual Adapter #2-WFP Native MAC Layer LightWeight Filter-0000)
+  name:wireless_10 (Microsoft Wi-Fi Direct Virtual Adapter #2-Native WiFi Filter Driver-0000)
+  name:wireless_11 (Microsoft Wi-Fi Direct Virtual Adapter #2-QoS Packet Scheduler-0000)
+  name:wireless_12 (Microsoft Wi-Fi Direct Virtual Adapter #2-WFP 802.3 MAC Layer LightWeight Filter-0000)
+  name:wireless_32768 (Realtek 8822CE Wireless LAN 802.11ac PCI-E NIC)
+  name:wireless_32769 (Microsoft Wi-Fi Direct Virtual Adapter)
+  name:wireless_32770 (Microsoft Wi-Fi Direct Virtual Adapter #2)
+  name:tunnel_32512 (Microsoft Teredo Tunneling Adapter)
+  name:tunnel_32513 (Microsoft IP-HTTPS Platform Adapter)
+  name:tunnel_32514 (Microsoft 6to4 Adapter)
+  name:tunnel_32768 (WAN Miniport (SSTP))
+  name:tunnel_32769 (WAN Miniport (IKEv2))
+  name:tunnel_32770 (WAN Miniport (L2TP))
+  name:tunnel_32771 (WAN Miniport (PPTP))
+#+end_src
+* Chapter – 3: URLs and URIs 
+** Introduction
+A URL (Uniform Resource Locator) is a reference or address used to access resources on the internet. In Java, several classes are designed to handle URLs and related operations.
+The =URL= class represents a URL and provides methods for parsing and accessing its various components,
+such as the protocol, host, port, path, and query parameters. This class also enables network communication through methods like =openConnection()=, which creates a connection to the resource specified by the URL.
+
+** Lab Work
+*** Write a program that splits the parts of a URL 
+**** Code
+#+begin_src java :exports code
+  import java.net.*;
+  public class NetLab {
+      public static void main(String[] args) {
+          try {
+              URL u = new URL(args[0]);
+              System.out.println("scheme : " + u.getProtocol());
+              System.out.println("user info : " + u.getUserInfo());
+              String host = u.getHost();
+              System.out.println("host : " + host);
+              System.out.println("port : " + u.getPort());
+              System.out.println("path : " + u.getPath());
+              System.out.println("ref : " + u.getRef());
+              System.out.println("query string : " + u.getQuery());
+          } catch (Exception ex) {
+              ex.printStackTrace();
+          }
+      }
+  }
+#+end_src
+**** Output
+#+begin_src sh
+  $ javac NetLab.java
+  $ java NetLab "https://user:password@www.example.com:8080/path/to/resource?query=param#fragment"
+  scheme : https
+  user info : user:password
+  host : www.example.com
+  port : 8080
+  path : /path/to/resource
+  ref : fragment
+  query string : query=param
+#+end_src
+#+latex: \pagebreak
+*** Write a program to download a web page of a given web address
+**** Code
+#+begin_src java :exports code
+  import java.io.*;
+  import java.net.*;
+  public class DownloadPage
+  {
+      public static void main (String[] args) {
+          try {
+              URL url = new URL("tufohss.edu.np");
+              BufferedReader readr = new BufferedReader(new InputStreamReader(url.openStream()));
+              BufferedWriter writer = new BufferedWriter(new FileWriter("Download.html"));
+              String line;
+              while ((line = readr.readLine()) != null) {
+                  writer.write(line);
+              }
+              readr.close();
+              writer.close();
+              System.out.println("Successfully Downloaded.");
+          }
+          catch (Exception e) {
+              e.printStackTrace();
+          }
+      }
+  }
+#+end_src
+*** Write a program for resolving relatives URI 
+**** Code
+#+begin_src java :exports code
+  import java.net.*;
+  public class NetLab {
+      public static void main(String[] args) {
+          try {
+              String uribase = "https://www.test.org/";
+              String urirelative = "languages/../java";
+              URI uriBase = new URI(uribase);
+              System.out.println("Base URI = " + uriBase.toString());
+              URI uriRelative = new URI(urirelative);
+              System.out.println("Relative URI = " + uriRelative.toString());
+              URI uriResolved = uriBase.resolve(uriRelative);
+              System.out.println("Resolved URI = " + uriResolved.toString()) ;
+          } catch (Exception ex) {
+              ex.printStackTrace();
+          }
+      }
+  }
+#+end_src
+**** Output
+#+begin_src text
+Base URI = https://www.test.org/
+Relative URI = languages/../java
+Resolved URI = https://www.test.org/java
+#+end_src
+*** Write a program that communicates with Server-Side Programs Through GET 
+**** Code
+#+begin_src java :exports code
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+
+public class GoogleSearch {
+    public static void main(String[] args) {
+        try {
+            URL url = new URL("https://jsonplaceholder.typicode.com/todos/1");
+            
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            
+            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                String inputLine;
+                StringBuilder response = new StringBuilder();
+                
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+                
+                System.out.println(response.toString());
+            } else {
+                System.out.println("GET request failed: " + connection.getResponseCode());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+#+end_src
+**** Output
+#+begin_src text
+{
+  "userId": 1,
+  "id": 1,
+  "title": "Lorem ipsum dol",
+  "completed": false
+}
+#+end_src
+* Chapter – 4: HTTP
+** Introduction
+In Java, handling HTTP communications and managing cookies is streamlined through various classes in the =java.net= and =org.apache.http= packages. The =HttpURLConnection= class allows developers to send HTTP requests and receive responses, providing methods to set request properties, read response data, and manage timeouts.
+
+For more advanced HTTP operations, the Apache HttpClient library offers classes like =CloseableHttpClient=, which facilitates connection management and request execution. When it comes to cookies, the =CookieStore= interface is used to manage a collection of cookies, allowing for storage and retrieval of cookies associated with HTTP sessions.
+
+Additionally, the =CookiePolicy= interface defines rules for handling cookies, including strategies for accepting or rejecting cookies based on various criteria. Together, these classes and interfaces make it easier to implement robust HTTP clients that can efficiently manage state and session information through cookies, enhancing the user experience in web applications.
+** Lab Work
+*** Write a program that shows a simple CookiePolicy that blocks cookies from .gov domains, but allows others. 
+#+begin_src java
+  import java.net.*;
+  public class NoGovernmentCookies implements CookiePolicy {
+
+      @Override
+      public boolean shouldAccept(URI uri, HttpCookie cookie) {
+          if (uri.getAuthority().toLowerCase().endsWith(".gov") || cookie.getDomain().toLowerCase().endsWith(".gov")) {
+              return false;
+          }
+          return true;
+      }
+
+      public static void main(String[] args) throws Exception {
+          CookieManager cookieManager = new CookieManager(null, new NoGovernmentCookies());
+          CookieHandler.setDefault(cookieManager);
+      }
+  }
+#+end_src
+*** Write a program to implement the CookieStore Methods (add, read, delete) cookies 
+**** Code
+#+begin_src java :exports code
+  import java.net.*;
+  public class NetLab {
+      public static void main(String[] args) {
+          try {
+              CookieManager cookieManager = new CookieManager();
+              CookieStore cookieStore = cookieManager.getCookieStore();
+              HttpCookie cookieA = new HttpCookie("First", "1");
+
+              URI uri = URI.create("https://tufohss.edu.np/");
+              cookieStore.add(uri, cookieA);
+
+              System.out.println("Cookies successfully added\n");
+              List<HttpCookie> cookiesWithURI = cookieStore.get(uri);
+              System.out.println("Cookies associated with URI in CookieStore : " + cookiesWithURI + "\n");
+
+              System.out.println("Removal of Cookie : " + cookieStore.remove(uri, cookieA));
+              List remainingCookieList = cookieStore.getCookies();
+              System.out.println("Remaining Cookies : " + remainingCookieList + "\n");
+          } catch (Exception ex) {
+              ex.printStackTrace();
+          }
+      }
+  }
+#+end_src
+**** Output
+#+begin_src text
+Cookies successfully added
+
+Cookies associated with URI in CookieStore : [First="1"]
+
+Removal of Cookie : true
+Remaining Cookies : []
+#+end_src
+#+latex: \pagebreak
+* Chapter – 5: URL Connections 
+** Introduction
+=URLConnection= class provides methods for interacting with the resource, allowing for tasks such as reading data from the URL or sending requests.
+For more complex URL manipulations, the =URI= class is used to represent a Uniform Resource Identifier, which can be converted to a URL. 
+** Lab Work
+*** Write a program to read value of HTTP Header fields 
+**** Code
+#+begin_src java :exports code
+  import java.net.*;
+  public class NetLab {
+      public static void main(String[] args) {
+          try {
+              URL u = new URL("https://tufohss.edu.np");
+              URLConnection uc = u.openConnection();
+              System.out.println("Content-type: " + uc.getContentType());
+              System.out.println("Content-encoding: " + uc.getContentEncoding());
+              System.out.println("Date: " + new Date(uc.getDate()));
+              System.out.println("Last modified: " + new Date(uc.getLastModified()));
+
+              System.out.println("Expiration date: " + new Date(uc.getExpiration()));
+              System.out.println("Content-length: " + uc.getContentLength());
+          } catch (Exception ex) {
+              ex.printStackTrace();
+          }
+      }
+  }
+#+end_src
+**** Output
+#+begin_src text
+Content-type: text/html; charset=iso-8859-1
+Content-encoding: null
+Date: Mon Sep 23 19:15:53 NPT 2024
+Last modified: Thu Jan 01 05:30:00 NPT 1970
+Expiration date: Thu Jan 01 05:30:00 NPT 1970
+Content-length: 231
+#+end_src
+*** Write a program to get the time when a URL was last changed 
+**** Code
+#+begin_src java :exports code
+  import java.net.*;
+  public class NetLab {
+      public static void main(String[] args) {
+          try {
+              URL u = new URL("https://wikipedia.com/");
+              HttpURLConnection http = (HttpURLConnection) u.openConnection();
+              http.setRequestMethod("HEAD");
+              System.out.println(u + " was last modified at " + new Date(http.getLastModified()));
+          } catch (Exception ex) {
+              ex.printStackTrace();
+          }
+      }
+  }
+#+end_src
+**** Output
+#+begin_src text
+https://wikipedia.com/ was last modified at Wed Sep 04 02:49:10 NPT 2024
+#+end_src
+#+latex: \pagebreak
+* Chapter – 6 & 7: Sockets 
+** Introduction
+In Java, the =Socket= and =ServerSocket= classes facilitate network communication using TCP (Transmission Control Protocol). The =Socket= class represents a client-side socket that enables a program to connect to a server. It provides methods for sending and receiving data, allowing bi-directional communication over a network.
+
+On the server side, the =ServerSocket= class is used to listen for incoming client connections. When a client attempts to connect, the =ServerSocket= accepts the connection and creates a new =Socket= object for that specific client, allowing the server to interact with it. This architecture supports multiple clients through the use of threads, enabling concurrent processing of client requests.
+
+Together, these classes enable the development of client-server applications, where the =ServerSocket= listens for connections and the =Socket= handles data exchange, making it easy to implement real-time communication systems and network services.
+** Lab Work
+*** Write a program for socket communication between client & server
+#+begin_src java Server.java
+  import java.net.*;
+  import java.util.Scanner;
+
+  public class Server {
+      public static void main(String [] args) {
+          try {
+              ServerSocket server = new ServerSocket(80);  
+              Socket client = server.accept();
+              sout("client connected");
+
+              PrintWriter out = new PrintWriter(client.getOutputStream());
+              Scanner in = new Scanner(client.getInputStream);
+              Scanner scan = new Scanner(System.in);
+              String msgC, msgS;
+
+              out.println("hello from server");
+              do {
+                  msgC = in.nextLine();
+                  sout("client: " + msgC);
+
+                  msgS = scan.nextLine();
+                  sout("server: " + msgS);
+                  out.println(msgS);
+              } while(!msgC.equals("quit") || !msgS.equals("quit"));
+              socket.close();
+              server.close();
+
+          } catch(Exception e) {
+              System.error.println(e.getMessage());
+          }
+      }
+  }
+#+end_src
+
+#+begin_src java Client.java
+  import java.net.*;
+  import java.util.Scanner;
+
+  public class Client {
+      public static void main(String [] args) {
+          try {
+              Socket socket = new Socket("localhost", 80);
+              PrintWriter out = new PrintWriter(socket.getOutputStream());
+              Scanner in = new Scanner(socket.getInputStream());
+              Scanner scan = new Scanner(System.in);
+              String msgC, msgS;
+
+              do {
+                  msgS = in.nextLine();
+                  sout("server: " + msgS);
+
+                  msgC = scan.nextLine();
+                  sout("client: " + msgC);
+                  out.println(msgC);
+              } while(!msgC.equals("quit") || !msgS.equals("quit"));
+              socket.close();
+          } catch(Exception e) {
+              e.printStackTrace();
+          }
+      }
+  }
+#+end_src
+
+#+latex: \pagebreak
+* Chapter – 8: Secure Sockets
+** Introduction
+In Java, SSL (Secure Sockets Layer) communication is facilitated through the SSLSocket and SSLServerSocket classes, which provide secure connections using the TLS (Transport Layer Security) protocol. It encrypts the data being sent over the network, ensuring confidentiality and integrity.
+
+The SSLServerSocket class, creates secure server sockets that accept connections from SSL clients. When a client connects, the server can perform authentication and establish a secure session.
+** Write a program for Creating Secure Sockets with tufohss.edu.np 
+*** Code
+#+begin_src java :exports code
+  import java.net.*;
+  import java.io.*;
+  import javax.net.ssl.*;
+  public class NetLab {
+      public static void main(String[] args) {
+          try {
+              SSLSocketFactory factory = SSLSocketFactory.getDefault();
+              SSLSocket socket = (SSLSocket) factory.createSocket("tufohss.edu.np", 443);
+              String[] supported = socket.getSupportedCipherSuites();
+              socket.setEnabledCipherSuites(supported);
+              Writer out = new OutputStreamWriter(socket.getOutputStream(), "US-ASCII");
+              out.write("GET http://tufohss.edu.np/ HTTP/1.1\r\n");
+              out.write("Host:tufohss.edu.np \r\n");
+              out.write("\r\n");
+              out.flush();
+              BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+              String s;
+              while (!(s = in.readLine()).equals("")) {
+                  System.out.println(s);
+              }
+          } catch (Exception ex) {
+              ex.printStackTrace();
+          }
+      }
+  }
+#+end_src
+*** Output
+#+begin_src text
+HTTP/1.1 301 Moved Permanently
+Date: Mon, 23 Sep 2024 17:22:48 GMT
+Server: Apache
+Location: http://fohss.tu.edu.np/
+Content-Length: 231
+Content-Type: text/html; charset=iso-8859-1
+#+end_src
+#+latex: \pagebreak
+* Chapter – 9:  Nonblocking I/O 
+** Introduction
+In Java, the NIO (New Input/Output) package provides a non-blocking, scalable way to handle I/O operations through its core components: buffers, channels, and selectors. 
+
+**Buffers** are used to store data temporarily during I/O operations. Buffers support efficient data transfer by allowing bulk operations and can be flipped between read and write modes.
+
+**Channels** represent connections to entities such as files or network sockets. The =FileChannel=, =SocketChannel=, and =ServerSocketChannel= classes enable non-blocking I/O operations, allowing applications to perform multiple tasks concurrently without being blocked by slow operations.
+
+**Selectors** provide a way to manage multiple channels using a single thread. By registering channels with a =Selector=, applications can efficiently monitor multiple connections, responding to events like readiness for reading or writing. 
+** Lab Work
+*** Write program to list all supported socket options for the different types of network channels. 
+**** Code
+#+begin_src java :exports code
+  import java.io.IOException;
+  import java.net.SocketOption;
+  import java.nio.channels.*;
+
+  public class NetLab {
+      public static void main(String[] args) {
+          try {
+              printOptions(SocketChannel.open());
+              printOptions(ServerSocketChannel.open());
+              printOptions(AsynchronousSocketChannel.open());
+              printOptions(AsynchronousServerSocketChannel.open());
+              printOptions(DatagramChannel.open());
+          } catch (IOException ex) {
+              ex.printStackTrace();
+          }
+      }
+
+      private static void printOptions(NetworkChannel channel) throws IOException {
+          System.out.println(channel.getClass().getSimpleName() + " supports:");
+          for (SocketOption<?> option : channel.supportedOptions()) {
+              System.out.println(option.name() + ": " + channel.getOption(option));
+          }
+          System.out.println();
+          channel.close();
+      }
+  }
+#+end_src
+**** Output
+#+begin_src text
+SocketChannelImpl supports:
+SO_REUSEADDR: false
+TCP_NODELAY: false
+IP_TOS: 0
+TCP_KEEPIDLE: 7200
+SO_RCVBUF: 65536
+SO_SNDBUF: 65536
+SO_OOBINLINE: false
+TCP_KEEPCOUNT: 10
+SO_LINGER: -1
+SO_KEEPALIVE: false
+TCP_KEEPINTERVAL: 1
+
+ServerSocketChannelImpl supports:
+SO_REUSEADDR: false
+TCP_KEEPIDLE: 7200
+SO_RCVBUF: 65536
+TCP_KEEPCOUNT: 10
+TCP_KEEPINTERVAL: 1
+
+WindowsAsynchronousSocketChannelImpl supports:
+SO_REUSEADDR: false
+TCP_NODELAY: false
+TCP_KEEPIDLE: 7200
+SO_RCVBUF: 65536
+SO_SNDBUF: 65536
+TCP_KEEPCOUNT: 10
+SO_KEEPALIVE: false
+TCP_KEEPINTERVAL: 1
+
+WindowsAsynchronousServerSocketChannelImpl supports:
+SO_REUSEADDR: false
+TCP_KEEPIDLE: 7200
+SO_RCVBUF: 65536
+TCP_KEEPCOUNT: 10
+TCP_KEEPINTERVAL: 1
+
+DatagramChannelImpl supports:
+IP_MULTICAST_LOOP: true
+SO_REUSEADDR: false
+IP_TOS: 0
+SO_RCVBUF: 65536
+IP_MULTICAST_IF: null
+IP_DONTFRAGMENT: false
+SO_SNDBUF: 65536
+IP_MULTICAST_TTL: 1
+SO_BROADCAST: false
+#+end_src
+*** Write a program to implement the concept on Data Conversion 
+**** Code
+#+begin_src java :exports code
+  import java.nio.ByteBuffer;
+
+  public class NetLab {
+      public static void main(String[] args) {
+          try {
+              ByteBuffer bb = ByteBuffer.allocate(capacity);
+              bb.asIntBuffer().put(10).put(20);
+              bb.rewind();
+              System.out.println("Original ByteBuffer: ");
+              for (int i = 1; i <= capacity / 4; i++) {
+                  System.out.print(bb.getInt() + " ");
+              }
+              bb.rewind();
+              int value = bb.getInt();
+              System.out.println("\n\nByte Value: " + value);
+              int value1 = bb.getInt();
+              System.out.println("Next Byte Value: " + value1);
+              int value2 = bb.getInt();
+          } catch (Exception ex) {
+              System.out.println("\nthere are fewer than "
+                                 + "four bytes remaining in this buffer");
+              ex.printStackTrace();
+          }
+      }
+  }
+#+end_src
+**** Output
+#+begin_src text
+Original ByteBuffer: 
+10 20 
+
+Byte Value: 10
+Next Byte Value: 20
+java.nio.BufferUnderflowException
+
+there are fewer than four bytes remaining in this buffer
+#+end_src
+#+latex: \pagebreak
+* Chapter – 10: UDP 
+** Introduction
+DatagramPacket represents a data packet that can be sent or received over a network. It contains information such as the data to be transmitted, the destination address, and the port number. This class provides methods for accessing and manipulating the packet's data easily.
+
+DatagramSocket, on the other hand, is used to send and receive DatagramPacket instances. It allows for connectionless communication, meaning that there is no need to establish a connection before data transfer. We can create a DatagramSocket to listen for incoming packets on a specific port or to send packets to a specific address and port.
+** Write a program for UDP Client & Server
+#+begin_src java
+  public class UDPClient{
+      public static void main(String[] a) throws Exception{
+          BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
+          DatagramSocket clientSocket = new DatagramSocket(); 
+          InetAddress ip = InetAddress.getByName("localhost");
+          byte[] data = new byte[1024];
+          byte[] res = new byte[1024];
+          String sentence = inFromUser.readLine();
+          data = sentence.getBytes();
+          DatagramPacket sndPack = new DatagramPacket(data, data.length, ip, 9876);
+          clientSocket.send(sndPack); // SendTo()
+          DatagramPacket rcvPack = new DatagramPacket(res, res.length);
+          clientSocket.receive(rcvPack); // ReceiveFrom()
+          String modifiedSentence = new String(rcvPack.getData());
+          System.out.println("FROM SERVER:" + modifiedSentence);
+          clientSocket.close();
+      }
+  }
+#+end_src
+#+begin_src java
+  public class UDPServer {
+      public static void main(String[] a) throws Exception{
+          DatagramSocket serverSocket = new DatagramSocket(9876); 
+          byte[] res = new byte[1024];
+          byte[] data = new byte[1024];
+          while(true)
+              {
+                  DatagramPacket rcvPack = new DatagramPacket(res, res.length);
+                  serverSocket.receive(rcvPack);
+                  String sentence = new String( rcvPack.getData());
+                  System.out.println("RECEIVED: " + sentence);
+                  InetAddress ip = rcvPack.getAddress();
+                  int port = rcvPack.getPort();
+                  data = sentence.getBytes();
+                  DatagramPacket sndPack = new DatagramPacket(data, data.length, ip, port);
+                  serverSocket.send(sndPack); 
+              }
+      }
+  }
+#+end_src
+#+latex: \pagebreak
+* Chapter – 11: IP Multicast 
+** Program to verify that you are receiving multicast data at a particular host 
+*** Code
+#+begin_src java
+  public class NetLab {
+      final static String INET_ADDR = "224.0.0.3";
+      final static int PORT = 8888;
+
+      public static void main(String[] args) throws UnknownHostException, InterruptedException {
+          InetAddress addr = InetAddress.getByName(INET_ADDR);
+          try (DatagramSocket serverSocket = new DatagramSocket()) {
+              for (int i = 0; i < 5; i++) {
+                  String msg = "Sent message no " + i;
+                  DatagramPacket msgPacket = new DatagramPacket(msg.getBytes(), msg.getBytes().length, addr, PORT);
+                  serverSocket.send(msgPacket);
+                  System.out.println("Server sent packet with msg: " + msg);
+                  Thread.sleep(500);
+              }
+          } catch (IOException ex) {
+              ex.printStackTrace();
+          }
+      }
+  }
+#+end_src
+*** Output
+#+begin_src text
+Server sent packet with msg: Sent message no 0
+Server sent packet with msg: Sent message no 1
+Server sent packet with msg: Sent message no 2
+Server sent packet with msg: Sent message no 3
+Server sent packet with msg: Sent message no 4
+#+end_src
+#+latex: \pagebreak
+* Chapter – 12: RMI 
+** Introduction
+Java RMI (Remote Method Invocation) enables the execution of methods on remote objects, facilitating communication between distributed applications. To implement RMI, we define a remote interface that extends =java.rmi.Remote=, implement this interface in a class, and then create a server that binds the remote object to a name in the RMI registry. Clients can then look up this object and invoke its methods as if they were local. 
+** Program to add two numbers using RMI 
+#+begin_src java
+  public interface IAdder extends Remote {
+      public int Add(int a, int b) throws RemoteException; 	
+  }
+#+end_src
+
+#+begin_src  java
+  public class AdderImpl implements IAdder {
+      @Override
+      public int Add(int a, int b) {
+          return a + b;
+      }
+  }
+#+end_src
+
+#+begin_src java
+  public class ServerSide {
+      public static void main(String[] args) {
+          try {
+              IAdder adder = new AdderImpl();
+              IAdder skeleton = (IAdder) UnicastRemoteObject.exportObject((IAdder) adder, 0);
+
+              Registry registry = LocateRegistry.getRegistry();
+              registry.rebind("foo", skeleton);
+              System.out.println("Server ready ");
+          } catch (Exception e) {
+              System.err.println(e.getMessage());
+              e.printStackTrace();
+          }
+      }
+  }
+#+end_src
+
+#+begin_src java
+  public class ClientSide {
+      public static void main(String [] args) {
+          try {
+              Registry registry = LocateRegistry.getRegistry();
+              IAdder stub = (IAdder) registry.lookup("foo");
+              System.out.println("Sum: " + stub.Add(1, 2));
+          } catch (Exception e) {
+              System.err.println(e.getMessage());
+              e.printStackTrace();
+          }
+      }
+  }
+#+end_src
+
+Output: =Sum: 3=
