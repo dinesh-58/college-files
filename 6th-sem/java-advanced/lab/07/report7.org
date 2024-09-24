@@ -1,0 +1,81 @@
+# for project documents, use addtional latex styles used in final-report file
+:edit-this:
+#+EXPORT_FILE_NAME: java-lab7-report
+#+PROPERTY: header-args :eval no-export
+# don't prompt to evaluate code blocks while exporting
+#+OPTIONS: toc:nil ^:{}
+# set toc below instead of here
+# 2nd option exports subscripts only when _{} is used
+#+LATEX_HEADER: \graphicspath{{~/programming/college-files/assets/images/}}
+
+# !!!!!!!!!!!!!          only edit this section       !!!!!!
+#+LATEX_HEADER: \def\subjectNum{7}
+# 1: ECON
+# 2: JAVA
+# 3: MOBILE
+# 4: NETWORK
+# 5: none
+
+#+LATEX_HEADER: \def\labNum{7}
+#+LATEX_HEADER: \def\labTitle{RMI Program}
+#+LATEX_HEADER: \def\yearSem{III/II}
+#+LATEX_HEADER: \newif \iftoc
+# !!!!!!!!!!!!           set toc here by uncommenting option
+# \toctrue    
+\tocfalse
+:end:
+
+#+INCLUDE: "~/programming/college-files/assets/template.org" :lines "27-"
+* Introduction 
+Java RMI (Remote Method Invocation) enables the execution of methods on remote objects, facilitating communication between distributed applications. To implement RMI, we define a remote interface that extends =java.rmi.Remote=, implement this interface in a class, and then create a server that binds the remote object to a name in the RMI registry. Clients can then look up this object and invoke its methods as if they were local. 
+* Lab Work
+** Program to add two numbers using RMI 
+#+begin_src java
+  public interface IAdder extends Remote {
+      public int Add(int a, int b) throws RemoteException; 	
+  }
+#+end_src
+
+#+begin_src  java
+  public class AdderImpl implements IAdder {
+      @Override
+      public int Add(int a, int b) {
+          return a + b;
+      }
+  }
+#+end_src
+
+#+begin_src java
+  public class ServerSide {
+      public static void main(String[] args) {
+          try {
+              IAdder adder = new AdderImpl();
+              IAdder skeleton = (IAdder) UnicastRemoteObject.exportObject((IAdder) adder, 0);
+
+              Registry registry = LocateRegistry.getRegistry();
+              registry.rebind("foo", skeleton);
+              System.out.println("Server ready ");
+          } catch (Exception e) {
+              System.err.println(e.getMessage());
+              e.printStackTrace();
+          }
+      }
+  }
+#+end_src
+
+#+begin_src java
+  public class ClientSide {
+      public static void main(String [] args) {
+          try {
+              Registry registry = LocateRegistry.getRegistry();
+              IAdder stub = (IAdder) registry.lookup("foo");
+              System.out.println("Sum: " + stub.Add(1, 2));
+          } catch (Exception e) {
+              System.err.println(e.getMessage());
+              e.printStackTrace();
+          }
+      }
+  }
+#+end_src
+
+Output: =Sum: 3=

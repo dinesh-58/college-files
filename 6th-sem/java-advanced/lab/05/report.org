@@ -1,0 +1,192 @@
+# for project documents, use addtional latex styles used in final-report file
+:edit-this:
+#+EXPORT_FILE_NAME: java-lab5-report
+#+PROPERTY: header-args :eval no-export
+# don't prompt to evaluate code blocks while exporting
+#+OPTIONS: toc:nil ^:{}
+# set toc below instead of here
+# 2nd option exports subscripts only when _{} is used
+#+LATEX_HEADER: \graphicspath{{~/programming/college-files/assets/images/}}
+
+# !!!!!!!!!!!!!          only edit this section       !!!!!!
+#+LATEX_HEADER: \def\subjectNum{2}
+# 1: ECON
+# 2: JAVA
+# 3: MOBILE
+# 4: NETWORK
+# 5: none
+
+#+LATEX_HEADER: \def\labNum{5}
+#+LATEX_HEADER: \def\labTitle{Basics of JavaBeans}
+#+LATEX_HEADER: \def\yearSem{III/II}
+#+LATEX_HEADER: \newif \iftoc
+# !!!!!!!!!!!!           set toc here by uncommenting option
+# \toctrue    
+\tocfalse
+:end:
+
+#+INCLUDE: "~/programming/college-files/assets/template.org" :lines "27-"
+* Objectives
+- implement javabeans with JSPs
+- Utilize Introspection & Descriptor in JavaBeans
+* Introduction 
+JavaBeans are reusable software components designed to be manipulated in visual development environments. They adhere to specific conventions, including having a no-argument constructor, providing getter and setter methods for accessing properties, and supporting events. In a JavaServer Pages (JSP) context, JavaBeans can be seamlessly integrated into web applications to enhance code organization and reusability.
+
+JavaBeans Introspection API provides a powerful mechanism for examining the properties, methods, and events of JavaBeans at runtime through classes like Introspector, PropertyDescriptor, EventSetDescriptor, and MethodDescriptor. 
+
+The use of JSP tags like =<jsp:useBean>=, =<jsp:setProperty>=, and =<jsp:getProperty>= allows us to easily instantiate and interact with JavaBeans directly within JSP files. 
+
+* Lab Work
+** Write a Java program to illustrate the concepts of JavaBeans in JSP.
+Make use of jsp:useBean, jsp:setProperty, jsp:getProperty
+*** Example.jsp
+#+begin_src html
+  <%@page contentType="text/html" pageEncoding="UTF-8"%>
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+      <jsp:useBean id="Student" class="javabeans.StudentBean">
+        <jsp:setProperty name="Student" property = "name" value="milan"/>
+        <jsp:setProperty name="Student" property = "address" value="lalitpur"/>
+        <jsp:setProperty name="Student" property = "id" value="101"/>
+      </jsp:useBean>
+      <p> Student id is :
+        <jsp:getProperty name="Student" property="id"/>
+      </p>
+      <p> Student Name is :
+        <jsp:getProperty name="Student" property="name"/>
+      </p>
+      <p> Student Address is :
+        <jsp:getProperty name="Student" property="address"/>
+      </p>
+    </body>
+  </html>
+#+end_src
+*** StudentBean.java
+#+begin_src java
+  package javabeans;
+  import java.io.Serializable;
+
+  public class StudentBean implements Serializable{
+      private int id;
+      private String name;
+      private String address ;
+
+      public int getId() {
+          return id;
+      }
+
+      public String getName() {
+          return name;
+      }
+
+      public String getAddress() {
+          return address;
+      }
+      public void setId(int id) {
+          this.id = id;
+      }
+
+      public void setName(String name) {
+          this.name = name;
+      }
+
+      public void setAddress(String address) {
+          this.address = address;
+      }
+  }
+#+end_src
+** Write a Java program illustrating the concept of Introspector, PropertyDescriptor, EventSetDescriptor and MethodDescriptor.
+*** Code
+#+begin_src java
+  import java.beans.*;
+  import java.lang.reflect.Method;
+
+  public class Introspection {
+      public static void main(String[] args) {
+          try {
+              MyBean myBean = new MyBean();
+              BeanInfo beanInfo = Introspector.getBeanInfo(MyBean.class);
+
+              System.out.println("Properties:");
+              PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();
+              for (PropertyDescriptor pd : propertyDescriptors) {
+                  System.out.println("Property Name: " + pd.getName());
+                  System.out.println("Read Method: " + pd.getReadMethod());
+                  System.out.println("Write Method: " + pd.getWriteMethod());
+                  System.out.println();
+              }
+
+              System.out.println("Events:");
+              EventSetDescriptor[] eventSetDescriptors = beanInfo.getEventSetDescriptors();
+              for (EventSetDescriptor esd : eventSetDescriptors) {
+                  System.out.println("Event Set Name: " + esd.getName());
+                  System.out.println("Event Listener Type: " + esd.getListenerType());
+                  Method[] listenerMethods = esd.getListenerMethods();
+                  for (Method method : listenerMethods) {
+                      System.out.println("Listener Method: " + method);
+                  }
+                  System.out.println();
+              }
+
+              System.out.println("Methods:");
+              MethodDescriptor[] methodDescriptors = beanInfo.getMethodDescriptors();
+              for (MethodDescriptor md : methodDescriptors) {
+                  System.out.println("Method Name: " + md.getName());
+                  System.out.println("Method: " + md.getMethod());
+                  System.out.println();
+              }
+
+          } catch (IntrospectionException e) {
+              e.printStackTrace();
+          }
+      }
+  }
+
+  class MyBean {
+
+      private String name;
+      public String getName() {
+          return name;
+      }
+      public void setName(String name) {
+          this.name = name;
+      }
+      public void doSomething() {
+          System.out.println("Doing something...");
+      }
+
+      public void addMyBeanListener(MyBeanListener listener) {}
+      public void removeMyBeanListener(MyBeanListener listener) {}
+  }
+  interface MyBeanListener {
+      void onEvent();
+  }
+#+end_src
+*** Output
+#+begin_src text
+  Properties:
+  Property Name: name
+  Read Method: public java.lang.String MyBean.getName()
+  Write Method: public void MyBean.setName(java.lang.String)
+
+  Method Name: getName
+  Method: public java.lang.String MyBean.getName()
+
+  Method Name: removeMyBeanListener
+  Method: public void MyBean.removeMyBeanListener(MyBeanListener)
+
+  Method Name: setName
+  Method: public void MyBean.setName(java.lang.String)
+
+  Method Name: addMyBeanListener
+  Method: public void MyBean.addMyBeanListener(MyBeanListener)
+
+  Method Name: doSomething
+  Method: public void MyBean.doSomething()
+#+end_src
+* Conclusion
+We successfully implemented JavaBeans within JSPs, demonstrating how to leverage <jsp:useBean>, <jsp:setProperty>, and <jsp:getProperty> tags for effective interaction between web pages and backend logic. We also used introspection and descriptor classes, such as Introspector, PropertyDescriptor, EventSetDescriptor, and MethodDescriptor to dynamically examine and manipulate JavaBeans.
