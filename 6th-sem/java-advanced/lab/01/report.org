@@ -42,7 +42,9 @@
 #+begin_src java
   import java.awt.*;
   import javax.swing.*;
-
+  /**
+   * @author sujal
+   */
   public class q1 extends JFrame {
       public q1() {
           this.setSize(500, 500);
@@ -66,20 +68,16 @@
 #+begin_src java
   import javax.swing.*;
   import java.awt.*;
-
   public class q2 extends JPanel {
       public static void main(String[] args) {
           JFrame f = new JFrame();
           f.setSize(250, 250);
-
           f.getContentPane().setBackground(Color.white);
           f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
           q2 jp = new q2();
           f.add(jp);
           f.setVisible(true);
-
       }
-
       @Override
       protected void paintComponent(Graphics g) {
           Graphics2D g2d = (Graphics2D) g;
@@ -95,7 +93,7 @@
   }
 #+end_src
 *** Output
-#+attr_latex: :width 170px
+#+attr_latex: :height 140px
 [[file:img/q2.png]]
 
 ** Ilustrate the concept of Layout Management in Java Swing.
@@ -147,7 +145,6 @@ Hint: Add components in a frame with different layouts
           pGrid.add(new JButton("5"));
           pGrid.add(new JButton("6"));
           this.add(pGrid);
-
           this.setVisible(true);
       }
 
@@ -273,12 +270,12 @@ Also use actionListener for button and display the selected data using a JOption
                   : "Not selected";
               String Interested = jc.getSelectedItem().toString();
 
-              JOptionPane.showMessageDialog(this,
-                                            "Subjects liked By User: " + subjects.toString() + "\n"
-                                            + "Subject Most Liked By User: " + liked + "\n"
-                                            + "User is Interested In: " + Interested,
-                                            "Details Submited ",
-                                            JOptionPane.PLAIN_MESSAGE);
+              JOptionPane
+                  .showMessageDialog(this, "Subjects liked By User: " + subjects.toString() + "\n"
+                                     + "Subject Most Liked By User: " + liked + "\n"
+                                     + "User is Interested In: " + Interested,
+                                     "Details Submited ",
+                                     JOptionPane.PLAIN_MESSAGE);
           }
       }
 

@@ -1,0 +1,106 @@
+# for project documents, use addtional latex styles used in final-report file
+:edit-this:
+#+EXPORT_FILE_NAME: java-lab4-report
+#+PROPERTY: header-args :eval no-export
+# don't prompt to evaluate code blocks while exporting
+#+OPTIONS: toc:nil ^:{}
+# set toc below instead of here
+# 2nd option exports subscripts only when _{} is used
+#+LATEX_HEADER: \graphicspath{{~/programming/college-files/assets/images/}}
+
+# !!!!!!!!!!!!!          only edit this section       !!!!!!
+#+LATEX_HEADER: \def\subjectNum{2}
+# 1: ECON
+# 2: JAVA
+# 3: MOBILE
+# 4: NETWORK
+# 5: none
+
+#+LATEX_HEADER: \def\labNum{4}
+#+LATEX_HEADER: \def\labTitle{JDBC and Swing}
+#+LATEX_HEADER: \def\yearSem{III/II}
+#+LATEX_HEADER: \newif \iftoc
+# !!!!!!!!!!!!           set toc here by uncommenting option
+# \toctrue    
+\tocfalse
+:end:
+
+#+INCLUDE: "~/programming/college-files/assets/template.org" :lines "27-"
+* Objectives
+- learn about different types of ResultSet
+- implement these types for suitable database-related actions
+* Introduction 
+A result set is an object that represents the result of a SQL query executed against a database. It is part of the JDBC API, which allows Java applications to interact with databases. A ResultSet provides methods to retrieve data from the query result, allowing navigation through rows and access to individual column values. There are two primary types of result sets: forward-only result sets, which allow traversal in one direction (from the first to the last row), and scrollable result sets, which permit bi-directional navigation, enabling developers to move freely among the rows. Additionally, result sets can be read-only or updatable, depending on whether they allow modifications to the data. 
+
+* Lab Work
+** Write a Java program to illustrate the concept of Scrollable ResultSet.
+#+begin_src java
+  import java.sql.*;
+  import java.util.Scanner;
+  public class q1 {
+      public static void main(String[] args) {
+          try {
+              Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/javadb", "root", "");
+              String query = "select * from student";
+              PreparedStatement pst = conn.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+              ResultSet rs = pst.executeQuery();
+              rs.first();
+              System.out.println("First Row is :");
+              System.out.println("Name:" + rs.getString("name") + "  address:" + rs.getString("address"));
+
+              rs.last();
+              System.out.println("last Row is :");
+              System.out.println("Name:" + rs.getString("name") + "  address:" + rs.getString("address"));
+              Scanner sc = new Scanner(System.in);
+              int row;
+              do {
+                  System.out.println("Enter row number to read. Enter 0 to exit");
+                  row = sc.nextInt();
+                  if(rs.absolute(row)){
+                      System.out.println("Name:"+rs.getString("name")+"  address:"+rs.getString("address"));
+                      System.out.println("previous row:");
+                      rs.previous();
+                      System.out.println("Name:" + rs.getString("name") + "  address:" + rs.getString("address"));
+
+                      System.out.println("Next row:");
+                      rs.next(); // calling twice because pointer has been moved to previous
+                      rs.next();
+                      System.out.println("Name:" + rs.getString("name") + "  address:" + rs.getString("address"));
+                  }
+              } while (row != 0);
+          } catch (Exception e) {
+              System.out.println("Error" + e.getMessage());
+          }
+      }
+  }
+#+end_src
+** Write a Java program to illustrate the concept of Updatable ResultSet.
+#+begin_src java
+  import java.sql.*;
+  import java.util.Scanner;
+  public class q2 {
+      public static void main(String[] args) {
+         try {
+              Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/javadb", "root", "");
+              String query = "Select * from student";
+              PreparedStatement pst = conn.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+              ResultSet rs = pst.executeQuery();
+              Scanner sc = new Scanner(System.in);
+              int row =-1;
+              while (row !=0){
+                  System.out.println("Enter a row to update:");
+                  row =sc.nextInt();
+                  if(rs.absolute(row)){
+                      rs.updateString("name", "John Doe");
+                      rs.updateRow();
+                      System.out.println("name:"+rs.getString("name")+"  number:"+rs.getString("number"));
+                  }
+              }
+          } catch (Exception e) {
+              System.out.println("Error" + e.getMessage());
+          }
+      }
+  }
+#+end_src
+* Conclusion
+Thus, by learning about the different types of =ResultSet= and implementing them effectively, we learned to perform various database-related actions without depending fully on sql statements. This allows us to optimize data retrieval and manipulation in our Java applications.
