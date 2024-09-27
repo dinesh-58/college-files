@@ -1,0 +1,145 @@
+# for project documents, use addtional latex styles used in final-report file
+:edit-this:
+#+EXPORT_FILE_NAME: mob2-report
+#+PROPERTY: header-args :eval no-export
+# don't prompt to evaluate code blocks while exporting
+#+OPTIONS: toc:nil ^:{}
+# set toc below instead of here
+# 2nd option exports subscripts only when _{} is used
+#+LATEX_HEADER: \graphicspath{{~/programming/college-files/assets/images/}}
+
+# !!!!!!!!!!!!!          only edit this section       !!!!!!
+#+LATEX_HEADER: \def\subjectNum{3}
+# 1: ECON
+# 2: JAVA
+# 3: MOBILE
+# 4: NETWORK
+# 5: none
+
+#+LATEX_HEADER: \def\labNum{2}
+#+LATEX_HEADER: \def\labTitle{Integrating Google Maps}
+#+LATEX_HEADER: \def\yearSem{III/II}
+#+LATEX_HEADER: \newif \iftoc
+# !!!!!!!!!!!!           set toc here by uncommenting option
+# \toctrue    
+\tocfalse
+:end:
+
+#+INCLUDE: "~/programming/college-files/assets/template.org" :lines "27-"
+* Objectives
+- To implement google maps fragment in android application using the provided API
+* Lab Work
+** =MainActivity.java=
+#+begin_src java 
+        package com.hcoe.map;
+
+        import android.*;
+        import android.app.*;
+        import android.content.pm.*;
+        import android.location.*;
+        import android.os.Bundle;
+        import androidx.annotation.*;
+        import androidx.appcompat.app.*;
+        import androidx.core.content.*
+            import com.google.android.gms.location.*;
+        import com.google.android.gms.maps.*;
+        import com.google.android.gms.tasks.*;
+
+        public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
+            private GoogleMap googleMap;
+            private FusedLocationProviderClient locationProviderClient;
+            @Override
+            protected void onCreate(@Nullable Bundle savedInstanceState) {
+                super.onCreate(savedInstanceState);
+                setContentView(R.layout.activity_map);
+                locationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+                if (ContextCompat.checkSelfPermission(this, android.Manifest.permission
+                    .ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(this, new String[]{
+                            Manifest.permission.ACCESS_FINE_LOCATION
+                        }, 1);
+                }
+                SupportMapFragment mapFragment = (SupportMapFragment)
+                    getSupportFragmentManager().findFragmentById(R.id.map);
+                mapFragment.getMapAsync(this);
+            }
+            @Override public void onMapReady(@NonNull GoogleMap googleMap) {
+                this.googleMap = googleMap;
+                UpdateLocation();
+            }
+            @Override
+            public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                                   int[] grantResults) {
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+                if (requestCode == 1) {
+                    if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                        UpdateLocation();
+                    }
+                }
+            }
+            private void UpdateLocation(){
+                if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission
+                    .ACCESS_FINE_LOCATION)
+                    != PackageManager.PERMISSION_GRANTED &&
+                    ActivityCompat.checkSelfPermission(this, android.Manifest.permission
+                    .ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    return;
+                }
+                locationProviderClient.getLastLocation().addOnSuccessListener(this,
+                        new OnSuccessListener<Location>() {
+                        @Override 
+                        public void onSuccess(Location location) {if (location == null) {
+                                return;
+                            }
+                            LatLng currentLat = new LatLng(location.getLatitude(),
+                                                           location.getLongitude());
+                            googleMap.addMarker(new MarkerOptions().position(currentLat).title
+                                                ("you are here"));
+                            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
+                                                                     currentLat,15));
+                        } });
+            }
+        }
+#+end_src
+** =Activity_main.xml=
+#+begin_src xml
+  <?xml version="1.0" encoding="utf-8"?>
+  <androidx.fragment.app.FragmentContainerView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_gravity="center"
+      android:name="com.google.android.gms.maps.SupportMapFragment"
+      android:id="@+id/map"
+      xmlns:android="http://schemas.android.com/apk/res/android" />
+#+end_src
+** =AndroidManifest.xml=
+#+begin_src xml AndroidManifest.xml
+  <?xml version="1.0" encoding="utf-8"?>
+  <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <application android:allowBackup="true"
+                 android:dataExtractionRules="@xml/data_extraction_rules"
+                 android:fullBackupContent="@xml/backup_rules"
+                 android:icon="@mipmap/ic_launcher"
+                 android:label="@string/app_name"
+                 android:roundIcon="@mipmap/ic_launcher_round"
+                 android:supportsRtl="true"
+                 android:theme="@style/Theme.GoogleMap"
+                 tools:targetApi="31">
+      <meta-data android:name="com.google.android.geo.API_KEY"
+                 android:value="AIzaSyBiK29ZZJ9hjSho0c9UhX1hKujvygh8UVY"/>
+      <activity android:name=".MapActivity" android:exported="true">
+        <intent-filter >
+          <action android:name="android.intent.action.MAIN"/>
+          <category android:name="android.intent.category.LAUNCHER"/>
+        </intent-filter>
+      </activity>
+    </application>
+  </manifest>
+#+end_src
+* Output
+#+ATTR_LATEX: :width 220px :float nil
+#+CAPTION: MainActivity
+[[file:map.png]]

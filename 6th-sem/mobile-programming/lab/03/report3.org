@@ -1,0 +1,220 @@
+# for project documents, use addtional latex styles used in final-report file
+:edit-this:
+#+EXPORT_FILE_NAME: mob-lab3-report
+#+PROPERTY: header-args :eval no-export
+# don't prompt to evaluate code blocks while exporting
+#+OPTIONS: toc:nil ^:{}
+# set toc below instead of here
+# 2nd option exports subscripts only when _{} is used
+#+LATEX_HEADER: \graphicspath{{~/programming/college-files/assets/images/}}
+
+# !!!!!!!!!!!!!          only edit this section       !!!!!!
+#+LATEX_HEADER: \def\subjectNum{3}
+# 1: ECON
+# 2: JAVA
+# 3: MOBILE
+# 4: NETWORK
+# 5: none
+
+#+LATEX_HEADER: \def\labNum{3}
+#+LATEX_HEADER: \def\labTitle{SQLite operations}
+#+LATEX_HEADER: \def\yearSem{III/II}
+#+LATEX_HEADER: \newif \iftoc
+# !!!!!!!!!!!!           set toc here by uncommenting option
+# \toctrue    
+\tocfalse
+:end:
+
+#+INCLUDE: "~/programming/college-files/assets/template.org" :lines "27-"
+* Lab Work
+1. Create a sqlite database named “noteApp.db”.
+2. Create a table named “notes” with following columns:
+   a. _id (autoincrement primary key)
+   b. UUID string
+      a. Title string
+3. Description string
+4. Create two buttons in MainActivity
+   a. Insert
+   b. List
+5. When clicked on insert, make a database operation to insert dummy data on notes table.
+   a. Insert at least 5 dummy notes
+6. When clicked on List, make a database operation to query all data on notes table and show it in a listView just below the buttons.
+** =MainActivity.java=
+#+begin_src java
+   package com.example.noteapp;
+
+   import android.database.*;
+   import android.os.*;
+   import android.view.*;
+   import android.widget.*;
+   import androidx.appcompat.app.*;
+   import java.util.*;
+   public class MainActivity extends AppCompatActivity {
+       private NoteDbHelper dbHelper;
+       private ListView listView;
+       @Override protected void onCreate(Bundle savedInstanceState) {
+           super.onCreate(savedInstanceState);
+           setContentView(R.layout.activity_main);
+           dbHelper = new NoteDbHelper(this);
+           listView = findViewById(R.id.listView);
+           Button insertButton = findViewById(R.id.insertButton);
+           Button listButton = findViewById(R.id.listButton);
+
+           insertButton.setOnClickListener(new View.OnClickListener() {
+                   @Override
+                   public void onClick(View v) {
+                       dbHelper.insertDummyData();
+                   }
+               });
+
+           listButton.setOnClickListener(new View.OnClickListener() {
+                   @Override
+                   public void onClick(View v) {
+                       List<String> notes = getAllNotes();
+                       ArrayAdapter<String> adapter = new ArrayAdapter<>(MainActivity.this,
+                                                      android.R.layout.simple_list_item_1,
+                                                      notes);
+                       listView.setAdapter(adapter);
+                   }
+               });
+       }
+       // Retrieve all notes from the database and convert to a list
+       private List<String> getAllNotes() {
+           List<String> notesList = new ArrayList<>();
+           Cursor cursor = dbHelper.getAllNotes();
+           if (cursor.moveToFirst()) {
+               do {
+                   String title = cursor.getString(cursor.getColumnIndex("title"));
+                   String description = cursor.getString(cursor.getColumnIndex("description"));
+                   notesList.add(title + ": " + description);
+               } while (cursor.moveToNext());
+           }
+           cursor.close();
+           return notesList;
+       } }
+#+end_src
+** =NoteDbHelper.java=
+#+begin_src java
+  package com.example.noteapp;
+  import android.content.*;
+  import android.database.*;
+  import android.database.sqlite.*;
+  import android.widget.*;
+  import java.util.UUID;
+
+  public class NoteDbHelper extends SQLiteOpenHelper {
+      private static final String DATABASE_NAME = "noteApp.db";
+      private static final int DATABASE_VERSION = 1;
+      private static final String TABLE_NOTES = "notes";
+
+      private static final String COLUMN_ID = "_id";
+      private static final String COLUMN_UUID = "uuid";
+      private static final String COLUMN_TITLE = "title";
+      private static final String COLUMN_DESCRIPTION = "description";
+      private final Context context;
+      public NoteDbHelper(Context context) {
+          super(context, DATABASE_NAME, null, DATABASE_VERSION);
+          this.context = context;
+      }
+      @Override
+      public void onCreate(SQLiteDatabase db) {
+          String createTable = "CREATE TABLE " + TABLE_NOTES + " (" +
+              COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+              COLUMN_UUID + " TEXT, " +
+              COLUMN_TITLE + " TEXT, " +
+              COLUMN_DESCRIPTION + " TEXT)";
+          db.execSQL(createTable);
+      }
+      @Override
+      public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+          db.execSQL("DROP TABLE IF EXISTS " + TABLE_NOTES);
+          onCreate(db);
+      }
+      @Override
+      public void onOpen(SQLiteDatabase db) {
+          super.onOpen(db);
+          // Clear all previous data
+          db.execSQL("DELETE FROM " + TABLE_NOTES);
+      }
+      // Insert Dummy Data with unique descriptions
+      public void insertDummyData() {
+          SQLiteDatabase db = this.getWritableDatabase();
+          ContentValues contentValues = new ContentValues();
+          // Array of unique descriptions
+          String[] descriptions = {
+              "Advance Java Programming Note",
+              "Mobile Programming Note",
+              "Network Programming Note",
+              "Applied Economics Note",
+              "Distributed System Note"
+          };
+          for (int i = 1; i <= descriptions.length; i++) {
+              contentValues.put(COLUMN_UUID, UUID.randomUUID().toString());
+              contentValues.put(COLUMN_TITLE, "Note " + i);
+              contentValues.put(COLUMN_DESCRIPTION, descriptions[i - 1]);
+
+              db.insert(TABLE_NOTES, null, contentValues);
+          }
+          Toast.makeText(context, "Data inserted", Toast.LENGTH_SHORT).show();
+      }
+
+      public void insertDynamicDummyData() {
+          SQLiteDatabase db = this.getWritableDatabase();
+          ContentValues contentValues = new ContentValues();
+          for (int i = 1; i <= 5; i++) {
+              String uniqueDescription = "CodyNoteApp " + i + " - " + System.currentTimeMillis();
+              contentValues.put(COLUMN_UUID, UUID.randomUUID().toString());
+              contentValues.put(COLUMN_TITLE, "Note " + i);
+              contentValues.put(COLUMN_DESCRIPTION, uniqueDescription);
+              db.insert(TABLE_NOTES, null, contentValues);
+          }
+          Toast.makeText(context, "Dynamic data inserted", Toast.LENGTH_SHORT).show();
+      }
+
+      public Cursor getAllNotes() {
+          SQLiteDatabase db = this.getReadableDatabase();
+          return db.rawQuery("SELECT * FROM " + TABLE_NOTES, null);
+      }
+  }
+#+end_src
+** =activity_main.xml=
+#+begin_src xml
+  <?xml version="1.0" encoding="utf-8"?>
+  <LinearLayout
+      xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      android:id="@+id/main"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      tools:context=".MainActivity"
+      android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Note Application"
+        android:textSize="25dp"
+        android:textAlignment="center"
+        android:layout_margin="16dp"
+        />
+    <Button
+        android:id="@+id/insertButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Insert" />
+    <Button
+        android:id="@+id/listButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="List"
+        />
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+  </LinearLayout>
+#+end_src
+* Output
+#+ATTR_LATEX: :height 270px :float nil
+#+CAPTION: MainActivity
+[[file:output.png]]
