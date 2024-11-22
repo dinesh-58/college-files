@@ -1,0 +1,996 @@
+- use reference book added by diwas sir
+* DONE [[https://drive.google.com/file/d/1d6rFkpTTPRpHBu6C2mRywEYJE5Q59I7d/view][MOB1]]: Intro to Mobile & Mobile Programming
+** Mobile Device                :drill:
+SCHEDULED: <2024-09-07 Sat>
+:PROPERTIES:
+:ID:       d34d2efc-de78-4325-a775-87f2f60d4e44
+:DRILL_LAST_INTERVAL: 10.0
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-08-28 Wed 11:%]
+:END:
+#
+*** define
+:PROPERTIES:
+:ID:       d65413e0-be6d-441a-8ced-2178a5772e56
+:END:
+portable electronic devices capable of being used wirelessly
+
+*** Features
+- lightweight, portable 
+- wireless network connection
+- rechargable battery (no need for constant power connection)
+- built-in components like camera, mic, gps, bluetooth
+  + these may not be built-in to PCs
+- app store or other way for installing applications
+
+*** Categories
+- phones
+- tablets
+- laptops
+- wearables (smartwatch, fitness tracker)
+- E-reader
+
+*** unnecessary
+**** History
+**** Brands
+
+** Intro to mobile programming
+*** Approaches to mobile programming :drill:
+SCHEDULED: <2024-09-07 Sat>
+:PROPERTIES:
+:ID:       580a5382-fdd0-4630-8378-149cc5eabcab
+:DRILL_LAST_INTERVAL: 10.0
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-08-28 Wed 11:%]
+:END:
+#
+**** [Native app development]
+- using languages, tools specific to the OS
+- better performance, access to system / device features
+- higher learning curve, time to develop
+- can only run on specific OS
+  + same app may have separate codebases for separate OS versions
+
+- examples:
+  + java / Kotlin & Views / Jetpack Compose for Android
+  + Swift for iOS
+
+**** [Cross-platform]
+- single codebase:
+  + write once, run on multiple OSs (some including PCs)
+- may allow mixing native code as well for specific features
+- less development time
+
+- examples:
+  + React Native, Flutter, .NET MAUI 
+
+**** [Hybrid]
+- use web technologies to build website / web app
+- then wrap it in a WebView to make it an "app"
+  + WebView is a basic browser embedded into an app
+    & is generally provided by the system
+- installed from device app store like other apps
+
+**** [PWA (Progressive Web Apps)]
+- web apps that can
+  + run in browser &,
+  + be installed from the browser
+- features like offline use, perform tasks in background 
+*** Languages used 
+# only because past question asked
+- java
+- kotlin
+- swift
+- javascript (react native)
+- dart (flutter)
+
+* MOB2: Intro to Android Programming
+Layout defines UI elements
+Activity manages those elements, user interactions
+
+Each activity has an associated layout 
+Activity name is PascalCase
+Layout file name is snake_case of reverse of activity name
+** Activity
+subclass of =Context=
+all our activities wiil extend =Activity= or its subclasses (e.g: AppCompatActivity)
+*** methods
+**** onCreate(Bundle b)
+must be overridden
+**** setContentView(int layoutResId)
+** Android OS architecture      :drill:
+SCHEDULED: <2024-09-07 Sat>
+:PROPERTIES:
+:ID:       b55fc5d9-f739-430b-a7e8-ea1804a3eeb6
+:DRILL_LAST_INTERVAL: 9.3103
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.5
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-08-29 Thu 18:%]
+:END:
+# lower lvl components lie closer to hardware / core of OS
+# higher level components are built on top of lower lvl ones
+- when making diagram, put [c++ libs] & [ART] side by side
+
+*** [System Apps]
+- built-in / pre-installed apps for core functionalities, useful features
+  + e.g: Camera, Phone / Messages, Browser
+- this layer also includes any other apps?
+
+*** [Java Android API Framework]
+- set of java APIs for developing apps
+  + e.g: Views, Resources, Activities
+- available through Android SDK?
+
+*** [Native C/C++ libraries]
+- for essential system features, components
+  + e.g: OpenGL, SQLite, ffmpeg
+
+*** [Android Runtime (ART)]
+- environment for running java & kotlin code
+  (both are compiled to Dalvik bytecode)
+- optimized for Android apps, low memory footprint
+
+*** [Hardware Abstraction Layer (HAL)]
+- provides Interfaces for hardware access
+  to higher-level Java API 
+# extra info: device manufacturers expose specific hardware components thru here
+
+*** [Linux kernel]
+- program that is core of an OS
+- manages hardware, memory, processes 
+** View Hierarchy
+- tree like structure created from parent-child relations between Views, ViewGroups
+- e.g: root LinearLayout has child ViewGroups, which have child views
+*** =View= widgets
+~import android.view.View~
+- a visual element of an app,
+  displayed on screen
+  + TextView, EditText, ImageView, Button
+
+- View widgets in xml layout files are =inflated= /
+  converted into objects of their class
+  & displayed on screen
+
+**** how to access a View in a java file :drill:
+SCHEDULED: <2024-09-07 Sat>
+:PROPERTIES:
+:ID:       a75a5b39-3351-4d34-89ea-ba5d70aa71e0
+:DRILL_LAST_INTERVAL: 9.3103
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.5
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-08-29 Thu 18:%]
+:END:
+assume you are accessing a TextView
+
+***** ans (both java & xml)
+#+begin_src xml
+  <TextView android:id="@+id/tView" />
+#+end_src
+
+#+begin_src java
+  // provided by View, Activity class obj for views within that obj
+  TextView tView = findViewById(R.id.tView);
+  // id must be set for the textView in xml
+  tView.setText("hello");
+#+end_src
+
+
+*** =ViewGroup=
+- containers used for grouping & layout of Views
+- extends View class
+- LinearLayout, FrameLayout
+
+** MVC architecture
+states that all objects must be either of the 3
+*** Model
+define data & operations on data, & hold data
+- business logic
+basically data structure
+
+*** View
+UI components
+
+*** Controller
+- connect Model & View
+- control flow of data between the two
+- application logic
+generally Activity, Fragment or Service
+
+** Bundle
+represents a key-value storage?
+used for passing data around
+
+** Setting up a new Android project :drill:
+SCHEDULED: <2024-09-07 Sat>
+:PROPERTIES:
+:ID:       21002d1b-2a71-4571-bdea-8863ebcc229f
+:DRILL_LAST_INTERVAL: 8.9861
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 2.667
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-08-29 Thu 18:%]
+:END:
+- [File menu > New Project]
+- [Choose "Empty Views Activity" or "No Activity"]
+*** Project dir. structure
+- ProjectName/
+  + app/
+    * build/                     # for compiled files, built apks
+    * src/
+      - test/                    # for test cases
+      - main/
+        + java/
+          * com.package.name/    # contains java class files
+            - MainActivity.java
+        + res/                   # resources
+          * drawable/            # images
+          * layout/              # xml files for layouts
+            - activity_main.xml
+          * values/              
+            - strings.xml
+        + AndroidManifest.xml 
+  + gradle/                     # for dependencies, gradle build settings
+
+package name is used to uniquely identify app
+
+** Basic Activity boilerplate
+#+begin_src java
+  public class MainActivity extends AppCompatActivity{
+      @Override
+      protected void onCreate(Bundle savedInstance) {
+          super.onCreate(savedInstance);
+          setContentView(R.layout.activity_main);
+      }
+  }
+#+end_src
+
+** Create new AVD
+- Go to "Device Manager" toolbar on right side
+- Click + icon (create virtual device)
+- choose / customize configuration
+- click ok and let it download / setup
+
+* MOB3: Designing the User Interface
+** Resources
+non-code static files used in the app's GUI (images, text)
+*** accessing resources in:
+**** java files
+- using static properties of =R= class
++ when building app, xml resource ids are stored as static properties for this class 
+
+**** xml files
+accessed as values for element attributes
+- values use @<resource-type> prefix
+  e.g: @string:res_id
+  + note: @+ is used when specifying id ~android:id="@+id/testId"~
+    "=" indicates creating new resource
+    accessed using R.id.testId
+*** Layout
+- defines view hierarchical structure of an Activity, Fragment or View (e.g: for single list item)
+- defined using xml elements
+  + which are inflated / converted into =widgets= (=View= class objects)
+  # elements can also be created directly using =View= class objects
+
+**** example code
+root element of a layout must specify =xmlns:android=
+i.e. the xml namespace
+#+begin_src xml activity_main.xml
+  <?xml version="1.0" encoding="utf-8"?>
+  <LinearLayout
+      xmlns:android="http://schemas.android.com/apk/res/android"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+    ...
+  </LinearLayout>
+
+#+end_src
+**** Layout / View attributes :drill:
+SCHEDULED: <2024-09-07 Sat>
+:PROPERTIES:
+:ID:       9485a5c0-8676-4b43-b27f-29339aa052af
+:DRILL_LAST_INTERVAL: 8.9861
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-08-29 Thu 18:%]
+:END:
+all of these use =android:= prefix (to denote android xml namespace for the attribute)
+
+***** android:layout_width, android:layout_height
+values: =match_parent=, =wrap_content=, or specific number
+***** orientation
+- basically flex-direction
+- values: vertical, horizontal 
+***** gravity
+- alignment for children
+- values: left, right, center, center_horizontal, ...
+***** layout_gravity
+- align self / current View?
+  + tip: =layout_= prefix means set for the current View?
+- same values as above
+
+
+**** TODO types
+extensions of =ViewGroup= for containing, organizing Views
+
+***** LinearLayout
+for arranging child elements in a single line (vertically / horizontally)
+***** Relative
+***** Table
+***** Absolute
+***** Constraint
+*** Values
+**** String & String array resource
+***** declaring
+- can be defined in any file inside res/values/
+  + that file must have a root <resources> element & <string> inside it
+- "@string/test" refers to string w/ ~name="test"~ 
+  instead of hard-coding them in UI
+
+#+begin_src xml strings.xml
+  <resources>
+    <string name="btn_text">Click Me</string>
+    <string-array name="gender_options">
+      <item>Male</item>
+      <item>Female</item>
+      <item>Other</item>
+    </string-array>
+  </resources>
+#+end_src
+
+***** using in xml
+#+begin_src xml layout.xml
+  <Button android:text="@string/btn_text" />
+  <Spinner android:entries="@array/gender_options" />
+#+end_src
+
+***** using in java (Activity or Fragment) 
+#+begin_src java
+  Resources res = getResources();
+  String str = res.getString(R.string.btn_text);
+  String[] arr = res.getStringArray(R.array.gender_options);
+#+end_src
+
+**** TODO string resource w/ placeholder values
+not important for exam
+#+begin_src xml
+  <string name="demo_placeholder">Hi, %1$s</string>
+#+end_src
+%1 denotes position / index 1
+$s denotes string type
+
+***** replace placeholder:
+#+begin_src java
+  //  getString() places passed arguments into the 1st arg (string w/ placeholders)
+  //  this method is provided by the Context (i.e. GreetActivity.this object?)
+  String formatted = getString(R.string.demo_placeholder, "sujal"));
+#+end_src
+"sujal" is put in place of %1
+similar to =printf()=
+
+**** Colors
+defined in a file in res/values/
+
+*** Drawable
+** Adapter
+:PROPERTIES:
+:ID:       d01c4f4d-2f6d-4095-b52a-0530b906c5b9
+:END:
+bind data to a =View=? (there were some notes in daily docs)
+*** ArrayAdapter
+- for 1D array of primitive data types
+  + e.g: only show list of names
+    not list of students w/ multiple properties / columns
+- useful for List, Grid, Spinner
+- constructor:
+  #+begin_src java
+    ArrayAdapter<T>(Context context, int resource, T[] arr);
+    // resource is layout to place array items in
+       // placed in top-most View. else, can specify where to place
+       // by passing additional arg for View id
+    // android provides built in layouts like anroid.R.layout.simple_list_item1
+
+  #+end_src
+*** Custom Adapter
+- used for RecycleView
+
+** Android widgets
+*** TextView
+~android:text="value"~
+*** EditText
+for user input
+getText?
+*** Checkbox
+*** RadioButton
+*** Spinner               :drill:
+SCHEDULED: <2024-09-02 Mon>
+:PROPERTIES:
+:ID:       78e6d015-6c39-4227-afed-e236614419ce
+:DRILL_LAST_INTERVAL: 3.725
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 2.667
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-08-29 Thu 18:%]
+:END:
+basically [dropdown menu]
+**** creating 
+#+begin_src xml activity_spinner.xml
+  <Spinner
+      xmlns:android="http://schemas.android.com/apk/res/android"
+      android:id="@+id/countries_spinner"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      />
+
+#+end_src
+**** setting values & event handler
+#+begin_src java SpinnerActivity.java
+  @Override protected void onCreate(View v) {
+      String[] countries = {"Nepal", "India", "China"}; 
+      ArrayAdapter<String> countriesAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, countries);
+
+      Spinner spin = findViewById(R.id.countries_spinner);
+      spin.setAdapter(countriesAdapter);
+
+      // set layout to use when dropdown appears.
+      spin.setDropdownViewResource(android.R.layout_simple_spinner_dropdown);
+
+      spin.setOnItemSelectedListener(new OnItemSelectedListner() {
+              @Override
+              onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                  // get selected item using
+                  // parent.getItemAtPosition(pos)
+              }
+              @Override
+              onNothingSelected(AdapterView<?> parent) {}
+          });
+  }
+#+end_src
+**** extra info: using string arr & =entries=
+# not important for exam?
+ #+begin_src xml
+   <resources>
+     <string-array name="countries_options">
+       <item>Nepal</item>
+       <item>India</item>
+       <item>China</item>
+     </string
+   </resources>
+ #+end_src
+ 
+then use ~android:entries="@array/countries_options"~ attribute for <Spinner>
+
+- string arr resource can be used to create ArrayAdapter too
+- for this approach, can't change
+  + layout for dropdown, items
+  + can't modify dropdown values dynamicall?
+** Events
+user interactions with the app
+e.g: click, long click, touch
+*** ways to perform Event Handling (android) :drill:
+SCHEDULED: <2024-09-02 Mon>
+:PROPERTIES:
+:ID:       e2988dea-61ec-4adf-9b89-afe32e4d31ae
+:DRILL_LAST_INTERVAL: 3.725
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 2.667
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-08-29 Thu 18:%]
+:END:
+# 
+**** [anonymous classes]
+creating class w/o name (using an interface or class)
+& instantiating it at the same time
+
+- use as an expression when needing to pass object ref
+  + this class can only be used there (\because no name) 
+  + useful for interface implementations that are one-off / used once (like specific event handling)
+
+#+begin_src java
+  // note: OnClickListener is an interface
+  btn.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+              // do smth
+          }
+      });
+#+end_src
+
+**** [store ref to anon class obj in field / variable]
+- & pass reference to that object 
+- allows reusing that class' event listener implementation that we wrote
+
+#+begin_src java
+  private View.OnClickListener onClickHandler = new View.OnClickListener(){
+      @Override
+      public void onClick(View v) {
+          //stuff
+      }
+  };
+
+  protected void onCreate(Bundle savedInstanceState) {
+      ...
+      btn.setOnClickListener(onClickHandler);
+  }
+#+end_src
+**** [make Activity / Fragment implement Listener interface]
+- override methods 
+- then pass =this= when setting listener
+
+  #+begin_src java
+    public class MainActivity extends AppCompatActivity implements OnClickListener {
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            //...
+            btn.setOnClickListener(this);
+        }
+
+        @Override
+        protected void onClick(View v) {}
+    }
+  #+end_src
+
+**** [as xml attribute for that View]
+#+begin_src xml
+  <Button android:OnClick="btnClick"/>
+<!-- define btnClick as a function -->
+#+end_src
+
+**** extra info
+- all Listeners are interfaces (e.g: OnClickListener, OnItemSelectedListener)
+  + to allow devs to implement their own event handler behavior
+
+- listener setter method is just listener name w/ set prefix
+  + setOnClickListener, setOnItemSelectedListener
+
+- event handler method name is similar to listener w/o Listener suffix 
+  + onClick, onItemSelected
+* MOB4: Android Activity
+** switching activities with intents
+*** =Intent=
+- abstract definition of an action to be performed?
+  + one usecase is to launch new activities, navigate between activities
+*** start 1 activity from another
+#+begin_src java CurrentActivity.java
+  // params are current context & class for next activity
+  Intent i = new Intent(CurrentActivity.this, NextActivity.class);
+  startActivity(i);
+  // startActivity is provided by CurrentActivity.this, which can be omitted
+#+end_src
+*** see if other things can be done between activites using intent
+
+** Passing data between activities
+*** pass to child
+#+begin_src java CurrentActivity.java
+  Intent i = new Intent(CurrentActivity.this, NextActivity.class);
+  i.putExtra("uniqueId", data);
+  // extra is akin to bundle. you can even put bundle as extra
+  startActivity(i);
+#+end_src
+
+#+begin_src java NextActivity.java
+  Intent i = getIntent();
+  i.gettringExtra("uniqueId");
+  // NOTE: same generic setter (putExtra) method used for putting all primitive data-types (except for arrays)
+  // getter has different methods depending on return type
+#+end_src
+
+*** pass to parent
+using startActivityForResult & some other methods
+
+** TODO Activity Lifecycle
+- callback methods provided in Activity class
+to handle Activity state changes
+- android apps have event-driven architecture / model
+  + each callback triggers an event
+*** Activity launched
+*** onCreate
+- created state
+- use for initializing (Activity properties, setting layout w/ setContentView)
+*** onStart
+- started state
+- preparing to be shown to user
+- supposed to put UI handling logic here?
+
+*** onResume
+- finally visible to user (& interactable)
+- resumed state
+  - activity stays in this state as long as its in focus
+*** activity disrupted / not in foreground => onPause
+- paused state; 1st inidication that user is about to leave activity
+- caused by:
+  - another activity comes into foreground (call)
+  - user switches activities
+    + or focuses on another window in multi-window mode
+  - turning screen off
+
+- if user switches back to paused activity, go back to onResume
+*** activity no longer visible => onStop
+- stopped state
+- android may kill stopped activity process
+  if it needs to free up memory
+*** user switches back to stopped activity => onRestart
+go back to onStart
+*** onDestroy
+- called before destroying
+
+** why to use activity lifecyle methods
+prevent: 
+- Crashing if the user receives a phone call or switches to another app while using your app.
+- Consuming valuable system resources when the user is not actively using it.
+- Losing the user's progress if they leave your app and return to it at a later time.
+- Crashing or losing the user's progress when the screen rotates between landscape and portrait orientation.
+
+** preserve state across activity restarts 
+#+begin_src java
+  // class Activity
+
+  // called when saving activity state
+  @Override
+  public void onSaveInstanceState(Bundle savedInstanceState) {
+      // saving custom values. remember that bundle is key-value pair
+      savedInstanceState.putString("foo", "bar");
+      super.onSaveInstanceState(savedInstanceState);
+  }
+
+  // in onCreate, check if bundle is null and set statevalue
+  // or default value accordingly
+#+end_src
+
+* MOB5: UI Fragments, Menus & Dialogs
+** Fragments
+- reusable sub-activities
+  + like UI components in React
+- placed inside an activity
+  instead of being launched like an activity
+
+*** advantages
+- dynamic activity by swapping out fragments
+  - app can be made w/ single activity, multiple fragments
+- responsive multi-pane activity
+  + show multiple panes for large screens
+  + turn panes into activities for small screens
+- e.g: DatePicker, Dialog
+*** code
+**** Creating fragment
+#+begin_src java DetailsFragment.java
+  public class DetailsFragment extends Fragment {
+      public DetailsFragment() {
+          // set layout / view for fragment
+          super(R.layout.fragment_details)
+      }
+
+      // called when instantiating fragment, before view created
+      @Override
+      public void onCreate(Bundle savedInstanceState) {
+          super.onCreate(savedInstanceState);
+      }
+
+      // called after view is set for the fragment
+      // add listeners here
+      @Override
+      public void onViewCreated(View view, Bundle savedInstanceState) {
+      }
+  }
+#+end_src
+
+- create a layout file to define this fragment's view hierarchy 
+- in activity layout, create a ViewGroup container to put fragment inside it
+**** Adding fragment to a container
+
+***** statically using =FragmentContainerView= in xml
+- automatically displays fragment when activity created 
+  use java if needing to display when dynamically (e.g: clicked)
+#+begin_src xml activity_main.xml
+    <androidx.fragment.app.FragmentContainerView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="com.example.ExampleFragment" />
+  <!-- fragment specified using name attrib
+       & path to Fragment class
+  -->
+#+end_src
+
+***** dynamically using FramgmentManager
+#+begin_src java MainActivity.java
+  // provided by MainActivity.this
+  FragmentManager fm = getSupportFragmentManager();
+  Fragment frag = new MyFragment();
+  // NOTE: fragment_container is a ViewGroup component inside this Activity's layout
+  fm.beginTransaction().add(R.id.fragment_container, frag).commit();
+#+end_src
+
+***** misc: removing fragments
+=add()= will not remove existing fragments in the container
+use =remove()= or =replace()= to do so
+
+**** passing data to fragment :drill:
+#
+***** from Activity
+fragment can access activity's data w/o this?
++ i.e. read that fragment can access objs w/o Parcelable
+#+begin_src java ParentActivity.java
+  // onCreate
+  Bundle bundle = new Bundle();
+  bundle.putString("uniqueId", "foo");
+  Fragment childFrag = new ChildFragment();
+  childFrag.setArguments(bundle);
+
+  /* code to add fragment... */
+#+end_src
+
+#+begin_src java ChildFragment.java
+  // onViewCreated
+  getArguments().getString("uniqeuId");
+#+end_src
+***** TODO view android documentation for: 
+****** to activity(?)
+****** between fragments
+*** activity vs fragment
+|                         | activity                                       | fragment                                    |
+|-------------------------+------------------------------------------------+---------------------------------------------|
+| managed by              | ActivityManager => private / protected methods | Activity, FragmentManager => public methods |
+| displayed independently | yes. desgined that way                         | no. must be inside activity                 |
+| usecase                 | as a screen / page inside app                  | as a section of an activity                 |
+| declare in manifest     | yes                                            | no                                         |
+** TODO Menus
+shown on ActionBar || Titlebar 3-dot menu
+** Dialogs  (android)           :drill:
+- type of built-in fragment
+- useful for user confirmation, prompting before a serious / destructive action (like deleting)
+*** types
+**** AlertDialog
+**** DatePicker
+create custom dialog that extends DialogFragment
+in OnCreateDialog method
+return DatePickerDialog obj
+**** TimePicker
+same as above but w/ TimePickerDialog obj
+**** ProgressDialog
+**** Custom dialog (extends =DialogFragment=)
+*** creating (e.g: an AlertDialog)
+#+begin_src java 
+  AlertDialog.Builder(this)
+      .setTitle("title")
+      .setMessage("description")
+      .setPositiveButton("yes", new DialogInterface.OnClickListener() {
+              public void onClick(DialogInterface dialog, int id) {
+                  // action after choosing yes
+                  // id 
+              }
+          })
+      .setNegativeButton("no", new DialogInterface.OnClickListener() {
+              public void onClick(DialogInterface dialog, int id) {
+                  dialog.dismiss()
+              }
+          })
+      .show();
+
+  // button setters take text & onClickListener
+  // if you don't want to show a button, don't use its setter
+  // positive button automatically calls dismiss()
+  // additional setNeutralButton is available for non-dismissive actions
+#+end_src
+
+*** create dialog w/ Views inside (e.g: EditText & Button)
+- create layout file for dialog (excluding title)
+  - add EditText & Button w/ id
+  - message is overwritten by setView so specify message text here
+- instead of setMessage, use =setView= & =pass R.layout.dialog_custom=
+- handle data in button onClick
+* MOB6: ListView, GridView & RecyclerView
+use [[id:d01c4f4d-2f6d-4095-b52a-0530b906c5b9][Adapter]]
+** ListView
+steps:
+- create ListView in layout & give id
+- get ref to ListView in java
+- create array & use it to create ArrayAdapter 
+- =list.setAdapter(arrAdapterObj)=
+** GridView
+- similar to listview; just shows single array in multiple columns
+- specify =numColumns= attribute in xml
+** Recycler view
+- efficient performance for long list of items
+- only creates / renders visible Views 
+  & reuses them by changing data
+  + ListView renders all
+- requires custom Adapter
+
+*** ViewHolder 
+- inside this, we store View objects (defined in our recycler's single itme layout)
+  & make them accessible to custom adapter thru getter /setters
+- in constructor, take View, find view by id and store as private property
+- create getter / setters
+*** CustomAdapter
+must override 
+**** onCreateViewHolder 
+- for instantiating custom Viewholder
+- specify what single item layout to use
+- pass inflated layout View to ViewHolder
+**** onBindViewHolder
+bind data to ViewHolder's view using position
+*** example code
+**** layouts
+- create <androidx.RecyclerView.widget.RecyclerView>
+  in activity_main
+- create separate layout to represent a single item in the recycler view
+  + here set id for Views where data will go
+    & use id inside ViewHolder constructor
+
+
+**** Main activity
+create adapter using contructor &
+use recyclerObj.setAdapter(adapter)
+recyclerObj.setLayoutManager(new LinearLayoutManager(this));
+**** Custom adapter class
+#+begin_src java
+  public class CustomAdapter extends RecyclerView.Adapter<CustomViewHolder> {
+      private String[] countries;
+      @Override
+      public CustomAdapter(string[] data) {
+          // data can be of any type 
+          this.countries = data;
+      }
+      @Override
+      public CustomViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+          LayoutInflater inflater = LayoutInflater.from(parent);
+          View itemView = inflater.inflate(R.layout.single_item);
+          return CustomViewHolder(itemView);
+      }
+
+      @Override
+      public void onBindViewHolder(CustomViewHolder viewHolder, int position) {
+          viewHolder.setText(countries[position]);
+      }
+
+      // inner class
+      public class CustomViewHolder extends RecyclerView.ViewHolder {
+          private TextView tView;
+          public CustomViewHolder(View itemView) {
+              super(itemView);
+              tView = itemView.findViewById(tViewId);
+          }
+          public void setText(string text) {}
+      }
+  }
+#+end_src
+* MOB7: Advanced Android Concepts
+** SQLite
+- single file-based RDBMS (no need for server)
+- each app's db stored in Android/ folder
+- db can be modified from Android Studio using App Inspector
+
+* MOB8: Intro to iOS Programming
+
+** Swift
+- similar to TypeScript
+  + i.e. has type-safety,
+     similar type assertion syntax,
+     type inference (setting type based on value),
+     optional semi-colons
+- no need for parentheses for lopps, conditions, switch-case
+*** variables
+constant using =let=
+variable using =var=
+*** Optional types
+basically nullable types
+use =?= suffix after type
+**** unwrap
+- assert / confirm that the optional variable has a value
+
+***** safe unwrap (optional binding)
+if it has value, bind it to a variable
+#+begin_src swift
+  let name: String? = "john"
+  if let actualName = name {
+    print(name)
+  }
+#+end_src
+
+***** force unwrap
+using "!"
+#+begin_src swift
+  print(name!)
+#+end_src
+*** Output
+=print()=
+- string interpolation:
+  using \() in string
+#+begin_src swift
+let name = "sujal"
+print("Hello, \(name)")
+#+end_src
+*** Input
+=readLine()=
+- returns optional string so need to unwrap like so: 
+#+begin_src swift
+  if let input = readline() {   // unwrap input value
+     if let num = Int(input) {  // cast to Int if possible
+     }
+  }
+#+end_src
+*** Arrays
+when declaring, wrap type in brackets
+~let arr: [Int] = [1,2,3];~
+
+~append()~ to push to the arr
+~insert(_ val, at: Int)~ to insert val at specified index
+arr.count for length
+
+- arrays defined w/ =let= are immutable so use =var= if needing to modify
+**** Dictionaries
+- key value pairs
+[
+  1: "hello",
+  2: "world",
+  "foo": "bar"
+]
+access similar to arr, using dict[key] (quotes for string keys)
+
+*** Loops
+**** for
+#+begin_src swift
+for i in arr {}
+for i in arr where i > 0 {}
+for i in 1...3 {}
+for (key, val) in dict {}
+#+end_src
+*** Functions
+func fName(optionalLabel arg1: Type) -> returnType {
+}
+- can omit =-> returnType= for void functions
+- when calling, must specify arg name or label
+  + to omit, use _ label in f'n declaration
+*** Range
+- 1...4 consists from 1 to 4 (includes both)
+- useful for for-in loops, storing sequence of values
+- lowerBound must be < upperBound 
+*** Type casting
+- implicit cast from sub class to super class
+- expilcit 
+  + for primitive types use constructor e.g: =Int("5")=
+
+* Android Studio
+
+** Shortcuts
+=C-q= : Show documentation for item below cursor
+* [[id:606ae5b7-c747-4d4f-baec-27f9d0cac525][Lab report]] questions
+*NOTE:* set default package name to combination of name & roll (in order to distinguish answers)
+** Demonstrate the setup & installation of Android Project w/ Java [2 marks]
+** Develop an android application that prints "Hello World" on the bottom of the page [4 marks]
+** Develop an android application w/ 2 activities: MainActivity & GreetActivity.  [5 marks]
+MainActivity should contain a textbox and button w/ label "submit".
+
+When clicked on submit, GreetActivity should open w/ message "Hello {name}" where name is submitted from MainActivity.

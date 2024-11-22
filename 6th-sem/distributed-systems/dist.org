@@ -1,0 +1,439 @@
+#+OPTIONS: toc:nil
+
+* study order
+- 6
+- 2
+- 9
+- others
+
+* DIST1: Intro
+** dist. system          :drill:
+SCHEDULED: <2024-09-01 Sun>
+:PROPERTIES:
+:ID:       426b39be-18ad-44b2-a6a4-c54d887b07e5
+:DRILL_LAST_INTERVAL: 4.0
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-08-28 Wed 12:%]
+:END:
+# vague / broad concept
+*** define
+system made up of group of connected computers (nodes),
+that communicate & coordinate their actions through message passing,
+to work as a single unit / systme
+
+
+*** extra info: examples
+- peer 2 peer networks
+- CDN: nodes in different locations for serving data
+- Distributed database: MongoDB
+- cloud services: [[id:99113c65-9614-4519-b3b0-f94d499f44b7][cloud computing]], Netflix, Google Drive
+** Network partition
+network failure causing nodes to get divided into multiple groups & be unable to
+comunicate properly w/ one another
+
+** dist. syst. Characteristics / Requirements :drill:
+SCHEDULED: <2024-09-01 Sun>
+:PROPERTIES:
+:ID:       5682af2a-25cb-45cf-b55a-89e808f46bd6
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 2.5
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-08-28 Wed 12:%]
+:END:
+#
+*** [Scalability]
+handle increase in demand
+**** extra info: scaling types
+- horizontal scaling:
+  + adding more nodes
+  + can add w/o disruption to server
+
+- vertical   scaling:
+  + upgrading resources for current nodes / server (RAM, CPU, ...)
+  + limit to doing so; causes downtime
+
+*** [Heteroginity]
+- system can operate on nodes w/ different configs (hardware, OS, ways / protocols of doing things)
+- achieved thru middleware software which abstracts the system's functions
+  + turns abstract request into machine-specific?
+*** [Reliability]
+- always work as expected,
+  even if a node fails
+- done thru fault tolerance methods
+
+*** [Transparency]
+- user should feel they are interacting w/ a single system
+- abstracting details like multiple distributed nodes, their location, concurrent access (by multipl users)
+  so users don't have to worry about them and can use system easily
+
+*** [Resource Sharing]
+- sharing resources like files, processing power, hardware between nodes for efficiency
+
+** dist. syst. types            :drill:
+SCHEDULED: <2024-09-01 Sun>
+:PROPERTIES:
+:ID:       5ad9ee6c-413c-41b3-9e0b-cb47f7a84986
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-08-28 Wed 11:%]
+:END:
+# IRL architecture can be hybrid of these
+
+*** [Client-server]
+- central server / coordinator handles requests / system
+- if this has fault, entire system crashes
+- e.g: web server, mail server
+
+*** [P2P]
+- network of connected computers
+  w/ all having equal privileges / responsibilities?
+- decentralized, EZ scaling
+- no single point of failure
+- e.g: BitTorrent protocol, blockchain
+
+*** [grid computing]
+- group of computers spread across geographical locations
+  + heterogenous computers
+- useful for large scale, geographically distributed tasks
+
+*** [cluster computing]
+- group of computers located close (in a LAN) to provide high performance
+  + homogenous (same) nodes, configs
+
+*** [cloud computing]
+:PROPERTIES:
+:ID:       99113c65-9614-4519-b3b0-f94d499f44b7
+:END:
+- performing computational tasks using cloud server resources (i.e. not your own resources)
+  + AWS, Azure, GCP
+- can easily increase resources (RAM, storage) as per demand
+** pre-requisites
+- computers operate concurrently (independently?)
+- computers fail independently
+  + 1 failing doesn't affect others
+- computers don't share a single clock (independent?)
+
+** Design Goals
+why dist. system is made / used
+** Case Study: world wide web (WWW)
+
+* DIST4: Communciations
+RPC & RMI are almost similar
+- diagram is very similar
+- OOP vs procedural
+- stub is function vs stub is object
+- skeleton used only in RMI?
+  + basically server side stub
+- RPC is older?
+
+** RPC (procedure call)
+
+** RMI (method invocation)
+** Berkeley sockets
+basically just normal sockets
+- interface used for communication in POSIX systems
+
+- server starts socket on port(bind)
+- listens for requests
+- clients connect to that socket
+- comms thru sendv recv methods
+- close conn
+
+* DIST5
+** Name
+naam nai ho (filename, variable name)
+string used to identify (resource in DS)
+** Identifier
+unique id
+** naming system
+*** flat naming 
+no structure in name
+given randomly
+
+e.g: MAC address
+*** Structured naming
+system of naming in hierarchical or systematic / specific way
+to manage, locate resources effectively
+
+**** Hierarchical naming
+tree-like structure w/ single root & branches, depth
+- child inside parent
+- e.g:
+  + DNS: 
+    | protocol | sub-domain | 2nd domain | TLD |
+    | http     | www        | google     | com |
+
+**** Attribute based naming
+- instead of fixed value
+  use combination of attributes and values
+  to uniquely identify resource
+
+- e.g:
+  + url or sql query like ~searchTerm=Lenovo & category=laptop~
+  + LDAP (Lightweight Directory access protocol)
+    for uniquely identifying people & orgs
+    using combination of attributes like
+    common name(cn), org name(on), country(c)
+**** Location based naming
+  + file system:
+    /home/sujal/Downloads
+
+**** Content based naming
+identified using cryptographic hash
+** Secure naming
+protecting names from unauthorized access, modification, misuse
+*** cryptographic hash
+*** access control
+- authentication:
+  verifying user has permission, is registered user
+
+- authorization:
+  giving perms to user
+
+- least privilege principle: 
+  giving least amount of perms necessary to user
+*** name resolution
+- securing dns servers
+- ensuring that name is resolved to correct address & request isn't tampered w/
+
+**** iterative
+- client makes requests to multiple name servers
+  (root, server 1, 2)
+
+**** recursive
+- client makes request to only root
+  which makes request to other, which makes to other, ...
+  + root returns ip in the end
+
+* DIST6: Coordination
+** Synchronous DS
+limitations:
+- message passing delay
+- nodes take time to execute task
+- node clocks may be out of sync 
+
+** Asynchronous DS
+- no such limitations
+
+** Physical clock sync
+each node has hardware clock component that maintains time
+that might deviate from actual time due to different hardware, heat, lag
+
+sync methods:
+*** Christian algo (RTD)
+- t1: client send req to accurate time server
+  t2: server receive
+  t3: server send res
+  t4: client round trip delay = t4 - t1
+  round trip delay = client RTD / 2
+
+  actual time current time + rtd
+
+*** Berkeley algo (average time)
+- coordinator asks all nodes for time
+- adjusts responses based on their RTD
+- calculate average time
+- send adjustment amount to nodes to match average
+*** NTP (server)
+synchronizing time over a network (LAN, internet)
+- multiple layers of time keeping servers
+- stratum 0 is high precision time keeping device
+- stratum 1 servers get time from 0
+- stratum 2 servers get time from 1 & provide time to users
+  + calculate offset & round trip delay
+    & time adjusted accordingly
+- ... more server layers can be kept
+
+**** advantages of multiple layers
+- scalable
+- redundancy / fault tolerance if server or entire stratum level  goes down
+- load balancing, distributing to large geographical area
+** Logical clock sync
+maintain event ordering despite
+- not using IRL time / clocks
+- no shared / global clock
+
+- designed to capture causual relations between events
+  & their ordering
+*** Lamport timestamps
+- each process has local counter(LC) starting at 0
+- when event occurs, LC++
+- when sending message to other process,
+  LC++
+  send LC as timestamp T
+- when receiving, set LC = max(LC, T)
+  LC++
+
+**** partial ordering:
+- thus, event C caused by event B will have timestamp greater than B  
+- called partial becaused doesn't capture timing / order of non-causual relations
+*** Vector clocks
+overcomes lamport drawbacks
+- each process maintains vector of timestamps for all processes
+- increment local counter similar to lamport
+  (event, before sending, after receiving)
+  then use max() when receiving
+** Election algorithm
+- choosing coordinator / designated leader among nodes
+- if coordinator fails, choose another
+*** token passing
+- pass token between nodes & select one
+**** Bully
+- processes have assigned identifiers
+- process w/ high id broadcasts "leader election" message
+- for receiving process, if own id low, become follower
+  if high, broadcast
+- highest id wala becomes leader
+**** Ring
+organize nodes in ring topology
+*** centralized
+one process specified as coordinator
+**** berkeley
+
+*** distributed
+elected thru consensus (everybody should agree)
+** Location system
+identify physical / logcial location of distributed nodes
+*** GPS
+** event matching
+basically event handling
+- nodes *subscribe* to events,
+  get *notified* when publishers *publish* event
+** gossip based coordination
+decentralized; nodes send msg to few others
+eventually all nodes will get that msg
+
+* DIST7: Consistency & Replication
+** Intro
+*** Replication (in distributed systems)
+- duplicating data / services across different nodes in the system
+- Analogies:
+  + Posting the same notice / announcement at different places
+  + Bank with branches in various locations to provide same service but more conveniently 
+**** pros
+***** enhance reliability
+failure of one node doesn't disrupt system's services
+
+***** improve performance (load balancing)
+- single server may not be able to handle load;
+  + users / requests may have to wait in queue
+
+- with multiple servers, mupltiple requests can be served concurrently
+
+#+REVEAL: split:t
+***** scalability
+as load increases, we can increase number of replicas
+
+**** cons
+- data redundancy \rarr inefficient use of storage
+- consistency issues (keeping data same across replications)
+
+**** TODO replication types :noexport:
+# look at daily docs for this
+*** Consistency
+keeping data same / accurate across nodes as data changes
+
+** consistency models
+ways to guarantee consistency by handling read / writes across replicas in specific ways
+*** Data-centric 
+ensure data is consistent between replicas
+
+**** Strong
+- high level of consistency
+- read always returns latest data
+- writes are reflected across all replicas
+- performance impact or response delay might occur due to syncing every change
+# synced using active or passive replication method
+
+**** Eventual
+- data updates are synchronized eventually / after some time, not immediately
+- causes some replicas to not have updated data
+- but allows for fast performance / access times
+
+**** Sequential
+- each client process has a specific sequence / order of read / write operations
+
+- Interleaving is done: combine operations of all clients in the distributed system's global order 
+  + this global order is replicated across replicas
+
+- interleaving must be done such that a client's event ordering must be preserved
+  + other clients' events are allowed to be placed between them
+
+#+REVEAL: split:t
+***** example:
+- Process 1 events:
+  1) Read X
+  2) Write X=1
+
+- Process 2 events:
+  1) Write X = X + 2
+  2) Read X
+
+***** Possible interleaving combinations:
+
+**** Causual
+- used for causually related events (one event causes another to run)
+  + e.g.: after user performs payment, server must deduct paid amount
+
+- akin to Sequential but causual events must be ordered one after another,  
+  + with no events between them
+- non causual events are considered concurrent (independent) and can be in any order 
+
+#+REVEAL: split:t
+- preserve causual relations, preventing any issues
+- provide balance between high concurrency & performance 
+- downside: tracking causual dependency is complex
+  + need to implement systems like vector clocks
+
+*** Client-centric 
+- ensure data is consistent between client & replica it accesses
+- doesn't priorotize consistency between replicas
+
+**** Monotonic Read
+- after a process reads data once,
+  subsequent reads must return the same or more up to date data
+- e.g.: when reading data multiple times from a time server, data must always be same or greater
+
+**** Monotonic Write
+- maintain sequence of data writes
+- when a process writes data, it must be completed before any subsequent data writes
+- prevent write conflicts
+
+**** Read your writes
+- when a process writes some data,
+  it must be visible to subsequent read operations
+  performed by that process 
+
+**** Writes follow reads
+- writing after reading will perform writes on
+  same value that was read, or more recent
+
+** Replica management        :noexport:
+** Consistency protocols     :noexport:
+** Caching & Replication in Web
+- Caching performed by:
+  + web server (Apache), frameworks (Nextjs)
+  + client devices, browsers
+    
+- CDNs like CloudFlare, Netlify Edge replicate data across global locations
+  to serve data from location nearest to a user
+
+- Both methods improve performance / access times
+** Thank You
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:

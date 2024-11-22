@@ -1,0 +1,483 @@
+use O'Reilly book for reference if needed
+* NET1: Intro
+** features of Java as a net. prog. language :drill:
+SCHEDULED: <2024-09-15 Sun>
+:PROPERTIES:
+:ID:       6b842513-512a-4a10-847d-52adf5e92f18
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-11 Wed 07:%]
+:END:
+#
+*** 4 points
+- provides many built in network-related libraries
+  + Sockets, InetAddress, RMI
+- multi-threading support (handle multiple connections, parallel tasks)
+- IO Streams, non-blocking IO (useful for data transfer)
+- platform independedt: can run on all operating systems (using JVM)
+* NET6: Sockets
+** socket                       :drill:
+SCHEDULED: <2024-09-20 Fri>
+:PROPERTIES:
+:ID:       b3fa601e-ad4d-44a7-8fad-b08dd6ef894e
+:DRILL_LAST_INTERVAL: 8.9861
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-11 Wed 07:%]
+:END:
+#
+*** define
+- endpoint for 2-way communication between processes on 2 devices
+- made up of remote device address + port
+
+*** extra info
+- port is used to specify which port the server socket is listening on
+  \because device can have multiple ports open
+
+- browsers make HTTP requests
+  which generally open socket connection under the hood,
+  and close connection after data received
+** =Socket= class
+~import java.net.*~
+- used to connect to a remote socket
+- passing address & port to constructor will automatically call =connect()= as well
+  + address can be string (domain, ip, localhost)
+    or InetAddress obj
+
+*** methods
+**** getRemoteSocketAddress
+- remote is server you are connecting to
+- returns SocketAddress obj (akin to InetAddress but specifically for Sockets)
+**** getLocalSocketAddress
+own socket address
+**** getOutputStream  (for writing to socket)
+use ~PrintWriter out = new PrintWriter(scoket.getOutputStream())~
+& out.println()
+
+**** getInputStream (for reading from)
+use ~Scanner in = new Scanner(socket.getInputStream())~
+& in.nextLine() 
+
+*** socket options             :drill:
+SCHEDULED: <2024-09-15 Sun>
+:PROPERTIES:
+:ID:       a503b650-f55f-495f-a72f-e8770ca3b201
+:DRILL_LAST_INTERVAL: 3.725
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 4
+:DRILL_FAILURE_COUNT: 2
+:DRILL_AVERAGE_QUALITY: 2.5
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-11 Wed 07:%]
+:END:
+- all have setter, getters (in camelCase, not snake_case)
+- for ServerSocket, only 1st 3 are available
+  for Socket, all are
+
+**** [SO_TIMEOUT (int)]
+- time(ms) after which to terminate connection if no response
+  + to prevent other requests from being blocked
+
+**** [SO_RCVBUF (int)]
+size of incoming / input buffer
+**** [SO_REUSEADDR  (boolean)]
+when a socket is closed, another socket is allowed to =bind= to that port
+**** [SO_SNDBUF (int)]
+size of outgoing / output buffer
+
+**** [TCP_NODELAY (boolean)]
+- ensure packets are sent ASAP regardless of size
+** Programs
+*** Read / Write
+remember these exact classes, methods for Read / Write,
+not anything else
+
+#+begin_src java Server.java
+  try {
+      // note only specify port \because obv running on localhost
+      ServerSocket server = new ServerSocket(80);  
+      Socket client = server.accept();
+      sout("client connected");
+
+      PrintWriter out = new PrintWriter(client.getOutputStream());
+      Scanner in = new Scanner(client.getInputStream);
+      Scanner scan = new Scanner(System.in);
+      String msgC, msgS;
+
+      out.println("hello from server");
+      do {
+          msgC = in.nextLine();
+          sout("client: " + msgC);
+
+          msgS = scan.nextLine();
+          sout("server: " + msgS);
+          out.println(msgS);
+      } while(!msgC.equals("quit") || !msgS.equals("quit"));
+      socket.close();
+      server.close();
+
+  } catch(Exception e) {
+      System.error.println(e.getMessage());
+  }
+#+end_src
+
+#+begin_src java Client.java
+  import java.net.*;
+  import java.util.Scanner;
+
+  // ... main()
+  try {
+      Socket socket = new Socket("localhost", 80);
+      PrintWriter out = new PrintWriter(socket.getOutputStream());
+      Scanner in = new Scanner(socket.getInputStream());
+      Scanner scan = new Scanner(System.in);
+      String msgC, msgS;
+
+      do {
+          msgS = in.nextLine();
+          sout("server: " + msgS);
+
+          msgC = scan.nextLine();
+          sout("client: " + msgC);
+          out.println(msgC);
+      } while(!msgC.equals("quit") || !msgS.equals("quit"));
+      socket.close();
+  } catch(Exception e) {}
+#+end_src
+
+**** flushing concept
+- data to be written is stored in temporary buffer (memory)
+- flushing means to clear buffer by
+  writing that data to destination
+
+- flushing generally happens when newline is encountered in data or =flush= called manually
+- no need to flush manually when using print or println method of PrintWriter class
+*** find which ports have open TCP socket
+#+begin_src java
+  for (i in 1...1024) {
+      try {
+          new Socket(addr, i);
+          // if no exception, server exists. print something
+      } catch {
+          // do nothing. no server on this port
+      }
+  }
+#+end_src
+*** get current date / time (java) :drill:
+SCHEDULED: <2024-09-15 Sun>
+:PROPERTIES:
+:ID:       c30c4204-1041-4ba6-8ff6-298cc88c2b7c
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 2
+:DRILL_AVERAGE_QUALITY: 2.333
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-11 Wed 07:%]
+:END:
+quick n dirty code snippet \because asked in past paper
+# not recommended to use IRL cause doesn't allow specifying timezone
+code: [src_java{LocalDateTime.now().toString()}]
+** =telnet= protocol            :drill:
+SCHEDULED: <2024-09-20 Fri>
+:PROPERTIES:
+:ID:       f8348d73-6893-40c4-a615-bb593433e1a7
+:DRILL_LAST_INTERVAL: 8.9861
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-11 Wed 07:%]
+:END:
+- define: [client-server protocol for accessing vtys of remote servers 
+  on client devices]
+- =telnet= command on windows is [just a telnet client]
+  + src_sh{telnet <address> <port>}
+** =whois= protocol             :drill:
+SCHEDULED: <2024-09-20 Fri>
+:PROPERTIES:
+:ID:       51b5dadb-4a10-4826-9e50-e489177fbb34
+:DRILL_LAST_INTERVAL: 8.9861
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-11 Wed 07:%]
+:END:
+- define: [query & response protocol to get info about
+  public domain name registration records]
+- info like: [name, contact details of registrant]
+
+*** example code
+#+begin_src sh 
+  $ telnet whois.apnic.net 43
+  > #ip address or domain name to search
+  > abuse@apnic.net
+#+end_src
+* Net7: Server Sockets
+** TODO client-server socket lifecycle?
+diagram in net6 pdf, page 4
+** =ServerSocket= class
+- for creating server
+- note that this doesn't have methods of Socket
+  + e.g: can't get IO stream of server, get that from client
+- accept() for accepting socket conections
+  returns =Socket= obj
+** Multi-threaded socket        :drill:
+SCHEDULED: <2024-09-15 Sun>
+:PROPERTIES:
+:ID:       43e3bc8d-6d36-44b9-b289-b9ffce22c6eb
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-11 Wed 07:%]
+:END:
+benefit: [allows multiple clients to connect to a single port / server]
+*** basic overview
+- single thread for server
+- separate class for client requests
+  + =implements Runnable=
+- separate thread for each incoming client request using above class
+
+*** basic code
+#+begin_src java Server.java
+  public class Server {
+      // main()
+      // create server
+      server.setReuseAddress(true);
+      Socket client;
+      ClientHandler ch;
+      while(true) {
+          // infinite loop to keep accepting client requests
+          client = server.accept();
+          ch = new ClientHandler(client);
+          (new Thread(ch)).start();
+      }
+  }
+#+end_src
+
+#+begin_src java ClientHandler.java
+  public class ClientHandler implements Runnable {
+      private socket;
+      public ClientHandler(socket) {
+          this.socket = socket;
+      }
+      @Override public void run() {
+          // put server's IO logic here using socket obj
+      }
+  }
+#+end_src
+
+Client code remains same
+* NET9: Non-blocking I/O
+** =java.nio=
+- stands for New I/O
+- provides I/O apis such as channels, buffers, non-blocking IO
+** Channel
+- kinda like stream?
+- connectionw w/ source of data from outside world
+- put data into buffers
+** Buffer
+- containers for holding chunks of data at a time?
+- subclasses for each primitive type (ByteBuffer, CharBuffer, ..)
+*** properties
+- capacity (set using allocate)
+- position
+- limit (index of last buffer element that should be read)
+  + 
+
+*** methods
+- allocate
+- put
+  + pass single arg of type T based on the buffer subclass used
+    or, array of type T
+- flip (required for reading)
+  + flips from read to write
+  + sets limit to current position (for efficiency?)
+    & move position to start
+- get
+- hasRemaining
+- wrap(T[] arr)
+  + puts contents of arr in buffer
+  + changes to buffer reflected in arr 
+  + use for easily constructing Charbuffer using string
+
+
+*** programs
+**** basic write & read
+#+begin_src java
+  CharBuffer cb = CharBuffer.allocate(10);
+  char[] charr = "Hello".split(""); 
+  cb.put(charr);
+  cb.flip();
+  while(cb.hasRemaining()) {
+      sout(cb.get())
+  }
+#+end_src
+**** read file (using buffer and channel)
+#+begin_src java
+  // main
+  try {
+      FileInputStream fis = new FileInputStream("file.txt");
+      FileChannel fileChannel = fis.getChannel();
+      ByteBuffer buffer = ByteBuffer.allocate(1024);
+
+      // store file contents to buffer
+      while (fileChannel.read(buffer) > 0) {
+          buffer.flip();
+          while (buffer.hasRemaining()) {
+              byte b = buffer.get();
+              System.out.print((char) b);
+          }
+          buffer.clear();
+      }
+
+      fileChannel.close();
+  } catch  {}
+#+end_src
+
+- for writing, similar steps upto while loop
+  + i.e. get channel from file output stream
+  + just channel.write(buffer)
+**** write to file (w/ just buffer)
+#+begin_src java
+
+public class CharBufferToFile {
+    public static void main(String[] args) throws IOException {
+        CharBuffer charBuffer = CharBuffer.wrap("Hello, world!");
+
+        // Convert CharBuffer to ByteBuffer using a specific charset
+        Charset charset = Charset.forName("UTF-8"); // Choose your desired charset
+        ByteBuffer byteBuffer = charset.encode(charBuffer);
+
+        // Save the ByteBuffer to a file
+        FileOutputStream fos = new FileOutputStream("output.txt");
+        fos.write(byteBuffer.array());
+        fos.close();
+    }
+}
+#+end_src
+** Selector
+- mechanism that allows single thread to monitor
+  multiple channels for non blocking IO events
+- basically listener?
+
+#+begin_src java
+  Selector selector = Selector.open();
+  ServerSocketChannel channel = ServerSocketChannel.open();
+  channel.setBlocking(false);
+  // watch for read operation
+  channel.register(selector, Selector.OP_READ);
+
+  while(true) {
+      int ready = selector.select();
+      // wait for operation?
+      if(ready) continue;
+#+end_src
+** Non-blocking I/O
+- blocking means that a thread is blocked / paused,
+  can't do anything else
+  when IO operation is taking place
+
+- non blocking can use multiple threads
+  or single thread + Selector
+  to perform other tasks parallely while IO is happening
+  + basically async / await
+
+  |                  | blocking          | non-blocking                        |
+  |------------------+-------------------+-------------------------------------|
+  | thread behavior  | blocked during IO | can do other ops                    |
+  | uses callbacks   | no                | yes                                 |
+  | impl. complexity | simple            | complex                             |
+  | use for          | simple IO         | many concurrent IO ops., long tasks |
+  | e.g.             | FileInputStream   | ServerSocketCannel.setBlocking(false) |
+* NET10: UDP
+** TCP
+perform 3-way handshaking?
+- use where reliability is a concern
+** UDP
+- use where low latency is a concern
+#+begin_src java
+  String address = "time.nist.gov";
+  int port = 43;
+  DatagramSocket socket = new DatagramSocket();
+  // get user input as String input
+  DatagramPacket packet = new DatagramPacket();
+#+end_src
+* NET12: RMI (Remote Method Invocation)
+study resources:
+- [[https://docs.oracle.com/javase/8/docs/technotes/guides/rmi/hello/hello-world.html]]
+- [[https://www.baeldung.com/java-rmi]]
+- see code & readme for  [[https://github.com/dinesh-58/college-files/tree/main/6th-sem/network-programming/programs/ch12/July31-RMI][RMI college files]]  
+- [[https://cseweb.ucsd.edu/classes/sp16/cse291-e/applications/ln/lecture3.html]]
+- [[https://old.reddit.com/r/compsci/comments/f9jve4/what_are_the_differences_between_rpc_and_rmi/]]
+
+- allows (programmatic) communication between two JVMs
+- used for creating distributed systems
+
+(?) uses object serialization to marshal and unmarshal parameters and does not truncate types, supporting true object-oriented polymorphism
+
+requires 4 files:
+- client
+- server
+- Interface that extends =Remote=
+  + acts as contract between client / server,
+    i.e. what communication is possible
+- Class that implements interface
+
+Client can only access methods declared in the interface
+** Registry
+interfaces are stored / recorded here?
+** code
+#+begin_src java ICalculator.java
+  public interface ICalculator extends Remote {
+      public int add(int a, int b) throws RemoteException;
+  }
+#+end_src
+
+#+begin_src java CalcImpl.java
+  public class CalcImpl implements ICalculator {
+      @Override
+      public int add(int a, int b) {
+          return a + b;
+      }
+  }
+#+end_src
+
+#+begin_src java Server.java
+  //.. main method
+  try {
+      CalcImpl calc = new CalcImpl();
+      ICalculator skeleton = UnicastRemoteObject.exportObject(calc, 0);
+      RemoteRegistry registry = LocateRegistry.getRegistry();
+      registry.bind("calc", skeleton);
+  } catch {}
+#+end_src
+
+#+begin_src java Client.java
+  // main method
+  try {
+      RemoteRegistry registry = LocateRegistry.getRegistry();
+      ICalculator stub = registry.lookup("calc");
+      stub.add(2,3);
+  }
+#+end_src

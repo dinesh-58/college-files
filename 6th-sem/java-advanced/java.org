@@ -1,0 +1,481 @@
+* study order
+2,6,4,10,9,11,12
+* JAVA1: GUI Programming
+** Swing
+- built on top of AWT
+- Swing versions of AWT classes / components have J prefix 
+*** JFrame
+- top level container (window)
+- has ContentPane, others khai k
+**** why needed 
+- contain other components, organize them
+- handle window related events (resize, minimize)
+- handle window properties (size, default close operation)
+**** Jframe boiler plate steps
+- instantiate (no need if class extends JFrame)
+- setSize
+- setLayoutManager (pass obj of layout manager or null)
+- setDefaultCloseOperation
+- setVisible (at last)
+*** =JComponent= s
+**** JPanel
+basically div
+**** JButton
+**** JTable
+=Jtable(String[][] rowData, String[] colNames)=
+**** JTextField, JTextArea
+- single (field) vs multi-line(area)
+- constructors
+  + empty
+  + default string
+  + rows, cols (cols only for field)
+  + string + rows, cols
+**** JComboBox
+For dropdowns (sleect / option) 
+Can just pass string array to constructor
+- getSelectedItem
+
+**** ButtonGroup
+- Used for grouping radio buttons (JRadioButton)
+- add radio buttons to both button group and container
+- getSelection
+#+begin_src java
+java = new JRadioButton("Java");
+java.setActionCommand("Java");
+System.out.println("Selected Radio Button: " + 
+                    buttonGroup.getSelection().getActionCommand());
+#+end_src
+*** Layout Managers (in AWT)   :drill:
+SCHEDULED: <2024-09-18 Wed>
+:PROPERTIES:
+:ID:       68b70e50-1c51-458f-9e36-841e0bb1cf60
+:DRILL_LAST_INTERVAL: 8.9861
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-09 Mon 04:%]
+:END:
+#+begin_src java
+  import java.awt.XLayout
+  //...
+      jf.setLayoutManager(new XLayout());
+#+end_src
+
+**** [BorderLayout]
+- five regions to put components in
+- north, south, east, west, center
+- specify region by passing =BorderLayout.NORTH= to add()
+**** [GridLayout]
+- pass row, column numbers to constructor
+**** [FlowLayout]
+- responsive; basically =flex-wrap: wrap=
+- puts components one after another and wraps / puts them onto next row if not enough space
+**** [BoxLayout]
+- either vertically or horizontally (like flex?)
+- pass jframe & BoxLayout.X_AXIS to constructor
+**** [CardLayout]
+- displays components one by one like cards (flashcards)
+**** extra info: size methods
+- for components w/ no parent layout managers
+  + use setSize(w,h) (useful for JFrame)
+  + use setBounds(x,y,w,h) to control position as well
+*** Menu                       :drill:
+SCHEDULED: <2024-09-18 Wed>
+:PROPERTIES:
+:ID:       ccbadacb-c343-4105-ab73-ee89d997c2aa
+:DRILL_LAST_INTERVAL: 8.9861
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-09 Mon 05:%]
+:END:
+in Swing
+not in syllabus?
+**** JMenuBar
+bar where menu resides
+=jf.setMenuBar(menuBarObj)=
+**** JMenu, JMenuItem
+- can be expanded; =JMenuItem= can't be expaneded
+#+begin_src java
+  menuBar.add(menu);
+  menu.add(menuItem);
+#+end_src
+- menu can nest another menu
+- can use =addActionListener()= for both
+** Working w/ 2D shapes (java)  :drill:
+SCHEDULED: <2024-09-13 Fri>
+:PROPERTIES:
+:ID:       a243ec05-e165-4bd1-b922-c6a0cc0f375f
+:DRILL_LAST_INTERVAL: 3.725
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 2.667
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-09 Mon 05:%]
+:END:
+#
+*** steps
+- using =Graphics= abstract class & =Graphics2D= class in =java.awt=
+- make main class extend any of the component classes (e.g: JPanel, not JFrame)
+- override =paintComponent= method & use Graphics methods here
+
+*** code for boilerplate, drawing and filling colors
+  #+begin_src java
+    import java.awt.Graphics;
+    import java.awt.Graphics2D;
+
+    public class MainClass extends JPanel {
+        // put frame boilerplate in constructor & initialize object in main method
+        @Override
+        public void paintComponent(Graphics g) {
+            Graphics2D g2 = (Graphics2D) g;
+
+            g2.drawLine(x1,y1,x2,y2);
+            g2.drawRect(x1,y1,x2,y2);
+            g2.drawOval(h, k, width, height);
+
+            g2.setColor(Color.BLACK);
+            g2.fillRect(h, k, width, height);
+            g2.fillOval(h, k, width, height);
+        }
+    }
+
+  #+end_src
+*** extra info
+- since Graphics can't be instantiated, =g= is actually an instance of =Graphics2D=
+- paintComponent is called when rendering the =JComponent=
+** Event handling
+*** components
+**** event source 
+~if (e.getSource() == jBtn1)~
+**** event listener
+obj that listens for events & handles appropriately
+**** event handler
+code for handling events
+**** event object
+obj that stores info about event (type, source)
+*** Ways to add event listeners :drill:
+SCHEDULED: <2024-09-18 Wed>
+:PROPERTIES:
+:ID:       51fa426e-5483-43e8-8773-041454b2b2b0
+:DRILL_LAST_INTERVAL: 9.3103
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.5
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-09-09 Mon 05:%]
+:END:
+#
+**** [Listener] interface
+- =addXListener= takes arg for a Listener
+  (an object that implements the specific action listener)
+- note:
+  + all Listeners are interfaces (=implements=)
+  + all adapters are classes (=extends=)
+
+**** [Adapter] class
+- useful for only overriding (define custom behavior for) some methods
+- Listener interfaces require overriding all 
+- no adapter class for Action \because only one method
+
+**** patterns for the above 2
+these can use either Listener or Adapter class
+***** Anonymous inner class
+#+begin_src java
+  addActionListener(new ActionListener() {
+          // can use new Adapter() as well for all events except Action
+          // override a method for an action
+      });
+#+end_src
+
+note: this creates a new class and returns the obj
+
+***** make class extend or implement, override methods & pass =this=
+
+*** relevant classes & interfaces
+~import java.awt.event.*~
+
+all have Event or Listener suffix / variations
+**** Action (Event || Listener)
++ ~public void actionPerformed(ActionEvent e)~
++ represents action associated w/ component (e.g: button click, selecting radio, combobox)
+
+**** Mouse, MouseMotion
++ ~public abstract void mouseClicked(MouseEvent e)~
++ mouseEntered();
++ mouseExited();
++ mousePressed();
++ mouseReleased();
+                     
+**** MouseWheel
+**** Key
+*** event handling methods
+- =getText= (for any component)
+- e.getSource
+- isSelected (for JRadioButton and JCheckbox) 
+- getSelectedItem (for JComboBox)
+** misc: java scanner           :drill:
+SCHEDULED: <2024-09-18 Wed>
+:PROPERTIES:
+:ID:       5ee04e35-1ec9-4a42-a87e-f09478d85517
+:DRILL_LAST_INTERVAL: 8.9861
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 3
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 2.667
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-09 Mon 05:%]
+:END:
+#
+*** code
+#+begin_src java
+  import java.util.Scanner; 
+  Scanner scan = new Scanner(System.in);  
+  System.out.print("Enter input: ");
+  String input = scan.nextLine();
+#+end_src
+* JAVA2: Database Programming
+** jdbc code snippets           :drill:
+SCHEDULED: <2024-09-19 Thu>
+:PROPERTIES:
+:ID:       f1e93d67-ac9e-48cc-b849-2481e7466e0d
+:DRILL_LAST_INTERVAL: 9.648
+:DRILL_REPEATS_SINCE_FAIL: 3
+:DRILL_TOTAL_REPEATS: 2
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.5
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-09 Mon 05:%]
+:END:
+#
+*** Connecting to db
+#+begin_src java
+  import java.sql.*;
+  // ...
+  String url = "jdbc:mysql://localhost/dbName";
+  try {
+      Connection conn = DriverManager.getConnection(url, "root", "");
+  } catch (SQLException e) {}
+#+end_src
+# remember that package names are reversed so import stuff from com.mysql.jdbc
+# but use jdbc:mysql:// protocol for connecting
+** Statement types
+*** Statement
+#+begin_src java
+  // can't pass sql string here
+  Statement stmt = conn.createStatement();
+  stmt.execute(sql);
+#+end_src
+*** PreparedStatement
+- allows parameterized statements
+  + prevents sql injection
+  + efficient \because allows reusing preparedStatement obj
+#+begin_src java
+  // necessary to pass sql string here
+  PreparedStatement ps = conn.PrepareStatement(sql);
+  // note: indexes for prepStmt, resultSet start at 1 
+  ps.setString(1, email);
+  ps.execute();
+#+end_src
+*** CallableStatement
+for calling stored procedures of db
+** registerDriver
+- when ambiguous reference to =Connection= class
+  \because defined in both java.sql & com.mysql.jdbc
+- use src_java{DriverManager.registerDriver(new com.mysql.jdbc.Driver())}
+** ResultSet                    :drill:
+SCHEDULED: <2024-09-13 Fri>
+:PROPERTIES:
+:ID:       9643e301-9b9c-4d81-8462-8e634d683440
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 4
+:DRILL_FAILURE_COUNT: 2
+:DRILL_AVERAGE_QUALITY: 2.75
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-09-09 Mon 05:%]
+:END:
+- define: [rs obj maintains cursor pointing to current row]
+- returned by [excuteQuery()]
+*** Scrollable
+- by default, rs can only scroll forward
+- this can use =previous= method as well
+- to do so, pass either of last 2
+  as 2nd arg(rsType) to =prepareStatement=
+  + =ResultSet.TYPE_FORWARD_ONLY=
+  + =ResultSet.TYPE_SCROLL_INSENSITIVE=
+  + =ResultSet.TYPE_SCROLL_SENSITIVE=
+    # reflects database changes
+
+*** Updatable
+- allows updating db data w/o using new statement
+- pass 3rd arg (concurrency) to prepareStatement
+  + =ResultSet.CONCUR_READ_ONLY=
+  + =ResultSet.CONCUR_UPDATABLE=
+- then use updateString(i, value), updateInt etc.
+- &, call updateRow()
+
+*** methods
+getString
+getInt
+getDouble, etc
+
+these take col index (starting from 1)
+or col name string
+
+** RowSet
+akin to ResultSet using Beans(?)
+- both allow read / write
+
+*** types
+- JdbcRowSet: basic; wrapper over ResultSet; always connected to db
+- Cached: for offline use
+- Web: for saving data to xml file
+- Join: for performing =JOIN= on row sets
+- Filtered: for offline use
+
+*** differences w/ ResultSet
+|                                    | ResultSet                     | RowSet                                 |
+|------------------------------------+-------------------------------+----------------------------------------|
+| require constant connection to db? | true                          | false                                  |
+| uses                               | immediate processing of data  | using data offline, caching            |
+| can be serialized?                 | yes                           | no                                     |
+| features                           | read, write, sensitive scroll | cache, save data to file, join, filter |
+| steps to connect                   | use Connection obj            | using rowset obj itself                |
+
+*** code snippet
+#+begin_src java
+  JdbcRowSet jr = RowSetProvider.newFactory().createJdbcRowSet();
+  jr.setUrl();
+  jr.setUsername();
+  jr.setPassword();
+  jr.setCommand(sql);
+  jr.execute();
+
+  while(jr.next()) {
+      jr.getStrin(1);
+  }
+#+end_src
+
+* JAVA3: Beans
+- model / convention for creating classes that have:
+  + private properties with getter / setters
+  + public default constructor
+  + implement Serializable (for transfering objects)
+- used for reusable software components, GUI builders
+
+** property
+- same as any other class' property
+- read/write depending on setter / getter
+
+*** types
+- simple: primitive single value
+- boolean:
+- indexed: collection; elements can be accesed w/ index
+  + array, hashmap
+- bound: generates event if val changed
+- constrained: can't change value. generates event if attempt to change
+*** design patterns
+T for type
+N for prop name
+
+e.g: methods for indexed type
+#+begin_src java
+public T[] arr; 
+public T getN(int index) {}
+public void setN(T value, int index) {}
+#+end_src
+
+for eventlisteners
+#+begin_src java
+  addTListener(TListener listener)
+#+end_src
+** Introspection
+process of exposing info about bean (properties, nethods, events)
+*** ways of doing
+- automatically using naming conventions / design patterns
+- additional class extending BeanInfo
+  + getPropertyDescriptors
+  + getMethodDescriptors
+* JAVA4: Servlets & JSP
+** Servlet
+*** basic code snippet
+#+begin_src java
+  // for exam, define servlet name & url pattern in deployment-descriptor (web.xml) instead of annotation
+
+  public class ServDemo extends HttpServlet {
+      // ez way to remember: get & post methods have params for req, res
+      @Override
+      public void doGet(HttpServletRequest request, HttpServletResponse response) {
+          processRequest(request, response); 
+      }
+      @Override
+      public void doGet(HttpServletRequest request, HttpServletResponse response) {
+          processRequest(request, response); 
+      }
+
+      public void processRequest(HttpServletRequest request, HttpServletResponse response) {
+          try(PrintWriter out = response.getWriter()) {
+              out.println("<h1>Response</h1>");
+              // code here
+          } catch(Exception e) {
+          }
+      }
+  }
+#+end_src
+*** session
+*** cookie
+*** redirecting
+url can be html file, JSP or servlet url
+**** using response.sendRedirect("url")
+**** using RequestDispatcher
+#+begin_src java
+  RequestDispatcher rd = request.getRequestDispatcher("url");
+  rd.forward();
+#+end_src
+- preserves request object between forwards
+- no change in url
+** JSP (Java Server Pages)
+- allows combining java code w/ html,
+  compared to only java in Servlets
+
+- use servlets under the hood
+  JSP files are translated to servlets
+
+- meant to only be used for Views?
+  i.e. not too much java / business logic
+*** JSP element types
+**** <%= expressions %>
+return value / expression result as string
+
+**** <%  scriptlet %>
+- allow writing java code
+- has access to =request, response, out & session= objects
+
+**** <%@ directive %>
+- direct / tell web container specific action,
+   how to translate jsp to servlet
+syntax: <%@ directive attribute = value %>
+***** page
+- declaring page-wide attributes
+- commonly used for importing classes (=import= atrtribute)
+
+***** include
+(=file= attribute)
+***** taglib
+used for importing tags? like JSTL
+**** <%! declarations %>
+**** Action elements (unnecessary ?)

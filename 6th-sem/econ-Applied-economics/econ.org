@@ -1,0 +1,304 @@
+* study order
+- 3
+- 4
+- 6
+* ECON1: Intro
+** define Economics              :drill:
+SCHEDULED: <2024-09-01 Sun>
+:PROPERTIES:
+:ID:       c5b4bddd-e8d6-426d-9d9c-9d7f65dd14dd
+:DRILL_LAST_INTERVAL: 4.0
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-08-28 Wed 11:%]
+:END:
+[study of how individuals, businesses, governments
+allocate limited resources to satisfy unlimited demands]
+** Micro vs Macro economics
+#
+*** [focus]
+- micro: specific economic entities, markets (individuals, firms)  
+- macro: entire economy as a whole (generally of a country)
+
+*** [concerned with]
+- micro: supply / demand, consumer behavior, etc.
+- macro: national income, inflation, GDP, unemployment etc.
+
+*** [helps in decision-making for]
+- micro: individuals, firms
+- macro: entire economy, country. Such decisions have repurcussions in all markets
+
+*** [objectives examples]
+- micro: suppliers => maximum profit @ min. cost 
+         consumers => max. utility
+- macro: high GDP, low unemployment
+
+*** [analytical tools]
+- micro: elasticity, marginal analysis
+- macro: aggregate demand / supply  
+** TODO types of micro and micro analysis?
+pdfs in [[https://classroom.google.com/c/NjkzODYzMjAxNDE2][google classroom]]
+* ECON2: Elasticity of demand & Supply
+** Demand                       :drill:
+SCHEDULED: <2024-09-01 Sun>
+:PROPERTIES:
+:ID:       28e660f2-d87c-4e15-bde6-77007f806088
+:DRILL_LAST_INTERVAL: 4.0
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-08-28 Wed 11:%]
+:END:
+#
+*** define demand               
+quantity of a good / service consumers are willing,
+& *able* to buy at a certain price and point of time
+
+*** Determinants of demand
+- price
+- income / purchasing power of consumers
+- type of good (quality, elasticity)
+- price of related good
+  + substitute
+  + complementary
+- preference / taste of consumers
+
+** Elasticity
+*** elasticity                 :drill:
+SCHEDULED: <2024-09-01 Sun>
+:PROPERTIES:
+:ID:       997148ef-c446-4f57-bb04-b0468004a311
+:DRILL_LAST_INTERVAL: 4.0
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-08-28 Wed 11:%]
+:END:
+# replace A & B for specific elasticities
+for =A= elasticity of =B= (AEB),
+
+**** generic definition
+- measure of how =B= responds to change in its determinant =A=, ceteris paribus
+- e.g: PED is change in demand caused by change in price
+
+**** generic formula
+$\displaystyle AEB = \frac{\%\Delta B}{\%\Delta A}$
+or,
+$\displaystyle AEB = \frac{\Delta B}{\Delta A} \times \frac{A_1}{B_1}$
+# Interpretation: if value is 2%, B changes by 2% for 1% change in A
+  
+*** ___ Elasticity of Demand
+**** Price (PED)
+- formula: $\displaystyle PED = \frac{\%\Delta Q^d}{\%\Delta P}$
++ NOTE: use absolute value (non-negative) for PED
+  \because price & demand are inversely related (negative)
+
+**** Income (IED)             :drill:
+SCHEDULED: <2024-09-01 Sun>
+:PROPERTIES:
+:ID:       3ce870b3-b418-4a3c-a073-2dc7ca6dab41
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-08-28 Wed 11:%]
+:END:
+- types of goods based on IED value:
+***** [normal necessary goods ;  0 < IED < 1]
+- demand doesn't change much regardless of income change
+- as income rises, people spend more on these
+  but proportion of income spent on it falls
+
+***** [luxury goods;  IED > 1]
+as income rises, 
+proportion of income spent on it increases too
+
+***** [inferior goods;  IED < 0]
+as income rises, people buy less of these,
+preferring to buy better goods
+
+**** Cross  (CED)             :drill:
+SCHEDULED: <2024-09-01 Sun>
+:PROPERTIES:
+:ID:       ccf1a7cc-cd27-4a4e-b39f-597f2e45e958
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-08-28 Wed 11:%]
+:END:
+- define:
+[change in demand of good X, based on
+change in price of  good Y]
+
+- types of goods based on CED value:
+***** [substitute goods;   CED > 0]
+# same direction of change (both +ve or -ve)
+- P_{y}++ => Q^{d}_{x}++  (if price of something increases, consumers look for alternatives)
+
+- P_{y}-- => Q^{d}_{x}--  (if price of something decreases, consumers buy that instead of others)
+
+***** [complementary goods;   CED < 0]
+# opposite direction of change 
+- if price of sugar increases, people buy less tea
+- if discount on sugar, people will buy more tea to go alongside it
+
+***** [neutral (unrelated) goods;   CED = 0]
+these do not influence one another
+
+*** Price Elasticity of Supply (PES)
+change in quantity produced / supplied by suppliers
+due to change in price
+*** elasticity types (for PED & PES) :drill:
+SCHEDULED: <2024-09-01 Sun>
+:PROPERTIES:
+:ID:       9d2fffe2-7656-46ff-8af3-1ec51d4cd0d7
+:DRILL_LAST_INTERVAL: 4.0
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 4.0
+:DRILL_EASE: 2.5
+:DRILL_LAST_QUALITY: 4
+:DRILL_LAST_REVIEWED: [Y-08-28 Wed 11:%]
+:END:
+# in graph, flatter demand / supply curve => greater elasticity
+**** [elastic;     |PEB| > 1]
+- small change in P => large change in B 
+- for PED: luxury / non-necessity goods
+  + small discount => demand++ 
+- for PES: easily producable goods
+  + small price++ => large supply++ 
+
+**** [inelastic;   |PEB| < 1]
+- large change in P required to change B significantly
+- for PED: necessities (food items, electricity)
+- for PES: difficult to produce goods
+  + large price++ needed to incentivize increase in supply 
+
+**** [unitary elasticity;   |PEB| = 1]
+proportional / same amount of change
+
+**** [perfectly elastic;    |PEB| = \infin]
+- B changes even if no change in P
+  (due to external factors?)
+- horizontal for PED, PES
+
+**** [perfectly inelastic;  |PEB| = 0]
+- B never changes, regardless of change in P
+- for PED, represents goods always consumed in fixed quantity (medicine, salt)
+- vertical for PED, PES
+* ECON3: Theory of Consumer Behavior
+** Cardinal utility vs Ordinal utility
+|                          | cardinal         | ordinal                          |
+|--------------------------+------------------+----------------------------------|
+| utility can be measured? | yes, in numbers  | no, but can be compared          |
+| e.g.                     | X gives 80 utils | X gives more satisfaction than Y |
+| aka                      | utility analysis | indifference curve analysis      |
+| practicality             | less             | more                             |
+** Cardinal utility
+*** Diminishing marginal utility
+satisfaction gained from additional unit consumed 
+decreases as consumption increases
+
+TU is max when MU=0
+*** law of equi-marginal utility
+max utility for
+**** single product 
+** Ordinal utility
+*** Indifference curve
+graph showing all combinations of 2 goods
+that give same lvl. of TU / satisfaction
+** TODO exam: price effect is combination of substitution & income. show
+write description for utility first
+write descriptions of all 3 effects too
+** TODO derive demand curve from utility curve
+** Income consumption curve (ICC)
+line formed by joining all equilibrium points
+as income changes
+** Price consumption curve (PCC) / Price effect
+line formed by joining all equilibrium points
+as price changes
+
+budget line is combination of goods possible to buy w/ current income?
++ doesn't care about consumer preference?
+  i.e. if Px decreases, budget line rotates outwards in x direction
+  regardless if consumer doesn't like good x
+*** decomposition
+Substitution effect = \Delta Q^{d} from x1 to x2 
+Income effect = \Delta Q^{d} from x2 to x3 
+**** normal good
+**** generally inferior good
+**** giffen good
+demand is inversely related to income
+=|IE| > |SE|=
+* ECON4: Cost & Revenue curve 
+** Cost
+when ATC, intersects with MC, ATC is lowest
+cost of producing one more unit is same as average cost
+*** TODO exam: Cost types 
+skim description
+**** direct
+**** indirect
+**** fixed
+**** variable
+**** sevi-variable (fixed + variable)
+**** practice numerical in head
+*** TODO explicit vs implicit costs
+|           | implicit                                              | explicit                 |
+|-----------+-------------------------------------------------------+--------------------------|
+|           | economic, opportunity                                 | financial                |
+| recorded? | not recorded                                          | yes                      |
+| e.g.      | using own property, family business instead of hiring | cost of materials, wages |
+|           |                                                       |                          |
+** Revenue
+amount of money gained from sales
+TR = Q * P
+AR = P = $\displaystyle \frac{TR}{Q}$ 
+MR = $\displaystyle \frac{\Delta TR}{\Delta Q}$
+
+TR is max when MR = 0
+profit is max when MR=MC
+** TODO exam: relation of AR & MR
+see how it looks in curve as well
+
+- same for perfect competition market
+  \because sellers can't change price. only Q changes
+- for imperfect:
+  + when Q is low, almost same
+  + MR slope is 2X steeper so
+     as Q increases, MR moves below AR
+* ECON5
+** TODO exam: market types
+*** perfect competition
+many sellers of same product
+none can change price
+ez entry, exit
+
+*** monopoly
+single dominates
+*** oligopoly
+few dominate
+slightly different products
+*** monopolistic
+many firms
+each selling different products
+ez entry
+* ECON6
+** TODO exam: look up how to do numericals
