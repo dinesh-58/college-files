@@ -1,0 +1,348 @@
+* CLaw1:
+** morals
+- personal beliefs that guide a person's behavior
+** ethics
+- standard set by community / society on good & bad
+  + extension of morals
+    ethics: society
+    moral: individual
+** laws
+formal system of rules enforced by government institution
+** CSR (ethics in business)     :drill:
+SCHEDULED: <2025-04-06 Sun>
+:PROPERTIES:
+:ID:       62f16b4b-dd5f-4500-ac07-413bb195276a
+:DRILL_LAST_INTERVAL: 14.9359
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 6
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 2.833
+:DRILL_EASE: 1.8
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-03-22 Sat 08:%]
+:END:
+- define: [responsibility an organization has towards surrounding environment, society]
+- promotes ethical business practices
+
+*** 4 categories:
+**** [environmental responsibility]
+- reduce carbon footprint
+- minimize waste
+
+**** [ethical responsibility]
+- do what's right: 
+  + treat workers, people fairly rather than 
+    focusing solely on benefits & exploiting
+  + work with ethically sourced suppliers, partners
+    instead of ones that are cheaper
+
+**** [philanthropic]
+"private for the good of public" 
+- help public / society
+- thru charities, running community programs, building useful infrastructures
+
+**** [economic]
+- contribute thru creating jobs, revenue
+- set fair, affordable prices
+
+*** importance / why companies should fulfill CSR
+- improves brand reputation, trust
+  + among customers
+  + among investors
+- advantage over other competitors
+- enhances worker satisfaction
+  + +ve workers will be motivated, won't want to leave
+- reduce costs thru eco-friendly means
+- not harm others
+- prevent issues caused by negatively impacting surroundings that may affect business
+  + e.g: natural disasers, shortage of natural resources
+- prevent legal troubles, unethical acts
+** ways to improve business ethics
+- clearly outline policies w/ code of conduct
+- set CSR goals / plans
+- hold employee training, ecnouragement sessions
+- handle ethics violations properly, strictly
+- perform ethics audits, surveys 
+* CLaw2: Cyberattacks, Cyber security & Cyber Law
+Cybersecurity
+- technology, policies, practices for
+- securing computer systems (networks, devices, data) from unauthorized access, misuse
+- ensuring CIA triad
+** Threat Landscape
+*** Computer Incidents
+**** why prevalent?
+- lack of awareness / tech savvyness
+*** Types of Exploits
+- virus
+- ransomware
+- phishing
+  + pretending to be legit site to steal info(credit card, login details)
+- DDoS
+  + creating high traffic to disrupt system's normal funcitoning
+- SQL Injection
+** Cyber Threats
+** CIA security triad
+*** Confidentiality
+- only accessible to authorized users
+*** Integrity
+- accurate
+- restrict who can edit
+- perform checks?
+*** Accessibility
+- data / services should be accessible whenever required
+- 0 downtime
+*** Implementing CIA in organization
+- C:
+  + encryption
+  + security measures, audits
+  + strong account system, principle of least privilege
+- I:
+  + hashing
+  + version control, authoring
+  + logs
+- A:
+  + failover / redundant systems
+  + load balancing, caching
+** Security Audit vs Risk Assessment
+|         | SA                                               | RA                          |
+|---------+--------------------------------------------------+-----------------------------|
+| purpose | check compliance w/ security standards, policies | find risks, solutions       |
+| time    | check current impl.                              | find future possible issues |
+| done by | mainly external.  internal too                   | internally                  |
+** Response to  Cyber attack
+*** Incident Notification 
+**** Intrusion Detection System (IDS)
+detect unauthorized network / system intrusion & alert
+***** network-based 
+check network
+***** host-based
+run on device, check files, processes
+*** Cyber forensics / e-discovery
+:PROPERTIES:
+:ID:       f14d06a6-06c6-4433-9f42-e3fa689beb68
+:END:
+collecting, analyzing, preserving digital evidence
+to help in investigating cyber crimes
+- identification
+- collection
+- preservation
+- processing
+- analyzing
+- presentation
+*** Activity Logs
+*** Incident Containment
+*** Eradicaion 
+*** Incident Follow-up using an MSSP (Managed Security Service Provider)
+- 3rd party that provdies network security services like:
+  + VPN
+  + Intrusion detection
+     alert about unauthorized access
+  + Managed firewall
+     monitor, restrict network activity
+  + Vulnerability scanning
+
+*** Computer Forensics
+** Cyber law                    :drill:
+SCHEDULED: <2025-03-28 Fri>
+:PROPERTIES:
+:ID:       62d5fb68-769f-41f6-bab0-74353b938811
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-03-24 Mon 06:%]
+:END:
+define: [gov't regulations on digital activities (internet / computer usage, online transactions, cybersecurity)]
+
+*** Cyber laws / provisions in Nepal :drill:
+SCHEDULED: <2025-03-28 Fri>
+:PROPERTIES:
+:ID:       00882ba8-3bd9-4fcf-b09c-9724a7cbe878
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-03-24 Mon 06:%]
+:END:
+# no need to remember years
+**** [Electronic Transactions Act, 2063]
+- first cyber law that:
+  + recognizes digital payments, documents as valid,
+  + states punishments for cyber crimes
+  # before this, cyber crimes were handled under general laws
+
+**** [Children's Act, 2048]
+- aim to protect children; prohibits child pornography
+
+**** [Banking offences & Punishment Act, 2064]
+- includes prohibitions for unauthorized bank transactions, fraud
+
+**** [National Penal code act]
+- includes prohibitions for fraud, violation of digital privacy
+
+**** [Constitution, 2072]
+right to:
+- right to freedom
+- communication
+- free speech
+- information
+- & others
+**** [Copyright Act, 2059]
+- protects all copyrights, including computer software
+
+**** [Individual Privacy Act]
+- defines individual's personal information &
+   responsibility of organizations to protect that info / data
+   + can't transfer data to others w/o consent of owner
+- prohibits surveilance
+
+*** types
+**** copyright
+**** defamation
+**** fraud
+- credit card theft, identity theft
+**** harassment, stalking
+**** freedom of speech
+**** trade secrets
+** why cyber incidents so prevalent :drill:
+SCHEDULED: <2025-03-28 Fri>
+:PROPERTIES:
+:ID:       e49b42c8-7fb2-490e-84e8-b50ab722d00b
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-03-24 Mon 05:%]
+:END:
+- widespread digital usage
+- low cyber awareness
+- cyber security weakness
+- ill intent
+- human error / bad practices  
+  + simple, reused password
+  + not updating software
+  + using pirated software
+* CLaw3
+** Privacy laws
+related to data collection, storage, sharing,
+unauthorized use by companies, governments
+** Internet Censorship
+- restricting online content, behavior by gov, service providers
+- done to:
+  + stop illegal, controversial, political topics
+  + silence users, restrict freeedom of speech
+- deleting content, blocking sites, Great Firewall
+** Freedom of expression
+- fundamental right to express oneself w/o governmment censorship
+- limitations concerning illegal acts, defamation
+*** Key issues
+- balancing freedom with safe, +ve online environment
+- hate speech, disinformation
+- government control, censorship
+- whistleblower protection
+- individual privacy may be harmed when expressing oneself
+** Key privacy & anonymity issues :drill:
+*** [Workplace monitoring]
+*** [Surveilance]
+*** [Data misuse, brokering, sharing]
+*** [Consumer profiling]
+create consumer profile based on internet activity, demographic, account details
+for advertising
+*** [[[id:f14d06a6-06c6-4433-9f42-e3fa689beb68][E-Discovery]]]
+** MSSP (managed security service provider)
+- 3rd party that provides services for monitoring, securing systems
+  + auditing
+  + constant monitoring
+  + IDS
+  + handling incidents
+  + scanning, fixing vulnerabilities
+* CLaw4: Intellectual Property
+** IP
+creations of the mind that are legally protected from outside use, implementation
+*** types
+- copyright: prevent creative works from being copied, distributed
+- patent: reserve right to use, sell idea / technology
+- trademark: protect brand names, imagery from being used by others
+- trade secret: protect confidential business inof (ideas, processes)
+** IP issues
+*** Plagiarism
+- using others' content w/o citation, 
+  + declaring as own work
+*** Copyright Infringement
+- use, reproduce, distribute copyrighted content
+  w/o permission
+- piracy, distributing, cracking
+*** patent trolls
+*** cybersquatting
+using / registering domain name based on someone else's trademark, name 
+for ill intent, monetary incentive
+
+- generic squatting: bestphones.com
+- trademark squatting
+- identity theft squatting: using someone's name
+- typo squatting: gooogle.com
+*** reverse engineering
+*** license violations
+- OSS, modification, using for profit, not open sourcing changes
+* Claw5
+** Software quality
+- creates:
+  + reliability
+  + security
+  + user trust
+
+- ways to ensure:
+  + testing
+  + standards compliance
+  + ethical development
+** Ethical employment concerns
+*** H1-B Visa
+USA work visa for skilled professionals
+- temporary (3 years valid, extendable to 6)
+- requires:
+  + visa to be sponsored by company
+  + min. bachelors degree
+*** contingent (temporary) workers
+project by project basis
+*** outsourcing
+cost cutting
+need to ensure quality
+*** fair treatment
+*** layoffs
+** whistleblowing
+exposing unethical, illegal practices
+* MCQ notes
+organize later
+** black hat hackers
+hacking for monetary gain, malicious purpose
+** white hat
+- to find securiy vulnerabilities, fix them
+- research
+** hacktivists
+- to bring awareness to something
+** Virtue ethics approach
+concerned w/ morals or goodness of person carrying out an act
+** Utilitarian approach
+judging if action is right / wrong
+based on its outcomes
+** sensitive personal info
+- gender
+- phone call records are not considered as such?
+** Copyright
+right to use something (intellectual property)
+*** Copyright infringement
+using w/o permission
+** Testing
+*** White box
+something(inputs, process?) known
+*** Black box
+unsure what will come out, happen?

@@ -1,0 +1,386 @@
+* CLOUD1: Intro 
+[[https://docs.google.com/presentation/d/1w-yZgtlIw6F4ufDWVvwAlkoRyx7gHa3X1PsD_SLZLr0/edit?usp=sharing][group slideshow]]
+define: delivery of computing services, resources over the internet (cloud)
+
+services like:
+- storage
+- compute
+- applications
+** characteristics
+- on-demand self-service
+- wide accessibility: accessible on wide variety of internet-connected devices
+- resource pooling: serve multiple users
+- measured service: measuring usage => transparent / fair pricing
+- scalability: scaling resources per demand
+** advantages
+- cost efficiency
+- scalability
+- accesibility
+- disaster recovery
+
+** challenges
+- vendor lock-in
+- data privacy, security
+- downtime
+- compliance, legal issues
+
+** distributed sysem vs cloud
+|          | dist                                            | cloud                                |
+|----------+-------------------------------------------------+--------------------------------------|
+| def'n    | multiple networked computers working together   | resources distributed thru internet  |
+| cost     | higher up front                                 | cheap, recurring cost                |
+| scaling  | depends on infra, need to buy hardware          | ez if using cloud provider           |
+| infra    | decentralized, geographically distributed nodes | centralized @ cloud provider         |
+| use-case | high perf. tasks (blockchain, IoT)              | widely, remotely accessible services |
+
+* CLOUD2: Cloud Computing Architecture
+- Frontend (Client infra)
+- Internet
+- Cloud Backend (ARSSI)
+  + Application
+  + (Cloud) Runtime
+  + Storage
+  + Service (IaaS, ...)
+  + Infra
+** Cloud reference model
+# like OSI
+model that separates cloud into logical layers
+to standardize & define each layer's functions 
+
+- [ ] might need to study in depth?
+- physical
+- virtual
+- control
+- service orchestration
+- service
+*** Cloud service models
+all accessible thru cloud client (browser, apps, thin clients)
+**** IaaS
+virtualized hardware resources, compute
+EC2, VPS (Hetzner)
+- manage infra, OS yourself
+**** PaaS
+platform for developing, deploying applications 
+- infra managed by provider
+GCP, Vercel
+**** Saas
+software usable thru internet
+**** extras
+***** FaaS (functions): serverless
+***** BaaS (backend): provides backend services (auth, db); Firebase
+** Cloud types / deployment models :drill:
+SCHEDULED: <2025-03-26 Wed>
+:PROPERTIES:
+:ID:       6769c8b3-daf5-4ea6-886e-e344f025d04d
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-03-22 Sat 09:%]
+:END:
+#
+*** [Public] vs [private] cloud
+|                   | public                | private                                |
+|-------------------+-----------------------+----------------------------------------|
+| owned, managed by | 3rd party             | ourselves / our org.                   |
+| reliability       | higher                | may go down in emergency, power cut    |
+| cost              | cheaper but recurring | higher up front; maintenance costs     |
+| simplicity        | more                  | complex to setup, require IT personnel |
+| use cases         | startups, businesses  | personal / unique use, sensitive data  |
+
+*** [Hybrid]
+- organization uses combination of public cloud & private cloud
+  for specific purposes according to need
+  + public cloud for publicly accessible
+    private cloud for internal / customizable reasons
+
+*** [Community]
+- cloud shared by organizations for some purpose (ease, compliance, standardization)
+- e.g: hospital, government agencies, banks, universities' shared cloud
+
+** SOA(Service Oriented architecture)
+multiple services / components communicate w/ each other across network
+- loose coupling / independent
+- reusable
+- interoperable
+- swappable
+*** design cloud using SOA
+e.g: ecommerce
+- services for payment, product, users
+- communicate using APIs, message queue
+- infrastructure: 3rd party cloud, on-prem servers
+
+* CLOUD3: Cloud Virtualization tech
+** Overview
+*** *Virtualization*
+- emulate hardware, software digitally / virtually
+- run multiple instances of an environment (OS, software)
+  on a single device through emulation / containerization
+- examples:
+  * have different OSs running simultaneously using virtual machines
+  * run multiple processes / servers in isolation from one another on same machines
+  * emulating devices like phones, game consoles 
+
+*** Virtual Machines
+- software emulation of a physical machine / computer
+- used to run different OSs in isolation from main OS
+
+*** [[id:a0b6819e-e93e-4b27-84f3-b8dd7a52248e][Hypervisor]]
+
+** Types
+*** Desktop
+- access a desktop / system remotely
+- SSH, Remote desktop programs like TeamViewer, AnyDesk
+*** Server
+- Virtualize physical servers into multiple VMs,
+  each running its own OS and applications.
+*** Storage
+- Combine multiple physical storage devices into
+  a single virtual storage pool.
+*** Network
+- sub-netting; creating multiple smaller, isolated networks
+  inside a large, single network
+- utilize same hardware
+- group networks based on requirements,
+  apply restrictions
+*** Application
+- run an application isolated from the OS
+  + bundle dependencies, everything needed to run the app
+  + Docker
+** Impl. levels 
+*** ISA (Instruction Set Architecture) level
+# remember intel 8085 from microprocessors
+- emulate one processor / machine's instruction set on another
+- allows executing machine code instructions of older / different architectures
+- e.g: Apple Rosetta for translating x86 instructions to ARM (not necessarily ISA but meh)
+
+*** Hardware level
+type 1 hypervisors
+
+*** OS level 
+type 2 hypervisors
+
+*** Library level
+- applications often make API calls to specific libraries
+- these libraries can be simulated / translated
+- e.g: Wine for translating windows APIs to POSIX ones
+
+*** User Application level
+- applications are run in an isolated, sandbox environment
+- e.g: CLR (.NET), JVM (java) for running applications in their specific VM
+  + allow cross-platform support, "write once, run anywhere"
+    
+** Benefits
+- full utilization of hardware resources' capacity
+- simplified installation / setup
+  + e.g: simpler to run different OS on virtual machine, 
+    compared to installing locally, allocating partition, managing deps
+- isolation 
+  + prevent conflicts such as different processes requiring different dependency versions
+  + security
+- reduced costs, compared to using separate device for each instance
+- reduce downtime by using backup servers when one is down?
+  
+** Server / cloud virtualization (resource pooling)
+- cloud / hosting providers provide services to multiple users,
+  then run all users' instances on single machine
+  using isolated VMs
+  + e.g: Data centers, AWS EC2, Vercel
+** Hypervisor 
+:PROPERTIES:
+:ID:       a0b6819e-e93e-4b27-84f3-b8dd7a52248e
+:END:
+# aka hypervisor management software
+- software for creating, running, managing virtual machines
+- intermediary between hardware & VMs
+- allocates computing resources to VMs
+
+- type 1: run on bare-metal (directly on top of hardware)
+  + Proxmox, KVM (linux kernel module for high-performance virtualization)
+
+- type 2: run on top of host OS
+  + VirtualBox, GNOME Boxes
+
+*** full virtualization
+- hypervisor emulates hardware to let guest OS run / work normally
+- Hyper-V, KVM w/o VirtIO
+
+*** para virtualization
+- guest OS unmodified to interact w/ hypervisor, bare-metal; better perf 
+  + OS must be modifiable to work w/ para (Linux, FreeBSD)
+- Xen, KVM w/ VirtIO
+
+** Virutal infra. requirements
+*** Hardware
+- can generally be scaled vertically (adding more resources to single machine)
+
+- high performance, durable CPU, RAM, storage
+- RAID for redundancy, reliability
+- high-speed, high-traffic networking
+- backup systems / nodes
+*** Software
+- hypervisors, host OS optimized for server
+- monitoring
+- firewall
+- backup
+* CLOUD4: MapReduce
+- mechanism for processing large datasets across multiple nodes
+
+Map: data processing; loop for all data
+Reduce: Aggregation; calculate something using all processed data
+
+- e.g: AWS EMR, Google DataProc,
+** advantages
+- fault tolerance: auto recovery
+- scalability
+- cost effective
+- speed: due to parallel processing
+** applications
+- analyzing server logs to detect threats
+- recommendation systems
+- data analysis, warehousing
+- text sentiment analysis
+- e.g: counting errors in dataset of words
+  + Map: split data into words, check errors
+  + Shuffle: grouping (based on similarity, identifiers)
+  + Reduce: sum errors
+* CLOUD5: Cloud Security
+** measures
+- firewall
+- encryption
+- MFA
+- IAM, whitelist, blocklist (IPs, domains)
+- IDS, monitoring
+- logging
+- regular audits, vulnerability scanning
+** threats / challenges
+- DDoS
+- data breach, hack
+- insecure APIs, applications
+- downtime
+- compliance
+- data loss
+
+** Identity Management 
+mechanisms for managing users, authorization, roles
+** Access Control
+mechanisms for managing access permissions 
+*** RBAC (role based)
+*** ABAC (attribute based)
+user attributes (department)
+resource attributes (confidential)
+*** MAC (Mandatory)
+strict; enforced by sysadmin based on clearance levels
+** Encryption techniques
+*** Symmetric 
+- same key for encryption / decryption
+- AES (Advanced Encrytion Standard)
+*** Asymmetric
+- public to encrypt, private to decrypt
+- RSA
+*** Hashing
+- calculate hash value using data to verify integrity
+- sha-256 checksum
+*** End to End Encryption
+- data encryped at rest; encrypted data sent, decrypted @ other end
+- minimizes risk in case of network interception
+*** Hybrid
+- combines AES & RSA
+- used by SSL / TLS in web-based connections
+* CLOUD6
+** Aneka (theory only in syllabus)
+[[http://www.manjrasoft.com/aneka_architecture.html][architecture]]
+** Google AppEngine
+** Scientific applications
+- data storing, warehousing for research
+- data analysis of large dataset
+- simulations
+- predictions (weather)
+- high performance computing
+- astrononmy
+- genomics (DNA analysis) AWS Genomics
+* AWS
+** Computing
+*** EC2
+virtual servers, basically VPS
+*** ELB (Elastic Load Balancing)
+*** Lambda 
+serverless computing
+** Storage
+*** Glacier (low cost archival, backup)
+*** S3 (simple storage service)
+scalable storage for files, backups, static sites
+bucket: logical container
+** Database
+*** RDS (relational database service)
+managed sql databases
+*** DynamDB (noSQL)
+** Networking
+*** Route 53
+*** VPC
+isolated network?
+*** CloudFront
+CDN; fast, nearby content distribution
+*** Direct Connect
+** IAM (Identity & Access Management)
+- manage access to AWS resources for users, groups, roles
+* LAB
+# aws services are pay as you go i.e. costs increase as instances run for longer
+** 1: [[https://aws.amazon.com/s3/][AWS S3]] (Simple Storage Service)
+:PROPERTIES:
+:ID:       fd132363-5995-4226-a7c8-d9d82f36c1d0
+:END:
+# do these only if interested / time?
+[[https://awsacademy.instructure.com/courses/41218/modules][AWS intro course]]
+[[https://www.coursera.org/learn/aws-cloud-technical-essentials?specialization=aws-cloud-solutions-architect][Coursera course]]
+- storage (in "buckets")
+*** steps
+- search for s3
+- create new bucket
+- set config options
+- freely add data, files
+** 2: EC2 (Elastic Compute Cloud)
+- AWS service that allows users to rent virtual machine
+  to run their own computer applications
+- Amazon Machine Image (AMI) 
+  used to create VM instance
+*** Steps
+- go to aws dashboard
+- search for ec2
+- go to create instance
+- configure instance
+  + selecting OS, instance type (nano t2, supercomputer, different configs of hardware, OS), location
+** SaaS: Figma
+** <2024-12-14 Sat>
+*** Aneka
+*** VPC
+- VPC provided by multiple providers (AWS, Google, ...)
+
+[[https://www.youtube.com/watch?v=7_NNlnH7sAg&pp=ygUSdGlueSB0ZWNobmljYWwgdnBj][video: short intro]]
+[[https://www.youtube.com/watch?v=43tIX7901Gs][video: how to setup vpc]]
+
+[[https://docs.aws.amazon.com/vpc/latest/userguide/vpn-connections.html]]
+** questions imp. for lab exam
+# not sure about aws stuff
+- s3
+- ec2
+- VPC public
+- virtualization using virtual box
+** Cloud Computing Lab (make reports using these)
+- Desktop virtualization
+  - Download and install VMware
+  - Install Ubuntu
+
+- Create account on AWS and configure EC2 computing on AWS.
+
+- Configure S3 storage bucket and upload a simple text file.
+
+- Configure IAM policy.
+
+- Create VPC (Virtual Private Computing on AWS).
+
+- Visit any cloud computing service provider or data center and prepare a report about it.
+

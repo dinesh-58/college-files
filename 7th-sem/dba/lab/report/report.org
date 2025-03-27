@@ -1,0 +1,113 @@
+:edit-this:
+#+EXPORT_FILE_NAME: dba-report
+#+PROPERTY: header-args :eval no-export
+# don't prompt to evaluate code blocks while exporting
+#+OPTIONS: toc:nil ^:{}
+# set toc below instead of here
+# 2nd option exports subscripts only when _{} is used
+#+LATEX_HEADER: \graphicspath{{~/programming/college-files/assets/images/}}
+
+# !!!!!!!!!!!!!          only edit this section       !!!!!!
+#+LATEX_HEADER: \def\subjectNum{1}
+# 1: DBA
+# 2: AI
+# 3: Cloud
+# 4: none
+# 5: none
+
+#+LATEX_HEADER: \def\labNum{}
+#+LATEX_HEADER: \def\labTitle{}
+#+LATEX_HEADER: \def\yearSem{III/VII}
+#+LATEX_HEADER: \newif \iftoc
+# !!!!!!!!!!!!           set toc here by uncommenting option
+# \toctrue    
+\tocfalse
+:end:
+#+INCLUDE: "~/programming/college-files/assets/template.org" :lines "27-"
+* Create oracle database using database configuration assistant
+** Introduction 
+**DBCA (Database Configuration Assistant)** is an Oracle tool for creating, configuring, and managing databases.
+It provides both GUI and CLI options to setup databases setup, manage templates, and configure storage, memory, and network settings for a database. 
+
+** Lab Work
+A new oracle database can be simply created using the =dbca= command as follows:
+
+#+begin_src sh
+$ dbca -silent -createDatabase -gdbName yourDBName -sid yourSID -responseFile NO_VALUE -templateName General_Purpose.dbc -sysPassword YourSysPass -systemPassword YourSystemPass -characterSet AL32UTF8 -memoryPercentage 40 -emConfiguration NONE
+#+end_src
+
+Alternatively, the above can also be done using the DBCA GUI as follows:
+
+*** Steps:
+- Start DBCA
+- Choose "Create Database" and click "Next".
+- In "Creation Mode", choose "Advanced Configuration" for custom settings.
+- Select Database Type ("Single Instance" or "RAC") based on requirement.
+- Specify Database Name and SID
+- Choose storage type & database file locations.
+- Enable FRA and specify location if required.
+- Configure Network listener settings.
+- Set SGA and PGA sizes or enable Automatic Memory Management.
+- Choose character set and national character set.
+- Configure Connection Mode (Dedicated or Shared Server mode).
+- Set passwords for SYS, SYSTEM, and other required users.
+- Choose to install sample schemas if needed.
+- Click "Finish" to start database creation.
+
+* Practice with tablespace and datafiles.
+** Introduction
+An Oracle database is made up of one or more logical structures called Tablespaces. A tablespace may have one or more data files, which are files stored on disk and contain data for databse objects. Data files are allocated a specific amount of storage space, and may be configured to grow automatically as needed.
+** Lab Work
+*** Create and view tablespace.
+#+begin_src sql
+  CREATE TABLESPACE testy_tablespace
+  DATAFILE 'testy_data.dbf' 
+  SIZE 1M;
+
+  SELECT tablespace_name, status, contents
+  FROM dba_tablespaces;
+#+end_src
+
+Output:
+#+begin_src sh
+  TABLESPACE_NAME                STATUS    CONTENTS
+  ------------------------------ --------- ---------------------
+  SYSTEM                         ONLINE    PERMANENT
+  SYSAUX                         ONLINE    PERMANENT
+  UNDOTBS1                       ONLINE    UNDO
+  TEMP                           ONLINE    TEMPORARY
+  USERS                          ONLINE    PERMANENT
+  TESTY_TABLESPACE               ONLINE    PERMANENT
+
+  6 rows selected.
+#+end_src
+*** Add and view Datafiles
+#+begin_src sql
+  alter tablespace testy_tablespace add datafile 'new_file.dbf' size 100M;
+
+  select tablespace_name, file_name, bytes, status from dba_data_files;
+#+end_src
+
+Output:
+| tablespace_name  | file_name                                           |     bytes | status    |
+|------------------+-----------------------------------------------------+-----------+-----------|
+| SYSTEM           | /opt/oracle/oradata/XE/system01.dbf                 | 917504000 | AVAILABLE |
+| SYSAUX           | /opt/oracle/oradata/XE/sysaux01.dbf                 | 650117120 | AVAILABLE |
+| UNDOTBS1         | /opt/oracle/oradata/XE/undotbs01.dbf                |  22020096 | AVAILABLE |
+| USERS            | /opt/oracle/oradata/XE/users01.dbf                  |  10485760 | AVAILABLE |
+| TESTY_TABLESPACE | /opt/oracle/homes/OraDBHome21cXE/dbs/testy_data.dbf |   1048576 | AVAILABLE |
+| TESTY_TABLESPACE | /opt/oracle/homes/OraDBHome21cXE/dbs/new_file.dbf   | 104857600 | AVAILABLE |
+*** Drop datafiles and tablespace
+drop tablespace testy_tablespace including contents and datafiles;
+* Create table with primary key, not null, default, check and referential integrity onstraints.
+* Practice view , Materialized view , indexing , Synonyms, and Sequences
+* Practice plsql, function and trigger.
+* Practice of creating and dropping user, role, profile. And Grant , revoke privileges;
+** Create user identified by password.
+** Grant and revoke privileges (create session, select, all)to/from created users
+** Create role , grant privileges to created role , assign role to user, revoke role from user, drop role
+** Create profile and set to the user
+* Practice database backup, list backup , restore database using RMAN.
+* Objectives
+* Output
+* Conclusion

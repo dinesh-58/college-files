@@ -1,11 +1,5 @@
 #+OPTIONS: toc:nil
 
-* study order
-- 6
-- 2
-- 9
-- others
-
 * DIST1: Intro
 ** dist. system          :drill:
 SCHEDULED: <2024-09-01 Sun>
@@ -109,6 +103,7 @@ SCHEDULED: <2024-09-01 Sun>
 - group of computers spread across geographical locations
   + heterogenous computers
 - useful for large scale, geographically distributed tasks
+- focus on resource sharing, compared to task distribution in distributed
 
 *** [cluster computing]
 - group of computers located close (in a LAN) to provide high performance
