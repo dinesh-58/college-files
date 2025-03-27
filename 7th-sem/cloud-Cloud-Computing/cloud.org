@@ -1,5 +1,4 @@
 * CLOUD1: Intro 
-[[https://docs.google.com/presentation/d/1w-yZgtlIw6F4ufDWVvwAlkoRyx7gHa3X1PsD_SLZLr0/edit?usp=sharing][group slideshow]]
 define: delivery of computing services, resources over the internet (cloud)
 
 services like:
