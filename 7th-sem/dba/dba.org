@@ -1,0 +1,771 @@
+Oracle Enterprise Manager Database Express URL:
+https://localhost.local:5500/em
+* Running Oracle XE
+username: system
+password: root
+
+tables are prefixed with =lab_= for easy finding
+** on linux 
+using this [[https://hub.docker.com/r/gvenzl/oracle-xe][docker image]]
+#+begin_src sh
+  sudo systemctl start docker.service
+  # first-time run: 
+  # docker run --name oracle -d -p 1521:1521 -p 5500:5500 -e ORACLE_PASSWORD=<your password> gvenzl/oracle-xe
+  docker start oracle
+
+  docker ps # list containers
+  # view logs:
+  docker attach oracle
+
+  # start shell inside 'oracle' container
+  $ docker exec -it oracle bash
+  $ sqlplus user/password@XE
+#+end_src
+* Extra concepts
+** DB / schema objects
+refers to:
+- tables
+- views, materialized views
+- partitions
+- stored procedures
+* DBA1
+** Overview of Oracle Database Architecture
+# process, memory, storage architecture
+- [[https://media.geeksforgeeks.org/wp-content/uploads/20230211114343/Untitled-drawing_page-0001-(1)-(1).jpg][architecture diagram]]
+  + add shape for PGA conneted to server process
+     - both can be put inside instance
+  + bi-directional arrows for server & client processes
+  + user process is basically client process
+Oracle database system made of: 
+*** oracle DB ([[id:8b6f5464-ba2d-4da1-bcbf-12ec17e6d984][set of files]])
+*** oracle Instance            :drill:
+SCHEDULED: <2025-05-03 Sat>
+:PROPERTIES:
+:ID:       47da845d-77fb-4ebd-b26f-1a6567593646
+:DRILL_LAST_INTERVAL: 39.786
+:DRILL_REPEATS_SINCE_FAIL: 5
+:DRILL_TOTAL_REPEATS: 4
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 1.94
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-03-24 Mon 06:%]
+:END:
+- define: [single running copy of Oracle made of
+  background processes for interacting w/ DB 
+  along with memory structures for those processes]
+
+- 1 instance mounts 1 DB
+- [[https://www.oracletutorial.com/wp-content/uploads/2019/07/Oracle-Database-Architecture-database-instance.png][Instance architecture diagram]]
+
+Instance made up of: 
+**** [SGA (Shared Global Area)]
+- allocated upon instance start
+- shared by all processes / clients?
+- includes control, data info about instance
+  & mounted DB
+***** memory structures used in SGA :drill:
+SCHEDULED: <2025-04-22 Tue>
+:PROPERTIES:
+:ID:       c160197a-14dd-46d4-8102-093d1d2146f3
+:DRILL_LAST_INTERVAL: 30.8741
+:DRILL_REPEATS_SINCE_FAIL: 5
+:DRILL_TOTAL_REPEATS: 6
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 2.833
+:DRILL_EASE: 1.8
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-03-22 Sat 09:%]
+:END:
+see [[https://www.oracle.com/webfolder/technetwork/tutorials/architecture-diagrams/19/pdf/db-19c-architecture.pdf#%5B%7B%22num%22%3A16%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22Fit%22%7D%5D][here]]
+****** [Shared Pool]
+- used in almost all db operation
+- caches imp. data like db object metadata, parsed SQL, PL/SQL code
+
+****** [Database Buffer Cache]
+- buffer is just area of memory
+- caches [[id:2636ea6d-0825-4617-b9f0-96acab22cf0e][data blocks]] read from data files for faster retrieval, modification
+  + changes are made to blocks in db buffer cache,
+    then written to data file during checkpoint
+
+****** [Redo Log Buffer]
+- store changes
+- later written to redo log files
+
+****** optional ones:
+- In-Memory Area: allows db objects to be stored in memory & db operations to be performed faster
+- Flashback buffer: copies modified data blocks,
+  used for Flashback recovery(moving db back in time)
+- Java Pool: session-specific Java code, data for JVM
+- Stream Pool, Large Pool
+
+**** [PGA (Program Global Area)]
+- when clients (SQL developer, app using db connection) connect to DB,
+  server process is started to interact with it
+- PGA is private memory dedicated to each server & background process
+  + holds connection data, processes SQL statements sent by client
+- allocated upon connection(session) start 
+
+total memory (allocated to Oracle) divided between SGA & PGA
+
+**** [background processes]
+search for "major oracle" [[https://www.oracletutorial.com/oracle-administration/oracle-database-architecture/][here]]
+- PMON: process monitor; cleans up failed processes, releases locks
+- SMON: sys monitor; recovery after crash 
+- DBWR: write from buffer cache to data files
+- LGWR
+- CKPT: update control, data file headers @ checkpoint
+- ARCn: copies logs from log files to archive
+** DBA roles & responsibilities (5 points) :drill:
+SCHEDULED: <2025-04-24 Thu>
+:PROPERTIES:
+:ID:       53e28809-c29a-49dd-adb3-b8ed57d9ca26
+:DRILL_LAST_INTERVAL: 26.9742
+:DRILL_REPEATS_SINCE_FAIL: 5
+:DRILL_TOTAL_REPEATS: 8
+:DRILL_FAILURE_COUNT: 2
+:DRILL_AVERAGE_QUALITY: 2.751
+:DRILL_EASE: 1.66
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-03-28 Fri 08:%]
+:END:
+#
+*** [design]
+design / architect db to meet business / developer needs
+*** [security]
+handle security measures, user roles & monitor
+*** [maintenance]
+update, maintian (software, hardware) to ensure smooth DB operation
+*** [backups]
+handle backups, archiving, recovery strategy
+*** [perf]
+performance optimization, indexing
+** Familiar with SQL Plus
+cli  utility for db operations, running SQL, PL/SQL
+#+begin_src sh
+  $ sqlplus username/password@db_alias
+  sqlplus> # now entered sqlplus REPL
+#+end_src
+** Accepting Values at Runtime
+** Overview of SQL Commands
+# note that this is oracle syntax
+*** DDL 
+for defning, modifying db objects' structure
+**** =ALTER=
+***** columns
+- no need to use =column= keyword for adding, dropping columns
+
+add: src_sql{alter table <tbl> add <col_name> <data_type> <constraints>;}
+remove: src_sql{alter table <tbl> drop <col_name>}
+****** modify
+#+begin_src sql
+  -- varchar length: 
+  alter table <tbl_name>
+  modify <col_name> varchar(<length>);
+
+  -- null, not null:
+  alter table <tbl_name>
+  modify <col_name> NOT NULL;
+#+end_src
+**** =RENAME=
+table: src_sql{RENAME <table_name> TO <table_name_new>}
+column: src_sql{RENAME COLUMN <tbl_name>.<col_name> TO <col_name_new>}
+**** delete-related clauses   :drill:
+SCHEDULED: <2025-08-06 Wed>
+:PROPERTIES:
+:ID:       45bbb53e-3626-43ec-bdf3-63dbd39faf6e
+:DRILL_LAST_INTERVAL: 137.3031
+:DRILL_REPEATS_SINCE_FAIL: 6
+:DRILL_TOTAL_REPEATS: 5
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.6
+:DRILL_EASE: 2.22
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-03-22 Sat 09:%]
+:END:
+=delete= [delete row]
+=truncate= [delete all data] 
+=drop= [delete entire table]
+
+**** Representing cardinal relations in sql :drill:
+SCHEDULED: <2025-07-13 Sun>
+:PROPERTIES:
+:ID:       b01f7608-1259-4065-85bd-0f396f27deba
+:DRILL_LAST_INTERVAL: 106.805
+:DRILL_REPEATS_SINCE_FAIL: 6
+:DRILL_TOTAL_REPEATS: 5
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.4
+:DRILL_EASE: 2.08
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-03-28 Fri 08:%]
+:END:
+# here, A & B are just entities
+extra info: [[https://support.microsoft.com/en-us/office/database-design-basics-eb2159cf-1e30-401a-8084-bd4f9c9ca1f5#bmtablerelationships][Database design basics]]
+
+***** A(1) to B(many)
+- create foreign key a_id in table B
+- many records in B can have same a_id value
+
+***** A(many) to B(many)
+- separate 3rd table consisting of a_id & b_id
+
+***** 1 to 1
+- try representing both in same table
+- else, primary of any one is foreign in the other
+**** composite attributes
+- attribute made up of multiple attributes
+- when creating table, create separate columns for each of the child attribs.
+
+**** Constraints
+generic syntax:
+#+begin_src sql
+  alter table <table_name> 
+      add constraint <custom_constraint_name> <constraint>;
+  -- constraint constraint_name can be omitted
+  -- just used to identify the constraint
+#+end_src
+
+***** referential integrity (foreign key)
+- foreign key & primary key must have:
+  - same data (exist in both tables)
+  - same data type
+  - primary key must be defined in order to reference it
+# dropping parent table not possible if child table references it
+
+#+begin_src sql
+  -- when creating table
+  create table orders (
+      order_id int not null primary key,
+      item_name varchar(25) not null,
+      price float,
+      cust_id int,
+      foreign key(cust_id) references customer(customer_id)
+  );
+
+  -- later, using alter          
+  alter table orders 
+        add foreign key(cust_id) references customer(customer_id);
+  #+end_src
+***** check
+#+begin_src sql
+  -- when creating table
+  create table customer (
+      customer_id int not null primary key,
+      first_name varchar(25) not null,
+      last_name varchar(25),
+      age int not null,
+      country varchar(25) default 'Nepal',
+      check (age>=18)
+  );
+  -- later, using alter
+     alter table customer
+     add check(age <= 65);
+#+end_src
+
+***** wildcards 
+#+begin_src sql
+  -- %: any number of characters
+  -- _: single character
+  select * from orders where item_name like 'c%';
+
+  -- between (for int and dates)
+  select county
+#+end_src
+*** DML (Manipulation)
+relating to actual data in object
+**** UPDATE
+update existing records
+
+*** Indexes (in sql)          :drill:
+SCHEDULED: <2025-04-21 Mon>
+:PROPERTIES:
+:ID:       bf245a37-9afd-41ef-8d0e-1ecd3f26e00f
+:DRILL_LAST_INTERVAL: 39.786
+:DRILL_REPEATS_SINCE_FAIL: 5
+:DRILL_TOTAL_REPEATS: 4
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 1.94
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-03-12 Wed 07:%]
+:END:
+- define: [data structure for faster data retrieval & enhancing db performance]
+**** syntax
+src_sql{CREATE {UNIQUE || } INDEX name_idx ON users(name);}
+
+**** mechanism
++ stores indexed column(s)' data in sorted order (B-Tree)
+   alongside pointer to row
++ when running query using that column, DBMS finds that column value in index,
+  then accesses row(s) with that col value in table
++ otherwise, DBMS would've had to search one-by-one through table
+
+**** extra info: guidelines
+- only index frequently accessed columns
+- only index large tables
+- don't create duplicate indexes
+- don't create too many indexes
+  + data needs to be inserted to table as well as indexes, which may cause slow down
+# primary key, unique constraints are automatically indexed
+*** View (in sql)             :drill:
+SCHEDULED: <2025-04-25 Fri>
+:PROPERTIES:
+:ID:       457e603f-317d-4d05-a929-1df5f0c76368
+:DRILL_LAST_INTERVAL: 26.9742
+:DRILL_REPEATS_SINCE_FAIL: 5
+:DRILL_TOTAL_REPEATS: 8
+:DRILL_FAILURE_COUNT: 2
+:DRILL_AVERAGE_QUALITY: 2.751
+:DRILL_EASE: 1.66
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-03-29 Sat 20:%]
+:END:
+#
+**** define
+- saved sql query that acts as logical tables 
+  + logical \because data not stored on disk
+     data retrieved every time view accesed
+
+**** Materialized View
+- normal View always fetches data (latest but slow)
+- materialized stores data on disk \therefore faster retrieval
+  + data needs manual or scheduled refreshing to get updated data
+**** syntax 
+  #+begin_src sql
+    CREATE [MATERIALIZED] VIEW VIEW_NAME AS
+    <select_query>;
+    -- view can then be queried like table 
+  #+end_src
+**** extra info: advntages / uses
+- frequently used queries, joins can be reused
+- security: give users read-only access to view, not entire table
+- abstraction: complex, large tables can be simplified into
+  tables w/ only required info
+*** Synonyms                  :drill:
+SCHEDULED: <2025-04-22 Tue>
+:PROPERTIES:
+:ID:       169ddf49-185f-4ed6-9bf9-1e0a410168fa
+:DRILL_LAST_INTERVAL: 30.8741
+:DRILL_REPEATS_SINCE_FAIL: 5
+:DRILL_TOTAL_REPEATS: 7
+:DRILL_FAILURE_COUNT: 2
+:DRILL_AVERAGE_QUALITY: 2.715
+:DRILL_EASE: 1.8
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-03-22 Sat 09:%]
+:END:
+define: [basically alias for a db object (table, stored procedure, fuction)'s name]
+
+syntax: [src_sql{CREATE SYNONYM syn FOR real_name;}]
+**** uses:
+- write shorter statements
+- simplify names for easier understanding, remembering
+- abstraction: hide real object name & its db
+- only change synonym source instead of
+  changing multiple tables to change used db object
+*** Sequences                  :drill:
+SCHEDULED: <2025-04-03 Thu>
+:PROPERTIES:
+:ID:       2e27899b-fc36-4136-bb54-dd312fbfaf5d
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-03-30 Sun 18:%]
+:END:
+define: [db object for generating unique integers that increase in specific interval]
+# basicallly range / i in for-loop
+
+**** sql: creating, using sequences
+#+begin_src sql
+  create sequence my_seq;    
+  -- can specify start with, increment by, minvalue, maxvalue
+
+  myseq.NEXTVAL; -- get val & increment
+  myseq.CURRVAL; -- get val 
+#+end_src
+
+**** uses:
+- queries / statements where auto-incrementing numbers required
+  + searching
+  + generating primary keys / ids
+
+*** Partitioning               :drill:
+SCHEDULED: <2025-04-04 Fri>
+:PROPERTIES:
+:ID:       f827d2d4-97a8-40ba-8c01-0717a3db1555
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-03-31 Mon 07:%]
+:END:
+define: [split table, indexes into pieces (partitions)
+to improve manageability performance, availability]
+# partition assigned by specifying a column as partition key
+
+**** advantages
+- oracle uses partition pruning to only use, access
+  required partition whenever possible,
+  freeing up other partition
+
+- backup / recovery performed on partition instead of entire table,
+  making it faster,
+
+**** table partitioning methods
+- range: table split based on key column's values of specific range
+  # e.g: age > 18
+- list: split based on list of exact values
+- hash: hashing algo applied to key to determine partititon
+- composite: combine any 2 methods to create partition & sub-partition
+- interval: create /assign new partition after specified interval
+
+**** index partitioning methods
+split an index
+- local: indexes in one partition only belong to records in single table partition
+  + prefixed: leftmost index column used for partitioning
+  + non-prefixed: non-leftmost index column used for partitioning
+- global: indexes may belong to records in multiple table partitions
+
+**** sql: partition a table
+#+begin_src sql
+   create table tbl(
+   id int primary,
+  )
+   partition by method(key_column)
+   <partition-specific args>
+#+end_src
+
+*** Join
+*** Subquery
+** Stored procedures
+# not important for exam?
+functions can be called in select statements
+pro can't  
+
+functions need to return
+for pro, not necessary
+
+|                               | Function | Procedure |
+|-------------------------------+----------+-----------|
+| can be called in SELECT stmt? | \check        | \times         |
+
+* DBA2: Managing Database Instances
+** DBCA (Database Configuration Assistant)
+:PROPERTIES:
+:ID:       6299babf-8b96-4c78-ba37-dcd59a70160a
+:END:
+# the one you used initially to create oracle db on windows
+# basically oracle db setup
+GUI tool for:
+- db creation
+- db config
+** Database instance
+notes are in [[id:47da845d-77fb-4ebd-b26f-1a6567593646][above heading]]
+look this up
+https://dotnettutorials.net/lesson/oracle-database-instance/
+look at sir's slides & copy pg. 59 too
+** Oracle NET
+- [ ] go thru & organize these notes 
+handles connection, communication between client (SQL Developer, SQL Plus, apps)
+& server (Oracle DB server)
+*** Oracle Net Foundation layer
+provides common interface to manage session life,
+connection establishment, termination
+*** Oracle protocol support layer
+implements communication protocol for transmitting data
+- TCP / IP
+- IPC (Inter process communication)
+*** How it works
+**** Connection initiation
+- client application sends connection request to DB server
+- rquest is routed thru oracle net components on client side
+- 
+**** Listener interaction
+listeners on both client & server ports
+accepts connection request & establishes communication
+**** Session layer
+oracle net foundation layer support to setup session
+**** Message exchange
+**** Session termination
+** Dynamic Performance Views
+[[id:457e603f-317d-4d05-a929-1df5f0c76368][Views]] inside a database
+- provides real-time info about internal state & performance of database
+- retrieve data from memory structure
+- real time monitoring, read only
+- prefixed with V$
+  + e.gL V$SESSION(current session info), V$SGA (SGA info)
+* DBA3: Tablespace & Storage Management
+** Database Files (Physical Storage Structures)
+:PROPERTIES:
+:ID:       8b6f5464-ba2d-4da1-bcbf-12ec17e6d984
+:END:
+when a db is created, Oracle creates these files
+*** Data files
+where data is stored physically
++ organized using [[id:0b12355a-e1f3-4906-8f09-1b2fb877ac54][logical structure]]
+# info stored in dba_datafiles table
+**** sql: create 
+- [ ] put commands here from dba report
+- can be configured to grow in size if allocated size used up (=AUTOEXTEND ON=)
+**** sql: view 
+*** Control files
+metadata describing physical structure of database, data file locations
+*** Redo log files
+log / record all changes
+*** Others
+- parameter file
+- archive log file: when redo log file is full, old logs can be moved to archive if needed
+
+** Logical Storage Structures
+:PROPERTIES:
+:ID:       0b12355a-e1f3-4906-8f09-1b2fb877ac54
+:END:
+# only Tablespace important for exam?
+*** Data Blocks / pages
+:PROPERTIES:
+:ID:       2636ea6d-0825-4617-b9f0-96acab22cf0e
+:END:
+- logical unit where Oracle stores data
+- data blocks are read from / written to:
+  db buffer cache <-> data file
+*** Extents
+set of conttigious (adjacent) data blocks for storing a specific data
+*** Segment
+set of extents for storing a DB object(table, index)
+*** Tablespace
+- a db is divided into logical / virtual tablespaces
+- a tblspc contains at least 1 data file, where data is actually stored
+- logical containers of segment
+see https://www.oracletutorial.com/oracle-administration/oracle-database-architecture/
+
+# info stored in dba_tablespaces table
+**** sql: create 
+#+begin_src sql
+-- minimal command to create tablespace
+CREATE TABLESPACE tblspc_name
+DATAFILE 'pat/to/file.dbf' 
+SIZE 1M;
+#+end_src
+**** sql: view 
+
+** Multiplexing
+create multiple copies of redo log files for redundancy, recovering
+
+uses log groups and log members (identical log files)
+LGWR writes to all members of group simultaneously
+
+** Archive
+- move logs to archives after log files are full
+- useful in case those logs are needed for backup, viewing
+
+*** ARCHIVELOG mode
+- moves logs to archives before overwriting redo log files
+- allows exact recovery (point in time)
+- allows online backup (no downtime)
+- requires extra space for archive files
+- recommended for production environments
+
+=ALTER <db_name> ARCHIVELOG;=
+*** NOARCHIVELOG mode
+- recovery must be done through past backup 
+- uses offline backup (database must be shut down)
+
+** Checkpoint
+- synchronization event that triggers DBWR to write data blocks from db buffer cache to data files
+  + when db changes are made, the operation & before / after data is stored in redolog buffer
+  + changes are made to data blocks in db buffer cache
+  + logs written to log file by LGWR
+  + data block changes written to disk (data files) by DBWR
+
+* DBA4: Managing Users, roles & privileges
+** DB User
+- entities (individuals, applications or services)
+  that can connect to & interact w/ DB
+- to manage & control access to DB
+
+src_sql{create user <user_name> identified by <password>;}
+#+begin_src sh
+  # start shell inside 'oracle' container
+  $ docker exec -it oracle bash
+  $ sqlplus user/password@XE
+#+end_src
+*** types
+# put this in ch.5?
+**** common user
+- created in CDB root,
+  usable in CDB & all PDBs
+  # only common user can be created in CDB root
+- used to perform admin tasks, manage CDB, PDBs
+# common user's names are prefixed with a special parameter ('C##' by default)
+
+#+begin_src sql
+  -- optional? to get prefix for naming convention
+  show parameter common_user_prefix;
+
+  create user C##John identified by pass1234;
+  select username from ALL_USERS;
+#+end_src
+
+**** local user
+- created in a PDB
+#+begin_src sql
+  -- switch to PDB
+  alter session set container=MY_PDB;
+  create user Jim identified by pass1234;
+#+end_src
+*** delete user
+src_sql{drop user <user_name>;}
+** Privileges
+- permissions granted to users or roles
+  to allow / restrict performing DB actions
+
+*** system privileges
+db administration tasks
+- create session (connect to db)
+- create, backup table
+*** object privileges
+- operations on specific db obj (select, insert, update, delete)
+*** syntax
+#+begin_src sql
+  grant [<privilege> | <role>] to [<role> | <user>];
+  grant <privilege_name> on <obj_name> to <user_name>;
+  grant select on customer to John;
+  revoke [privilege] from [<role> | <user>];
+#+end_src
+** Roles
+- named collection of privileges
+- simplify management of user permissions
+- types:
+  + pre-defined (DBA, SYS)
+  + custom
+#+begin_src sql
+  create role developer;
+  grant select on employee to developer;
+#+end_src
+** Profile
+see https://docs.dbagenesis.com/post/users-roles-profiles-in-oracle#viewer-fnue3
+- way for DBA to control system resources that can be used by user
+  + a profile can define limits on password, resources
+  + profile is then assigned to user
+*** Password management
+*** Resource management
+requires setting =resource_limit= 1st
+src_sql{alter system set resource_limit=TRUE scope=both;}
+*** commands to create & assign profile :exam_q:
+#+begin_src sql
+  CREATE PROFILE my_profile LIMIT
+  failed_login_attempts 3
+  password_lock_time 1  -- lock for one day
+  sessions_per_user 1
+  idle_time 5;
+
+  -- assign profile
+  CREATE USER john identified by 1234 profile my_profile;
+  -- or --
+  ALTER USER john PROFILE my_profile; 
+#+end_src
+* DBA5: 
+see [[https://docs.oracle.com/database/121/CNCPT/cdbovrvw.htm#CNCPT89244][Oracle: Intro to Multienant]]
+** Multi-tenant architecture
+multiple databases contained within CDB, sharing resources
+
+advantages:
+
+** CDB (Container Database)
+- only used for multi-tenant
+- has common metadata, common users
+  shared by CDB & children PDBs
+- contains:
+  + root (=CDB$ROOT=)
+  + PDBs
+- when creating a database using [[id:6299babf-8b96-4c78-ba37-dcd59a70160a][DBCA]],
+  specify "Create as container database"
+** PDB
+- basically normal database
+- create tables, store data in PDB, not CDB
+- single tenant uses single pdb
+** switching container
+#+begin_src sql
+  -- get containers
+  select name from V$CONTAINERS;        
+  alter session set container=<container_name>;
+  alter session set container=CDB$ROOT;
+  -- check connected container;
+  show con_name;       
+#+end_src
+* DBA6
+** Oracle net
+software components for managing oracle in a distributed environment / network?
+** Oracle NET service components
+*** Listener
+listens for client connections, requests
+& redirects them to db
+
+*** TNS (Transport Network substrate)
+handle client server comms
+
+*** Connection manager
+proxy for handling multiple distributed connections 
+
+*** others (files)
+- =listener.ora=: listener configs
+- =tnsnames.ora=: config file for db connection details
+- =sqlnet.ora=: network settings like auth, encryption
+* DBA7
+** Backup options
+*** RMAN
+utility for backups, recovery
+
+#+begin_src sh
+  rman> backup db_name;
+  rman> list backup of db_name;
+  rman> restore db_name # copy backup's files (data, control)
+  rman> recover db_name from tag abcd_123; # apply redo log changes; use after restoring
+#+end_src
+
+*** hot (online) backup
+*** cold (offline) backup
+*** Data pump (impdp / expdp)
+export: data to dump file
+import: data from dump file
+
+#+begin_src sh
+  $ expdp username/password DIRECTORY=/dumps DATAFILE=01.dmp
+  $ impdp username/password DIRECTORY=/dumps DATAFILE=01.dmp
+#+end_src
+*** flashback feature
+- store changes to db @ certtain point in time
+- allow easy recovery to that point
+** logical backup (used by data pump)
+- backs up logically but not physically (actual files)
+- backs up schema, data of db objects
+** full backup
+** incremental backup
+** Recovery
+restoring db to usable state after failure, issue
+*** Instance / crash recovery
+- deal w/ failures that affect running db instance
+- automatic after db restart
+- use redo logs to apply any pending changes
+*** media
+- used when data files affected
+- do manually
+- restore backups & apply redo log
+* DBA8
+job_name
+job_action
+* SQL Developer
+** View schema for a table
+1) View > Connections
+2) Expand the =Tables= for the proper database
+3) Click on the required table and then click on =Model=
+
+   
