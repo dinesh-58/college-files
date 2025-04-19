@@ -1,6 +1,6 @@
 create user john identified by "asdf";
 
-select username from dba_users where account_stadocker-oracletus = 'OPEN';
+select username from dba_users where account_status = 'OPEN';
 
 grant create SESSION to john; -- allow logging in / connecting
 

@@ -1,0 +1,963 @@
+* AI1: Intro
+** Intelligence
+*** define                     :drill:
+SCHEDULED: <2025-04-09 Wed>
+:PROPERTIES:
+:ID:       0e3b982d-dadf-468c-a5ed-cd5840bd53c7
+:DRILL_LAST_INTERVAL: 6.4835
+:DRILL_REPEATS_SINCE_FAIL: 5
+:DRILL_TOTAL_REPEATS: 15
+:DRILL_FAILURE_COUNT: 3
+:DRILL_AVERAGE_QUALITY: 2.8
+:DRILL_EASE: 1.3
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-04-03 Thu 13:%]
+:END:
+#
+**** Intelligent Behavior
+- ability to :
+  + understand / extract knowledge from given input
+  + do reasoning / rationalizing
+    (derive conclusion using logic, facts). e.g: [[id:599bfc24-dea3-41d1-99d7-2d8ac0562557]["Socrates is mortal"]]
+  + to solve problems & learn (from experience)
+
+**** Artificial Intelligence
+- putting / replicating intelligence in a machine
+  such that they are able to perform tasks
+  that require human intelligence
+
+*** Understanding AI based on thought process & behavior
+*** TODO AI types?
+**** Hard AI
+- AI that has human-level consciousness, intelligence
+- currently only theoretical model
+**** Soft AI
+AI that only simulates intelligence
+designed for specific purpose 
+e.g: Siri, ChatGPT(limited datasets, don't learn from user input)  
+
+**** Strong AI
+- philosophy / theory about Hard AI
+- Artificial General Intelligence (AGI)
+- be able to apply reasoning and research i.e. think to solve problems,
+  beyond just searching datasets
+
+**** Weak AI
+- philosophy about Soft AI
+- Artificial Narrow Intelligence (ANI)
+- operates in narrow boundaries
+- have a narrow focus;
+- perform single task without gaining any knowledge or additional reasoning 
+
+**** Hard vs Strong AI
+# not sure about this
+| Feature   | Hard AI                                              | Strong AI                                         |
+|-----------+------------------------------------------------------+---------------------------------------------------|
+| Focus     | Understand philosophical & technical challenge of AI | Create intelligent agents with human capabilities |
+| Goal      | Exploring nature of intelligence and consciousness   | Develop AI that can perform any intellectual task |
+| Currently | Active research and debate                           | Theoretical                                       |
+
+** 4 Views/ Dimensions / Approaches to AI :drill:exam_q:
+SCHEDULED: <2025-06-26 Thu>
+:PROPERTIES:
+:ID:       67fd4cf5-c14b-4556-86b9-4acfc45b9d5f
+:DRILL_LAST_INTERVAL: 95.9638
+:DRILL_REPEATS_SINCE_FAIL: 6
+:DRILL_TOTAL_REPEATS: 5
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.2
+:DRILL_EASE: 1.94
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-03-22 Sat 09:%]
+:END:
+i.e. how to implement AI
+*** [Acting Humanly (Turing Test approach)] :drill:
+SCHEDULED: <2025-04-12 Sat>
+:PROPERTIES:
+:ID:       6a64b908-a282-410b-9163-c2965e29e148
+:DRILL_LAST_INTERVAL: 20.9886
+:DRILL_REPEATS_SINCE_FAIL: 6
+:DRILL_TOTAL_REPEATS: 12
+:DRILL_FAILURE_COUNT: 3
+:DRILL_AVERAGE_QUALITY: 2.751
+:DRILL_EASE: 1.24
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-03-22 Sat 09:%]
+:END:
+#
+**** describe
+- AI agents mimic human behavior such that
+  it is indistuingishable from human
+- Human interrogator asks questions to human & AI using text
+  & isn't aware which one is AI
+- Agent passes the test if interrogator can't clearly identify which one is AI
+  i.e. can't distinguish human and AI
+
+**** requirements
+- NLP (Natural language Processing)
+  + to interact w/ human
+- Knowledge representation
+  + store acquired knowledge, process it
+- [[id:599bfc24-dea3-41d1-99d7-2d8ac0562557][Automated reasoning]]
+  + derive conclusion
+- Machine Learning
+  + adapt to different scenarios
+
+**** Total turing test (out of syllabus)
+adds:
+- Computer Vision(cameras, image processing)
+- Robotics (for performing actions)
+  
+*** [Thinking Humanly (Cognitive Modeling approach)]
+- hypothetical; not achieved yet
+- mimic human cognitive thinking, problem solving process
+  as a computer / mathematical model
+  + simulate how brain works
+
+*** [Thinking Rationally]
+:PROPERTIES:
+:ID:       599bfc24-dea3-41d1-99d7-2d8ac0562557
+:END:
+automated reasoning; mimic human reasoning
+derive conclusion using logic
+
+- e.g: 
+  + Socrates is human
+  + Humans are mortal
+  + \therefore Socrates is mortal
+
+*** [Acting Rationally]
+- rationally means to act based on reason, logic,
+  instead of emotions, impulses
+  + choose rational action & perform it
+- we have a rational agent that gives best output & is predictable
+- aims to create rational agents
+
+** Foundations of AI
+** Applications of AI
+- speech recognition
+- problem solving by asking question & having it reply
+  + Home assistants, LLMs
+- summarize, analyze large text, data
+- automation?
+*** marketing
+*** ID
+*** stock market analysis
+*** linguistics
+- translation, transcription
+- LLM chats
+- voice-based interfaces, assistants
+*** recommendation systems
+** Challenges in AI
+- limited / poor quality training data
+  + rights to use data, unethical use
+- controlling output / action of AI
+  + restricting AI from hate speech, ... (e.g: Sophia)
+** Intelligent Agents
+*** define agents             :exam_q:
+- hardware / software component that mimics human intellilgence
+- perceives environment / takes input (using Sensors)
+  & acts within environment (using Actuators)
+*** Structure
+*** Properties
+*** PEAS parameters  :exam_q:
+**** define
+- task environment of agent:
+  surrounding conditions where an Agent works
+  how it takes input, how it acts
+- PEAS parameters make up the task environment
+
+***** Performance 
+- high performance, while performing right action
+- evaluate if agent's actions were right, rational
+  + compare to rational agent?
+
+***** Environment
+- where agent operates
+- any external entity that agent interacts w/
+***** Actuator
+- mechanism for performing action, giving output
+***** Sensor
+- mechanism for taking input
+*** intelligent agent types   :exam_q:
+#
+**** [simple reflex]
+- react only using current percept (input)
+- ignore percept history
+based on humans acting on reflexes /reactions (sneezing, danger avoidance)
+
+- uses if-then rules
+- agent must have knowledge of entire environment (fully observable)
+
+**** [model based]
+- extend simple reflex based
+- uses knowledge base (KB) to store past perceptions, events, results of actions
+  + use it to decide action
+- partially observable environment
+**** [goal based]
+- extend model based
+- agent knows desired goal (supervised learning)
+  + find what actions lead to it
+- performs searching, planning
+**** utility based
+- focus on taking useful action
+  by measuring desirability of that action's outcome
+**** Learning agent
+any agent that utilizes learning methods differently than above 4
+# not necessary?
+*** Environment types         :exam_q:
+**** Deterministic
+**** Stochastic
+**** Static
+**** Dynamic
+**** Observable
+**** Semi-observable
+**** Single Agent 
+**** Multi Agent
+* AI2: Problem solving methods
+- tree can be constructed
+  w/ each node being possible choice / option for AI
+- Searching thru tree done to find optimal choice
+** Problem as state space representation
+- represent all states / situations an agent can be in
+  and what actions lead to transition to another state
+
+*** Constraint satisfaction
+find values for variables that satisfy given constraints / rules
+# for exam, solve in rough and make partial state space diagram
+# highlighting solution path
+
+**** crypto-arithmetic
+encrypting values using cryptography
+
+SEND + MORE = MONEY
+
+write down:
+- constraint set
+  + no vars can be equal
+  + carry can only be 0 or 1
+- variable set
+- domain set {0...9}
+- carryover vars on top of eqn
+  
+**** Water jug
+- list out rules
+
+**** N-Queen
+on nxn chess board, place n queens
+such that none can attack
+
+***** backtracking
+undo step if constraint violated
+
+**** Graph coloring
+assigning some label (color) to nodes in graph
+- color nodes one bye one
+  such that no adjacent nodes have same color
+
+** Searching
+- traverse from starting state to goal state by 
+  transitioning thru intermediate states
+
+*** properties
+# evaluate / describe each algo using these
+- completeness: whether solution found or not
+- efficiency: whether best path found 
+- time complexity
+- space complexity
+
+*** Uninformed
+- no domain info (such as closeness, direction of goal node)
+- brute force; tries all paths 
+
+**** BFS
+- search level by level of search space / tree
+
+***** Properties
+- optimal; finds shortest path if step size 1?
+- single queue
+
+***** algo
+
+**** DFS
+- search paths till leaf nodes, then switch
+
+***** algo
+- set status=1 (ready) for all
+- push root node, set status=2(wait)
+- repeat till stack empty
+- pop top-most, set status=3(processed)
+  + if goal, stop
+  + push all neighbors of popped node w/ status=1
+
+***** properties
+- incomplete when algo gets stuck on infinite path
+  & goal node in different path
+- low space: uses stack
+
+**** Depth limited search
+- search only upto specific depth & consider fail if not found till then
+
+***** properties
+- incomplete if goal node beyond depth limit
+
+**** Iterative / Deepening Depth search
+- increment depth limit by 1 till goal found
+  + upon incrementing, redo entire depth search
+***** properties
+- complete
+
+**** Uniform cost search
+- works on weighted graph
+- uses priority queue to find shortest path
+  + always choose path w/ shortest total cost
+
+- enqueue root node
+- dequeue node with highest priority (lowest weight)
+  + if goal node, stop & print
+- enqueue that node's neighbor nodes based on priority
+  + calculate total cost for each node (g(n)) & use to prioritize
+- repeat till queue empty
+***** properties
+- incomplete; may be stuck in infinite loop
+- optimal
+
+**** Bi-directional
+- start search from start -> goal
+  & goal -> start
+- can use BFS or DFS
+- when 2 searches meet, combine search paths
+
+***** properties
+- complete
+
+*** Informed 
+- has heuristic function for estimating closeness to goal node
+  + more faster, efficient
+
+**** Best First Search (greedy)
+- heuristic value h(n) is estimated distance from node to goal
+- always choose best / shortest path at given moment using heuristic value
+  + may not give most optimal path
+- uses 2 lists (open & closed)
+
+**** A*
+- combine best first & uniform cost search
+- heuristic f'n f(n) = g(n) + h(n)
+  + cost to reach node (from start) + estimate to reach goal (from node)
+- finds shortest path
+
+- might get tstuck on infinite loop
+- more memory
+
+**** Hill Climbing
+- local search (only has info of surrounding / local domain, not global)
+- aims to find local sol'n efficiently / in short time
+  + may not be best global / most optimal sol'n 
+- no backtracking
+- keep searching / exploring as long as algo gets better value than current 
+  # can be understood as climbing mountain blindfolded
+  # as soon as you start going down, stop & assume you have reached peak
+
+**** Simulated annealing
+- hill clibing but allow some downward movement
+
+** Game playing algo
+techniques to simulate AI in video game NPCS / bots
+
+*** MinMax algo
+- used to find optimal move for player,
+  assuming opponent also acts optimally
+
+- MAX player attempts to get max score
+- MIN attempts min score
+
+- uses backtracking
+  + traverse in DFS way, then backtrack to change 
+- construct two-ply tree to show possible states / player actions & opponent reactions  
+
+**** MinMax searching
+searching to find optimal move
+
+*** Alpha-Beta pruning
+- MinMax takes long time due to evaluating all game states 
+  + alpha-beta only evaluates game states that are reached / provide optimal value
+
+- alpha: best possible value for max till now
+  beta: least possible value for min till now
+- all nodes track alpha, beta
+  initially,
+  alpha = -\infin
+  beta = \infin
+
+  + traverse in DFS way, then backtrack to update alpha, beta for parent node?
+
+- pruning / cutoff: don't traverse path depending on current player's behavior
+  + condition \alpha >= \beta
+
+  + for max player, don't traverse node if its value < alpha
+  + vice-versa for min
+
+*** Tic-tac-toe using minMax
+- state of board represented in diagram & possible steps
+- +10 score for max player moves
+  -10 score for min player moves
+
+
+** Stochastic games
+games where outocome unpredictable
++ depends on skill + luck
+
+* AI3: Knowledge Representation & Reasoning
+** Knowledge
+- info / facts about the domain / subject
+  + knowledge is stored to be used by AI system to solve problems in that domain
+  + reasoning is done on facts in knowledge base to derive conclusion
+  + knowledge base is storage of facts in AI system (basically database)
+*** types
+*** importance
+** Knowledge representation systems :drill:
+SCHEDULED: <2025-04-07 Mon>
+:PROPERTIES:
+:ID:       c90af4c6-5282-4503-858d-90a2450be160
+:DRILL_LAST_INTERVAL: 3.86
+:DRILL_REPEATS_SINCE_FAIL: 2
+:DRILL_TOTAL_REPEATS: 1
+:DRILL_FAILURE_COUNT: 0
+:DRILL_AVERAGE_QUALITY: 3.0
+:DRILL_EASE: 2.36
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-04-03 Thu 13:%]
+:END:
+- define: [standardized method to store / define knowledge in order to be used by AI system]
+
+  + humans understand linguistics (english)
+    AI agent understands knowledge representation 
+
+- knowledge representation: [representing knowledge in a defined knowledge representation system's syntax/ format]
+
+*** issues & soln's
+- ambiguity: info can be interpreted in multiple ways, unsure
+  + use KR system w/ robust, well-defined rules (like predicate)
+
+- incomplete info 
+  + use heuristic, probabilistic models to handle incompleteness
+
+- dynamic, changing knowledge
+  + use dynamic KR system that can update
+
+- inconsistency: new info may be opposite of prev. info
+  + either use consistency-checking methods (like reasoning) to find contradictions
+    or, use dynamically updating KR system
+*** properties
+** Knowledge representation techniques :drill:
+SCHEDULED: <2025-04-21 Mon>
+:PROPERTIES:
+:ID:       ed79614b-147e-44d0-9717-508dd8c0a127
+:DRILL_LAST_INTERVAL: 39.786
+:DRILL_REPEATS_SINCE_FAIL: 5
+:DRILL_TOTAL_REPEATS: 5
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 2.8
+:DRILL_EASE: 1.94
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-03-12 Wed 07:%]
+:END:
+# same as KR systems above?
+# these have different syntax / representation of knowledge, entities, relations
+*** [Logic] based
+**** [[id:b1caf7e7-2773-40fd-a962-aab1ddcda25e][Propositional logic]]
+dealing with individual(?)
+**** [[id:eca1ee5c-fa32-4dbe-8f34-0f52da69383d][Predicate Logic]]
+dealing with group
+*** [Procedural] ([rule] based)
+- represent knowledge as sequence of instructions / rules
+
+used to process(?) logic
+laws of inference, equivalence
+
+*** [Structural]
+- organize knowledge into specific structures and their relations
+**** [[id:4b09649e-6135-4ec3-b137-a4e8e77f339e][Frames]]
+
+*** [Network]
+- knowlede is represented as connected graph / network of nodes
+**** Semantic Net
+- hierarchical graph of nodes connected by edges
+  + nodes are entities, properties, property values
+  + edges are relations
+    edges are labeled to describe the relation
+    # Parent-Child relation 
+    # Is-A / Instanace relation?
+- [[https://miro.medium.com/v2/resize:fit:549/1*nKuAX4Hbxzt45WZPIr8PSw.png][example diagram]]
+
+** Propositional logic
+:PROPERTIES:
+:ID:       b1caf7e7-2773-40fd-a962-aab1ddcda25e
+:END:
+- KR system that uses statements (propositions) that can be confirmed true / false
+*** Syntax & Semantics
+**** Compound propositions
+proposition made up of multiple propositions,
+related to each other through logical operators (connectives)
+
+**** Propositional variables
+propositions in english sentences are represented by variables for simplicity
+
+**** Connectives
+***** Negation (\neg p)
+- NOT gate
+***** Conjunction (p \land q)
+- AND gate; both p & q need to be true for p \land q to be true
+note: \land is the symbol for AND itself
+
+***** Disjunction (p \lor q)
+basically OR gate
+
+***** Implication (p -> q)
+- p being true implies that q is true
+  + q true required for p true
+    but q true doesn't always mean p true
+- p: hypothesis
+  q: conclusion
+- p is not necessarily a condition for q (as seen in [[id:d95c57d6-fb4f-47a4-8826-7de60b1c780d]["only if"]])
+
+#+begin_table
+| p | q | p->q | Remarks                           |
+|---+---+------+-----------------------------------|
+| t | t | t    |                                   |
+| t | f | f    | true q required for true p        |
+| f | t | t    | true q doesn't always mean true p |
+| f | f | t    |                                   |
+#+end_table
+
+***** Double implication (p <-> q)
+- "if and only if"
+- p & q are both needed for each other to be true
+- aka equivalence; p <-> q implies:
+  p has same value as q
+
+#+begin_table
+| p | q | p<->q |
+|---+---+------|
+| t | t | t    |
+| t | f | f    |
+| f | t | f    |
+| f | t | t    |
+#+end_table
+
+**** compound propositions
+define: [multiple propositions forming a single proposition]
+
+***** Tautology
+compound proposition that is always true
+e.g: p \lor \neg p
+
+***** Contradiction
+compound proposition that is always false
+e.g: p \land \neg p
+
+*** Proof by Resolution
+[[id:3b856f72-60c9-4b0b-a5c4-7b79e5952fe0][Proof by Resolution]]
+*** Translating human language to propositional logic
+humans understand English
+machines understand propositions (e.g: p->q)
+**** implicative 
+***** "if p, then q": =p -> q=
+***** "q if p"
+***** "p only if q":  =p -> q=
+:PROPERTIES:
+:ID:       d95c57d6-fb4f-47a4-8826-7de60b1c780d
+:END:
+- p can only happen if q is true,
+- but not necessary for p to happen whenever q is true
+  i.e. if q true, p may be false too
+
+[[https://math.stackexchange.com/questions/617562/conditional-statements-only-if][further explanation]]
+
+***** "p if and only if q": =p <-> q=
+double implies
+*** Laws of Equivalence        :drill:
+SCHEDULED: <2025-04-11 Fri>
+:PROPERTIES:
+:DRILL_CARD_TYPE: hide2cloze
+:ID:       3aecd46d-295d-4b1b-8e37-7ec2f9ca1f5f
+:DRILL_LAST_INTERVAL: 12.5936
+:DRILL_REPEATS_SINCE_FAIL: 4
+:DRILL_TOTAL_REPEATS: 7
+:DRILL_FAILURE_COUNT: 1
+:DRILL_AVERAGE_QUALITY: 2.857
+:DRILL_EASE: 1.66
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-03-29 Sat 20:%]
+:END:
+| name                             | description                          |
+|----------------------------------+--------------------------------------|
+| Commutative (1 operator)         | [ p \land q \equiv q \land p                    ] |
+|                                  | [ p \lor q \equiv q \lor p                    ] |
+| Associative (2 same operators)   | [ p \land(q \land r) \equiv (p \land q)\land r          ] |
+|                                  | [ p \lor(q \lor r) \equiv (p \lor q)\lor r          ] |
+| Distributive (2 diff. operators) | [ p \land (q \lor r) \equiv (p \land q) \lor (q \land r)  ] |
+|                                  | [ p \lor (q \land r) \equiv (p \lor q) \land (q \lor r)  ] |
+| Double Negation                  | [ \neg(\neg p) \equiv p                       ] |
+| De Morgan's  (-ve whole)         | [ \neg(p \land q) \equiv \neg p \lor \neg q             ] |
+|                                  | [ \neg(p \lor q) \equiv \neg p \land \neg q             ] |
+| Implication                      | [ p->q \equiv \neg p \lor q                   ] |
+| Bi-conditional                   | [ p<->q \equiv (p->q)\land(q->p)            ] |
+
+*** Laws of Inference          :drill:
+SCHEDULED: <2025-04-17 Thu>
+:PROPERTIES:
+:ID:       c2715cdc-13c2-4dbf-be28-df14b0f8596c
+:DRILL_CARD_TYPE: hide2cloze
+:DRILL_LAST_INTERVAL: 25.9437
+:DRILL_REPEATS_SINCE_FAIL: 5
+:DRILL_TOTAL_REPEATS: 10
+:DRILL_FAILURE_COUNT: 4
+:DRILL_AVERAGE_QUALITY: 2.6
+:DRILL_EASE: 1.66
+:DRILL_LAST_QUALITY: 3
+:DRILL_LAST_REVIEWED: [Y-03-22 Sat 08:%]
+:END:
+# based on given premises, derive conlcusion
+| name                                | given              | conclusion                   |
+|-------------------------------------+--------------------+------------------------------|
+| NOTE                                | p   means p True,  |                              |
+|                                     | \neg p means p False  |                              |
+|-------------------------------------+--------------------+------------------------------|
+| Addition                            | [if p              | then p \lor q                 ] |
+| Simplification                      | [if p \land q          | then p, q                  ] |
+| modus ponens (+ve)                  | [if p->q, p        | then q                     ] |
+| modus tollens (-ve)                 | [if p->q, \neg q      | then \neg p                   ] |
+| Hypothetical syllogism              | [if p->q, q->r     | then p->r                  ] |
+| Disjunctive  syllogism              | [if p \lor q, \neg p     | then q & vice-versa        ] |
+| Conjunction (opp of simplification) | [if p, q           | then p \land q                 ] |
+| Resolution                          | [if p \lor q, \neg p \lor r | then q \lor r  (cancel out p) ] |
+
+*** disadvantages
+- doesn't deal w/ variables 
+  + stmt. may be true / false for different values
+- doesn't handle relations
+
+*** TODO Forward Chaining
+apply rules on facts, derive conclusion
+*** TODO Backward Chaining
+use conclusion, derive events needed to get to it
+*** Forward vs Backward Chaining :drill:
+|              | Forward                                       | Backward                                   |
+|--------------+-----------------------------------------------+--------------------------------------------|
+| def'n        | [use knowledge, apply reasoning to reach goal | use goal, find conditions required for it] |
+| search       | [BFS                                          | DFS]                                       |
+| technique    | [data-driven (\because uses data)                    | goal-driven]                               |
+| generates    | [infinite conclusions                         | finite conclusions]                        |
+| suitable for | [planning, applicaion                         | debugging]                                 |
+
+** Predicate Logic / FOPL
+:PROPERTIES:
+:ID:       eca1ee5c-fa32-4dbe-8f34-0f52da69383d
+:END:
+- KR system that extends propositional logic
+  using variables, relations (predicate), quantifiers 
+  to express more detail
+
+uses relations. e.g: relation (X, Y) 
+*** Quanitifiers
+- describe scope / quantity to which a predicate statement is true (for a range of values)
+
+**** universal (∀)
+stmt. true for all values
+
+**** existential (∃)
+"there exists" some / at least one value
+for which predicate stmt. is true
+
+
+*** FOPL 
+represent knowledge / facts as semantic (meaningful) relation between objects using predicate functions
+*** convert FOPL to CNF
+:PROPERTIES:
+:ID:       493ef89a-f00a-4f09-9858-8bdd57a26f2c
+:END:
+# note that CNF means propositions must be in disjunctive form
+1) translate normal language statements to predicate logic
+2) reduce scope of negation i.e. expand \neg()
+4) remove quantifiers
+   remove ->, <-> using equivalence
+   separate conjunctions
+   simplify into disjunctive compound propositions
+   & derive clauses
+*** Proof by Resolution
+:PROPERTIES:
+:ID:       3b856f72-60c9-4b0b-a5c4-7b79e5952fe0
+:END:
+- no need to utilize all clauses for proving
+  + necessary to use negated conclusion tho (for tree)
+- can reuse a clause multiple times (in tree / table)
+**** steps
+***** [[id:493ef89a-f00a-4f09-9858-8bdd57a26f2c][convert FOPL to CNF]]
+***** using tabular method
+- don't use conclusion as clause?
+***** using Resolution tree
+- negate conclusion to derive final clause
+when changing symbol, divide by whichever symbol is changing
+- goal is to derive contradiction @ end of tree
+
+*** laws of inference
+**** Generalization
+instance to quantifier / variable
+**** Instantiation
+quantifier / variable to instance
+*** Horn Clause
+clause (in CNF) w/ at most one +ve literal
+\neg p \lor q \equal \neg p -> q
+
+*** TODO Resolution Refutation System
+** Frames
+:PROPERTIES:
+:ID:       4b09649e-6135-4ec3-b137-a4e8e77f339e
+:END:
+- represent entity & its attributes as an object
+  + akin to OOP objects 
+- frames can be connected to one another to show relation / inheritance
+- frame representation be translated to semantic net & vice versa
+[[https://lh6.googleusercontent.com/IcYZ5uhzSg-p0hFGz5cZDqcB7JJLd-oIU7LLwghkIYJ0qMkW0kCNQisucvR4Cmk6611utPd87rZLzSijkXXQLpk80leroEbAX7-JoQtvs7AAngrKX-aMAwkKt0Dd1FgjuyaXnhY][example diagram]]
+** Uncertain Knowledge
+*** posterior probability      :drill:
+p(A|B) = [p(A \cap B) / p(B)]
+
+*** Bayesian Network
+- probabilistic model that organizes variables & their dependencies in
+  directed, acyclic graph 
+
+- probabilities given,
+  complete truth table & find asked probability
+e.g: p(A, B, C) = p(A | B, C) * p(B | C) * p(C)  
+* AI4: Learning
+** Supervised learning
+- when output of given input is known
+- can be used for testing AI
+* AI5: Neural Networks & NLP 
+replicating human brain neurons
+large no. of nodes perform distributed processing
+
+hidden layers: unknown number of middle layers for processing
+- activation f'n: for processing input & giving output
+- weight: strength associated with edge. mutliplied to activation output
+- bias: value added to product
+** types
+*** feed-forward
+- input signals travel directly to output
+  + no feedback loop i.e. weights of layer don't afffect that layer
+**** single layer
+inputs & their weights directly yield final output
+- no activation f'n
+**** multilayer
+multiple layers of nodes 
+change input / training data if undesirable output
+*** feedback
+history / memory
+output is fed back into neural net to optimize output?
+** back propagation
+feed forward, multi layer NN
+most popular NN
+
+- train NN using error connection
+- perform forward propagation / processing once 
+  + calculate error using expected output - calculated  output  (loss function; more complex formula used IRL)
+  + find weight correction terms
+  + adjust weights, biases to get better output / train NN (back propagation)
+  + repeat this till optimal output gotten  (typically takes ~500 iterations)
+** perceptron
+single layer NN that uses error correction
+*** perception training rule
+algo to correct weights
+if output > threshold, perceptron triggered & generates output
+
+output = \sum_{i} (w_{i} * x_{i})
+w_{i} = w * n(t-i)x_{i}
+
+t: target value. do weight correction only if target & generated output don't match
+upon weight correction, start over calculation from start
+*** realizing logic gates
+**** AND
+use weights 1.2, 0.6
+learning rate 0.5
+threshold 1
+**** OR
+use weights 0.6, 0.6
+** NLP
+interaction between human lanugage, computers 
+*** NL understanding
+how NL is interpreted, represented, stored (in KB)
+
+- tokenization
+- part of speech
+- syntactic
+- semantic analysis
+- discourse (overall)
+- intent
+
+*** generation
+translate internal representation to human language
+
+- text planning
+- sentence "
+- surface realization
+- post-processing
+* AI6: Expert System & Machine Vision
+** Expert system
+"The systems which exhibit intelligent behavior, learn, demonstrate, explain, and advice its users"
+* LAB
+** Prolog (only imp. for practical exam, not theory)
+- https://learnxinyminutes.com/prolog/
+- [[https://www.metalevel.at/prolog/concepts]]
+- http://www.cs.trincoll.edu/~ram/cpsc352/notes/prolog/factsrules.html
+- https://www.swi-prolog.org/pldoc/doc_for?object=root
+can be used for propositional & predicate logic
+
+- relation,
+- to submit input, execute statements, close statements with period. 
+  basically like semicolons in other languages
+  + else Enter is treated as newline only
+  + separate different statements with commas
+- constants (mean Instance?)
+
+- conjunction(,):  a,b
+- disjunciton(;):  a;b
+- implication(:-): a:-b (represents a -> b)
+  + can be used to create [[id:44bce09c-f405-4eaa-a2c3-ced218ed3af5][rules]] too
+- equal / assignment(is):
+  X is 4
+  X = "asdf"
+  for strings, use =
+  + can also be used for comparison (evaluates right hand side expression)
+- different ways to compare / assign
+  # just use is for most cases?
+
+  =
+  ==
+  =:=
+  is: evaluates right hand. expects arithmetic 
+
+  | Operator | Purpose                                 | When to Use                                                 |
+  |----------+-----------------------------------------+-------------------------------------------------------------|
+  | '='      | Unification (tries to make terms equal) | Use when binding variables or unifying terms.               |
+  | '=='     | Exact equality (no unification)         | Use to check if two terms are exactly the same.             |
+  | '=:='    | evaluates expressions and compares      | Use for comparing numbers after evaluation.                 |
+  | 'is'     | Evaluates RHS and assigns to the left   | to assign result of an arithmetic expression to a variable. |
+
+- not equals:
+| Operator | Description           | Use Case                                     |
+|----------+-----------------------+----------------------------------------------|
+| '\='     | Not unifiable         | Structural comparison of terms.              |
+| '=\='    | Arithmetic not equal  | Numerical comparisons.                       |
+| '\=='    | Not identical         | Identity checks, including variables.        |
+| 'dif/2'  | Declarative not equal | Logical constraints for terms and variables. |
+
+*** Start REPL
+src_sh{$ swipl}
+- this REPL can use UNIX commands like ls, pwd
+- note that statements must be terminated with period to be executed
+*** Data types
+**** Variables
+- variable (1st character must always be uppercase)
+  + instances, predicates, others must start with lowercase
+  + variables, once assigned, are immutable
+**** Strings
+- wrap in double quotes
+  + single quote represents an atom
+- use strings for text data, printing
+- use Atoms for entities in relations, knowledge base
+**** Atom
+- represent a constant / instance (from FOPL)
+  + basically a uniqe name / identifier
+- wrap in single quotes if containing special characters
+- used for:
+  + specific entities
+  + reserved keywords (+, -)
+  + names for predicate, rule, arguments
+**** [[https://www.swi-prolog.org/datatypes.html][bunch of others]]
+**** term / fact
+- a relation / statement assumed to be true. 
+- consists of predicate w/ arguments 
+e.g: ~father(John, Jack)~
+*** rule
+:PROPERTIES:
+:ID:       44bce09c-f405-4eaa-a2c3-ced218ed3af5
+:END:
+logical relation
+  + aka predicate? (basically a function)
+
+e.g: grandparent(X,Y) :- parent(X,Z), parent(Z,Y).
+
+*** built-in functions (predicates)
+- print to console: =write()=
+- take input: =read()=
+- =tab(N)= print N number of spaces
+- newline =nl=
+- [[https://www.swi-prolog.org/pldoc/man?section=format][format()]]  
+  # basically printf
+  format('Result: ~w', Result)
+  ~w means pass to write. 
+  ~d decimal. use this to evaluate
+  ~f float. 
+- mod()
+
+*** operators
+Unification(=): variable to instance?
+\== 
+Arithmetic equls? =:=
+
+*** Knowledge base
+- a prolog file can be considered a knowledge base
+  + can store facts, custom rules
+**** loading file / knowledge base into REPL
+#+begin_src sh
+  $ swipl file.pl
+  # --or--
+  $ swipl
+  ?- ['file']. 
+  # --or--
+  ?- consult('file').
+  # single quotes not necessary if no special characters in filename
+  # but using quotes gives autocomplete
+#+end_src
+
+if file changed, reload file using ~make.~
+*** querying relation from knowledge base
+:PROPERTIES:
+:ID:       139abcef-0fb6-4e52-8a40-8c1c69b2d8a3
+:END:
+given:
+likes(ali, football).
+likes(ali, tennis).
+
+likes(ali, X). will give value(s) of X
+press n to view next result
+
+connectives can be used to filter by combining queries / relations
+e.g: people that like both football & tennis:
+likes(X, football), likes(X, tennis).
+*** WAP to enter name & print
+#+begin_src prolog
+write('Enter your name'), nl, read(X),write('Welcome, '),write(X).
+#+end_src
+*** WAP to display games liked by Ali :exam_q:
+see [[id:139abcef-0fb6-4e52-8a40-8c1c69b2d8a3][querying relation from knowledge base]]
+*** Create a clause and answer given questions using given family tree diagram :exam_q:
+pam   tom
+  \   /\
+   bob  liz
+   /     \
+   ann   pat
+          |
+         jim
+
+1) Find parent of bob
+2) Find grandparent of anne
+3) Find grandparent of jim
+4) Find siblings of jim
+5) Find uncle of pat
+
+see 5_kb_family_tree.pl for answers
+** 

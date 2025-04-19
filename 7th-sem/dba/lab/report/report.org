@@ -54,14 +54,17 @@ Alternatively, the above can also be done using the DBCA GUI as follows:
 - Choose to install sample schemas if needed.
 - Click "Finish" to start database creation.
 
+  
+\vfill
+\pagebreak
 * Practice with tablespace and datafiles.
 ** Introduction
 An Oracle database is made up of one or more logical structures called Tablespaces. A tablespace may have one or more data files, which are files stored on disk and contain data for databse objects. Data files are allocated a specific amount of storage space, and may be configured to grow automatically as needed.
 ** Lab Work
 *** Create and view tablespace.
 #+begin_src sql
-  CREATE TABLESPACE testy_tablespace
-  DATAFILE 'testy_data.dbf' 
+  CREATE TABLESPACE test_tblspc
+  DATAFILE 'test_data.dbf' 
   SIZE 1M;
 
   SELECT tablespace_name, status, contents
@@ -69,45 +72,206 @@ An Oracle database is made up of one or more logical structures called Tablespac
 #+end_src
 
 Output:
-#+begin_src sh
-  TABLESPACE_NAME                STATUS    CONTENTS
-  ------------------------------ --------- ---------------------
-  SYSTEM                         ONLINE    PERMANENT
-  SYSAUX                         ONLINE    PERMANENT
-  UNDOTBS1                       ONLINE    UNDO
-  TEMP                           ONLINE    TEMPORARY
-  USERS                          ONLINE    PERMANENT
-  TESTY_TABLESPACE               ONLINE    PERMANENT
-
-  6 rows selected.
-#+end_src
+#+ATTR_LATEX: :align |l|l|l|
+|-----------------+--------+-----------|
+| TABLESPACE_NAME | STATUS | CONTENTS  |
+|-----------------+--------+-----------|
+| SYSTEM          | ONLINE | PERMANENT |
+| SYSAUX          | ONLINE | PERMANENT |
+| UNDOTBS1        | ONLINE | UNDO      |
+| TEMP            | ONLINE | TEMPORARY |
+| USERS           | ONLINE | PERMANENT |
+| TEST_TBLSPC     | ONLINE | PERMANENT |
+|-----------------+--------+-----------|
 *** Add and view Datafiles
 #+begin_src sql
-  alter tablespace testy_tablespace add datafile 'new_file.dbf' size 100M;
+  alter tablespace test_tblspc add datafile 'new_file.dbf' size 100M;
 
-  select tablespace_name, file_name, bytes, status from dba_data_files;
+  select tablespace_name, file_name, bytes from dba_data_files;
 #+end_src
 
 Output:
-| tablespace_name  | file_name                                           |     bytes | status    |
-|------------------+-----------------------------------------------------+-----------+-----------|
-| SYSTEM           | /opt/oracle/oradata/XE/system01.dbf                 | 917504000 | AVAILABLE |
-| SYSAUX           | /opt/oracle/oradata/XE/sysaux01.dbf                 | 650117120 | AVAILABLE |
-| UNDOTBS1         | /opt/oracle/oradata/XE/undotbs01.dbf                |  22020096 | AVAILABLE |
-| USERS            | /opt/oracle/oradata/XE/users01.dbf                  |  10485760 | AVAILABLE |
-| TESTY_TABLESPACE | /opt/oracle/homes/OraDBHome21cXE/dbs/testy_data.dbf |   1048576 | AVAILABLE |
-| TESTY_TABLESPACE | /opt/oracle/homes/OraDBHome21cXE/dbs/new_file.dbf   | 104857600 | AVAILABLE |
+#+ATTR_LATEX: :align |l|l|r|
+|-----------------+----------------------------------------------------+-----------|
+| tablespace_name | file_name                                          |     bytes |
+|-----------------+----------------------------------------------------+-----------|
+| SYSTEM          | /opt/oracle/oradata/XE/system01.dbf                | 917504000 |
+| SYSAUX          | /opt/oracle/oradata/XE/sysaux01.dbf                | 650117120 |
+| UNDOTBS1        | /opt/oracle/oradata/XE/undotbs01.dbf               |  22020096 |
+| USERS           | /opt/oracle/oradata/XE/users01.dbf                 |  10485760 |
+| TEST_TBLSPC     | /opt/oracle/homes/OraDBHome21cXE/dbs/test_data.dbf |   1048576 |
+| TEST_TBLSPC     | /opt/oracle/homes/OraDBHome21cXE/dbs/new_file.dbf  | 104857600 |
+|-----------------+----------------------------------------------------+-----------|
+
 *** Drop datafiles and tablespace
-drop tablespace testy_tablespace including contents and datafiles;
+#+begin_src sql
+  drop tablespace test_tblspc including contents and datafiles;
+#+end_src
 * Create table with primary key, not null, default, check and referential integrity onstraints.
+#+begin_src sql
+CREATE TABLE departments (
+  dept_id INT PRIMARY KEY,
+  dept_name VARCHAR2(100) NOT NULL,
+);
+
+CREATE TABLE employees (
+  emp_id INT PRIMARY KEY,
+  emp_name VARCHAR2(100) NOT NULL,
+  salary INT CHECK (salary >= 30000) DEFAULT 30000,
+  dept_id INT REFERENCES departments(dept_id)
+);
+#+end_src
+\vfill
 * Practice view , Materialized view , indexing , Synonyms, and Sequences
-* Practice plsql, function and trigger.
+A View is a virtual table i.e. it does not store data itself, but is instead a saved query.
+#+begin_src sql
+  CREATE VIEW emp_view AS
+  SELECT emp_id, emp_name FROM employees;
+#+end_src
+
+
+A Materialized View is a special view that stores the result of a query physically (in files) and can be refreshed periodically.
+#+begin_src sql
+  CREATE MATERIALIZED VIEW emp_mv AS
+  SELECT * FROM employees;
+#+end_src
+
+Indexes are performance optimization objects that speed up data retrieval by maintaining a fast-access data structure on specified columns.
+#+begin_src sql
+  CREATE INDEX idx_emp_name ON employees(emp_name);
+#+end_src
+
+Synonyms are aliases for database objects (tables, indexes) that allow simplified or alternative naming for using thos e objects.
+
+#+begin_src sql
+  CREATE SYNONYM emp FOR employees;
+#+end_src
+
+Sequences are special objects that generate unique numeric values in a specified order, commonly used for auto-incrementing primary keys.
+
+#+begin_src sql
+  CREATE SEQUENCE emp_seq START WITH 1 INCREMENT BY 1;
+#+end_src
+\pagebreak
+* Practice PL/SQL, Functions and Triggers.
+PL/SQL is a procedural language that allows using scripting logic alongside data & SQL commands in Oracle. It is useful for performing batch operations or simple tasks that aren't possible using only SQL.
+
+#+begin_src sql
+  BEGIN
+    DBMS_OUTPUT.PUT_LINE('Hello, PL/SQL');
+  END;
+  /
+#+end_src
+
+Functions are named PL/SQL blocks that return a value. They are ideal for reusable calculations or data lookups within SQL queries.
+#+begin_src sql
+  CREATE OR REPLACE FUNCTION get_emp_salary(p_emp_id NUMBER) RETURN NUMBER IS
+    v_salary NUMBER;
+  BEGIN
+    SELECT salary INTO v_salary FROM employees WHERE emp_id = p_emp_id;
+    RETURN v_salary;
+  END;
+  /
+
+  BEGIN
+    DBMS_OUTPUT.PUT_LINE('Salary: ' || get_emp_salary(101));
+  END;
+  /
+#+end_src
+
+Triggers are procedural code that execute automatically in response to specified DML events. These are generally used for enforcing rules, auditing, or auto-updates.
+
+#+begin_src sql
+   CREATE OR REPLACE TRIGGER trg_before_insert_emp
+   BEFORE INSERT ON employees
+   FOR EACH ROW
+   BEGIN
+     :NEW.emp_id := emp_seq.NEXTVAL;
+   END;
+   /
+#+end_src
+\pagebreak
 * Practice of creating and dropping user, role, profile. And Grant , revoke privileges;
+** Introduction
+A User is an individual account in the database, typically tied to a person or application.
+Each has specific access rights that can be managed with privileges and roles.
+A Privilege is a specific right to perform an action (e.g., SELECT, INSERT) on a database object (e.g., table, view).
+A Role is a named set of privileges that can be granted to users. This simplifies management of access control.
+Profiles are a set of resource limits (e.g., session limits, CPU time) and password policies that can be applied to users.
 ** Create user identified by password.
-** Grant and revoke privileges (create session, select, all)to/from created users
+#+begin_src sql
+  CREATE USER john IDENTIFIED BY pass321;
+#+end_src
+** Grant and revoke privileges (create session, select, all) to/from created user
+#+begin_src sql
+  GRANT CREATE SESSION, SELECT ON employees TO john;
+  GRANT ALL ON employees TO john;
+
+  REVOKE CREATE SESSION, SELECT ON employees FROM john;
+  REVOKE ALL ON employees FROM john;
+#+end_src
 ** Create role , grant privileges to created role , assign role to user, revoke role from user, drop role
+#+begin_src sql
+  CREATE ROLE my_role;
+
+  GRANT SELECT, INSERT ON employees TO my_role;
+  GRANT my_role TO john;
+
+  REVOKE my_role FROM john;
+  DROP ROLE my_role;
+#+end_src
 ** Create profile and set to the user
+#+begin_src sql
+  CREATE PROFILE my_profile LIMIT SESSIONS_PER_USER 5;
+  ALTER USER john PROFILE my_profile;
+#+end_src
+
+\pagebreak
 * Practice database backup, list backup , restore database using RMAN.
-* Objectives
-* Output
+Database backups are saved copies of the database used to protect against data loss.
+These can be full or incremental backups, and archived logs.
+
+Backups can be restored, where the backed up files are copied over and used for the current database.
+The Recovery step then applies changes since that backup, which were recorded in redo log files.
+
+RMAN (Recovery Manager) is Oracle's tool for backing up, restoring, and recovering databases.
+It automates and manages backup tasks efficiently. We can use the =rman= console command to enter the RMAN REPL where we can use backup commands shown below.
+
+#+begin_src sh
+BACKUP DATABASE;
+LIST BACKUP;
+#+end_src
+
+Output:
+#+begin_src sh
+List of Backup Sets
+===================
+
+BS Key  Type LV Size       Device Type Elapsed Time Completion Time
+------- ---- -- ---------- ----------- ------------- ---------------
+1       Full    1.23G      DISK        00:00:45      14-APR-25
+  Backup Set Copy #1 on device DISK
+  Backup Piece: /u01/app/oracle/backup/backup_01.bkp
+  Backup Size: 1.23G
+  Output File: /u01/app/oracle/oradata/ORCL/system01.dbf
+  Output File: /u01/app/oracle/oradata/ORCL/sysaux01.dbf
+  Output File: /u01/app/oracle/oradata/ORCL/undotbs01.dbf
+#+end_src
+
+#+begin_src sh
+RESTORE DATABASE;
+RECOVER DATABASE;
+#+end_src
+
+\vfill
 * Conclusion
+Thus, throughout these lab classes, we were able to learn in-depth about Oracle and its working mechanisms, and various features, including:
+
+- Setup using DBCA
+- Tablespaces & Datafiles
+- Tables and read / write operations
+- Views, Indexing, Synonmys, Sequences
+- Access control through Users, Roles and Profiles
+- Database backup and recovery
+
+After these classes, we are now able to comfortably work with Oracle databases in real-world usecases.
