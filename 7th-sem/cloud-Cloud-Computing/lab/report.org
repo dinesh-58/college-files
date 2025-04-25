@@ -1,0 +1,142 @@
+# for project documents, use addtional latex styles used in final-report file
+:edit-this:
+#+EXPORT_FILE_NAME: cloud-report
+#+PROPERTY: header-args :eval no-export
+# don't prompt to evaluate code blocks while exporting
+#+OPTIONS: toc:nil ^:{}
+# set toc below instead of here
+# 2nd option exports subscripts only when _{} is used
+#+LATEX_HEADER: \graphicspath{{~/programming/college-files/assets/images/}}
+
+# !!!!!!!!!!!!!          only edit this section       !!!!!!
+#+LATEX_HEADER: \def\subjectNum{3}
+# 1: DBA
+# 2: AI
+# 3: Cloud
+# 4: none
+# 5: none
+
+#+LATEX_HEADER: \def\labNum{}
+#+LATEX_HEADER: \def\labTitle{}
+#+LATEX_HEADER: \def\yearSem{III/VII}
+#+LATEX_HEADER: \newif \iftoc
+# !!!!!!!!!!!!           set toc here by uncommenting option
+# \toctrue    
+\tocfalse
+:end:
+
+#+INCLUDE: "~/programming/college-files/assets/template.org" :lines "27-"
+* Lab 1: Desktop Virtualization using VMWare & Ubuntu 
+** Objectives
+- Get hands-on experience with client-side desktop virtualization
+- Go through the installation process for a GNU/Linux distribution like Ubuntu
+
+** Introduction 
+Virtualization refers to emulating computing resources virtually, such as servers, storage devices, networks, or operating systems. It enables multiple virtual systems to operate on a single physical machine, improving efficiency, and reducing costs. Each system is represented as a virtual machine.
+
+Desktop virtualization is a type of virtualization that allows users to run multiple instances of an operating system / desktop environment on a separate physical machine, typically hosted on a server or in the cloud. It lets users access their desktop from any device, providing flexibility, centralized management, and enhanced security.
+
+VMWare Workstation is a popular software tool for client-side desktop virtualization i.e. allowing running multiple desktops on a single, local machine. Ubuntu is a popular, free GNU/Linux operating system, which was used for the purpose of this lab. 
+** Lab Work
+1) Download Ubuntu ISO
+2) Download & install VMWare Workstation
+3) Inside VMWare Workstation, create a new virtual machine
+4) Configure memory, storage allocation and network settings
+5) Select the Ubuntu ISO
+6) Proceed through the Ubuntu installer steps
+
+#+attr_latex: :height 190px
+[[file:img/l1-ubuntu.png]]
+
+** Conclusion
+The lab successfully met its objectives by providing hands-on experience with client-side desktop virtualization and guiding the installation of a GNU/Linux distribution. Using a client-side virtualization platform such as VMware Workstation, we were able to create and manage a virtual machine, demonstrating how multiple operating systems can operate simultaneously on a single physical device.
+
+#+latex: \vfill
+#+latex: \pagebreak
+* Lab 2: AWS Account creation & EC2 configuration
+** Objectives
+- Create an AWS account.
+- Go through the steps of configuring an EC2 instance, security, and connecting to it.
+
+
+** Introduction
+Amazon Web Services (AWS) is a populae adopted cloud computing platform by Amazon. It offers a vast array of on-demand services, including computing power, storage, databases, networking, and more. Instead of owning and maintaining physical IT infrastructure, users can access these services over the internet on a pay-as-you-go basis. 
+
+Amazon Elastic Compute Cloud (EC2) is an AWS service that allows users to rent virtual servers (called "instances") to run their applications. EC2 enables users to scale computing resources up or down as needed, paying only for the instances the use. 
+
+** Lab Work
+1) Navigate to the AWS homepage and create an account.
+2) In the AWS Management Console, go to the EC2 dashboard, and launch a new instance.
+3) Set Amazon Machine Image (AMI) to Amazon Linux 2, and instance type to t2.micro.
+4) Configure the instance details, create a new security group, and allow SSH traffic.
+5) Create and download a key pair (.pem file).
+6) Launch the instance and connect to it using the private key and SSH.
+
+#+attr_latex: :height 150px
+[[file:img/l2-ec2.png]]
+
+** Conclusion
+This lab provided a foundational understanding of setting up an AWS environment and launching a virtual server. By creating an AWS account and configuring an EC2 instance, we gained hands-on experience with cloud computing fundamentals and were now able to deploy applications or services on AWS.
+
+#+latex: \vfill
+#+latex: \pagebreak
+* Lab 3: Configure S3 storage bucket and upload a file
+** Objectives
+- Setup S3 bucket, configure it and upload a sample file
+
+** Introduction
+Amazon Simple Storage Service (S3) is an AWS service that offers object storage. It is highly scalable, secure, and provides high availability and performance. S3 is used to store and retrieve any type of data, such as images, videos, text files, and application data.
+** Lab Work
+- In the AWS Management Console, navigate to the S3 service and create a bucket
+- Choose a region & configure settings (versioning, encryption, etc.).
+- In the S3 console, select the created bucket 
+- Click "Upload." & select the file to upload.
+- Configure permissions as necessary.
+- Click "Upload."
+
+#+attr_latex: :height 190px
+[[file:img/l3-s3.png]]
+** Conclusion
+This lab introduced us to storing and managing files in Amazon S3  and provided a practical introduction to its basic operations.
+
+#+latex: \vfill
+#+latex: \pagebreak
+* Lab 4: Configure IAM policy in AWS
+** Objectives
+- Gain practical experience in creating and managing IAM users, roles, and policies in AWS.
+** Introduction
+AWS Identity and Access Management (IAM) is a service that enables users to manage access to AWS resources securely. Users can create users, groups, and roles, and define permissions through policies. It ensures that only authorized individuals or systems can access specific resources, enabling secure and controlled cloud operations.
+
+** Lab Work
+1. In the AWS Management Console, go to the IAM service.
+2. Click on Policies & create a new policy.
+3. Define the service, actions, and resources to allow or deny.
+4. Add tags if needed & finish the policy setup.
+5. Click on Users & select a user.
+6. Click Add permissions & choose Attach policies directly.
+7. Select the created policy. 
+** Conclusion
+This lab provided hands-on experience with AWS Identity and Access Management (IAM). By creating users and policies, and assigning permissions, we learned how IAM allows managing control over resource access. 
+
+#+latex: \vfill
+#+latex: \pagebreak
+* Lab 5: Create VPC on AWS
+** Objectives
+- Understand the structure and purpose of a Virtual Private Cloud in AWS.
+- Create and configure a custom VPC with subnets and essential components.
+
+** Introduction
+A Virtual Private Cloud (VPC) in AWS is a logically isolated network where users can launch and manage AWS resources. It gives users full control over network settings like IP ranges, subnets, route tables, and security groups, enabling secure and customizable cloud networking.
+** Lab Work
+1) Go to the VPC Dashboard in the AWS Management Console.
+2) Click "Create VPC" and choose VPC with subnets.
+3) Enter a name, IPv4 CIDR block, and optional IPv6 settings.
+4) Add subnets, availability zones and CIDR blocks.
+5) Set up security groups and network ACLs for access control.
+6) Click on "Create VPC".
+
+#+attr_latex: :height 190px
+[[file:img/l5-vpc.png]]
+
+** Conclusion
+In this lab, we created and configured of a Virtual Private Cloud (VPC) in AWS. By setting up custom IP ranges, subnets, and routing components, we gained practical insight into designing secure and scalable cloud networks.
