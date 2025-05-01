@@ -179,7 +179,7 @@ bit every day to revise effectively.
 - Promote regular study habit among students by making it effortless and quick to do.
 - Improve rate of retaining studied knowledge among users
 
-** Scope and Limitaiton
+** Scope and Limitation
 *** Scope
 CardsQL would be appropriate for the following types of users:
 - Students ranging from high schooolers to Doctorates, as they have to understand and memorize a lot of concepts.
