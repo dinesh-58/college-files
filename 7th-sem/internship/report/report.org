@@ -126,10 +126,8 @@ Coordinator and Examiners for taking the time to go through my work, evaluating 
 % \onehalfspacing
 \listoffigures
 \listoftables
-\printglossaries
+% \printglossaries   %% prints glossaires of all types
 \printglossary[type=\acronymtype,title=Acronyms]
-
-% \printglossaries[type=\acronymtype]
 #+END_EXPORT
 
 * Introduction
@@ -293,7 +291,7 @@ Overall, my responsibilities were as such:
 # dec 2 to march 2
 
 #+CAPTION: Weekly log
-#+ATTR_LATEX: :environment longtable :align |p{0.22\textwidth}|p{0.78\textwidth}|
+#+ATTR_LATEX: :environment longtable :align |p{0.22\textwidth}|p{0.73\textwidth}|
 |--------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Week               | Remarks                                                                                                                                                                                                                                                                                                                                         |
 |--------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -336,7 +334,7 @@ modifications to familiarize me with WordPress, Elementor & WooCommerce as well 
 I participated in client meetings to understand client needs for a new website project and how to address them.
 This early involvement in planning and design showed me how substantial projects are professionally started and planned.
 The client needed a single page website to showcase information about their dental clinic, their services as well as
-publish blog posts to provide information and boost \acrfull{SEO}.
+publish blog posts to provide information and boost \acrfull{seo}.
 Due to its simple nature, I was asked to work on the majority of it to gain further proficiency.
 I learned to setup a local WordPress development, deploy WordPress sites to the web, and learned collaborative development workflows to avoid conflicts.
 
@@ -427,6 +425,6 @@ more custome, complex web applications.
 
 # todo: change reference format to APA
 * References 
-#+cite_export: csl ~/.emacs.d/packages/ieee.csl
+#+cite_export: csl ~/.emacs.d/packages/apa.csl
 #+LATEX: \setlength{\parindent}{0cm}
 #+PRINT_BIBLIOGRAPHY:
