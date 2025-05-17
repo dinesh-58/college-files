@@ -1,0 +1,307 @@
+:readme:
+# required programs to export this to pdf:
+# - emacs
+#   + emacs plugins:
+#   + 
+# - latex (use miktex for minimal installation sizes)
+#   + multiple latex packages (miktex should automatically ask to install missing ones)
+# - inkscape (for handling svg images)
+:end:
+:LATEX_SETTINGS:
+#+EXPORT_FILE_NAME: project-3-proposal
+#+BIBLIOGRAPHY: bibliography.bib
+#+LATEX_HEADER: \pagenumbering{roman}
+#+LATEX_HEADER: \graphicspath{{/home/sujal/programming/college-files/assets/images/}}
+# +LATEX_HEADER: \graphicspath{{C:\\Users\\sujal\\programming\\college-files\\assets\\images\\}}
+
+#+BIBLIOGRAPHY: bibliography.bib
+#+OPTIONS: toc:nil tasks:nil
+#+LATEX_HEADER: \author{Sujal Gurung 6-2-378-82-2020 \\ Safin Maharjan 6-2-378-78-2020}
+#+LATEX_HEADER: \date{\today}
+
+#+LATEX_HEADER: \usepackage[margin=1in, left=1.25in]{geometry}
+#+LATEX_HEADER: \usepackage{placeins}
+#+LATEX_HEADER: \usepackage{setspace}
+#+LATEX_HEADER: \usepackage{svg}
+
+#+LaTeX_HEADER: \usepackage{appendix}
+
+# acronyms
+#+LATEX_HEADER: \usepackage[acronym]{glossaries}
+#+LATEX_HEADER: \makeglossaries
+#+LATEX_HEADER: \setglossarystyle{super}
+
+#+LaTeX_HEADER: \usepackage{pdfpages}
+#+LaTeX_HEADER: \usepackage{chngcntr}
+#+LATEX_HEADER: \counterwithin{figure}{section}
+#+LATEX_HEADER: \counterwithin{table}{section}
+
+# for wrapping tables in weekly log
+#+LATEX_HEADER: \usepackage{tabularx}
+#+LATEX_HEADER: \usepackage{array}
+
+#+LaTeX_CLASS: article
+# +LaTeX_CLASS_OPTIONS: [12pt]
+# +LATEX_HEADER: \AddToHook{cmd/section/before}{\clearpage}
+#+LATEX_CLASS_OPTIONS: [a4paper]
+#+LaTeX_HEADER: \usepackage{times}
+# # these 3 are incorrect? use \onehalfspacing instead
+#+LaTeX_HEADER: \setstretch{1.5}
+#+LaTeX_HEADER: \usepackage[12pt]{moresize}
+#+LaTeX_HEADER: \AtBeginDocument{\fontsize{12}{15}\selectfont}
+#+LATEX_HEADER: \onehalfspacing
+#+LaTeX_HEADER: \usepackage{titlesec}
+#+LaTeX_HEADER: \titleformat{\chapter}{\bfseries\fontsize{16}{18}\selectfont}{\thechapter}{1em}{}
+#+LaTeX_HEADER: \titleformat{\section}{\bfseries\fontsize{14}{16}\selectfont}{\thesection}{1em}{}
+#+LaTeX_HEADER: \titleformat{\subsection}{\bfseries\fontsize{12}{14}\selectfont}{\thesubsection}{1em}{}
+
+#+LaTeX_HEADER: \usepackage{caption}
+#+LaTeX_HEADER: \DeclareCaptionFormat{myformat}{\fontsize{12}{12}\selectfont#1#2#3}
+#+LaTeX_HEADER: \captionsetup{format=myformat,justification=centering}
+#+LaTeX_HEADER: \captionsetup[figure]{position=bottom}
+#+LaTeX_HEADER: \captionsetup[table]{position=top}
+:END:
+:export-titlepage:
+# !!!!!!!!!!!!            don't edit
+\begin{large}
+
+\makeatletter
+\begin{titlepage}
+\centering
+\includegraphics[scale=0.5]{tu-logo-transparent}
+
+\vfill
+
+\textbf{\Large{Tribhuvan University \\Faculty of Humanities and Social Sciences\\}}
+\vfill
+
+\textbf{\Large{A Project Proposal on: \\ML-Based Crop Disease Identification}}
+\vfill
+
+\textbf{Submitted to: \\Department of Computer Application, \\ Himalaya College of Engineering, \\Chyasal,Lalitpur}
+\vfill
+
+\textbf{\emph{In partial fulfillment of the requirements for the Bachelor's in Computer Application}}
+
+\textbf{Submitted by:}\\\@author\\\@date\\
+\vfill
+
+Under the Supervision of
+\textbf{\\Er. Himal Chand Thapa}
+
+\makeatother
+\end{titlepage}
+\end{large}
+\clearpage
+:end:
+:acronyms:
+#+BEGIN_EXPORT latex
+%% \newacronym{label}{abbreviation}{full form} 
+
+
+%% list of acronyms is created right before introduction
+%%%% usage options:
+% \acrlong{label}    
+% \acrshort{label}
+% \acrfull{label}   => prints both short & long form
+#+END_EXPORT
+:end:
+
+# +LATEX: \includepdf[pages=-,pagecommand={}]{supervisor-letter.pdf}
+* Introduction
+#+LATEX:\pagenumbering{arabic}
+Agriculture forms the backbone of Nepal's economy, employing approximately 66% of the population and contributing about 27% to the country's GDP [cite:@narc_annual_report_2024]. Despite its importance, farmers face significant challenges in identifying and managing crop diseases, which result in substantial yield losses each year. The geographical terrain of Nepal, characterized by remote and difficult-to-access regions, further complicates the delivery of agricultural extension services to farmers who need them most.
+
+Digital technology, particularly mobile phones, has seen widespread adoption across Nepal with a penetration rate of approximately 130% [cite:@nta_mis_report_2024]. This technological infrastructure presents an opportunity to deliver agricultural knowledge directly to farmers, bypassing traditional limitations of physical extension services.
+
+NepalCrop aims to leverage this mobile technology penetration combined with recent advancements in artificial intelligence and machine learning to create a practical solution for Nepalese farmers. The application will enable farmers to identify crop diseases quickly through image recognition, receive appropriate treatment recommendations, and improve their agricultural decision-making.
+
+
+* Problem Statement
+Nepalese farmers face several interconnected challenges that impact agricultural productivity and livelihoods:
+
+- Limited access to agricultural expertise: Many farmers in remote regions have minimal contact with agricultural extension officers who can provide disease identification and management advice.
+
+- Delayed disease identification: Without expert knowledge, farmers often identify crop diseases too late in their progression, resulting in significant yield losses estimated at 25-40% annually [cite:@fao_nepal_profile_2023].
+
+- Improper treatment application: Lack of accurate disease identification leads to inappropriate use of pesticides and treatments, increasing costs and environmental impact while failing to address the actual problem.
+
+- Connectivity limitations: While mobile penetration is high, internet connectivity remains inconsistent in rural areas, limiting the effectiveness of online agricultural advisory services.
+
+- Language and literacy barriers: Many farmers have limited proficiency in languages other than Nepali and local dialects, with varying literacy levels that affect their ability to access text-based information.
+
+These challenges create a critical need for a solution that is accessible, works within connectivity constraints, overcomes language barriers, and delivers timely, accurate information to improve agricultural outcomes.
+
+* Objectives
+- Develop a mobile-friendly application that enables Nepalese farmers to identify crop diseases through image recognition technology with at least 85% accuracy.
+# - Implement offline functionality that allows the application to work in areas with limited or no internet connectivity.
+# - Create a bilingual interface (Nepali and English) that is intuitive and usable by farmers with varying levels of technological literacy.
+# - Provide actionable treatment recommendations for identified diseases that are appropriate to the Nepalese agricultural context.
+- Deliver a demonstrable minimum viable product (MVP) within a three-month development timeline.
+
+- Validate the solution through testing with local farmers 
+
+* Methodology
+** Requirement Identification
+
+*** Study of Existing System
+Currently, Nepalese farmers rely on several methods to identify and manage crop diseases:
+
+- Traditional knowledge passed down through generations, which may be incomplete or outdated for emerging diseases.
+
+- Agricultural extension services provided by government officers, who are limited in number and cannot reach all farming communities regularly.
+
+- Peer consultation with neighboring farmers, which can perpetuate misinformation if the initial identification is incorrect.
+
+- Agricultural input suppliers who may provide biased advice to promote their products rather than the most appropriate solutions.
+
+- Limited mobile and web resources that provide general information but lack specificity for the Nepalese context or require constant internet connectivity.
+
+These existing systems have significant gaps in accessibility, accuracy, timeliness, and contextual relevance that the proposed NepalCrop application seeks to address.
+
+*** Literature Review
+Research indicates that machine learning approaches to crop disease identification have achieved significant success in similar agricultural contexts:
+
+- Hughes and Salathé [cite:@hughes_salathe_2020] demonstrated 99.35% accuracy in identifying 38 different classes of plant diseases using convolutional neural networks.
+  
+- Mrisho et al. [cite:@mrisho_et_al_2023] successfully implemented a mobile-based disease detection system for cassava in Tanzania, another developing country with connectivity challenges.
+
+- The PlantVillage dataset provides a foundation for model training, with over 50,000 curated images of plant diseases that can be leveraged for the initial model development.
+
+- Sharma et al. [cite:@sharma_et_al_2022] found that offline-first agricultural applications increased usage by 78% in remote regions of Nepal compared to apps requiring constant connectivity.
+
+- Panday and Basnet [cite:@panday_basnet_2023] documented increasing receptiveness among Nepalese farmers to mobile-based agricultural advisory services, particularly among younger farmers.
+*** Requirement Analysis
+Based on the study of existing systems and literature review, the following requirements have been identified:
+
+**** Functional Requirements
+- Image capture and processing capabilities
+- Disease identification for at least 5 major Nepalese crops
+- Offline storage and processing functionality
+- Bilingual interface (Nepali and English)
+- Disease management and treatment recommendations
+- Simple user interface requiring minimal technical literacy
+
+**** Non-Functional Requirements
+- Processing time under 3 seconds on mid-range smartphones
+- Accuracy of at least 85% in disease identification
+- Ability to function with intermittent connectivity
+- Minimal storage requirements (under 100MB)
+- Battery efficiency for use in areas with limited charging facilities
+
+** Feasibility Study
+*** Technical
+The project is technically feasible based on the following factors:
+- Available Technologies: TensorFlow.js enables on-device machine learning, eliminating the need for server-side processing. React and Next.js provide robust frameworks for developing Progressive Web Applications with offline capabilities. Alternatively, React Native can be leveraged to create cross-platform mobile apps.
+- Model Availability: Pre-trained models for crop disease identification can be adapted and fine-tuned for Nepalese crops, reducing the need for extensive data collection and model training.
+- Device Compatibility: The solution can be designed to work on entry-level smartphones, which are increasingly common even in rural Nepal.
+- Offline Functionality: IndexedDB and service workers enable robust offline functionality in modern web applications.
+
+*** Operational
+Operational feasibility is supported by:
+- User Acceptance: Research indicates growing acceptance of mobile agricultural advisory services among Nepalese farmers.
+- Accessibility: A bilingual interface addresses language barriers, while a simple, icon-based UI accommodates varying literacy levels.
+- Training Requirements: The application will be designed for intuitive use, minimizing the need for extensive training.
+- Support Structure: The MVP can operate independently of complex support structures, requiring only occasional updates when connectivity is available.
+
+*** Economic
+The economic feasibility is justified through:
+- Development Costs: The three-month development timeline with a small team keeps initial costs manageable.
+- Value Proposition: Even a modest reduction in crop losses would provide significant economic returns to farmers and the broader agricultural sector.
+- Scalability: Once developed, the marginal cost of adding additional users is minimal.
+- Potential Partnerships: Agricultural extension services, NGOs, and private agricultural input suppliers represent potential partners for broader distribution and continued development funding.
+
+  #+latex: \vfill
+  #+latex: \pagebreak
+** High Level Design of System
+The NepalCrop system follows a client-centric architecture that maximizes offline capabilities while providing seamless updates when connectivity is available.
+
+*** System Architecture
+#+CAPTION: System Architecture
+#+attr_latex: :width 0.55\textwidth
+#+attr_org: :height 200px
+[[file:img/temp-sys-arch.png]]
+
+#+LATEX:\FloatBarrier
+*** Working Mechanism
+1. *Image Acquisition:* User captures image of diseased crop part using device camera
+2. *Image Preprocessing:* Application processes image to enhance features and normalize for model input
+3. *Disease Classification:* TensorFlow.js model analyzes image and identifies disease
+4. *Treatment Retrieval:* Application queries local database for treatment recommendations
+
+5. *Result Presentation:* User receives disease identification and treatment options in preferred language
+6. *Optional Storage:* User can save results for future reference
+7. *Sync When Available:* Application updates models and disease database when connectivity is available
+
+*** Algorithm Description:
+The core disease detection algorithm utilizes a Convolutional Neural Network (CNN) with the following characteristics:
+
+1. *Input:* 224x224 RGB image
+2. *Preprocessing:*
+   - Resize to standard dimensions
+   - Normalize pixel values
+   - Apply data augmentation for inference robustness
+3. *Feature Extraction:* MobileNet architecture (optimized for mobile devices)
+4. *Classification Layer:* Custom-trained final layer specific to Nepalese crop diseases
+5. *Output:* Disease classification with confidence score
+6. *Post-processing:* Rule-based filtering to reduce false positives
+
+*** Gantt chart
+#+LATEX:\FloatBarrier
+#+CAPTION: Gantt Chart, showcasing the project timeline
+#+attr_latex: :width 0.6\textwidth
+#+attr_org: :height 200px
+[[file:img/temp-gantt.png]]
+
+**** Month 1 (Weeks 1-4):
+- Project setup and architecture design
+**** Month 2 (Weeks 5-8):
+- UI wireframing and component planning
+- Development of core UI components
+- Integration of TensorFlow.js framework
+- Implementation of disease detection model
+- Development of treatment recommendation database
+- Implementation of offline data storage and retrieval
+- Initial performance optimization
+**** Month 3 (Weeks 9-12):
+- Nepali language integration and localization
+- User testing with target audience
+- Performance optimization for low-end devices
+- Documentation and preparation for demonstration
+
+* Expected Outcome
+The successful implementation of the NepalCrop project will deliver:
+
+1. *Functional Application:* A Progressive Web Application capable of identifying at least 15 common diseases across 5 major Nepalese crops (rice, maize, wheat, potato, and tomato).
+
+2. *Technical Capabilities:*
+   - Disease identification with >85% accuracy
+   - Processing time <3 seconds on mid-range devices
+   - Offline functionality in areas with limited connectivity
+   - Bilingual interface (Nepali and English)
+   - <100MB storage footprint
+
+3. *User Benefits:*
+   - Reduced crop losses through early disease detection
+   - Improved decision-making for disease management
+   - Decreased reliance on potentially biased information sources
+   - Enhanced agricultural knowledge over time through regular use
+
+4. *Demonstration Material:*
+   - Functional prototype ready for field testing
+   - Documentation of implementation process and challenges
+   - Preliminary user feedback from testing sessions
+   - Framework for future development and expansion
+
+# The NepalCrop MVP will establish a foundation for future enhancements such as weather integration, community features, expanded crop coverage, and integration with other agricultural services.
+
+* References 
+:PROPERTIES:
+:UNNUMBERED: t
+:END:
+#+cite_export: csl ~/.emacs.d/packages/ieee.csl
+
+# +LATEX: \setlength{\parindent}{0cm}
+# justifies text?
+#+LaTeX: \sloppy
+#+PRINT_BIBLIOGRAPHY:
