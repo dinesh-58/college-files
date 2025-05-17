@@ -41,14 +41,14 @@
 #+LATEX_HEADER: \usepackage{array}
 
 #+LaTeX_CLASS: article
-#+LaTeX_CLASS_OPTIONS: [12pt]
+# +LaTeX_CLASS_OPTIONS: [12pt]
 #+LATEX_HEADER: \AddToHook{cmd/section/before}{\clearpage}
 #+LATEX_CLASS_OPTIONS: [a4paper]
 #+LaTeX_HEADER: \usepackage{times}
 # # these 3 are incorrect? use \onehalfspacing instead
-# #+LaTeX_HEADER: \setstretch{1.5}
-# #+LaTeX_HEADER: \usepackage[12pt]{moresize}
-# #+LaTeX_HEADER: \AtBeginDocument{\fontsize{12}{15}\selectfont}
+#+LaTeX_HEADER: \setstretch{1.5}
+#+LaTeX_HEADER: \usepackage[12pt]{moresize}
+#+LaTeX_HEADER: \AtBeginDocument{\fontsize{12}{15}\selectfont}
 #+LATEX_HEADER: \onehalfspacing
 #+LaTeX_HEADER: \usepackage{titlesec}
 #+LaTeX_HEADER: \titleformat{\chapter}{\bfseries\fontsize{16}{18}\selectfont}{\thechapter}{1em}{}
@@ -97,13 +97,18 @@ Under the Supervision of
 :acronyms:
 #+BEGIN_EXPORT latex
 %% \newacronym{label}{abbreviation}{full form} 
+\newacronym{api}{API}{Application Programming Interface}
 \newacronym{html}{HTML}{Hyper Text Markup Language}
 \newacronym{cms}{CMS}{Content Management System}
 \newacronym{css}{CSS}{Cascading Style Sheets}
+\newacronym{eps}{EPS}{Employment Permit System}
 \newacronym{gui}{GUI}{Graphical User Interface}
 \newacronym{http}{HTTP}{Hyper Text Transfer Protocol}
+\newacronym{json}{JSON}{JavaScript Object Notation}
+\newacronym{mcq}{MCQ}{Multiple Choice Question}
 \newacronym{mvp}{MVP}{Minimum Viable Product}
 \newacronym{php}{PHP}{Hypertext Preprocessor}
+\newacronym{rest}{REST}{Representational State Transfer}
 \newacronym{seo}{SEO}{Search Engine Optimization}
 \newacronym{sql}{SQL}{Structured Query Language}
 
@@ -116,14 +121,20 @@ Under the Supervision of
 #+END_EXPORT
 :end:
 
+#+attr_latex: :width \textwidth
+[[file:gitignored-files/intern-cert.jpg]]
+# place this between img & section to prevent img moving below section
+#+LATEX:\FloatBarrier
+
+# supervisor's recommendation & letter of approval
 #+LATEX: \includepdf[pages=-,pagecommand={}]{supervisor-letter.pdf}
 * Abstract
 :PROPERTIES:
 :UNNUMBERED: t
 :END:
-This report describes my internship experience at Digital Dai, where I worked from 2^{nd} December 2024 to 2^{nd} March 2025 as a Web Developer Intern. During the internship, I was assigned tasks related to website development and maintenance using WordPress. I contributed to various client projects, gaining practical skills in WordPress, Astro and NextJS, and deepening my understanding of web development at a professional level.
+This report describes my internship experience at Digital Dai, where I worked from 2^{nd} December 2024 to 2^{nd} March 2025 as a Web Developer Intern. During the internship, I was assigned tasks related to website development and maintenance using WordPress. I contributed to various client projects, gaining practical skills in WordPress, Astro and NextJS, deepening my understanding of web development at a professional level.
 
-The report details the objectives of the internship, the projects I worked on, and the outcomes I achieved. It also reflects on the challenges I encountered and the lessons learned. Overall, the internship provided valuable hands-on experience that has enhanced my academic knowledge and prepared me for future professional roles.
+The report details the objectives of the internship, the projects I worked on, and the outcomes I achieved. It also reflects on the challenges I encountered and the lessons learned. Overall, the internship provided valuable hands-on experience that has enhanced my practical knowledge and prepared me for future professional roles.
 
 *Keywords*: /low code, react, web-app, web development, wordpress/
 
@@ -133,7 +144,7 @@ The report details the objectives of the internship, the projects I worked on, a
 :END:
 
 I am extremely grateful to Digital Dai for offering me this opportunity to gain hands-on learning by working with them.
-I would like to especially thank their team lead and my mentor, Mr. Rajan Budhathoki who guided me throughout the internship and ensured I didn't face any difficulties. I would also like to thank the other members of the team for assisting me and sharing valuable information they had accumulated throughout their careers. 
+I would like to especially thank their team lead and my mentor, Mr. Rajan Budhathoki, who guided me throughout the internship and ensured I didn't face any difficulties. I would also like to thank the other members of the team for assisting me and sharing valuable information they had accumulated throughout their careers. 
 
 I am grateful to the Department of Computer Application at Himalaya College and Tribhuvan University for giving us the
 opportunity to work on this project as a partial fulfillment of my Bachelors studies. Special thanks go to some of my friends
@@ -147,7 +158,7 @@ Coordinator and Examiners for taking the time to go through my work, evaluating 
 \listoffigures
 \listoftables
 % \printglossaries   %% prints glossaries of all types
-\printglossary[type=\acronymtype,title={List of Abbreviations}]
+\printglossary[type=\acronymtype,title={List of Abbreviations},nopostdot,nonumberlist]
 
 % \onehalfspacing  % back to 1.5 for remaining document
 #+END_EXPORT
@@ -158,20 +169,19 @@ Coordinator and Examiners for taking the time to go through my work, evaluating 
 During my internship, I worked on multiple projects, mostly using the WordPress platform and Elementor page builder.
 WordPress is a popular, flexible \acrfull{cms} that is used for building a variety of websites. Elementor is a tool for
 WordPress that allows building an entire website using a \acrfull{gui} editor i.e. without needing to write much code.
-This tech stack is preferred by the company to meet their needs for a fast, scalable and easy-to-edit way to build client
+These tools are preferred by the company to meet their needs for a fast, scalable and easy-to-edit way to build client
 websites.
 
 At first, I did basic tasks on Sasto Nordic's e-commerce store. Doing so made me familiar with WordPress, Elementor &
 WooCommerce, and understand how the WordPress ecosystem could be used to build a variety of websites. When there was a
-relatively simple project for a dental clinic, I was assigned to work on the majority of it. I learned to setup a local
+relatively simple project for a dental clinic, I was assigned to work on a majority of it. I learned to setup a local
 WordPress development environment, publishing websites to a cloud host and domain, and best practices for devloping
 collaboratively and avoiding conflicts.
 
 After becoming proficient with the company's WordPress workflow, I was asked to handle website changes and maintenance
 requests for one of the company's long-term clients: GLOHMED, a global health research institute here in Nepal.
 Implementing all their requests taught me more advanced concepts of WordPress and \acrfull{css}, and I was able to improve
-the site's design, and optimize it by replacing third-party plugins with better native features in WordPress and Elementor.
-I also worked on developing an email newsletter template for them.
+the site's design, and optimize it. I also worked on developing an email newsletter template for them.
 
 After working with mostly low-code tools, I also worked on a few code projects. I contributed to the company's website,
 which was built with Astro, a JavaScript framework for building websites, web-apps in a flexible manner. I was also tasked 
@@ -193,37 +203,41 @@ easily edit the questions.
 - To improve understanding of web performance, scalability, and best practices for deploying professional websites.
 
 ** Scope and Limitation
+:LOGBOOK:
+CLOCK: [2025-05-14 Wed 20:43]--[2025-05-14 Wed 20:43] =>  0:00
+:END:
 *** Scope
-During the internship, I worked mostly with WordPress and Elementor to develop & maintain websites.
+During the internship, I worked mostly with WordPress and Elementor to develop and maintain websites.
 This involved leveraging the WordPress ecosystem, complemented by fundamental web technologies such as \acrfull{html},
-\acrfull{css}, JavaScript to construct responsive and performant digital websites.
+\acrfull{css}, JavaScript to develop responsive and performant digital websites.
 WordPress and its ecosystem were new for me, so I had to learn them from the start and how to work with it to meet client
-needs. A key aspect of my role was tailoring WordPress installations through theme and plugin customization to align
-precisely with individual client specifications. Furthermore, I actively collaborated with designers and other developers
-to refine website features and user experience. My responsibilities also extended to the ongoing maintenance of these web
-platforms, including identifying and resolving technical issues, as well as implementing optimizations to enhance site
+needs. A key aspect of my role was tailoring WordPress installations through theme and plugin customizations to align
+precisely with client specifications. Furthermore, I actively collaborated with designers and other developers
+to refine website features and user experience. My responsibilities also extended to the ongoing maintenance of developed
+websites, including identifying and resolving technical issues, as well as implementing optimizations to enhance site
 speed and search engine visibility.
 
 *** Limitation
-- Lack of technically complex projects as most clients only wanted informational, easy to update business website.
-- Focused mainly on frontend and low-code tools
+- Lack of technically complex projects as most clients only wanted informational, easy to update business websites
+- Focused mainly on frontend development and low-code tools
 
 ** Report Organization
 # summary of each following chapter and its contents
 The internship experience is described across 5 major chapters in this report.
-This section is part of [[*Introduction][_Chapter 1_]], which serves as an introduction to the projects done during the internship, and why
-they were needed. The chapter also talks about the domain of my work, and some limitations I experienced.
+This section is part of [[*Introduction][_Chapter 1_]], which serves as an introduction to the projects I worked on during the internship.
+The problem statement describes why those projects were needed. The chapter also lists the objectives I set out to achieve
+from the internship, and talks about the domain and limitations of my work.
 
-[[*Introduction to Organization][_Chapter 2_]] describes the organization I interned at, along with details such as its hierarchy, working domains as well as
-the department I interned with.
+[[*Introduction to Organization][_Chapter 2_]] introduces the organization I interned at, and their areas of service. It also details the organization structure, the department I was a part of, and how work is distributed across specific departments.
 
-[[*Background Study and Literature Review][_Chapter 3_]] describes some theories, technical concepts related to the work done during the internship. These provide a
-basis for understanding the report better. 
+[[*Background Study and Literature Review][_Chapter 3_]] describes some theories, technical concepts, and tools related to the work done during the internship. These
+provide a basis for understanding the work I did and the report's contents in a better way. 
 
-[[*Internship Activities][_Chapter 4_]] details the work done during the internship and the projects I worked on. During the internship, I recorded
-each week's tasks, which I have attached in the Weekly Log. 
+[[*Internship Activities][_Chapter 4_]] describes the projects I worked on, and the exact work I did to contribute to those projects. During the
+internship, each week's tasks were recorded, which have been attached in the Weekly Log. 
 
-[[*Conclusion and Learning Outcomes][_Chapter 5_]] concludes this report, summarizing the overall experience and what I learned from it. 
+[[*Conclusion and Learning Outcomes][_Chapter 5_]] concludes this report, summarizing the overall experience and what I learned from it. It also lists out some
+shortcomings during the internship, which the company could improve upon.
 
 * Introduction to Organization
 ** Organization Details
@@ -249,17 +263,17 @@ has been able to sustain itself with this model, and plans on expanding operatio
 [[file:img/org-structure.png]]
 
 Digital Dai follows a lean and efficient organizational structure, minimizing unnecessary management layers to promote
-faster decision-making and closer collaboration. At the top, a Team Lead oversees three core departments: Digital Marketing,
-Design, and Development.
+faster decision-making and closer collaboration. At the top, the Team Lead oversees three core departments (Digital
+Marketing, Design, Development) whose roles are as follows:
 
 - All relevant departments are involved in client meetings and project discusssions. Upon starting a project, work is
   divided between the relevant dedpartments and their members. 
 
-- Designers deliver creative assets such as branding designs, website mockups. After completion of designs for technical
+- Designers deliver creative assets such as branding designs, website mockups etc. After completion of designs for technical
   projects, Developers work to implement it, being guided by Senior Developers. 
 
-- Digital Marketers operate independently under the Team Lead’s guidance, focusing on social media growth strategy for both 
-  clients and the company.
+- Digital Marketers operate independently under the Team Lead’s guidance, focusing on social media growth strategies for
+  both clients and the company.
 
 This structure enables the company to stay flexible, adapt quickly to client needs, and maintain a hands-on approach to
 project delivery. 
@@ -291,11 +305,11 @@ collaborating with a team, project management, secure hosting & deployment etc.
 * Background Study and Literature Review
 ** Background Study
 During my internship period, I observed that the company preferred to use low-code development tools, especially WordPress
-and Elementor for the majority of their client projects, which were informational websites for businesses. An introduction
+and Elementor, for the majority of their client projects, which were informational websites for businesses. An introduction
 to these tools and their benefits is given below.
 
 *** Low-Code Development Tools
-These platforms offer visual interfaces and pre-configured components that allow individuals with varying degrees of technical skill to develop applications and websites with reduced reliance on traditional coding practices. Advantages of low-code development include:
+These platforms allow individuals with varying degrees of technical skill to develop applications and websites with reduced reliance on traditional coding practices, using visual interfaces and pre-configured components. Advantages of low-code development include:
 - accelerated development cycles,
 - enhanced accessibility for non-technical people,
 - cost efficiency
@@ -342,12 +356,12 @@ unique, customizable systems or when dealing with a lack of clearly defined requ
 Regardless, low code tools are highly preferred in situations where they are most useful / applicable. An  example
 of this is a majority of websites that are informational in nature, or have commonly used features such as blogging,
 account signups, ecommerce capabilities, payment processing etc. This covers a significant part of websites on the internet,
-as evidenced by how WordPress powers around 521 million websites i.e. 43.5% of all websites on the internet, according to a report by WPZoom[cite:@wp_stats]. Meanwhile, a 2025 statistics report[cite:@cms_stats] showed that roughly 70% of active websites use an
-existing \acrshort{cms} to simplify development and organize content. A majority of that is made up of WordPress sites,
-with others like Wix, SquareSpace having been used. Such figures show that even experienced developers
-choose low-code platforms to meet business needs within given time, budget constraints whenever they are applicable.
+as evidenced by how WordPress powers around 521 million websites i.e. 43.5% of all websites on the internet, according to a report by WPZoom[cite:@wp_stats]. Meanwhile, a 2025 statistics report[cite:@cms_stats] showed that roughly 70% of active websites use a
+\acrshort{cms} to simplify development and organize content. A majority of that is made up of WordPress sites,
+with others like Wix, SquareSpace also having been used. Such figures show that even experienced developers
+choose low-code platforms to meet business needs within given time and budget constraints whenever they are applicable.
 
-The majority of the projects at the company and the ones I worked on, were developed using WordPress, showcasing its
+The majority of the projects at the company that I worked on were developed using WordPress, showcasing its
 flexibility due to its customizable nature and a well-designed core CMS structure[cite:@wp_cms] for content management. 
 However, WordPress wasn't suitable for some projects like the language testing web app I worked on, which relied heavily on
 client-side logic. As such, WordPress and other low-code tools may or may not be the best choice for a project, depending
@@ -401,64 +415,154 @@ Overall, my responsibilities were as such:
 *** Sasto Nordic's e-commerce store
 Sasto Nordic was a unique startup selling Nepali products such as food, clothing items in the Danish market, namely
 Denmark, Norway and Sweden. They focused on promoting and selling a wide range of Nepali grocery items to recreate
-traditional dishes and celebrate Nepali culture. To help them in their mission to uplift Nepali
-heritage, the company collaborated with them to develop an online e-commerce store as well as work together on any of
-their digital needs.
-I was given basic tasks for this project such as data entry, testing edge cases, and making simple template
-modifications to familiarize me with WordPress, Elementor & WooCommerce as well as the company's WordPress workflow.
+traditional dishes and celebrate Nepali culture. The company collaborated with them to develop an online e-commerce store
+with the following features:
+
+- Buyers can:
+  + sign up / sign in
+  + search for products or view products by category, collection
+  + add products to wishlist or to cart
+  + checkout products
+  + review bought products
+
+- Admins can:
+  + add, remove, edit products and their details
+  + view users, their wishlists and carts
+  + verify, cancel pending orders
+  + create discount codes
 
 *** Tarkeshwar Dental's website
-I participated in client meetings to understand client needs for a new website project and how to address them.
-This early involvement in planning and design showed me how substantial projects are professionally started and planned.
-The client needed a single page website to showcase information about their dental clinic, their services as well as
-publish blog posts to provide information and improve \acrfull{seo}.
-Due to its simple nature, I was asked to work on the majority of it to gain further proficiency.
-I learned to setup a local WordPress development, deploy WordPress sites to the web, and learned collaborative development workflows to avoid conflicts.
+Tarkeshwar Dental Clinic needed a website to describe themselves and their services, as well as
+publish blog posts to provide information and improve their \acrfull{seo} performance. This was a simple website where
+users would come to get information about the clinic, and read blogs related to dental health. 
 
 *** GLOHMED
 GLOHMED is a research organization in Nepal, committed to advancing clinical medicine and global health, with a long-term vision to improve quality of patient care and health outcomes in low-resource settings. They had been a long-term client,
-with the company having provided various digital services, ranging from website maintenance to video editing and graphic design. Their website mainly focused on providing information about themselves, posting about research articles they had
-published, as well as providing general updates about the organization.
-
-After becoming proficient in WordPress, I was asked to handle website change requests for GLOHMED. Implementing all their
-requests taught me more advanced concepts of WordPress and CSS, and I was able to improve the site's design, and optimize
-it by replacing 3rd-party plugins with better native features in WordPress and Elementor. I was also asked to design an
-easy to edit email newsletter template for them, so I researched the best ways to do so, learning about email builders
-and how HTML needs to be used differently for emails than for websites.
+with the company having provided various digital services, ranging from website maintenance to graphic design. Their website mainly focused on providing information about themselves, posting about research articles they had published, as well
+as providing general updates about the organization.
 
 *** Foreign language exam web app
 During my final month, I was tasked to come up with a small project idea, and I deicded to make a web-app for foreign
 language exams where non-technical people could easily edit the questions. I was taught how to make project prototypes
-quickly using NextJS and SQLite as the tech stack, and as such, I decided to use them to build the project. I decided to
+quickly using NextJS and SQLite, and as such, I decided to use them to build the project. I decided to
 make it after hearing complaints from consultancies and examinees about how there wasn't a well-made app for organizing 
-and taking tests for non-English languages like Korean. I leveraged the SurveyJS library for an existing way to create 
-and edit question model sets in a visual editor, and incorporated it with NextJS to add future server-side features like
-dynamic page templates for similar model sets, user account system, payment features etc.
+and taking tests for non-English languages like Korean. 
 
 I was able to make a small demo to showcase the potential for such an app using mock questions from Korean EPS language
 tests, with a base to further improve it. The demo included the following features:
 
 - Allow admins / exam instructors to easily create question sets through SurveyJS
 - Show a list of available question sets to users
-- Start timed MCQ test with reading & listening questions
-- Automatically grade answers & store test record in a Google Sheet and local database for easy access
+- Start timed \acrfull{mcq} test with reading & listening questions
+- Automatically grade answers and store test results in a Google Sheet spreadhseet and local database for easy access
 
+** Tasks / Activities Performed
+*** Sasto Nordic's e-commerce store
+I was given basic tasks for this project to familiarize myself with WordPress, Elementor & WooCommerce, as well as the company's WordPress workflow. I:
+
+- Performed data entry for products in WooCommerce
+- Tested responsive issues to ensure the website worked properly on all screen sizes, and fixed them
+- Simulated normal user interaction by creating accounts, checking out products and using other features to test for any 
+  disruptions in normal user flow
+- Setup automated email sender for different actions like resetting passwords, invoices etc.
+- Modified and polished templates for the shop page and individual product pages to closely match UI designs
+
+#+CAPTION: Editing template for a single product page
+#+attr_latex: :width 0.6\textwidth
+#+attr_org: :height 200px
+[[file:img/nordic-template.png]]
+#+LATEX:\FloatBarrier
+
+*** Tarkeshwar Dental's website
+Due to the project's simple nature, I was asked to work on a majority of it to gain further proficiency in
+WordPress-based development. I:
+
+- Discussed with the client and our team regarding client needs, how to achieve them 
+- Setup local WordPress development environment for faster, offline development
+- Developed the website from scratch and implemented the finalized design 
+- Setup automatic templates for blog posts so that the client could easily add new content
+- Deployed the website to cloud hosting for collaborating with other developers, sending preview links to client
+- Prepared documentation for the client on how to add content, edit the site's design 
+  
+#+CAPTION: Adding a new blog post in WordPress
+#+attr_latex: :width 0.7\textwidth
+#+attr_org: :height 200px
+[[file:img/tara-add-blog.png]]
+#+LATEX:\FloatBarrier
+
+*** GLOHMED
+After becoming proficient in WordPress, I was asked to handle website change requests for GLOHMED, and also perform
+routine maintenance. I performed the following tasks: 
+
+- Added new content for posts, research publications, and organisation updates
+- Created custom post types to organize posts into Seminars, Conferences & Achievements & migrated old existing posts to
+  them
+- Improved overall website design by using consistent typography, colors, and modifying the layout to be more modern, while still providing adequate information.
+- Performed regular backups, restored backups when a plugin update disrupted the site
+- Ran security checks weekly and implemented fixes for vulnerabilities such as disabling unused features like XML-RPC, \acrshort{rest} \acrshort{api}.
+- Performed regular plugin updates to ensure security, but only after verifying the update's safety and stability.
+
+#+CAPTION: Running security scan for GLOHMED's website
+#+attr_latex: :width 0.6\textwidth
+#+attr_org: :height 200px
+[[file:img/glo-security.png]]
+#+LATEX:\FloatBarrier
+
+- *Website optimization*:
+  + Replaced many 3rd party plugins using built-in features in Elementor, custom css 
+  + Removed unmaintained, and unnecessary plugins
+  + Disabled unnecessary and temporary pages that came with the theme, to ensure they didn't hamper SEO performance, user experience 
+
+- *Email Newsletter Template*:
+  + Created an email newsletter template for providing updates to stakeholders.
+  + Used the Bricks low-code editor to allow easily creating / modifying new newsletter emails, instead of
+    writing HTML-based emails
+
+*** Foreign language exam web app
+- Planned implementation details, usecases, and a 1-month timeline for the project
+- Designed appropriate database schema for data that would be stored for every completed test, using SQLite.
+- Setup automated recording of test results to a Google sheets spreadsheet as well, to allow easy access for non-technical admins.
+- Created a basic web app for selecting, running language exams by integrating the SurveyJS library with NextJS
+- Created a mock exam template using past Korean language \acrfull{eps} test questions. These included a mix of reading,
+  listening \acrfull{mcq}s and were implemented using SurveyJs' \acrfull{json} schema, as shown below:
+
+#+caption: Example JSON schema for an \acrshort{mcq}
+#+attr_latex: :width 0.7\textwidth
+#+attr_org: :height 200px
+[[file:img/mcq-json.png]]
+#+LATEX:\FloatBarrier
+
+- Setup a SurveyJS project such that non-technical teachers could create new question sets by just duplicating the template
+  & editing questions in SurveyJS' visual editor
+- Setup time limits, correct answer validation rules, and score system for exams
+- Researched and debugged issues with encoding and displaying non-English languages in web browsers
+  
 * Conclusion and Learning Outcomes
 ** Conclusion
 In summary, this internship involved active participation in the full lifecycle of real-world projects, primarily utilizing
 the WordPress platform and associated low-code tools for client website development and maintenance. My contributions
-ranged from initial client requirement analysis and project planning to hands-on implementation, deployment, and ongoing optimization. Additionally, I gained introductory experience with modern JavaScript frameworks for building more specialized web applications. Overall, it was a valuable experience to learn new things as well as solidify previously learned
-web-development concepts. As such, I am grateful to have completed this internship as part of my coursework.
+ranged from initial client requirement analysis and project planning to hands-on implementation, deployment, and ongoing optimization. Additionally, I gained introductory experience with modern JavaScript frameworks for building more specialized web applications.
+
+The internship had a few shortcomings, which were:
+
+- Over-reliance on low-code tools that may not be widely used in the industry, potentially hindering future job prospects
+- Lack of technically complex projects to challenge and improve interns' skills
+- Lack of strict deadlines and management, leading to slight delays
+
+The company should consider these as aspects to improve upon for future interns. Nevertheless, it was a valuable experience
+to learn new things as well as solidify previously learned web-development concepts. As such, I am grateful to have
+completed this internship as part of my coursework.
 
 ** Learning Outcome
 Through the course of this internship, I gained practical experience in using the WordPress ecosystem, including its 
-\acrfull{php}-based core library, theme customization, and utilizing its plugins for building and maintaining client
+php-based core library, theme customization, and utilizing its plugins for building and maintaining client
 websites. I developed proficiency in leveraging low-code tools like Elementor to rapidly build websites in a visual manner.
 Furthermore, I acquired foundational knowledge in setting up local WordPress development environments, deploying websites
 to live servers, and adhering to collaborative development practices. This hands-on engagement provided a tangible
 understanding of the process involved in delivering web solutions for real-world clients. Additionally, my brief exposure
 to modern JavaScript frameworks such as Astro and Next.js introduced me to alternative approaches for building
-more custom, complex web applications.
+more custom, complex web applications. In conclusion, the objectives I had set for this internship were met thoroughly,
+improving my skills in modern web development.
 
 * References 
 :PROPERTIES:
