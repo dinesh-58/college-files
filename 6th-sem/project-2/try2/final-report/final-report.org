@@ -16,13 +16,15 @@
 #+LATEX_HEADER: \usepackage{svg}
 #+LATEX_HEADER: \usepackage[acronym]{glossaries}
 #+LATEX_HEADER: \makeglossaries
+#+LATEX_HEADER: \setglossarystyle{super}
 # custom glossary style /w borders
-#+LATEX_HEADER: \newglossarystyle{borderstyle}{%
-#+LATEX_HEADER:   \setglossarystyle{list}%
-#+LATEX_HEADER:   \renewcommand*{\glossaryentryfield}[5]{%
-#+LATEX_HEADER:     \item \fbox{##2: ##3}%
-#+LATEX_HEADER:   }%
-#+LATEX_HEADER: }
+# +LATEX_HEADER: \newglossarystyle{borderstyle}{%
+# +LATEX_HEADER:   \setglossarystyle{list}%
+# +LATEX_HEADER:   \renewcommand*{\glossaryentryfield}[5]{%
+# +LATEX_HEADER:     \item \fbox{##2: ##3}%
+# +LATEX_HEADER:   }%
+# +LATEX_HEADER: }
+
 #+LaTeX_HEADER: \usepackage{pdfpages}
 #+LaTeX_HEADER: \usepackage{chngcntr}
 #+LATEX_HEADER: \counterwithin{figure}{section}
@@ -131,7 +133,7 @@ opportunity to work on this project as a partial fulfillment of our Bachelors st
 and seniors for assisting us in our times of need. Lastly, we would like to extend our gratitude towards our project Supervisor,
 Coordinator and Examiners for taking the time to go through our work, evaluating it and providing feedback.
 
-#+begin_src latex
+#+begin_export latex
 % \singlespacing
 \clearpage \tableofcontents \clearpage
 % \onehalfspacing
@@ -140,7 +142,7 @@ Coordinator and Examiners for taking the time to go through our work, evaluating
 % \printglossaries
 \printglossary[type=\acronymtype,title={List of Abbreviations},nopostdot,nonumberlist]
 % \printglossary[type=\acronymtype,title={List of Abbreviations},nopostdot,nonumberlist,style=borderstyle]
-#+END_src
+#+END_export
 * Introduction
 #+LATEX:\pagenumbering{arabic}
 ** Introduction
@@ -148,7 +150,7 @@ Flashcards are a simple way for students to revise topics. On a piece of paper, 
 and then the answer on the next side. The following is an example of what a flashcard might look like:
 
 #+CAPTION:Example Flashcard
-[[file:../proposal/diagrams/flashcard-example.png]]
+[[file:diagrams/flashcard-example.png]]
 
 To utilize this flashcard, we would read the question & try to remember the answer.
 Then, we flip the card over & see how well we remembered it.
@@ -165,7 +167,7 @@ cards once and study them regularly, while retaining that knowledge for much lon
 for longer memory retention is also discussed in that chapter.
 
 CardsQL maintains review dates for cards so there is no need to study every card everyday. It sets review date such that
-when we revise a card on that day, it isn't too hard nor is it too easy. As such, users olny need to use CardsQL a little
+when we revise a card on that day, it isn't too hard nor is it too easy. As such, users only need to use CardsQL a little
 bit every day to revise effectively.
 
 ** Problem Statement
@@ -242,7 +244,7 @@ counter the forgetting curve. This is termed as *Spaced Repetition*[cite:@spaced
 #+CAPTION:Ebbinghaus' forgetting curve countered by Spaced Repition
 #+attr_latex: :height 200px
 #+attr_org: :height 200px
-[[file:../proposal/diagrams/forgetting-curve-spaced-repitition.png]]
+[[file:diagrams/forgetting-curve-spaced-repitition.png]]
 #+LATEX:\FloatBarrier
 
 ** Literature Review
